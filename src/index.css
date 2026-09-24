@@ -1,0 +1,127 @@
+/* =========================================================
+   Medical Global Academy — design tokens (doctyn-style)
+   Palette: white/soft-blue background, deep navy headings,
+   teal-blue primary, warm coral CTA accent, rounded cards.
+   Type: Plus Jakarta Sans (headings) + Inter (body)
+   ========================================================= */
+:root{
+  --bg: #F4F8FB;
+  --bg-soft: #EAF2F8;
+  --card: #FFFFFF;
+  --ink: #16233A;
+  --navy: #0B2545;
+  --navy-70: rgba(11,37,69,0.72);
+  --blue: #1467C7;
+  --teal: #0E9F8B;
+  --coral: #FF6A3D;
+  --coral-dark: #E85527;
+  --amber: #FFB020;
+  --line: #E4ECF3;
+  --line-strong: #CFDCE8;
+  --muted: #5B6B80;
+
+  --tag-certificate: #0E9F8B;
+  --tag-fellowship: #1467C7;
+  --tag-pgdiploma: #7B4FCF;
+
+  --display: "Plus Jakarta Sans", "Inter", "Segoe UI", Arial, sans-serif;
+  --sans: "Inter", "Segoe UI", Arial, sans-serif;
+
+  --radius-sm: 10px;
+  --radius: 16px;
+  --radius-lg: 24px;
+  --shadow-sm: 0 1px 2px rgba(11,37,69,0.06), 0 1px 1px rgba(11,37,69,0.04);
+  --shadow-md: 0 12px 28px rgba(11,37,69,0.10), 0 2px 6px rgba(11,37,69,0.06);
+  --shadow-lg: 0 24px 48px rgba(11,37,69,0.14);
+  --max: 1240px;
+}
+
+*, *::before, *::after{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+  *{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
+
+body{
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4{
+  font-family: var(--display);
+  color: var(--navy);
+  margin: 0;
+  line-height: 1.16;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+p{ margin: 0; }
+a{ color: inherit; text-decoration: none; }
+button, input, select{ font-family: inherit; font-size: inherit; color: inherit; }
+button{ cursor: pointer; }
+img{ max-width: 100%; display: block; }
+
+:focus-visible{ outline: 2px solid var(--blue); outline-offset: 2px; }
+
+.wrap{ max-width: var(--max); margin: 0 auto; padding: 0 28px; }
+.muted{ color: var(--muted); }
+
+.hairline{ border: none; border-top: 1px solid var(--line); margin: 0; }
+.vrule{ width: 1px; align-self: stretch; background: var(--line); flex-shrink: 0; }
+
+/* buttons */
+.btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 24px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-weight: 600;
+  font-size: 15px;
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+.btn-primary{ background: var(--coral); color: #fff; box-shadow: 0 10px 20px rgba(255,106,61,0.28); }
+.btn-primary:hover{ background: var(--coral-dark); transform: translateY(-1px); }
+.btn-ghost{ background: var(--card); color: var(--navy); border-color: var(--line-strong); }
+.btn-ghost:hover{ border-color: var(--navy); }
+.btn-navy{ background: var(--navy); color: #fff; }
+.btn-navy:hover{ background: #0f3160; }
+
+/* skeleton loading shimmer */
+.skel{ position: relative; overflow: hidden; background: #E7EEF4; border-radius: var(--radius-sm); }
+.skel::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
+  animation: shimmer 1.4s infinite;
+}
+@keyframes shimmer{ 100%{ transform: translateX(100%); } }
+
+.page-enter{ animation: page-in 420ms cubic-bezier(.2,.7,.2,1) both; }
+@keyframes page-in{
+  from{ opacity: 0; transform: translateY(8px); }
+  to{ opacity: 1; transform: translateY(0); }
+}
+
+::selection{ background: var(--amber); color: var(--navy); }
+
+.img-fallback{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.92);
+  font-family: var(--display);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}

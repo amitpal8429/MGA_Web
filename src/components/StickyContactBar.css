@@ -1,0 +1,545 @@
+/* =========================================================
+   STICKY CONTACT BAR — FINAL
+========================================================= */
+
+.sticky-contact-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2147483646;
+
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+
+  background: #0c3a6b;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  pointer-events: auto;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.scb-menu-wrap {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-width: 0;
+}
+
+/* =========================================================
+   ITEM
+========================================================= */
+
+.scb-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 16px;
+  width: 100%;
+  min-height: 56px;
+
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+
+  background: transparent;
+  border: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: inherit;
+
+  pointer-events: auto;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.scb-item:last-child {
+  border-right: none;
+}
+
+.scb-item:hover,
+.scb-item:focus-visible {
+  background: rgba(255, 255, 255, 0.06);
+  outline: none;
+}
+
+.scb-item.is-open {
+  background: rgba(96, 165, 250, 0.12);
+}
+
+.scb-item:active {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* =========================================================
+   ICON
+========================================================= */
+
+.scb-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.scb-icon svg {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  fill: currentColor;
+}
+
+.scb-icon-coral    { color: #ff6b4a; }
+.scb-icon-whatsapp { color: #25d366; }
+.scb-icon-phone    { color: #ff8c42; }
+.scb-icon-globe    { color: #60a5fa; }
+.scb-icon-ai       { color: #a78bfa; }
+
+/* =========================================================
+   LABEL + BADGE
+========================================================= */
+
+.scb-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.scb-badge {
+  font-style: normal;
+  font-size: 10.5px;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: linear-gradient(120deg, #a78bfa, #6366f1);
+  color: #fff;
+  letter-spacing: 0.4px;
+  line-height: 1.2;
+}
+
+/* =========================================================
+   BACKDROP
+========================================================= */
+
+.scb-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483646;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  animation: scbFadeIn 0.2s ease;
+  pointer-events: auto;
+  touch-action: none;
+}
+
+@keyframes scbFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* =========================================================
+   DROPDOWN
+========================================================= */
+
+.scb-dropdown {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  right: 0;
+
+  width: 320px;
+  max-width: calc(100vw - 24px);
+  padding: 8px;
+
+  background: #0f1e30;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.6),
+              0 0 0 1px rgba(96, 165, 250, 0.08);
+
+  animation: scbSlideUp 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: bottom right;
+  z-index: 2147483647;
+
+  display: block;
+  visibility: visible;
+  opacity: 1;
+}
+
+@keyframes scbSlideUp {
+  from { opacity: 0; transform: translateY(20px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.scb-menu-wrap:nth-child(1) .scb-dropdown,
+.scb-menu-wrap:nth-child(2) .scb-dropdown {
+  left: 0;
+  right: auto;
+  transform-origin: bottom left;
+}
+
+.scb-menu-wrap:nth-child(4) .scb-dropdown,
+.scb-menu-wrap:nth-child(5) .scb-dropdown {
+  right: 0;
+  left: auto;
+  transform-origin: bottom right;
+}
+
+.scb-menu-wrap:nth-child(3) .scb-dropdown {
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  transform-origin: bottom center;
+}
+
+.scb-dropdown-header {
+  padding: 10px 14px 8px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: #60a5fa;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  margin-bottom: 6px;
+}
+
+/* =========================================================
+   DROPDOWN ITEM
+========================================================= */
+
+.scb-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  min-height: 56px;
+
+  color: #e6edf5;
+  text-decoration: none;
+  font-size: 14.5px;
+  font-weight: 600;
+
+  transition: background 0.2s ease;
+  pointer-events: auto;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.scb-dropdown-item:hover,
+.scb-dropdown-item:active {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+/* =========================================================
+   DROPDOWN BUTTON (for Gabs Chatbot trigger)
+========================================================= */
+
+.scb-dropdown-btn {
+  background: transparent;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  color: #e6edf5;
+}
+
+.scb-dropdown-btn:hover,
+.scb-dropdown-btn:active {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.scb-dropdown-btn .scb-dropdown-text strong {
+  color: #ffffff;
+}
+
+.scb-dropdown-btn .scb-dropdown-text small {
+  color: #94a3b8;
+}
+
+/* =========================================================
+   DROPDOWN ICON + TEXT
+========================================================= */
+
+.scb-dropdown-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.scb-dropdown-icon svg {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  fill: currentColor;
+}
+
+.scb-dropdown-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.scb-dropdown-text strong {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.scb-dropdown-text small {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #94a3b8;
+}
+
+/* =========================================================
+   TABLET (≤ 1100px)
+========================================================= */
+
+@media (max-width: 1100px) {
+  .scb-item {
+    font-size: 13px;
+    padding: 12px 8px;
+    gap: 8px;
+  }
+  .scb-icon { width: 22px; height: 22px; }
+  .scb-badge { font-size: 9.5px; padding: 2px 6px; }
+  .scb-dropdown { width: 300px; }
+}
+
+/* =========================================================
+   MOBILE (≤ 768px)
+========================================================= */
+
+@media (max-width: 768px) {
+  .sticky-contact-bar {
+    grid-template-columns: repeat(5, 1fr);
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+
+  .scb-item {
+    flex-direction: column;
+    gap: 3px;
+    padding: 8px 2px;
+    font-size: 10px;
+    min-height: 60px;
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+    text-align: center;
+  }
+
+  .scb-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .scb-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .scb-label {
+    font-size: 9.5px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .scb-badge { display: none; }
+
+  /* Dropdown — FIXED position, above bar, full width */
+  .scb-dropdown {
+    position: fixed !important;
+    bottom: 74px !important;
+    left: 10px !important;
+    right: 10px !important;
+    top: auto !important;
+    width: auto !important;
+    max-width: none !important;
+    max-height: 65vh !important;
+    overflow-y: auto !important;
+    transform: none !important;
+    transform-origin: bottom center !important;
+    z-index: 2147483647 !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    padding: 10px !important;
+    background: #0f1e30 !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8),
+                0 0 0 1px rgba(96, 165, 250, 0.2) !important;
+    animation: scbSlideUpMobile 0.3s ease-out !important;
+  }
+
+  @keyframes scbSlideUpMobile {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Override nth-child positioning on mobile */
+  .scb-menu-wrap:nth-child(1) .scb-dropdown,
+  .scb-menu-wrap:nth-child(2) .scb-dropdown,
+  .scb-menu-wrap:nth-child(3) .scb-dropdown,
+  .scb-menu-wrap:nth-child(4) .scb-dropdown,
+  .scb-menu-wrap:nth-child(5) .scb-dropdown {
+    left: 10px !important;
+    right: 10px !important;
+    bottom: 74px !important;
+    transform: none !important;
+  }
+
+  .scb-dropdown-header {
+    padding: 10px 12px !important;
+    margin-bottom: 6px !important;
+    font-size: 11px !important;
+  }
+
+  .scb-dropdown-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    padding: 12px !important;
+    min-height: 56px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .scb-dropdown-icon {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 42px !important;
+    height: 42px !important;
+    border-radius: 12px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .scb-dropdown-icon svg {
+    display: block !important;
+    width: 20px !important;
+    height: 20px !important;
+    fill: currentColor !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .scb-dropdown-text strong {
+    display: block !important;
+    color: #fff !important;
+    font-size: 14px !important;
+  }
+
+  .scb-dropdown-text small {
+    display: block !important;
+    color: #94a3b8 !important;
+    font-size: 12px !important;
+  }
+}
+
+/* =========================================================
+   VERY SMALL (≤ 420px)
+========================================================= */
+
+@media (max-width: 420px) {
+  .scb-item {
+    padding: 6px 2px;
+    min-height: 56px;
+    gap: 2px;
+  }
+
+  .scb-icon { width: 24px; height: 24px; }
+  .scb-icon svg { width: 22px; height: 22px; }
+  .scb-label { font-size: 9px; }
+
+  .scb-dropdown {
+    left: 8px !important;
+    right: 8px !important;
+    bottom: 72px !important;
+    max-height: 60vh !important;
+  }
+
+  .scb-menu-wrap:nth-child(1) .scb-dropdown,
+  .scb-menu-wrap:nth-child(2) .scb-dropdown,
+  .scb-menu-wrap:nth-child(3) .scb-dropdown,
+  .scb-menu-wrap:nth-child(4) .scb-dropdown,
+  .scb-menu-wrap:nth-child(5) .scb-dropdown {
+    left: 8px !important;
+    right: 8px !important;
+    bottom: 72px !important;
+  }
+
+  .scb-dropdown-item {
+    padding: 10px !important;
+    min-height: 52px !important;
+    gap: 10px !important;
+  }
+
+  .scb-dropdown-icon {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .scb-dropdown-icon svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+}
+
+/* =========================================================
+   FOOTER BOTTOM PADDING — prevents overlap with sticky bar
+========================================================= */
+
+.site-footer {
+  padding-bottom: 80px;
+}
+
+@media (max-width: 768px) {
+  .site-footer {
+    padding-bottom: 76px;
+  }
+}

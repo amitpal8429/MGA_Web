@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://medicalglobalacademy.com/wp-content/uploads/2026/08/logo_new.png"
+    />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <!--
+      ⚠️ Static <meta name="description"> yahan se hata diya gaya hai.
+      Har course page apna description <Helmet> ke through set karta hai (CourseDetail.jsx).
+      Agar ye line yahan rehti, to Helmet ka description iske saath duplicate ho jata
+      aur SEO tools/Google isi generic wale ko utha lete the.
+
+      Homepage ('/') ke liye agar ek default description chahiye, to App.jsx ya
+      Home page component me ek chhota <Helmet> block laga dena — neeche note me tarika hai.
+    -->
+
+    <meta
+      name="keywords"
+      content="Medical Global Academy, MGA, Fellowship Courses, PG Diploma, Medical Courses, Doctors Courses"
+    />
+
+    <meta name="author" content="Medical Global Academy" />
+
+    <!-- Ye sirf DEFAULT/fallback title hai — jis page pe <Helmet><title> nahi laga,
+         wahan yahi title dikhega. Course pages apna alag title khud set kar lete hain. -->
+    <title>Medical Global Academy — Upskilling Platform for Doctors</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+  
+    <div id="root"></div>
+
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
