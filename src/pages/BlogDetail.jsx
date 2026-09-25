@@ -32,30 +32,29 @@ export default function BlogDetail() {
 
   if (error === "notfound")
     return (
-      <p style={{ padding: 40 }}>
+      <p className="detail-status">
         Article not found. <Link to="/blog">Back to blog</Link>
       </p>
     );
   if (error)
-    return <p style={{ padding: 40 }}>Could not load article: {error}</p>;
-  if (!post) return <p style={{ padding: 40 }}>Loading…</p>;
+    return <p className="detail-status">Could not load article: {error}</p>;
+  if (!post) return <p className="detail-status">Loading…</p>;
 
   const img = post._embedded?.["wp:featuredmedia"]?.[0]?.source_url;
 
   return (
-    <article style={{ padding: "40px 20px", maxWidth: 800, margin: "0 auto" }}>
-      <Link to="/blog">← Back to blog</Link>
-      <h1 style={{ margin: "16px 0" }}>
-        {decodeEntities(post.title.rendered)}
-      </h1>
-      {img && (
-        <img
-          src={img}
-          alt=""
-          style={{ width: "100%", borderRadius: 12, marginBottom: 24 }}
+    <article className="detail-article">
+      <div className="container">
+        <Link to="/blog">← Back to blog</Link>
+        <h1>{decodeEntities(post.title.rendered)}</h1>
+
+        {img && <img src={img} alt="" />}
+
+        <div
+          className="content"
+          dangerouslySetInnerHTML={{ __html: post.content.rendered }}
         />
-      )}
-      <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
+      </div>
     </article>
   );
 }

@@ -19,7 +19,9 @@ import Signup from "./pages/Signup";
 import NotFound from "./pages/NotFound";
 import About from "./pages/About";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
-
+import AppPage from "./pages/AppPage";
+import TermsPage from "./pages/TermsPage";
+import RefundPage from "./pages/RefundPage";
 import "./site.css";
 
 export default function App() {
@@ -61,6 +63,9 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/app" element={<AppPage />} />
+             <Route path="/terms" element={<TermsPage />} />
+             <Route path="/refund" element={<RefundPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

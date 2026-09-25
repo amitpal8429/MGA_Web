@@ -53,6 +53,9 @@ const ACCREDITATION_LOGOS = [
   },
 ];
 
+// ✅ Razorpay payment link (course enrolment)
+const RAZORPAY_PAYMENT_LINK = "https://pages.razorpay.com/pl_QNHxeBV9bAplqo/view";
+
 // ✅ YouTube video (sidebar ke liye) — clean embed URL
 const PROGRAM_VIDEO_ID = "ONxaJyAtatQ";
 const PROGRAM_VIDEO_EMBED =
@@ -62,6 +65,29 @@ const PROGRAM_VIDEO_THUMB = `https://img.youtube.com/vi/${PROGRAM_VIDEO_ID}/maxr
 
 const SITE_NAME = "Medical Global Academy";
 const SITE_URL = "https://medicalglobalacademy.com";
+
+// 🎨 Button colors — exact match with screenshot
+const BTN_BLUE = "#1f7ac4";
+const BTN_BLUE_HOVER = "#1867a8";
+
+// Shared button styles (used for both CTAs so they look identical)
+const applyBtnBase = {
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "8px",
+  width: "100%",
+  backgroundColor: BTN_BLUE,
+  color: "#ffffff",
+  border: `1px solid ${BTN_BLUE}`,
+  fontWeight: 700,
+  fontSize: "15px",
+  padding: "14px 20px",
+  borderRadius: "999px",
+  textDecoration: "none",
+  cursor: "pointer",
+  transition: "background-color 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease",
+};
 
 export default function CourseDetail() {
   const { slug } = useParams();
@@ -78,7 +104,7 @@ export default function CourseDetail() {
   const [course, setCourse] = useState(null);
   const [error, setError] = useState(null);
   const [openModule, setOpenModule] = useState(0);
-  const [showVideo, setShowVideo] = useState(false); // ✅ video click-to-play
+  const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -104,7 +130,7 @@ export default function CourseDetail() {
     };
   }, [fetchSlug]);
 
-  // 🔒 Copy protection — Ctrl+S / Ctrl+U / Ctrl+Shift+I/J/C / F12 block
+  // 🔒 Copy protection
   useEffect(() => {
     const blockKeys = (e) => {
       if (
@@ -149,7 +175,6 @@ export default function CourseDetail() {
   const duration = formatDuration(course.duration);
   const start = formatStartDate(course.start_date);
 
-  // 🏷️ Per-course SEO meta
   const manualMeta = getCourseMeta(slug);
 
   const metaTitle =
@@ -170,14 +195,12 @@ export default function CourseDetail() {
         <link rel="canonical" href={canonicalUrl} />
         <meta name="robots" content="index, follow" />
 
-        {/* Open Graph */}
         <meta property="og:type" content="website" />
         <meta property="og:title" content={metaTitle} />
         <meta property="og:description" content={metaDescription} />
         <meta property="og:url" content={canonicalUrl} />
         {course.image && <meta property="og:image" content={course.image} />}
 
-        {/* Twitter card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={metaTitle} />
         <meta name="twitter:description" content={metaDescription} />
@@ -326,21 +349,34 @@ export default function CourseDetail() {
               </div>
             )}
 
+            {/* ✅ Download brochure — exact blue */}
             <a
               href="https://api.whatsapp.com/send?phone=919310027474&text=Hi%2C%20I%20would%20like%20to%20download%20the%20course%20brochure."
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-ghost apply-btn"
               style={{
-                backgroundColor: "#087bc9",
-                color: "#fff",
-                border: "1px solid #087bc9",
+                ...applyBtnBase,
+                marginBottom: "12px",
               }}
+              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = BTN_BLUE_HOVER)}
+              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = BTN_BLUE)}
             >
               Download brochure
             </a>
 
-            <ul className="apply-trust">
+            {/* ✅ Enroll & Pay Now — exact blue */}
+            <a
+              href={RAZORPAY_PAYMENT_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={applyBtnBase}
+              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = BTN_BLUE_HOVER)}
+              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = BTN_BLUE)}
+            >
+              Enroll &amp; Pay Now
+            </a>
+
+            <ul className="apply-trust" style={{ marginTop: "20px" }}>
               <li><ShieldCheck size={16} /> CPD-aligned certification</li>
               <li><ShieldCheck size={16} /> ACTD-aligned certification</li>
               <li><Users size={16} /> Mentorship from practising faculty</li>
@@ -368,7 +404,7 @@ export default function CourseDetail() {
             </div>
           </div>
 
-          {/* ✅ 3. Accreditation card — CPD (UK) & ACTD (America) badges */}
+          {/* 3. Accreditation card */}
           <div className="accreditation-card" style={{ marginTop: 24 }}>
             <div className="accreditation-card-head">
               <span className="accreditation-icon">
@@ -437,7 +473,7 @@ export default function CourseDetail() {
             </div>
           </div>
 
-          {/* ✅ 5. Video card — YouTube (custom thumbnail + click to play) */}
+          {/* 5. Video card */}
           <div className="video-card" style={{ marginTop: 24 }}>
             <div className="video-card-head">
               <span className="video-icon">

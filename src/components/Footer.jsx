@@ -123,6 +123,9 @@ export default function Footer() {
           <ul className="footer-list">
             <li><Link to="/about">About us</Link></li>
             <li><Link to="/privacy-policy">Privacy policy</Link></li>
+            <li><Link to="/app">App</Link></li>
+            <li><Link to="/terms">Terms &amp; Conditions</Link></li>
+            <li><Link to="/refund">Refund &amp; Cancellation Policy</Link></li>
           </ul>
         </div>
       </div>

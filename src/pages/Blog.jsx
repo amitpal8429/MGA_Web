@@ -32,13 +32,7 @@ export default function Blog() {
     fetchPosts({ page, perPage: PER_PAGE })
       .then(({ data }) => {
         if (cancelled) return;
-
-        // If fewer than PER_PAGE returned, no more pages left
-        if (!data || data.length < PER_PAGE) {
-          setHasMore(false);
-        }
-
-        // Append new posts (or set on first page)
+        if (!data || data.length < PER_PAGE) setHasMore(false);
         setPosts((prev) => (page === 1 ? data : [...prev, ...data]));
         setInitialLoading(false);
         setLoading(false);
@@ -55,88 +49,51 @@ export default function Blog() {
     };
   }, [page]);
 
-  const handleLoadMore = () => {
-    setPage((p) => p + 1);
-  };
+  const handleLoadMore = () => setPage((p) => p + 1);
 
-  if (error) return <p style={{ padding: 40 }}>Could not load blog: {error}</p>;
-  if (initialLoading) return <p style={{ padding: 40 }}>Loading articles…</p>;
+  if (error) return <p className="blog-status">Could not load blog: {error}</p>;
+  if (initialLoading) return <p className="blog-status">Loading articles…</p>;
 
   return (
-    <section style={{ padding: "40px 20px", maxWidth: 1100, margin: "0 auto" }}>
-
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gap: 24,
-          marginTop: 24,
-        }}
-      >
-        {posts.map((post) => {
-          const img = post._embedded?.["wp:featuredmedia"]?.[0]?.source_url;
-          return (
-            <Link
-              key={post.id}
-              to={`/blog/${post.slug}`}
-              style={{
-                textDecoration: "none",
-                color: "inherit",
-                border: "1px solid #ddd",
-                borderRadius: 10,
-                overflow: "hidden",
-              }}
-            >
-              {img && (
-                <img
-                  src={img}
-                  alt=""
-                  style={{ width: "100%", height: 160, objectFit: "cover" }}
-                />
-              )}
-              <div style={{ padding: 16 }}>
-                <h3 style={{ fontSize: 17, marginBottom: 8 }}>
-                  {decodeEntities(post.title.rendered)}
-                </h3>
-                <p style={{ fontSize: 14, color: "#666" }}>
-                  {stripHtml(post.excerpt.rendered).slice(0, 100)}…
-                </p>
-              </div>
-            </Link>
-          );
-        })}
-      </div>
-
-      {/* ================= LOAD MORE ================= */}
-      {hasMore && (
-        <div style={{ textAlign: "center", marginTop: 40 }}>
-          <button
-            onClick={handleLoadMore}
-            disabled={loading}
-            style={{
-              padding: "12px 32px",
-              fontSize: 15,
-              fontWeight: 700,
-              color: "#fff",
-              background: "#2563eb",
-              border: "none",
-              borderRadius: 8,
-              cursor: loading ? "not-allowed" : "pointer",
-              opacity: loading ? 0.6 : 1,
-              transition: "all 0.2s ease",
-            }}
-          >
-            {loading ? "Loading…" : "Load More"}
-          </button>
+    <section className="blog-section">
+      <div className="container">
+        <div className="blog-grid">
+          {posts.map((post) => {
+            const img = post._embedded?.["wp:featuredmedia"]?.[0]?.source_url;
+            return (
+              <Link key={post.id} to={`/blog/${post.slug}`} className="blog-card">
+                <div className="blog-card-media">
+                  {img && <img src={img} alt="" loading="lazy" />}
+                </div>
+                <div className="blog-card-body">
+                  <h3 className="blog-card-title">
+                    {decodeEntities(post.title.rendered)}
+                  </h3>
+                  <p className="blog-card-excerpt">
+                    {stripHtml(post.excerpt.rendered).slice(0, 100)}…
+                  </p>
+                </div>
+              </Link>
+            );
+          })}
         </div>
-      )}
 
-      {/* No more posts */}
-      {!hasMore && posts.length > 0 && (
-        <p style={{ textAlign: "center", marginTop: 40, color: "#888" }}>
-          You've reached the end ✦
-        </p>
-      )}
+        {hasMore && (
+          <div className="blog-loadmore-wrap">
+            <button
+              onClick={handleLoadMore}
+              disabled={loading}
+              className="blog-loadmore"
+            >
+              {loading ? "Loading…" : "Load More"}
+            </button>
+          </div>
+        )}
+
+        {!hasMore && posts.length > 0 && (
+          <p className="blog-end">You've reached the end ✦</p>
+        )}
+      </div>
     </section>
   );
 }

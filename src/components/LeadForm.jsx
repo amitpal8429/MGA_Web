@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowRight, Mail, User, Phone, GraduationCap, BookOpen, Globe, CheckCircle,
 } from "lucide-react";
@@ -9,6 +9,40 @@ const COUNTRIES = ["India","United States","United Kingdom","UAE","Saudi Arabia"
 const COURSES = ["Fellowship in Orthopedic","Fellowship in Internal Medicine","Fellowship in Critical Care","Fellowship in Cardiology","Fellowship in Dermatology","Fellowship in Radiology","Fellowship in Obstetrics & Gynaecology","Certificate in Diabetes Mellitus","Certificate in Emergency Medicine","Certificate in Adolescent Health","Certificate in Acute Medicine","Certificate in Clinical Research","Other"];
 const QUALIFICATIONS = ["MBBS","MBBS + MD","MBBS + MS","MBBS + DNB","MBBS + Diploma","BDS","BAMS","BHMS","Physiotherapy (BPT/MPT)","Nursing","Other"];
 
+const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content"];
+const UTM_STORAGE_KEY = "mga_utm";
+
+// Reads utm_* params from the current URL and persists them to
+// localStorage, so the values survive even if the user browses
+// a few pages before actually submitting the form. Returns the
+// most recently captured set (new values win over old ones).
+function captureUTM() {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const fresh = {};
+    let foundAny = false;
+
+    UTM_KEYS.forEach((key) => {
+      const value = params.get(key);
+      if (value) {
+        fresh[key] = value;
+        foundAny = true;
+      }
+    });
+
+    if (foundAny) {
+      localStorage.setItem(UTM_STORAGE_KEY, JSON.stringify(fresh));
+      return fresh;
+    }
+
+    const saved = localStorage.getItem(UTM_STORAGE_KEY);
+    return saved ? JSON.parse(saved) : {};
+  } catch {
+    // localStorage can throw in some private-browsing modes — fail quietly
+    return {};
+  }
+}
+
 export default function LeadForm({ idPrefix = "lead" }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -17,6 +51,12 @@ export default function LeadForm({ idPrefix = "lead" }) {
     name: "", email: "", countryCode: "+91", phone: "",
     country: "India", course: "", qualification: "",
   });
+
+  // Capture UTM params as soon as this page loads, in case the
+  // user doesn't submit right away.
+  useEffect(() => {
+    captureUTM();
+  }, []);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -27,11 +67,17 @@ export default function LeadForm({ idPrefix = "lead" }) {
     e.preventDefault();
     setError(""); setSuccess(""); setLoading(true);
     try {
+      const utm = captureUTM();
+
       const payload = {
         name: form.name, email: form.email,
         phone: `${form.countryCode}${form.phone}`,
         country: form.country, course: form.course,
         qualification: form.qualification,
+        utm_source: utm.utm_source || "",
+        utm_medium: utm.utm_medium || "",
+        utm_campaign: utm.utm_campaign || "",
+        utm_content: utm.utm_content || "",
       };
       const response = await fetch(`${BASE_URL}/lead`, {
         method: "POST",
