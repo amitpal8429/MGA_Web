@@ -52,12 +52,23 @@ export default function Navbar() {
               <span className="brand-name">Medical Global Academy</span>
             </Link>
 
+            {/* Mobile Overlay Menu */}
             <nav className={`nav-links ${open ? "is-open" : ""}`}>
+              {/* Close button inside the mobile menu for better UX */}
+              <button 
+                type="button" 
+                className="nav-close-mobile" 
+                onClick={() => setOpen(false)}
+                aria-label="Close menu"
+              >
+                <X size={24} />
+              </button>
+
               <NavLink to="/" end onClick={() => setOpen(false)}>Home</NavLink>
               <NavLink to="/courses" onClick={() => setOpen(false)}>Programs</NavLink>
               <NavLink to="/about" onClick={() => setOpen(false)}>About</NavLink>
               <NavLink to="/faculty" onClick={() => setOpen(false)}>Faculty</NavLink>
-              <Link to="/blog" onClick={() => setOpen(false)}></Link>
+              <Link to="/blog" onClick={() => setOpen(false)}>Blog</Link>
 
               <span className="nav-divider" />
 
@@ -71,9 +82,10 @@ export default function Navbar() {
               </Link>
             </nav>
 
+            {/* Main Toggle Button (Hamburger) */}
             <button
               type="button"
-              className="nav-toggle"
+              className={`nav-toggle ${open ? "is-active" : ""}`}
               aria-label={open ? "Close menu" : "Open menu"}
               onClick={() => setOpen((v) => !v)}
             >

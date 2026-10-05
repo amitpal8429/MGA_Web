@@ -9,20 +9,16 @@
       href="https://medicalglobalacademy.com/wp-content/uploads/2026/08/logo_new.png"
     />
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Online Medical Courses: Fellowship, PG Diploma &amp; Certificate</title>
+
+    <!-- data-rh="true" ki wajah se course pages ka <Helmet> isko replace kar dega, duplicate nahi hoga -->
     <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
+      data-rh="true"
+      name="description"
+      content="Certificate, PG Diploma and fellowship programs for doctors across medicine and surgery. UK CPD accredited, live online classes, 1-year mentorship."
     />
-
-    <!--
-      ⚠️ Static <meta name="description"> yahan se hata diya gaya hai.
-      Har course page apna description <Helmet> ke through set karta hai (CourseDetail.jsx).
-      Agar ye line yahan rehti, to Helmet ka description iske saath duplicate ho jata
-      aur SEO tools/Google isi generic wale ko utha lete the.
-
-      Homepage ('/') ke liye agar ek default description chahiye, to App.jsx ya
-      Home page component me ek chhota <Helmet> block laga dena — neeche note me tarika hai.
-    -->
 
     <meta
       name="keywords"
@@ -31,13 +27,9 @@
 
     <meta name="author" content="Medical Global Academy" />
 
-    <!-- Ye sirf DEFAULT/fallback title hai — jis page pe <Helmet><title> nahi laga,
-         wahan yahi title dikhega. Course pages apna alag title khud set kar lete hain. -->
-    <title>Medical Global Academy — Upskilling Platform for Doctors</title>
-
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <link
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
@@ -46,7 +38,6 @@
   </head>
 
   <body>
-  
     <div id="root"></div>
 
     <script type="module" src="/src/main.jsx"></script>

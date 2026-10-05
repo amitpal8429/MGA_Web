@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import {
   ArrowRight,
   GraduationCap,
@@ -17,6 +18,12 @@ import ErrorState from "../components/ErrorState";
 import Faq from "../components/Faq";
 import { initials } from "../lib/format";
 import LeadForm from "../components/LeadForm";
+
+const SITE_URL = "https://medicalglobalacademy.com";
+
+const HOME_TITLE = "Online Medical Courses: Fellowship, PG Diploma & Certificate";
+const HOME_DESCRIPTION =
+  "Certificate, PG Diploma and fellowship programs for doctors across medicine and surgery. UK CPD accredited, live online classes, 1-year mentorship.";
 
 const FEATURES = [
   {
@@ -51,17 +58,19 @@ const FEATURES = [
   },
 ];
 
-// ✅ Accreditation data (hero ke andar dikhega)
+// Accreditation data (shown inside the hero). Each logo links to its verification page.
 const ACCREDITATIONS = [
   {
     id: 1,
-    src: "https://medicalglobalacademy.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-22-at-3.58.16-PM.jpeg",
+    src: "https://medicalglobalacademy.com/wp-content/uploads/2026/09/Untitled-design-8.png",
     alt: "CPD Accreditation",
+    href: "https://directory.cpdstandards.com/providers/medical-global-academy/",
   },
   {
     id: 2,
     src: "https://medicalglobalacademy.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-24-at-12.17.06-PM.jpeg",
     alt: "ACTD Accreditation",
+    href: "https://www.actd.us/medicalglobalacademy/",
   },
 ];
 
@@ -133,6 +142,22 @@ export default function Home() {
 
   return (
     <>
+      <Helmet>
+        <title>{HOME_TITLE}</title>
+        <meta name="description" content={HOME_DESCRIPTION} />
+        <link rel="canonical" href={SITE_URL} />
+        <meta name="robots" content="index, follow" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={HOME_TITLE} />
+        <meta property="og:description" content={HOME_DESCRIPTION} />
+        <meta property="og:url" content={SITE_URL} />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={HOME_TITLE} />
+        <meta name="twitter:description" content={HOME_DESCRIPTION} />
+      </Helmet>
+
       <section className="hero">
         <div className="hero-blob" aria-hidden="true" />
         <div className="wrap hero-grid">
@@ -182,7 +207,7 @@ export default function Home() {
               </div>
             )}
 
-            {/* ✅ NAYA: Accreditation — trust stats ke NICHE, hero ke andar hi */}
+            {/* Accreditation — below trust stats, inside the hero */}
             <div className="hero-accreditation">
               <p className="hero-accreditation-eyebrow">
                 <ShieldCheck size={14} /> Accreditation
@@ -192,20 +217,33 @@ export default function Home() {
               </p>
               <div className="hero-accreditation-logos">
                 {ACCREDITATIONS.map((a) => (
-                  <div className="hero-accreditation-card" key={a.id}>
+                  <a
+                    className="hero-accreditation-card"
+                    key={a.id}
+                    href={a.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${a.alt} - verify accreditation (opens in new tab)`}
+                    style={{
+                      textDecoration: "none",
+                      color: "inherit",
+                      cursor: "pointer",
+                    }}
+                  >
                     <img
                       src={a.src}
                       alt={a.alt}
                       className="hero-accreditation-image"
                       loading="lazy"
+                      draggable={false}
                     />
-                  </div>
+                  </a>
                 ))}
               </div>
             </div>
           </div>
 
-          {/* Hero ke right side me inline lead form */}
+          {/* Inline lead form on the right side of the hero */}
           <div className="hero-form-card">
             <div className="hero-form-head">
               <p className="hero-form-eyebrow">

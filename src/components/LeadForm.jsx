@@ -9,13 +9,60 @@ const COUNTRIES = ["India","United States","United Kingdom","UAE","Saudi Arabia"
 const COURSES = ["Fellowship in Orthopedic","Fellowship in Internal Medicine","Fellowship in Critical Care","Fellowship in Cardiology","Fellowship in Dermatology","Fellowship in Radiology","Fellowship in Obstetrics & Gynaecology","Certificate in Diabetes Mellitus","Certificate in Emergency Medicine","Certificate in Adolescent Health","Certificate in Acute Medicine","Certificate in Clinical Research","Other"];
 const QUALIFICATIONS = ["MBBS","MBBS + MD","MBBS + MS","MBBS + DNB","MBBS + Diploma","BDS","BAMS","BHMS","Physiotherapy (BPT/MPT)","Nursing","Other"];
 
-const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content"];
 const UTM_STORAGE_KEY = "mga_utm";
+const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
 
-// Reads utm_* params from the current URL and persists them to
-// localStorage, so the values survive even if the user browses
-// a few pages before actually submitting the form. Returns the
-// most recently captured set (new values win over old ones).
+/* ══════════════════════════════════════════
+   TRAFFIC SOURCE DETECTION
+   Determines: Platform (FB/Insta/Google/Direct)
+               Type (Paid/Organic/Social/Direct)
+               Is Paid (Paid/Unpaid)
+══════════════════════════════════════════ */
+function detectTrafficSource(utm, referrer) {
+  const src = (utm.utm_source || "").toLowerCase();
+  const med = (utm.utm_medium || "").toLowerCase();
+  const ref = (referrer || "").toLowerCase();
+  const currentHost = window.location.hostname.toLowerCase();
+
+  // Paid medium indicators
+  const paidMediums = ["cpc", "ppc", "paid", "paidsearch", "paidsocial", "display", "banner", "cpm", "ad"];
+  const isPaid =
+    paidMediums.some((m) => med.includes(m)) ||
+    ["google_ads", "facebook_ads", "instagram_ads", "linkedin_ads"].includes(src);
+
+  // Identify platform
+  let platform = "Direct";
+  if (src.includes("facebook") || src === "fb" || ref.includes("facebook.com")) platform = "Facebook";
+  else if (src.includes("instagram") || src === "ig" || ref.includes("instagram.com")) platform = "Instagram";
+  else if (src.includes("google") || ref.includes("google.")) platform = "Google";
+  else if (src.includes("linkedin") || ref.includes("linkedin.com")) platform = "LinkedIn";
+  else if (src.includes("youtube") || ref.includes("youtube.com")) platform = "YouTube";
+  else if (src.includes("twitter") || src === "x" || ref.includes("twitter.com") || ref.includes("t.co")) platform = "Twitter/X";
+  else if (src.includes("whatsapp") || ref.includes("whatsapp.com")) platform = "WhatsApp";
+  else if (src.includes("bing") || ref.includes("bing.com")) platform = "Bing";
+  else if (src.includes("email") || med.includes("email")) platform = "Email";
+  else if (src) platform = src;
+
+  // Overall traffic type
+  let trafficType = "Direct";
+  if (isPaid) trafficType = "Paid";
+  else if (med === "organic" || platform === "Google" || platform === "Bing") trafficType = "Organic";
+  else if (["Facebook", "Instagram", "LinkedIn", "YouTube", "Twitter/X", "WhatsApp"].includes(platform)) trafficType = "Social";
+  else if (med === "email" || platform === "Email") trafficType = "Email";
+  else if (med === "referral" || (ref && !ref.includes(currentHost))) trafficType = "Referral";
+
+  return {
+    platform,
+    trafficType,
+    isPaid: isPaid ? "Paid" : "Unpaid",
+  };
+}
+
+/* ══════════════════════════════════════════
+   CAPTURE UTM + REFERRER + LANDING PAGE
+   Reads from URL, persists to localStorage,
+   returns merged data (fresh > saved).
+══════════════════════════════════════════ */
 function captureUTM() {
   try {
     const params = new URLSearchParams(window.location.search);
@@ -30,15 +77,35 @@ function captureUTM() {
       }
     });
 
+    fresh.landing_page = window.location.href;
+    fresh.referrer = document.referrer || "";
+
+    const detected = detectTrafficSource(fresh, document.referrer);
+    fresh.platform = detected.platform;
+    fresh.traffic_type = detected.trafficType;
+    fresh.is_paid = detected.isPaid;
+
+    // If URL had fresh UTM params, save & return
     if (foundAny) {
       localStorage.setItem(UTM_STORAGE_KEY, JSON.stringify(fresh));
       return fresh;
     }
 
+    // Otherwise use saved data, but keep current referrer/landing
     const saved = localStorage.getItem(UTM_STORAGE_KEY);
-    return saved ? JSON.parse(saved) : {};
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      return {
+        ...parsed,
+        landing_page: fresh.landing_page,
+        referrer: parsed.referrer || fresh.referrer,
+      };
+    }
+
+    // First-time visitor with no UTM & no saved data
+    localStorage.setItem(UTM_STORAGE_KEY, JSON.stringify(fresh));
+    return fresh;
   } catch {
-    // localStorage can throw in some private-browsing modes — fail quietly
     return {};
   }
 }
@@ -52,8 +119,7 @@ export default function LeadForm({ idPrefix = "lead" }) {
     country: "India", course: "", qualification: "",
   });
 
-  // Capture UTM params as soon as this page loads, in case the
-  // user doesn't submit right away.
+  // Capture UTM on page load
   useEffect(() => {
     captureUTM();
   }, []);
@@ -70,15 +136,32 @@ export default function LeadForm({ idPrefix = "lead" }) {
       const utm = captureUTM();
 
       const payload = {
-        name: form.name, email: form.email,
+        name: form.name,
+        email: form.email,
         phone: `${form.countryCode}${form.phone}`,
-        country: form.country, course: form.course,
+        country: form.country,
+        course: form.course,
         qualification: form.qualification,
-        utm_source: utm.utm_source || "",
-        utm_medium: utm.utm_medium || "",
+
+        // UTM
+        utm_source:   utm.utm_source   || "",
+        utm_medium:   utm.utm_medium   || "",
         utm_campaign: utm.utm_campaign || "",
-        utm_content: utm.utm_content || "",
+        utm_content:  utm.utm_content  || "",
+        utm_term:     utm.utm_term     || "",
+
+        // Traffic source
+        platform:     utm.platform     || "Direct",
+        traffic_type: utm.traffic_type || "Direct",
+        is_paid:      utm.is_paid      || "Unpaid",
+
+        // Context
+        referrer:     utm.referrer     || document.referrer || "",
+        landing_page: utm.landing_page || window.location.href,
       };
+
+      console.log("📤 Sending lead:", payload);
+
       const response = await fetch(`${BASE_URL}/lead`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -86,8 +169,11 @@ export default function LeadForm({ idPrefix = "lead" }) {
       });
       const data = await response.json();
       if (!response.ok) throw new Error(data?.message || "Submission failed");
+
       setSuccess(data?.message || "Thank you! Our admissions team will contact you shortly.");
       localStorage.setItem("mga_lead_submitted", "1");
+      localStorage.removeItem(UTM_STORAGE_KEY);
+
       setForm({ name: "", email: "", countryCode: "+91", phone: "", country: "India", course: "", qualification: "" });
     } catch (err) {
       setError(err?.message || "Something went wrong. Please try again.");

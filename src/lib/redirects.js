@@ -15,6 +15,9 @@ const REDIRECTS = {
   "certificate-in-histopathology": "fellowship-in-histopathology",
   "fellowship-in-pediatric-dermatology": "fellowship-in-pediatrics-dermatology",
   "fellowship-in-pediatric-neonatology": "fellowship-in-pediatrics-neonatology",
+"fellowship-in-cardiac-intervention": "fellowship-in-interventional-cardiology",
+"fellowship-in-clinical-embryology":"fellowship-in-embryology",
+  // ✅ Maxillofacial / Oral radiology variants — dono same target
   "fellowship-in-oral-and-maxillofacial-radiology": "fellowship-in-oral-radiology",
   "fellowship-in-maxillofacial-radiology": "fellowship-in-oral-radiology",
 
@@ -39,6 +42,9 @@ const REDIRECTS = {
   "fellowship-in-pediatric-genetics-and-metabolic": "fellowship-in-pediatric-genetics-and-metabolism",
   "fellowship-in-orthopaedic": "fellowship-in-orthopedic",
   "fellowship-in-gastrology": "fellowship-in-gastroenterology",
+
+  // ✅ Naya redirect
+  "fellowship-in-pediatric-dentistry": "fellowship-in-pedodontist",
 
   // ---- Blog redirects: root (/slug) -> /blog/slug ----
   "types-of-genetic-testing": "blog/types-of-genetic-testing",
@@ -122,8 +128,6 @@ const REDIRECTS = {
   "courses-after-mbbs-in-india": "blog/courses-after-mbbs-in-india",
   // ⚠️ SKIPPED: "fellowship-in-robotic-gynaecological-oncology" — ye slug tumhare
   // LIVE COURSE PAGE ka hai (fellowship-in-gynaecologic-oncology redirect ka target).
-  // Isse blog redirect banane se course page hamesha blog pe chala jayega — confirm karo
-  // ye sach me blog URL hai ya list me galti se aa gaya.
   "what-to-do-after-mbbs": "blog/what-to-do-after-mbbs",
   "fellowship-in-dermatology-skills": "blog/fellowship-in-dermatology-skills",
   "key-benefits-of-fellowship-in-oncology-for-doctors": "blog/key-benefits-of-fellowship-in-oncology-for-doctors",
@@ -175,11 +179,15 @@ export const ALIASES = {
 };
 
 export function getRedirectSlug(slug) {
-  return REDIRECTS[slug] || null;
+  if (!slug) return null;
+  const normalized = slug.replace(/^\/+|\/+$/g, "");
+  return REDIRECTS[normalized] || null;
 }
 
 export function getAliasSlug(slug) {
-  return ALIASES[slug] || null;
+  if (!slug) return null;
+  const normalized = slug.replace(/^\/+|\/+$/g, "");
+  return ALIASES[normalized] || null;
 }
 
 export default REDIRECTS;

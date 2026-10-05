@@ -22,6 +22,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import AppPage from "./pages/AppPage";
 import TermsPage from "./pages/TermsPage";
 import RefundPage from "./pages/RefundPage";
+import Sitemap from "./pages/Sitemap";
 import "./site.css";
 
 export default function App() {
@@ -54,6 +55,7 @@ export default function App() {
       <main className="page-enter" key={location.pathname}>
         <Routes>
           <Route path="/" element={<Home />} />
+         
           <Route path="/courses" element={<Courses />} />
           <Route path="/:slug" element={<CourseDetail />} />
           <Route path="/about" element={<About />} />
@@ -66,6 +68,7 @@ export default function App() {
           <Route path="/app" element={<AppPage />} />
              <Route path="/terms" element={<TermsPage />} />
              <Route path="/refund" element={<RefundPage />} />
+             <Route path="/sitemap" element={<Sitemap />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

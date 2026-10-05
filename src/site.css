@@ -2809,3 +2809,139 @@ textarea {
     padding: 14px 18px;
   }
 }
+
+
+.blog-search {
+  position: relative;
+  max-width: 560px;
+  margin: 0 auto 28px;
+}
+
+.blog-search-icon {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+  color: #718093;
+  pointer-events: none;
+}
+
+.blog-search-input {
+  width: 100%;
+  padding: 13px 44px 13px 44px;
+  border: 1px solid #dce4ea;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #16324f;
+  font-size: 15px;
+  line-height: 1.4;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.blog-search-input::placeholder {
+  color: #8a97a6;
+}
+
+.blog-search-input:focus {
+  border-color: #1f7ac4;
+  box-shadow: 0 0 0 3px rgba(31, 122, 196, 0.15);
+}
+
+/* hide the browser's own clear button, we have our own */
+.blog-search-input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.blog-search-clear {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 50%;
+  background: #eef2f5;
+  color: #596b7e;
+  cursor: pointer;
+}
+
+.blog-search-clear:hover {
+  background: #dce4ea;
+}
+
+.blog-search-status {
+  margin: -8px 0 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #596b7e;
+}
+
+.blog-search-empty {
+  padding: 32px 0;
+  text-align: center;
+  color: #596b7e;
+}
+
+
+/* Mobile Menu Overlay */
+.nav-links {
+  /* Your existing desktop styles */
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Hidden by default */
+    width: 80%;
+    height: 100vh;
+    background: white;
+    flex-direction: column;
+    padding: 80px 20px 40px; /* Top padding makes room for the close button */
+    transition: right 0.3s ease-in-out;
+    z-index: 1000;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    display: flex; /* Ensure it's flex even when hidden */
+  }
+
+  .nav-links.is-open {
+    right: 0; /* Slide in */
+  }
+
+  /* The Close Button inside the menu */
+  .nav-close-mobile {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    padding: 5px;
+    display: block; /* Visible only on mobile */
+  }
+
+  /* Hide the desktop hamburger when menu is open */
+  .nav-toggle.is-active {
+    display: none; 
+  }
+
+  /* Ensure the hamburger button is visible when menu is closed */
+  .nav-toggle {
+    display: block;
+    z-index: 1001; /* Above the menu */
+  }
+}
+
+/* Hide the close button on desktop */
+@media (min-width: 769px) {
+  .nav-close-mobile {
+    display: none;
+  }
+}

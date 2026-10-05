@@ -214,17 +214,19 @@ export default function StickyContactBar() {
 
         {/* ============ 2. WHATSAPP ============ */}
         <a
-          href="https://api.whatsapp.com/send?phone=919310027474&text=Hi%2C%20I%20would%20like%20to%20download%20the%20course%20brochure."
-          target="_blank"
-          rel="noopener noreferrer"
-          className="scb-item scb-icon-only"
-          aria-label="WhatsApp"
-        >
-          <span className="scb-icon scb-icon-whatsapp">
-            <WhatsAppIcon size={22} />
-          </span>
-          <span className="scb-label">WhatsApp</span>
-        </a>
+        href="https://api.whatsapp.com/send/?phone=918796122980&text=Hello%2C+I+am+interested+in+MGA+Fellowship+courses.+Source%3A+Organic+Search&type=phone_number&app_absent=0"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="scb-dropdown-item"
+      >
+        <span className="scb-dropdown-icon" style={{ background: "rgba(37,211,102,0.15)", color: "#25d366" }}>
+          <WhatsAppIcon size={18} />
+        </span>
+        <span className="scb-dropdown-text">
+          <strong>WhatsApp AI Support</strong>
+          {/* <small>+91 87961 22980</small> */}
+        </span>
+      </a>
 
         {/* ============ 3. AI SUPPORT — DROPDOWN WITH 3 ITEMS ============ */}
        {/* ============ 3. AI SUPPORT — DROPDOWN ============ */}

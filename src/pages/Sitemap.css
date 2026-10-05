@@ -1,0 +1,154 @@
+.sitemap-page {
+  background: #f7f9fb;
+  padding: 40px 20px 64px;
+  color: #16324f;
+}
+
+.sitemap-page * {
+  box-sizing: border-box;
+}
+
+.sitemap-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid #dce4ea;
+  border-radius: 16px;
+  padding: 36px 40px 44px;
+}
+
+.sitemap-header h1 {
+  margin: 0 0 8px;
+  font-size: 32px;
+  line-height: 1.2;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  color: #16324f;
+}
+
+.sitemap-header p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #596b7e;
+}
+
+.sitemap-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 24px 0 8px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #eef2f5;
+}
+
+.sitemap-jump a {
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: #eef5fb;
+  color: #1f7ac4;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.sitemap-jump a:hover {
+  background: #dcebf8;
+}
+
+.sitemap-section {
+  margin-top: 36px;
+  scroll-margin-top: 90px;
+}
+
+.sitemap-section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #1f7ac4;
+  font-size: 22px;
+  line-height: 1.3;
+  font-weight: 750;
+  letter-spacing: -0.01em;
+  color: #16324f;
+}
+
+.sitemap-count {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: #1f7ac4;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.sitemap-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  column-count: 2;
+  column-gap: 40px;
+}
+
+.sitemap-list li {
+  break-inside: avoid;
+  margin: 0 0 10px;
+  padding-left: 16px;
+  position: relative;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.sitemap-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #1f7ac4;
+}
+
+.sitemap-list a {
+  color: #16324f;
+  text-decoration: none;
+}
+
+.sitemap-list a:hover {
+  color: #1f7ac4;
+  text-decoration: underline;
+}
+
+.sitemap-note {
+  margin: 0;
+  font-size: 14px;
+  color: #718093;
+}
+
+@media (max-width: 768px) {
+  .sitemap-page {
+    padding: 20px 12px 40px;
+  }
+
+  .sitemap-wrap {
+    padding: 24px 20px 32px;
+    border-radius: 14px;
+  }
+
+  .sitemap-header h1 {
+    font-size: 26px;
+  }
+
+  .sitemap-section-title {
+    font-size: 19px;
+  }
+
+  .sitemap-list {
+    column-count: 1;
+  }
+}
