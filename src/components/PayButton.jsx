@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-// Payment API lives in the separate mga-payment-api plugin.
+// Payment API lives in the mga-payment-api WordPress plugin.
 const PAY_API = "https://medicalglobalacademy.com/wp-json/mga-payment/v1";
 
 function loadRazorpay() {
@@ -20,13 +20,20 @@ async function post(path, payload) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   });
-  const data = await res.json();
-  if (!res.ok) throw new Error(data?.message || "Request failed");
+
+  let data = {};
+  try {
+    data = await res.json();
+  } catch {
+    /* non-JSON response */
+  }
+
+  if (!res.ok) throw new Error(data?.message || `Request failed (${res.status})`);
   return data;
 }
 
 export default function PayButton({
-  amount,            // in rupees, e.g. 45000
+  amount = 0, // ignored by the server (price comes from the plugin list); kept for test mode
   course = "",
   name = "",
   email = "",
@@ -35,14 +42,25 @@ export default function PayButton({
   className = "",
   buttonStyle = {},
   hoverBg = "#1867a8",
-  onSuccess,         // called after backend verifies the payment
+  validate, // optional: () => "error message" or "" when OK
+  onSuccess, // called after the backend verifies the payment
 }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   const handlePay = async () => {
     setError("");
+
+    if (validate) {
+      const msg = validate();
+      if (msg) {
+        setError(msg);
+        return;
+      }
+    }
+
     setLoading(true);
+
     try {
       const ok = await loadRazorpay();
       if (!ok) throw new Error("Could not load payment window. Check your internet.");
@@ -61,6 +79,7 @@ export default function PayButton({
         prefill: { name, email, contact: phone },
         theme: { color: "#1a7fd4" },
         handler: async (response) => {
+          setError("");
           try {
             // 3. Backend verifies the signature
             await post("/verify", {
@@ -70,7 +89,10 @@ export default function PayButton({
             });
             onSuccess?.(response);
           } catch (err) {
-            setError(err.message || "Payment done but verification failed. Contact support.");
+            setError(
+              err.message ||
+                "Payment done but verification failed. Please contact support."
+            );
           } finally {
             setLoading(false);
           }
@@ -92,11 +114,15 @@ export default function PayButton({
 
   return (
     <div>
-      <button 
-        type="button" 
-        className={className} 
-        style={buttonStyle}
-        onClick={handlePay} 
+      <button
+        type="button"
+        className={className}
+        style={{
+          ...buttonStyle,
+          opacity: loading ? 0.7 : 1,
+          cursor: loading ? "not-allowed" : buttonStyle.cursor || "pointer",
+        }}
+        onClick={handlePay}
         disabled={loading}
         onMouseEnter={(e) => {
           if (buttonStyle?.backgroundColor) {
@@ -111,7 +137,10 @@ export default function PayButton({
       >
         {loading ? "Please wait..." : label}
       </button>
-      {error && <p style={{ color: "#dc2626", marginTop: 8, fontSize: 14 }}>{error}</p>}
+
+      {error && (
+        <p style={{ color: "#dc2626", marginTop: 8, fontSize: 14 }}>{error}</p>
+      )}
     </div>
   );
 }

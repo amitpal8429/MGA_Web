@@ -3,6 +3,8 @@ import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { fetchPostBySlug } from "../lib/api";
 import { getBlogMeta, cleanTitle } from "../lib/blogMeta";
+import BlogPostSchema from "../components/BlogPostSchema";
+import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 const SITE_URL = "https://medicalglobalacademy.com";
 
@@ -134,6 +136,23 @@ export default function BlogDetail() {
         <meta name="twitter:description" content={metaDescription} />
         {image && <meta name="twitter:image" content={image} />}
       </Helmet>
+
+      {/* SCHEMA: BlogPosting + Breadcrumb */}
+      <BlogPostSchema
+        title={h1}
+        description={metaDescription}
+        url={canonicalUrl}
+        image={image}
+        datePublished={publishedISO}
+        dateModified={modifiedISO}
+        keywords={keywords}
+      />
+      <BreadcrumbSchema
+        pageTitle={h1}
+        pageUrl={canonicalUrl}
+        parentLabel="Blog"
+        parentUrl={`${SITE_URL}/blog`}
+      />
 
       <div className="container">
         <Link to="/blog">← Back to blog</Link>

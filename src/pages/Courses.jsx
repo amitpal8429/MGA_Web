@@ -6,9 +6,6 @@ import CourseCard from "../components/CourseCard";
 import { CourseGridSkeleton } from "../components/Skeletons";
 import ErrorState from "../components/ErrorState";
 
-// CHANGE 1: Removed "Pg Diploma" from the TYPES array so the button doesn't show
-const TYPES = ["Certificate", "Fellowship"];
-
 export default function Courses() {
   const [courses, setCourses] = useState(null);
   const [error, setError] = useState(null);
@@ -19,40 +16,80 @@ export default function Courses() {
   const activeType = params.get("type") || "";
   const activeCategory = params.get("category") || "";
 
+  /* =========================================================
+     FETCH ALL COURSES — no filtering, no exclusions
+     ========================================================= */
   useEffect(() => {
     let cancelled = false;
     setError(null);
+
     fetchCourseList()
       .then((data) => {
         if (cancelled) return;
-        
-        // CHANGE 2: Filter out PG Diploma courses from the API data
-        // Checking both "Pg Diploma" and "PG Diploma" to be safe with casing
-        const visibleCourses = data.filter(
-          (c) => c.type !== "Pg Diploma" && c.type !== "PG Diploma"
+
+        // 🔍 DEBUG — open DevTools Console to verify types
+        console.log("[Courses] Total from API:", data.length);
+        console.log(
+          "[Courses] Unique types:",
+          [...new Set(data.map((c) => c.type))]
         );
-        
-        setCourses(visibleCourses);
+
+        // Show EVERYTHING the API returns
+        setCourses(data);
       })
       .catch((e) => !cancelled && setError(e.message));
+
     return () => {
       cancelled = true;
     };
   }, [tick]);
 
+  /* =========================================================
+     DYNAMIC TYPES — pulled from actual API data
+     So "PG Diploma" shows up automatically even if the
+     casing is different ("Pg Diploma", "PG diploma", etc.)
+     ========================================================= */
+  const types = useMemo(() => {
+    if (!courses) return [];
+    return [...new Set(courses.map((c) => c.type).filter(Boolean))].sort();
+  }, [courses]);
+
+  /* =========================================================
+     CATEGORIES — dynamic from API
+     ========================================================= */
   const categories = useMemo(() => {
     if (!courses) return [];
     const set = new Set(courses.map((c) => c.category?.name).filter(Boolean));
     return Array.from(set).sort();
   }, [courses]);
 
+  /* =========================================================
+     FILTERED — case-insensitive type matching
+     ========================================================= */
   const filtered = useMemo(() => {
     if (!courses) return [];
     const q = query.trim().toLowerCase();
+
     return courses.filter((c) => {
-      if (activeType && c.type !== activeType) return false;
-      if (activeCategory && (c.category?.name || "") !== activeCategory) return false;
+      // Type filter (case-insensitive)
+      if (
+        activeType &&
+        (c.type || "").toLowerCase() !== activeType.toLowerCase()
+      ) {
+        return false;
+      }
+
+      // Category filter
+      if (
+        activeCategory &&
+        (c.category?.name || "") !== activeCategory
+      ) {
+        return false;
+      }
+
+      // Search filter
       if (q && !c.name.toLowerCase().includes(q)) return false;
+
       return true;
     });
   }, [courses, query, activeType, activeCategory]);
@@ -71,11 +108,14 @@ export default function Courses() {
           <p className="eyebrow eyebrow-sm">Full catalog</p>
           <h1>All programs</h1>
           <p className="muted">
-            {courses ? `${filtered.length} of ${courses.length} programs` : "Loading the catalog…"}
+            {courses
+              ? `${filtered.length} of ${courses.length} programs`
+              : "Loading the catalog…"}
           </p>
         </div>
 
         <div className="catalog-controls">
+          {/* SEARCH */}
           <div className="catalog-search-wrap">
             <Search size={17} className="catalog-search-icon" />
             <input
@@ -88,6 +128,7 @@ export default function Courses() {
             />
           </div>
 
+          {/* TYPE PILLS — dynamically generated from API data */}
           <div className="pill-row">
             <button
               className={`pill ${!activeType ? "is-active" : ""}`}
@@ -95,17 +136,28 @@ export default function Courses() {
             >
               All types
             </button>
-            {TYPES.map((t) => (
+
+            {types.map((t) => (
               <button
                 key={t}
-                className={`pill ${activeType === t ? "is-active" : ""}`}
-                onClick={() => updateParam("type", activeType === t ? "" : t)}
+                className={`pill ${
+                  activeType.toLowerCase() === t.toLowerCase()
+                    ? "is-active"
+                    : ""
+                }`}
+                onClick={() =>
+                  updateParam(
+                    "type",
+                    activeType.toLowerCase() === t.toLowerCase() ? "" : t
+                  )
+                }
               >
                 {t}
               </button>
             ))}
           </div>
 
+          {/* CATEGORY DROPDOWN */}
           {categories.length > 0 && (
             <select
               className="catalog-select"
@@ -115,16 +167,26 @@ export default function Courses() {
             >
               <option value="">All specialities</option>
               {categories.map((c) => (
-                <option key={c} value={c}>{c}</option>
+                <option key={c} value={c}>
+                  {c}
+                </option>
               ))}
             </select>
           )}
         </div>
 
-        {error && <ErrorState message={error} onRetry={() => setTick((t) => t + 1)} />}
+        {/* ERROR */}
+        {error && (
+          <ErrorState
+            message={error}
+            onRetry={() => setTick((t) => t + 1)}
+          />
+        )}
 
+        {/* LOADING */}
         {!error && courses === null && <CourseGridSkeleton count={9} />}
 
+        {/* EMPTY */}
         {!error && courses !== null && filtered.length === 0 && (
           <ErrorState
             title="No programs match that search"
@@ -132,6 +194,7 @@ export default function Courses() {
           />
         )}
 
+        {/* GRID */}
         {!error && courses !== null && filtered.length > 0 && (
           <div className="course-grid">
             {filtered.map((c) => (

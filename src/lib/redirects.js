@@ -175,7 +175,7 @@ const REDIRECTS = {
 // 🎭 CONTENT ALIAS: URL apni jagah rahegi (address bar change nahi hoga),
 // sirf backend se CONTENT doosre (target) slug ka fetch hoga.
 export const ALIASES = {
-  "pg-diploma-in-clinical-embryology": "fellowship-in-embryology",
+ 
 };
 
 export function getRedirectSlug(slug) {

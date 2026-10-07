@@ -2,10 +2,15 @@ import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X, ArrowRight } from "lucide-react";
 import LeadForm from "./LeadForm";
+import OfferCracker from "./OfferCracker";
+import SiteSchema from "./SiteSchema";
+import { OFFER, isOfferLive } from "../config/offer";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [authOpen, setAuthOpen] = useState(false);
+  const [offerSignal, setOfferSignal] = useState(0);
+  const offerLive = isOfferLive();
 
   useEffect(() => {
     if (localStorage.getItem("mga_lead_submitted")) return;
@@ -16,7 +21,8 @@ export default function Navbar() {
     const repeatTimer = setTimeout(() => {
       interval = setInterval(() => {
         if (localStorage.getItem("mga_lead_submitted")) {
-          clearInterval(interval); return;
+          clearInterval(interval);
+          return;
         }
         setAuthOpen((isOpen) => (isOpen ? isOpen : true));
       }, 60000);
@@ -29,15 +35,28 @@ export default function Navbar() {
     };
   }, []);
 
-  const openSignup = () => { setOpen(false); setAuthOpen(true); };
+  const openSignup = () => {
+    setOpen(false);
+    setAuthOpen(true);
+  };
   const closeAuth = () => setAuthOpen(false);
+  const showOffer = () => setOfferSignal((n) => n + 1);
 
   return (
     <>
       <header className="nav-wrap">
         <div className="topbar">
           <div className="wrap topbar-inner">
-            <span>New intake now open — enroll before seats fill up</span>
+            <span>
+              {offerLive
+                ? OFFER.topbarText
+                : "New intake now open — enroll before seats fill up"}
+            </span>
+            {offerLive && (
+              <button type="button" className="topbar-offer-btn" onClick={showOffer}>
+                View offer
+              </button>
+            )}
           </div>
         </div>
 
@@ -54,10 +73,9 @@ export default function Navbar() {
 
             {/* Mobile Overlay Menu */}
             <nav className={`nav-links ${open ? "is-open" : ""}`}>
-              {/* Close button inside the mobile menu for better UX */}
-              <button 
-                type="button" 
-                className="nav-close-mobile" 
+              <button
+                type="button"
+                className="nav-close-mobile"
                 onClick={() => setOpen(false)}
                 aria-label="Close menu"
               >
@@ -76,13 +94,17 @@ export default function Navbar() {
                 Enquire Now
               </button>
 
-              <Link to="/courses" className="btn btn-primary nav-cta" onClick={() => setOpen(false)}>
+              <Link
+                to="/courses"
+                className="btn btn-primary nav-cta"
+                onClick={() => setOpen(false)}
+              >
                 <span>Explore programs</span>
                 <ArrowRight size={16} />
               </Link>
             </nav>
 
-            {/* Main Toggle Button (Hamburger) */}
+            {/* Hamburger */}
             <button
               type="button"
               className={`nav-toggle ${open ? "is-active" : ""}`}
@@ -95,10 +117,22 @@ export default function Navbar() {
         </div>
       </header>
 
+      {/* Sitewide schema: Organization, WebSite, Offer */}
+      <SiteSchema />
+
+      {/* Offer popup (flyer + countdown) */}
+      <OfferCracker onClaim={openSignup} openSignal={offerSignal} />
+
+      {/* Simple enquiry form popup (no flyer) */}
       {authOpen && (
         <div className="mga-auth-overlay" onClick={closeAuth}>
           <div className="mga-auth-popup" onClick={(e) => e.stopPropagation()}>
-            <button type="button" className="mga-auth-close" onClick={closeAuth}>
+            <button
+              type="button"
+              className="mga-auth-close"
+              onClick={closeAuth}
+              aria-label="Close"
+            >
               <X size={20} />
             </button>
 
@@ -112,7 +146,11 @@ export default function Navbar() {
             <div className="mga-auth-heading">
               <div className="mga-auth-label">ENQUIRE NOW</div>
               <h2>Get in touch</h2>
-              <p>Share your details and our team will help you pick the right program.</p>
+              <p>
+                {offerLive
+                  ? OFFER.formNote
+                  : "Share your details and our team will help you pick the right program."}
+              </p>
             </div>
 
             <LeadForm idPrefix="popup" />

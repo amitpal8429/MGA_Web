@@ -100,7 +100,18 @@ function SitemapSection({ id, title, items }) {
       <ul className="sitemap-list">
         {items.map((item) => (
           <li key={item.to}>
-            <Link to={item.to}>{item.title}</Link>
+            {/* External / static file links use <a>, internal uses <Link> */}
+            {item.external ? (
+              <a
+                href={item.to}
+                target={item.newTab ? "_blank" : undefined}
+                rel={item.newTab ? "noopener noreferrer" : undefined}
+              >
+                {item.title}
+              </a>
+            ) : (
+              <Link to={item.to}>{item.title}</Link>
+            )}
           </li>
         ))}
       </ul>
@@ -177,8 +188,22 @@ export default function Sitemap() {
     [posts]
   );
 
+  // Main pages list — with the XML sitemap added
+  const mainPages = useMemo(
+    () => [
+      ...MAIN_PAGES,
+      {
+        title: "XML Sitemap (sitemap.xml)",
+        to: `${SITE_URL}/sitemap.xml`,
+        external: true,
+        newTab: true,
+      },
+    ],
+    []
+  );
+
   const totalPages =
-    MAIN_PAGES.length +
+    mainPages.length +
     TAG_PAGES.length +
     courseGroups.reduce((n, g) => n + g.items.length, 0) +
     blogItems.length;
@@ -215,7 +240,11 @@ export default function Sitemap() {
           <a href="#tag-pages">Tag pages</a>
         </nav>
 
-        <SitemapSection id="main-pages" title="Main Pages" items={MAIN_PAGES} />
+        <SitemapSection
+          id="main-pages"
+          title="Main Pages"
+          items={mainPages}
+        />
 
         {courseGroups.map((g) => (
           <SitemapSection

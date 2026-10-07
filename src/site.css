@@ -2945,3 +2945,137 @@ textarea {
     display: none;
   }
 }
+
+
+
+
+
+
+
+
+
+
+.of-overlay {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(12, 18, 32, 0.62);
+  backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 16px;
+  animation: of-fade 0.3s ease-out;
+}
+.of-card {
+  position: relative; width: min(94vw, 440px); max-height: 94vh; overflow-y: auto;
+  background: #fff; border-radius: 18px; padding: 22px 20px 18px;
+  box-shadow: 0 30px 80px rgba(8, 15, 40, 0.45);
+  text-align: center;
+  animation: of-rise 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.of-close {
+  position: absolute; top: 10px; right: 10px;
+  width: 32px; height: 32px; border-radius: 50%; border: 0;
+  background: #eef1f6; color: #3a4357; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+}
+.of-close:hover { background: #dfe4ee; }
+
+.of-head { margin: 0 28px 14px; }
+.of-badge {
+  display: inline-block; padding: 4px 12px; border-radius: 999px;
+  font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+  color: #a35a00; background: #fff3dc; border: 1px solid #ffd99a;
+}
+.of-title { margin: 10px 0 0; font-size: 19px; line-height: 1.3; color: #14203b; }
+
+/* Flyer: halka 3D entrance + light sweep */
+.of-flyer-wrap {
+  position: relative; overflow: hidden; border-radius: 12px;
+  perspective: 900px; background: #f4f6fa;
+  box-shadow: 0 10px 28px rgba(20, 32, 59, 0.18);
+}
+.of-flyer {
+  display: block; width: 100%; max-height: 52vh; object-fit: contain;
+  transform-origin: 50% 100%;
+  animation: of-flyer-in 0.9s 0.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.of-sheen {
+  position: absolute; top: 0; bottom: 0; left: -60%; width: 40%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  transform: skewX(-18deg);
+  animation: of-sheen 1.4s 1s ease-in-out both;
+  pointer-events: none;
+}
+
+/* Countdown */
+.of-timer {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  margin-top: 14px; color: #14203b;
+}
+.of-timer-label { font-size: 13px; font-weight: 600; color: #5a647a; margin-right: 2px; }
+.of-unit {
+  min-width: 46px; padding: 5px 4px; border-radius: 8px;
+  background: #14203b; color: #fff; line-height: 1.1;
+}
+.of-unit b { display: block; font-size: 17px; font-variant-numeric: tabular-nums; }
+.of-unit small { font-size: 9px; letter-spacing: 0.6px; text-transform: uppercase; opacity: 0.75; }
+
+.of-sub { margin: 12px 8px 0; font-size: 14px; color: #5a647a; }
+.of-actions { margin-top: 14px; }
+.of-cta { width: 100%; justify-content: center; }
+.of-later {
+  margin-top: 8px; background: none; border: 0; cursor: pointer;
+  font-size: 13px; color: #6b7589; text-decoration: underline;
+}
+.of-later:hover { color: #14203b; }
+
+@keyframes of-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes of-rise {
+  from { opacity: 0; transform: translateY(28px) scale(0.96); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes of-flyer-in {
+  from { opacity: 0; transform: rotateX(-24deg) scale(0.94); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes of-sheen { to { left: 130%; } }
+
+@media (max-width: 480px) {
+  .of-card { padding: 18px 14px 14px; }
+  .of-title { font-size: 17px; }
+  .of-unit { min-width: 40px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .of-overlay, .of-card, .of-flyer, .of-sheen { animation: none; }
+}
+
+
+  /* Curriculum: text ki jagah wahi, bullet uske left mein (desktop) */
+  .module-item .session-list li {
+    position: relative;
+  }
+
+  .module-item .session-list li::before {
+    content: "";
+    position: absolute;
+    left: -18px;
+    top: 0.62em;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #1f7ac4;
+  }
+
+  /* Phone: wahi look jo abhi sahi aa raha hai */
+  @media (max-width: 768px) {
+    .module-item .session-list {
+      padding: 4px 16px 16px 20px;
+    }
+
+    .module-item .session-list li {
+      padding-left: 22px;
+    }
+
+    .module-item .session-list li::before {
+      left: 0;
+    }
+  }

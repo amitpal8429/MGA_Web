@@ -89,7 +89,6 @@ function openGabsChatbot() {
     } catch (e) { /* try next */ }
   }
 
-  // Fallback — click the launcher
   const selectors = [
     "#gabs-chatbot-button", "#gabs-widget-button", "#gabs-launcher",
     '[class*="gabs"][class*="launcher"]',
@@ -167,7 +166,6 @@ export default function StickyContactBar() {
             <div className="scb-dropdown">
               <div className="scb-dropdown-header">Get in touch</div>
 
-              {/* Call Us */}
               <a href="tel:+919289994218" className="scb-dropdown-item">
                 <span className="scb-dropdown-icon" style={{ background: "rgba(255,140,66,0.15)", color: "#ff8c42" }}>
                   <Phone size={18} />
@@ -178,7 +176,6 @@ export default function StickyContactBar() {
                 </span>
               </a>
 
-              {/* Chatbot */}
               <button
                 type="button"
                 className="scb-dropdown-item scb-dropdown-btn"
@@ -193,7 +190,6 @@ export default function StickyContactBar() {
                 </span>
               </button>
 
-              {/* Download Brochure */}
               <a
                 href="https://api.whatsapp.com/send?phone=919310027474&text=Hi%2C%20I%20would%20like%20to%20download%20the%20course%20brochure."
                 target="_blank"
@@ -214,87 +210,82 @@ export default function StickyContactBar() {
 
         {/* ============ 2. WHATSAPP ============ */}
         <a
-        href="https://api.whatsapp.com/send/?phone=918796122980&text=Hello%2C+I+am+interested+in+MGA+Fellowship+courses.+Source%3A+Organic+Search&type=phone_number&app_absent=0"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="scb-dropdown-item"
-      >
-        <span className="scb-dropdown-icon" style={{ background: "rgba(37,211,102,0.15)", color: "#25d366" }}>
-          <WhatsAppIcon size={18} />
-        </span>
-        <span className="scb-dropdown-text">
-          <strong>WhatsApp AI Support</strong>
-          {/* <small>+91 87961 22980</small> */}
-        </span>
-      </a>
+          href="https://api.whatsapp.com/send/?phone=918796122980&text=Hello%2C+I+am+interested+in+MGA+Fellowship+courses.+Source%3A+Organic+Search&type=phone_number&app_absent=0"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="scb-item scb-icon-only"
+          aria-label="WhatsApp"
+        >
+          <span className="scb-icon scb-icon-whatsapp">
+            <WhatsAppIcon size={22} />
+          </span>
+          <span className="scb-label">WhatsApp</span>
+        </a>
 
-        {/* ============ 3. AI SUPPORT — DROPDOWN WITH 3 ITEMS ============ */}
-       {/* ============ 3. AI SUPPORT — DROPDOWN ============ */}
-<div className="scb-menu-wrap" ref={aiRef}>
-  <button
-    type="button"
-    className={`scb-item scb-icon-only ${open === "ai" ? "is-open" : ""}`}
-    onClick={() => toggle("ai")}
-    aria-expanded={open === "ai"}
-    aria-label="AI Support"
-  >
-    <span className="scb-icon scb-icon-ai">
-      {open === "ai" ? <X size={22} /> : <Bot size={22} />}
-    </span>
-    <span className="scb-label">Support Team 24×7</span>
-  </button>
+        {/* ============ 3. AI SUPPORT ============ */}
+        <div className="scb-menu-wrap" ref={aiRef}>
+          <button
+            type="button"
+            className={`scb-item scb-icon-only ${open === "ai" ? "is-open" : ""}`}
+            onClick={() => toggle("ai")}
+            aria-expanded={open === "ai"}
+            aria-label="AI Support"
+          >
+            <span className="scb-icon scb-icon-ai">
+              {open === "ai" ? <X size={22} /> : <Bot size={22} />}
+            </span>
+            {/* Changed label to just "Support" to prevent wrapping */}
+            <span className="scb-label">Support</span>
+          </button>
 
-  {open === "ai" && (
-    <div className="scb-dropdown">
-      <div className="scb-dropdown-header">AI Support — 24×7</div>
+          {open === "ai" && (
+            <div className="scb-dropdown">
+              <div className="scb-dropdown-header">AI Support — 24×7</div>
 
-      {/* 1. WHATSAPP — +91 87961 22980 (WHATSAPP ICON) */}
-      <a
-        href="https://api.whatsapp.com/send/?phone=918796122980&text=Hello%2C+I+am+interested+in+MGA+Fellowship+courses.+Source%3A+Organic+Search&type=phone_number&app_absent=0"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="scb-dropdown-item"
-      >
-        <span className="scb-dropdown-icon" style={{ background: "rgba(37,211,102,0.15)", color: "#25d366" }}>
-          <WhatsAppIcon size={18} />
-        </span>
-        <span className="scb-dropdown-text">
-          <strong>WhatsApp AI Support</strong>
-          <small>+91 87961 22980</small>
-        </span>
-      </a>
+              <a
+                href="https://api.whatsapp.com/send/?phone=918796122980&text=Hello%2C+I+am+interested+in+MGA+Fellowship+courses.+Source%3A+Organic+Search&type=phone_number&app_absent=0"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="scb-dropdown-item"
+              >
+                <span className="scb-dropdown-icon" style={{ background: "rgba(37,211,102,0.15)", color: "#25d366" }}>
+                  <WhatsAppIcon size={18} />
+                </span>
+                <span className="scb-dropdown-text">
+                  <strong>WhatsApp AI Support</strong>
+                  <small>+91 87961 22980</small>
+                </span>
+              </a>
 
-      {/* 2. CALL — +91 80487 99926 (CALL ICON) */}
-      <a href="tel:+918048799926" className="scb-dropdown-item">
-        <span className="scb-dropdown-icon" style={{ background: "rgba(255,140,66,0.15)", color: "#ff8c42" }}>
-          <Phone size={18} />
-        </span>
-        <span className="scb-dropdown-text">
-          <strong>Call AI Support</strong>
-          <small>+91 80487 99926</small>
-        </span>
-      </a>
+              <a href="tel:+918048799926" className="scb-dropdown-item">
+                <span className="scb-dropdown-icon" style={{ background: "rgba(255,140,66,0.15)", color: "#ff8c42" }}>
+                  <Phone size={18} />
+                </span>
+                <span className="scb-dropdown-text">
+                  <strong>Call AI Support</strong>
+                  <small>+91 80487 99926</small>
+                </span>
+              </a>
 
-      {/* 3. CHATBOT — Opens Gabs */}
-      <button
-        type="button"
-        className="scb-dropdown-item scb-dropdown-btn"
-        onClick={() => {
-          setOpen(null);
-          openGabsChatbot();
-        }}
-      >
-        <span className="scb-dropdown-icon" style={{ background: "rgba(167,139,250,0.15)", color: "#a78bfa" }}>
-          <Bot size={18} />
-        </span>
-        <span className="scb-dropdown-text">
-          <strong>Chatbot <em className="scb-badge">24×7</em></strong>
-          <small>Live AI chat assistant</small>
-        </span>
-      </button>
-    </div>
-  )}
-</div>
+              <button
+                type="button"
+                className="scb-dropdown-item scb-dropdown-btn"
+                onClick={() => {
+                  setOpen(null);
+                  openGabsChatbot();
+                }}
+              >
+                <span className="scb-dropdown-icon" style={{ background: "rgba(167,139,250,0.15)", color: "#a78bfa" }}>
+                  <Bot size={18} />
+                </span>
+                <span className="scb-dropdown-text">
+                  <strong>Chatbot <em className="scb-badge">24×7</em></strong>
+                  <small>Live AI chat assistant</small>
+                </span>
+              </button>
+            </div>
+          )}
+        </div>
 
         {/* ============ 4. CALL ============ */}
         <a
@@ -320,7 +311,7 @@ export default function StickyContactBar() {
             <span className="scb-icon scb-icon-globe">
               {open === "social" ? <X size={22} /> : <Globe size={22} />}
             </span>
-            <span className="scb-label">Social Media</span>
+            <span className="scb-label">Social</span>
           </button>
 
           {open === "social" && (

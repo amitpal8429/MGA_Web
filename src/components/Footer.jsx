@@ -115,6 +115,7 @@ export default function Footer() {
           <ul className="footer-list">
             <li><Link to="/courses?type=Certificate">Certificate courses</Link></li>
             <li><Link to="/courses?type=Fellowship">Fellowship</Link></li>
+            <li><Link to="/courses?type=PG%20Diploma">PG Diploma</Link></li>
           </ul>
         </div>
 

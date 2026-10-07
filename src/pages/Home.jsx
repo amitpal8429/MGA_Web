@@ -109,11 +109,8 @@ export default function Home() {
       .then(([c, f]) => {
         if (cancelled) return;
 
-        const visibleCourses = c.filter(
-          (course) => course.type !== "Pg Diploma" && course.type !== "PG Diploma"
-        );
-
-        setCourses(visibleCourses);
+        // ✅ Show ALL courses — PG Diploma included
+        setCourses(c);
         setFaculty(f);
       })
       .catch((e) => !cancelled && setError(e.message));
@@ -167,7 +164,7 @@ export default function Home() {
               India's most trusted upskilling platform for doctors
             </h1>
             <p className="hero-lede">
-              Certificate, and fellowship programs across medicine,
+              Certificate, PG Diploma and fellowship programs across medicine,
               surgery, radiology and obstetrics — built around live clinical
               mentorship, not a lecture hall.
             </p>
@@ -258,7 +255,7 @@ export default function Home() {
               <h4>Fast-Track Your Medical Career</h4>
               <p className="hero-form-desc">
                 Advance your clinical expertise with CPD-accredited
-                Fellowship, and Certification programs.
+                Fellowship, PG Diploma, and Certification programs.
               </p>
               <LeadForm idPrefix="hero" />
             </div>

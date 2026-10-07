@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Search, X } from "lucide-react";
 import { fetchPosts } from "../lib/api";
 import { getBlogMeta } from "../lib/blogMeta";
+import BlogSchema from "../components/BlogSchema";
 
 function decodeEntities(html) {
   if (!html) return "";
@@ -178,6 +179,9 @@ export default function Blog() {
 
   return (
     <section className="blog-section">
+      {/* SCHEMA: Blog */}
+      <BlogSchema />
+
       <div className="container">
         {/* SEARCH */}
 

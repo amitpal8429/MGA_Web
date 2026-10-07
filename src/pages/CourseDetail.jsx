@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams, Navigate } from "react-router-dom";
+import { Link, useParams, Navigate, useLocation } from "react-router-dom"; // CANONICAL: useLocation add hua
 import { Helmet } from "react-helmet-async";
 import {
   ChevronRight,
@@ -22,6 +22,10 @@ import { DetailSkeleton } from "../components/Skeletons";
 import ErrorState from "../components/ErrorState";
 import Faq from "../components/Faq";
 import LeadForm from "../components/LeadForm";
+import PayButton from "../components/PayButton";
+import CourseSchema from "../components/CourseSchema";
+import FaqSchema from "../components/FaqSchema";
+import BreadcrumbSchema from "../components/BreadcrumbSchema";
 
 import {
   formatINR,
@@ -50,6 +54,14 @@ const stripHandsOnSentences = (text) => {
     .replace(/\s{2,}/g, " ")
     .trim();
 };
+
+/* =========================================================
+   PG COURSE DETECTION
+   ========================================================= */
+
+const PG_RE = /\bpg\b|post[\s-]?graduate|postgraduate/i;
+
+const isPgCourse = (slug, name) => PG_RE.test(`${slug || ""} ${name || ""}`);
 
 /* =========================================================
    COURSE OUTCOMES
@@ -101,11 +113,8 @@ const ACCREDITATION_LOGOS = [
 ];
 
 /* =========================================================
-   PAYMENT / VIDEO
+   VIDEO
    ========================================================= */
-
-const RAZORPAY_PAYMENT_LINK =
-  "https://pages.razorpay.com/pl_QNHxeBV9bAplqo/view";
 
 const PROGRAM_VIDEO_ID = "ONxaJyAtatQ";
 
@@ -146,6 +155,20 @@ const applyBtnBase = {
   transition:
     "background-color 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease",
 };
+
+/* =========================================================
+   PAYER DETAILS VALIDATION
+   ========================================================= */
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function validatePayer({ name, email, phone }) {
+  if (name.trim().length < 2) return "Please enter your full name.";
+  if (!EMAIL_RE.test(email.trim())) return "Please enter a valid email address.";
+  if (phone.replace(/\D/g, "").length < 10)
+    return "Please enter a valid phone number (at least 10 digits).";
+  return "";
+}
 
 /* =========================================================
    PAGE CSS
@@ -306,6 +329,73 @@ const PAGE_CSS = `
     line-height: 1.45;
   }
 
+  /* PG diploma note (PG courses only) */
+  .mga-pg-note {
+    margin: 0 0 32px;
+    padding: 20px 24px;
+    background: #fff8e6;
+    border: 1px solid #f3dca0;
+    border-left: 4px solid #e0a800;
+    border-radius: 14px;
+    box-sizing: border-box;
+  }
+
+  .mga-pg-note-title {
+    margin: 0 0 8px;
+    color: #16324f;
+    font-size: 18px;
+    line-height: 1.3;
+    font-weight: 750;
+  }
+
+  .mga-pg-note-text {
+    margin: 0 0 8px;
+    color: #596b7e;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .mga-pg-note-text:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Payment details form */
+  .mga-pay-fields {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .mga-pay-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 16px;
+    border: 1px solid #dce4ea;
+    border-radius: 12px;
+    background: #ffffff;
+    color: #16324f;
+    font: inherit;
+    font-size: 15px;
+  }
+
+  .mga-pay-input:focus {
+    outline: 2px solid #1f7ac4;
+    outline-offset: 1px;
+    border-color: #1f7ac4;
+  }
+
+  .mga-pay-success {
+    margin: 0;
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: #dff7e8;
+    color: #166534;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 1.45;
+    text-align: center;
+  }
+
   @media (max-width: 768px) {
     .mga-course-outcome-card {
       padding: 22px 20px 24px;
@@ -349,6 +439,10 @@ const PAGE_CSS = `
       font-size: 15px;
     }
 
+    .mga-pg-note {
+      padding: 18px 20px;
+    }
+
   }
 
   @media (max-width: 480px) {
@@ -381,6 +475,18 @@ const PAGE_CSS = `
     .mga-course-eligibility-item {
       font-size: 14px;
     }
+
+    .mga-pg-note {
+      padding: 16px;
+    }
+
+    .mga-pg-note-title {
+      font-size: 17px;
+    }
+
+    .mga-pg-note-text {
+      font-size: 14px;
+    }
   }
 `;
 
@@ -390,6 +496,7 @@ const PAGE_CSS = `
 
 export default function CourseDetail() {
   const { slug } = useParams();
+  const { pathname } = useLocation(); // CANONICAL: current URL path (slash ke saath ya bina)
 
   const redirectSlug = getRedirectSlug(slug);
   const fetchSlug = getAliasSlug(slug) || slug;
@@ -398,6 +505,13 @@ export default function CourseDetail() {
   const [error, setError] = useState(null);
   const [openModule, setOpenModule] = useState(0);
   const [showVideo, setShowVideo] = useState(false);
+
+  // Payment
+  const [paid, setPaid] = useState(false);
+  const [payer, setPayer] = useState({ name: "", email: "", phone: "" });
+
+  const updatePayer = (field) => (e) =>
+    setPayer((prev) => ({ ...prev, [field]: e.target.value }));
 
   /* FETCH COURSE */
 
@@ -409,16 +523,11 @@ export default function CourseDetail() {
     setCourse(null);
     setError(null);
     setOpenModule(0);
+    setPaid(false);
 
     fetchCourseDetails(fetchSlug)
       .then((data) => {
         if (cancelled) return;
-
-        if (data.type === "PG Diploma") {
-          setError("notfound");
-          return;
-        }
-
         setCourse(data);
       })
       .catch((e) => {
@@ -492,12 +601,15 @@ export default function CourseDetail() {
     course.meta_description ||
     cleanText(course.description).slice(0, 155);
 
-  const canonicalUrl = `${SITE_URL}/${slug}/`;
+  // CANONICAL: URL jaisa hai waisa hi canonical (slash hai to slash, nahi hai to nahi)
+  const canonicalUrl = `${SITE_URL}${pathname}`;
 
   const filteredWhatYouLearn =
     course.what_you_learn?.filter(
       (w) => !hasHandsOn(w.heading, w.description)
     ) || [];
+
+  const showPgNote = isPgCourse(slug, course.name);
 
   /* RENDER */
 
@@ -524,6 +636,25 @@ export default function CourseDetail() {
         <meta name="twitter:description" content={metaDescription} />
         {course.image && <meta name="twitter:image" content={course.image} />}
       </Helmet>
+
+      {/* SCHEMA: Course + FAQ + Breadcrumb */}
+
+      <CourseSchema
+        name={course.name}
+        description={metaDescription}
+        url={canonicalUrl}
+        image={course.image}
+        duration={course.duration}
+        price={Number(course.fee) || 0}
+        startDate={course.start_date}
+      />
+      <FaqSchema />
+      <BreadcrumbSchema
+        pageTitle={course.name}
+        pageUrl={canonicalUrl}
+        parentLabel="Programs"
+        parentUrl={`${SITE_URL}/courses`}
+      />
 
       {/* HERO */}
 
@@ -649,6 +780,29 @@ export default function CourseDetail() {
               </div>
             </div>
           </section>
+
+          {/* PG DIPLOMA NOTE (only on PG courses) */}
+
+          {showPgNote && (
+            <section className="mga-pg-note" aria-labelledby="pg-note-title">
+              <h3 id="pg-note-title" className="mga-pg-note-title">
+                Important Note – PG Diploma
+              </h3>
+
+              <p className="mga-pg-note-text">
+                <strong>Please Note:</strong> This is not a 2-year PG Diploma
+                program. The course is a professional upskilling/certification 1-Year
+                program designed for eligible medical professionals.
+              </p>
+
+              <p className="mga-pg-note-text">
+                <strong>Eligibility:</strong> The program is intended for
+                medical professionals with qualifications such as MBBS, MD,
+                MS,DNB or DGO, depending on the specific course and
+                specialization.
+              </p>
+            </section>
+          )}
 
           {/* OVERVIEW */}
 
@@ -835,20 +989,57 @@ export default function CourseDetail() {
 
             {/* PAYMENT */}
 
-            <a
-              href={RAZORPAY_PAYMENT_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={applyBtnBase}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = BTN_BLUE_HOVER;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = BTN_BLUE;
-              }}
-            >
-              Enroll &amp; Pay Now
-            </a>
+            {paid ? (
+              <p className="mga-pay-success" role="status">
+                ✅ Payment successful! Our team will contact you shortly with
+                your enrollment details.
+              </p>
+            ) : (
+              <>
+                <div className="mga-pay-fields">
+                  <input
+                    type="text"
+                    className="mga-pay-input"
+                    placeholder="Full name"
+                    autoComplete="name"
+                    value={payer.name}
+                    onChange={updatePayer("name")}
+                    aria-label="Full name"
+                  />
+                  <input
+                    type="email"
+                    className="mga-pay-input"
+                    placeholder="Email address"
+                    autoComplete="email"
+                    value={payer.email}
+                    onChange={updatePayer("email")}
+                    aria-label="Email address"
+                  />
+                  <input
+                    type="tel"
+                    className="mga-pay-input"
+                    placeholder="Phone number"
+                    autoComplete="tel"
+                    value={payer.phone}
+                    onChange={updatePayer("phone")}
+                    aria-label="Phone number"
+                  />
+                </div>
+
+                <PayButton
+                  course={course.name}
+                  amount={Number(course.fee) || 0}
+                  name={payer.name.trim()}
+                  email={payer.email.trim()}
+                  phone={payer.phone.trim()}
+                  label="Enroll & Pay Now"
+                  buttonStyle={{ ...applyBtnBase, fontFamily: "inherit" }}
+                  hoverBg={BTN_BLUE_HOVER}
+                  validate={() => validatePayer(payer)}
+                  onSuccess={() => setPaid(true)}
+                />
+              </>
+            )}
 
             {/* TRUST */}
 
@@ -1053,6 +1244,7 @@ export default function CourseDetail() {
               )}
             </div>
           </div>
+
           {/* CAREER / PROFESSIONAL RELEVANCE (below video) */}
 
           <div className="mga-sidebar-career" style={{ marginTop: 24 }}>

@@ -1,0 +1,52 @@
+export const SITE = {
+  name: "Medical Global Academy",
+  url: "https://medicalglobalacademy.com",
+  logo: "https://medicalglobalacademy.com/wp-content/uploads/2024/03/WhatsApp_Image_2024-12-21_at_1.26.46_PM-removebg-preview.png",
+  description:
+    "Medical Global Academy is an online medical education platform offering Fellowship Programs, PG Diploma Programs and Certificate Courses for MBBS doctors and healthcare professionals.",
+  websiteDescription:
+    "Online medical education platform offering Fellowship, PG Diploma and Certificate programs for MBBS, MD, MS and other eligible medical professionals in India",
+  founder: "Manav Tyagi",
+  phone: "+91 9289994218",
+  email: "support@medicalglobalacademy.com",
+  address: {
+    streetAddress: "Plot No. 159, Pandav Nagar",
+    addressLocality: "Ghaziabad",
+    addressRegion: "Uttar Pradesh",
+    postalCode: "201005",
+    addressCountry: "IN",
+  },
+  social: [
+    "https://www.facebook.com/medicalglobalacademy1/",
+    "https://www.instagram.com/medicalglobalacademy/",
+    "https://www.linkedin.com/company/medical-global-academy/",
+    "https://www.youtube.com/@MedicalGlobalAcademy",
+    "https://x.com/MGA_Courses",
+  ],
+  knowsAbout: [
+    "Medical Education",
+    "Clinical Training",
+    "Medical Fellowship Programs",
+    "PG Diploma Programs",
+    "Continuing Medical Education",
+    "Healthcare Training",
+    "Clinical Skill Development",
+    "Medical Certification Courses",
+  ],
+  programs: [
+    "Certificate in Family Medicine",
+    "Certificate in Rheumatology",
+    "Certificate in Internal Medicine",
+    "Fellowship in Urology",
+    "Fellowship in Hematology",
+    "Fellowship in Internal Medicine",
+    "PG Diploma in Cosmetology",
+    "PG Diploma in Otorhinolaryngology",
+    "PG Diploma in Internal Medicine",
+    "PG Diploma in Nephrology",
+    "PG Diploma in Tuberculosis",
+    "PG Diploma in Reproductive Child Health",
+  ],
+  // Agar site par ?q= search kaam nahi karta to ise "" kar do (SearchAction hat jayega)
+  searchUrlTemplate: "https://medicalglobalacademy.com/courses?q={search_term_string}",
+};

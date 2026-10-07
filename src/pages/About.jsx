@@ -134,9 +134,9 @@ export default function About() {
                   <circle cx="12" cy="12" r="9" />
                 </svg>
               </div>
-              <h3>Clinical Training</h3>
+              <h3>PG Diploma Programmes</h3>
               <p>
-                Observation with real patient cases and hospital partners.
+                Focused programmes for professional learning and development..
               </p>
             </div>
 
