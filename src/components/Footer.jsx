@@ -128,6 +128,7 @@ export default function Footer() {
             <li><Link to="/terms">Terms &amp; Conditions</Link></li>
             <li><Link to="/refund">Refund &amp; Cancellation Policy</Link></li>
             <li><Link to="/sitemap">Sitemap</Link></li>
+            <li><Link to="/hr-form">.</Link></li> {/* NEW */}
           </ul>
         </div>
       </div>

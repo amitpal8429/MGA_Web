@@ -2,6 +2,9 @@
 // Har course slug ke liye manual SEO title & description.
 // Yahan entry na ho to component apne aap course.name/description se bana lega (fallback).
 //
+// IMPORTANT: Ek slug sirf EK baar likhna. Same key do baar ho to neeche wali
+// entry upar wali ko overwrite kar deti hai.
+//
 // Title: ~55-60 characters ke andar rakhna best hai (Google truncate kar deta hai zyada lamba).
 // Description: ~120-160 characters ideal.
 
@@ -587,6 +590,10 @@ const COURSE_META = {
 
   // ============================================================
   // Monitor - Page 1 (Rows 98-257)
+  // NOTE: 7 duplicate certificate entries yahan se hata di gayi hain
+  // (family-medicine, internal-medicine, research-methodology,
+  //  diabetic-foot-care, gastroenterology, addiction-medicine,
+  //  obstetrics-and-gynaecology). Wo upar Certificate section mein hain.
   // ============================================================
   "fellowship-in-pathology": {
     title: "Fellowship in Pathology | Online 12-Month Fellowship",
@@ -808,20 +815,10 @@ const COURSE_META = {
     description:
       "Join our 12-month Fellowship in Arthroplasty. Learn concepts of hip, knee & shoulder replacement, robotic surgery & revision arthroplasty online.",
   },
-  "certificate-in-internal-medicine": {
-    title: "Certificate in Internal Medicine | Case-Based Learning",
-    description:
-      "Join Certificate in Internal Medicine with case-based learning, NAAC A+ University, specialist faculty, flexible schedule & EMI option.",
-  },
   "fellowship-in-molecular-pathology": {
     title: "Molecular Pathology Fellowship in India | 12-Month Course",
     description:
       "Join a Molecular Pathology Fellowship with live classes, clinical training, expert faculty, study material and 1-year mentorship for doctors.",
-  },
-  "certificate-in-research-methodology": {
-    title: "Certificate in Research Methodology | CPD Online Course",
-    description:
-      "Certificate in Research Methodology for doctors — CPD-accredited online course with case-based learning to upgrade clinical research skills in 3-6 months.",
   },
   "pg-diploma-in-reproductive-child-health": {
     title: "PG Diploma in Reproductive & Child Health: RCH Course 2026",
@@ -883,16 +880,6 @@ const COURSE_META = {
     description:
       "Explore our Neonatal Surgery Fellowship for doctors. Study online with expert faculty, live and recorded classes, and a 12-month plan. Apply today now.",
   },
-  "certificate-in-diabetic-foot-care": {
-    title: "Certificate in Diabetic Footcare for MBBS Doctors",
-    description:
-      "Certificate in Diabetic Footcare – online program for MBBS doctors to learn diabetic foot assessment, wound care & complication management skills.",
-  },
-  "certificate-in-gastroenterology": {
-    title: "Certificate in Gastroenterology – Boost Your Skills",
-    description:
-      "Certificate in Gastroenterology – an online course for MBBS doctors to master GI disorder diagnosis, case-based learning & advanced diagnostic skills.",
-  },
   "certificate-in-nutrition-and-dietetics": {
     title: "Certificate in Nutrition and Dietetics – Boost Career",
     description:
@@ -918,11 +905,6 @@ const COURSE_META = {
     description:
       "Join our 12-month Fellowship in Clinical Nutrition with online learning, expert faculty, study material and one-year mentorship for doctors.",
   },
-  "certificate-in-obstetrics-and-gynaecology": {
-    title: "Obstetrics & Gynaecology Certificate for MBBS/MD/MS",
-    description:
-      "Certificate in Obstetrics & Gynaecology for MBBS, MD & MS doctors – build advanced diagnostic skills, case-based learning & CPD certification online.",
-  },
   "fellowship-in-laparoscopic-surgery": {
     title: "Fellowship in Laparoscopic Surgery for MBBS/MS",
     description:
@@ -932,11 +914,6 @@ const COURSE_META = {
     title: "Fellowship in Clinical Neurology for MBBS/MD",
     description:
       "Fellowship in Clinical Neurology – a 12-month online course for MBBS & MD doctors covering stroke, epilepsy, EEG & neuroimaging case-based learning.",
-  },
-  "certificate-in-family-medicine": {
-    title: "Certificate in Family Medicine for MBBS Doctors",
-    description:
-      "Certificate in Family Medicine for MBBS doctors – gain skills in primary care, OPD management & case-based learning through this online course.",
   },
   "fellowship-in-gastrointestinal-oncology": {
     title: "Fellowship in Gastrointestinal Oncology Course",
@@ -987,11 +964,6 @@ const COURSE_META = {
     title: "Spine Surgery Fellowship for MBBS/MD Doctors",
     description:
       "Spine Surgery Fellowship – a 12-month online course covering spinal cord surgery, minimally invasive techniques & spinal instrumentation case learning.",
-  },
-  "certificate-in-addiction-medicine": {
-    title: "Certificate in Addiction Medicine – Skill Up Now",
-    description:
-      "Certificate in Addiction Medicine for MBBS doctors – gain skills in substance use disorder management, case discussions & CPD certification online.",
   },
   "fellowship-in-pediatrics-neonatology": {
     title: "Fellowship in Pediatric Neonatology Course",

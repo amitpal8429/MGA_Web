@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams, Navigate, useLocation } from "react-router-dom"; // CANONICAL: useLocation add hua
+import { Link, useParams, Navigate, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import {
   ChevronRight,
@@ -12,6 +12,9 @@ import {
   Award,
   Play,
   Check,
+  Tag,
+  X,
+  Lock,
 } from "lucide-react";
 
 import { fetchCourseDetails } from "../lib/api";
@@ -26,6 +29,9 @@ import PayButton from "../components/PayButton";
 import CourseSchema from "../components/CourseSchema";
 import FaqSchema from "../components/FaqSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
+import ImageObjectSchema from "../components/ImageObjectSchema";
+import MetaDescription from "../components/MetaDescription";
+import ReviewSlider from "../components/ReviewSlider";
 
 import {
   formatINR,
@@ -53,6 +59,58 @@ const stripHandsOnSentences = (text) => {
     .join(" ")
     .replace(/\s{2,}/g, " ")
     .trim();
+};
+
+/* =========================================================
+   OVERVIEW READ MORE
+   ========================================================= */
+
+const OVERVIEW_LIMIT = 320;
+
+const truncateAtWord = (text, limit) => {
+  if (!text || text.length <= limit) return text;
+  const cut = text.slice(0, limit);
+  const lastSpace = cut.lastIndexOf(" ");
+  return `${cut.slice(0, lastSpace > 0 ? lastSpace : limit).trim()}…`;
+};
+
+/* =========================================================
+   CURRICULUM LOCK
+   ========================================================= */
+
+// Pehle kitne modules free dikhane hain
+const FREE_MODULES = 4;
+
+// Jin courses (slug) par visitor form bhar chuka hai, unki list yahan save hoti hai
+const UNLOCK_KEY = "mga_unlocked_courses";
+
+const getUnlockedCourses = () => {
+  try {
+    const list = JSON.parse(localStorage.getItem(UNLOCK_KEY));
+    return Array.isArray(list) ? list : [];
+  } catch {
+    return [];
+  }
+};
+
+const saveUnlockedCourse = (slug) => {
+  try {
+    const list = getUnlockedCourses();
+    if (!list.includes(slug)) {
+      localStorage.setItem(UNLOCK_KEY, JSON.stringify([...list, slug]));
+    }
+  } catch {
+    /* ignore */
+  }
+};
+
+/* =========================================================
+   PROMO CODES
+   ========================================================= */
+
+const PROMO_CODES = {
+  MGA005: 5,
+  MGACADEMY: 10,
 };
 
 /* =========================================================
@@ -329,7 +387,6 @@ const PAGE_CSS = `
     line-height: 1.45;
   }
 
-  /* PG diploma note (PG courses only) */
   .mga-pg-note {
     margin: 0 0 32px;
     padding: 20px 24px;
@@ -357,6 +414,356 @@ const PAGE_CSS = `
 
   .mga-pg-note-text:last-child {
     margin-bottom: 0;
+  }
+
+  .overview-toggle {
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+    color: #1f7ac4;
+    font: inherit;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    white-space: nowrap;
+  }
+
+  .overview-toggle:hover {
+    color: #1867a8;
+  }
+
+  /* ===== Curriculum lock ===== */
+
+  .module-item.is-locked .module-toggle {
+    cursor: pointer;
+  }
+
+  .module-item.is-locked .module-index,
+  .module-item.is-locked .module-name {
+    opacity: 0.6;
+  }
+
+  .module-item.is-locked .module-icon {
+    color: #8a97a8;
+  }
+
+  .curriculum-unlock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    margin-top: 14px;
+    padding: 13px 16px;
+    background: #f0f7fd;
+    border: 1px dashed #1f7ac4;
+    border-radius: 12px;
+    color: #0c3a6b;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+  }
+
+  .curriculum-unlock:hover {
+    background: #e4f0fb;
+  }
+
+  .cur-lock-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1200;
+    background: rgba(12, 18, 32, 0.62);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+
+  .cur-lock-modal {
+    position: relative;
+    width: min(94vw, 440px);
+    max-height: 92vh;
+    overflow-y: auto;
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 26px 22px 22px;
+    box-shadow: 0 30px 80px rgba(8, 15, 40, 0.45);
+    box-sizing: border-box;
+  }
+
+  .cur-lock-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 0;
+    background: #eef1f6;
+    color: #3a4357;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cur-lock-close:hover {
+    background: #dfe4ee;
+  }
+
+  .cur-lock-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    margin-bottom: 12px;
+    border-radius: 50%;
+    background: #e8f3fc;
+    color: #1f7ac4;
+  }
+
+  .cur-lock-title {
+    margin: 0 0 6px;
+    color: #16324f;
+    font-size: 20px;
+    line-height: 1.3;
+    font-weight: 750;
+  }
+
+  .cur-lock-text {
+    margin: 0 0 16px;
+    color: #596b7e;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  /* ===== Promo section ===== */
+
+  /* Collapsed trigger button */
+  .promo-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    margin: 12px 0 16px;
+    padding: 12px 16px;
+    background: #f7f9fb;
+    border: 1px dashed #c9d6e2;
+    border-radius: 12px;
+    color: #16324f;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+  }
+
+  .promo-trigger:hover {
+    border-color: #1f7ac4;
+    background: #eef5fc;
+  }
+
+  /* Expanded panel */
+  .promo-wrap {
+    margin: 12px 0 16px;
+    padding: 14px 14px 16px;
+    background: #f7f9fb;
+    border: 1px dashed #c9d6e2;
+    border-radius: 14px;
+    box-sizing: border-box;
+  }
+
+  .promo-label {
+    margin: 0 0 10px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #16324f;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .promo-mode-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .promo-mode-btn {
+    padding: 10px 8px;
+    background: #ffffff;
+    color: #16324f;
+    border: 1px solid #dce4ea;
+    border-radius: 10px;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+  }
+
+  .promo-mode-btn:hover {
+    border-color: #1f7ac4;
+  }
+
+  .promo-mode-btn.is-active {
+    background: #e8f3fc;
+    border-color: #1f7ac4;
+    color: #0c3a6b;
+  }
+
+  .promo-mode-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .promo-input-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .promo-input {
+    flex: 1 1 auto;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border: 1px solid #dce4ea;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #16324f;
+    font: inherit;
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+
+  .promo-input:disabled {
+    background: #f0f4f8;
+    color: #16324f;
+    cursor: not-allowed;
+    opacity: 1;
+  }
+
+  .promo-input:focus {
+    outline: 2px solid #1f7ac4;
+    outline-offset: 1px;
+    border-color: #1f7ac4;
+  }
+
+  .promo-apply-btn {
+    padding: 10px 16px;
+    background: #1f7ac4;
+    color: #ffffff;
+    border: 1px solid #1f7ac4;
+    border-radius: 10px;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .promo-apply-btn:hover {
+    background: #1867a8;
+  }
+
+  .promo-msg {
+    margin: 10px 0 0;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  .promo-msg.is-error {
+    color: #b42318;
+  }
+
+  .promo-msg.is-success {
+    color: #166534;
+    font-weight: 600;
+  }
+
+  /* Applied state */
+  .promo-applied {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 12px 0 16px;
+    padding: 12px 14px;
+    background: #eafaf0;
+    border: 1px solid #b7e4c7;
+    border-radius: 12px;
+    box-sizing: border-box;
+  }
+
+  .promo-applied-text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    color: #166534;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .promo-applied-sub {
+    display: block;
+    margin-top: 2px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #3c7a54;
+  }
+
+  .promo-remove-btn {
+    flex: 0 0 auto;
+    padding: 6px 10px;
+    background: #ffffff;
+    color: #166534;
+    border: 1px solid #b7e4c7;
+    border-radius: 8px;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .promo-remove-btn:hover {
+    background: #dff7e8;
+  }
+
+  /* Fee summary rows */
+  .fee-row {
+    margin-top: 6px;
+    font-size: 15px;
+    color: #596b7e;
+    line-height: 1.5;
+  }
+
+  .fee-row s {
+    opacity: 0.75;
+    margin-right: 6px;
+  }
+
+  .fee-row .fee-final {
+    color: #16324f;
+    font-weight: 700;
+  }
+
+  .promo-discount-pill {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 8px;
+    background: #dff7e8;
+    color: #166534;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 999px;
   }
 
   /* Payment details form */
@@ -442,7 +849,6 @@ const PAGE_CSS = `
     .mga-pg-note {
       padding: 18px 20px;
     }
-
   }
 
   @media (max-width: 480px) {
@@ -487,6 +893,10 @@ const PAGE_CSS = `
     .mga-pg-note-text {
       font-size: 14px;
     }
+
+    .cur-lock-modal {
+      padding: 24px 16px 18px;
+    }
   }
 `;
 
@@ -496,7 +906,7 @@ const PAGE_CSS = `
 
 export default function CourseDetail() {
   const { slug } = useParams();
-  const { pathname } = useLocation(); // CANONICAL: current URL path (slash ke saath ya bina)
+  const { pathname } = useLocation();
 
   const redirectSlug = getRedirectSlug(slug);
   const fetchSlug = getAliasSlug(slug) || slug;
@@ -505,6 +915,18 @@ export default function CourseDetail() {
   const [error, setError] = useState(null);
   const [openModule, setOpenModule] = useState(0);
   const [showVideo, setShowVideo] = useState(false);
+  const [overviewExpanded, setOverviewExpanded] = useState(false);
+
+  // CURRICULUM LOCK
+  const [lockModalOpen, setLockModalOpen] = useState(false);
+  const [leadDone, setLeadDone] = useState(false); // is course ka form bhara ja chuka hai?
+
+  // PROMO
+  const [promoOpen, setPromoOpen] = useState(false); // panel open/close
+  const [feeMode, setFeeMode] = useState(null); // null | "online" | "hybrid"
+  const [promoInput, setPromoInput] = useState("");
+  const [appliedPromo, setAppliedPromo] = useState(null); // { code, percent, mode }
+  const [promoError, setPromoError] = useState("");
 
   // Payment
   const [paid, setPaid] = useState(false);
@@ -524,6 +946,16 @@ export default function CourseDetail() {
     setError(null);
     setOpenModule(0);
     setPaid(false);
+    setOverviewExpanded(false);
+    setLockModalOpen(false);
+    setLeadDone(getUnlockedCourses().includes(slug));
+
+    // reset promo state
+    setPromoOpen(false);
+    setFeeMode(null);
+    setPromoInput("");
+    setAppliedPromo(null);
+    setPromoError("");
 
     fetchCourseDetails(fetchSlug)
       .then((data) => {
@@ -539,9 +971,20 @@ export default function CourseDetail() {
     return () => {
       cancelled = true;
     };
-  }, [fetchSlug, redirectSlug]);
+  }, [fetchSlug, redirectSlug, slug]);
 
-  /* REDIRECT (after all hooks) */
+  /* LOCK POPUP: Esc se band */
+
+  useEffect(() => {
+    if (!lockModalOpen) return undefined;
+    const onKey = (e) => {
+      if (e.key === "Escape") setLockModalOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [lockModalOpen]);
+
+  /* REDIRECT */
 
   if (redirectSlug) {
     return <Navigate to={`/${redirectSlug}`} replace />;
@@ -601,7 +1044,6 @@ export default function CourseDetail() {
     course.meta_description ||
     cleanText(course.description).slice(0, 155);
 
-  // CANONICAL: URL jaisa hai waisa hi canonical (slash hai to slash, nahi hai to nahi)
   const canonicalUrl = `${SITE_URL}${pathname}`;
 
   const filteredWhatYouLearn =
@@ -610,6 +1052,102 @@ export default function CourseDetail() {
     ) || [];
 
   const showPgNote = isPgCourse(slug, course.name);
+
+  /* CURRICULUM LOCK: derived */
+
+  const totalModules = course.module?.length || 0;
+  const lockedCount = leadDone ? 0 : Math.max(0, totalModules - FREE_MODULES);
+
+  /* OVERVIEW */
+
+  const fullOverview = stripHandsOnSentences(cleanText(course.description));
+  const isLongOverview =
+    fullOverview && fullOverview.length > OVERVIEW_LIMIT;
+  const visibleOverview =
+    isLongOverview && !overviewExpanded
+      ? truncateAtWord(fullOverview, OVERVIEW_LIMIT)
+      : fullOverview;
+
+  /* PROMO: derived */
+
+  const hasHybrid = Number(course.hybrid_cpd) > 0;
+
+  const onlineBaseAmount = Number(course.total_fee) || 0;
+  const hybridBaseAmount = Number(course.hybrid_cpd) || 0;
+
+  const onlineDiscountPercent =
+    appliedPromo && appliedPromo.mode === "online" ? appliedPromo.percent : 0;
+  const hybridDiscountPercent =
+    appliedPromo && appliedPromo.mode === "hybrid" ? appliedPromo.percent : 0;
+
+  const onlineFinalAmount = onlineDiscountPercent
+    ? Math.round(
+        onlineBaseAmount - (onlineBaseAmount * onlineDiscountPercent) / 100
+      )
+    : onlineBaseAmount;
+
+  const hybridFinalAmount = hybridDiscountPercent
+    ? Math.round(
+        hybridBaseAmount - (hybridBaseAmount * hybridDiscountPercent) / 100
+      )
+    : hybridBaseAmount;
+
+  /* PROMO: handlers */
+
+  const handleOpenPromo = () => {
+    setPromoOpen(true);
+    setPromoError("");
+  };
+
+  const handleModeClick = (mode) => {
+    // Once applied, don't allow switching mode
+    if (appliedPromo) return;
+
+    setFeeMode(mode);
+    setPromoInput("");
+    setPromoError("");
+  };
+
+  const handleApplyPromo = () => {
+    const code = promoInput.trim().toUpperCase();
+
+    if (!code) {
+      setPromoError("Please enter a promo code.");
+      return;
+    }
+
+    if (!feeMode) {
+      setPromoError("Please select Online or Hybrid first.");
+      return;
+    }
+
+    const percent = PROMO_CODES[code];
+
+    if (!percent) {
+      setPromoError("Invalid promo code. Please check and try again.");
+      setAppliedPromo(null);
+      return;
+    }
+
+    setPromoError("");
+    setAppliedPromo({ code, percent, mode: feeMode });
+  };
+
+  const handleRemovePromo = () => {
+    setAppliedPromo(null);
+    setPromoInput("");
+    setPromoError("");
+    setFeeMode(null);
+    setPromoOpen(false);
+  };
+
+  /* LEAD FORM: success par is course ke saare modules unlock */
+
+  const handleLeadSuccess = () => {
+    saveUnlockedCourse(slug);
+    setLeadDone(true);
+    setLockModalOpen(false);
+  };
 
   /* RENDER */
 
@@ -621,9 +1159,15 @@ export default function CourseDetail() {
 
       <Helmet>
         <title>{metaTitle}</title>
-        <meta name="description" content={metaDescription} />
         <link rel="canonical" href={canonicalUrl} />
-        <meta name="robots" content="index, follow" />
+        <meta
+          name="robots"
+          content={
+            slug === "pg-diploma-in-reproductive-and-child-health"
+              ? "noindex, nofollow"
+              : "index, follow"
+          }
+        />
 
         <meta property="og:type" content="website" />
         <meta property="og:title" content={metaTitle} />
@@ -637,7 +1181,9 @@ export default function CourseDetail() {
         {course.image && <meta name="twitter:image" content={course.image} />}
       </Helmet>
 
-      {/* SCHEMA: Course + FAQ + Breadcrumb */}
+      <MetaDescription content={metaDescription} />
+
+      {/* SCHEMA: Course + FAQ + Breadcrumb + ImageObject */}
 
       <CourseSchema
         name={course.name}
@@ -654,6 +1200,11 @@ export default function CourseDetail() {
         pageUrl={canonicalUrl}
         parentLabel="Programs"
         parentUrl={`${SITE_URL}/courses`}
+      />
+      <ImageObjectSchema
+        imageUrl={course.image}
+        caption={course.name}
+        pageUrl={canonicalUrl}
       />
 
       {/* HERO */}
@@ -687,11 +1238,7 @@ export default function CourseDetail() {
         </div>
       </section>
 
-      {/* MAIN GRID: content + sidebar */}
-
       <div className="wrap detail-grid">
-        {/* LEFT / MAIN CONTENT */}
-
         <div className="detail-main">
           <CourseImage
             src={course.image}
@@ -781,7 +1328,7 @@ export default function CourseDetail() {
             </div>
           </section>
 
-          {/* PG DIPLOMA NOTE (only on PG courses) */}
+          {/* PG NOTE */}
 
           {showPgNote && (
             <section className="mga-pg-note" aria-labelledby="pg-note-title">
@@ -790,7 +1337,7 @@ export default function CourseDetail() {
               </h3>
 
               <p className="mga-pg-note-text">
-                <strong>Please Note:</strong> This is not a 2-year PG Diploma
+                <strong>Please Note:</strong> This is not a 2-year Government PG Diploma
                 program. The course is a professional upskilling/certification 1-Year
                 program designed for eligible medical professionals.
               </p>
@@ -809,7 +1356,22 @@ export default function CourseDetail() {
           <section className="detail-block">
             <h2>Overview</h2>
 
-            <p>{stripHandsOnSentences(cleanText(course.description))}</p>
+            <p>
+              {visibleOverview}
+              {isLongOverview && (
+                <>
+                  {" "}
+                  <button
+                    type="button"
+                    className="overview-toggle"
+                    onClick={() => setOverviewExpanded((v) => !v)}
+                    aria-expanded={overviewExpanded}
+                  >
+                    {overviewExpanded ? "Read less" : "Read more"}
+                  </button>
+                </>
+              )}
+            </p>
           </section>
 
           {/* WHAT YOU'LL LEARN */}
@@ -835,31 +1397,40 @@ export default function CourseDetail() {
             </section>
           )}
 
-          {/* CURRICULUM */}
+          {/* CURRICULUM (pehle FREE_MODULES khule, baaki locked) */}
 
-          {course.module?.length > 0 && (
+          {totalModules > 0 && (
             <section className="detail-block">
               <div className="curriculum-head">
                 <h2>Curriculum</h2>
-                <span className="muted">{course.module.length} modules</span>
+                <span className="muted">{totalModules} modules</span>
               </div>
 
               <div className="module-list">
                 {course.module.map((m, i) => {
-                  const isOpen = openModule === i;
+                  const isLocked = !leadDone && i >= FREE_MODULES;
+                  const isOpen = !isLocked && openModule === i;
 
                   const filteredSessions =
                     m.sessions?.filter((s) => !hasHandsOn(s.title)) || [];
 
                   return (
                     <div
-                      className={`module-item ${isOpen ? "is-open" : ""}`}
+                      className={`module-item ${isOpen ? "is-open" : ""} ${
+                        isLocked ? "is-locked" : ""
+                      }`}
                       key={m.id}
                     >
                       <button
+                        type="button"
                         className="module-toggle"
-                        onClick={() => setOpenModule(isOpen ? -1 : i)}
-                        aria-expanded={isOpen}
+                        onClick={() =>
+                          isLocked
+                            ? setLockModalOpen(true)
+                            : setOpenModule(isOpen ? -1 : i)
+                        }
+                        aria-expanded={isLocked ? undefined : isOpen}
+                        aria-haspopup={isLocked ? "dialog" : undefined}
                       >
                         <span className="module-index">
                           {String(i + 1).padStart(2, "0")}
@@ -868,11 +1439,19 @@ export default function CourseDetail() {
                         <span className="module-name">{cleanText(m.module)}</span>
 
                         <span className="muted module-count">
-                          {filteredSessions.length || 0} lessons
+                          {isLocked
+                            ? "Locked"
+                            : `${filteredSessions.length || 0} lessons`}
                         </span>
 
                         <span className="module-icon">
-                          {isOpen ? <Minus size={16} /> : <Plus size={16} />}
+                          {isLocked ? (
+                            <Lock size={16} />
+                          ) : isOpen ? (
+                            <Minus size={16} />
+                          ) : (
+                            <Plus size={16} />
+                          )}
                         </span>
                       </button>
 
@@ -887,6 +1466,18 @@ export default function CourseDetail() {
                   );
                 })}
               </div>
+
+              {lockedCount > 0 && (
+                <button
+                  type="button"
+                  className="curriculum-unlock"
+                  onClick={() => setLockModalOpen(true)}
+                >
+                  <Lock size={15} />
+                  {lockedCount} more {lockedCount === 1 ? "module is" : "modules are"}{" "}
+                  locked. Fill the form to unlock
+                </button>
+              )}
             </section>
           )}
 
@@ -938,11 +1529,9 @@ export default function CourseDetail() {
           </section>
         </div>
 
-        {/* RIGHT SIDEBAR */}
+        {/* SIDEBAR */}
 
         <aside className="detail-sidebar">
-          {/* APPLY / PAYMENT CARD */}
-
           <div className="apply-card">
             {fee && (
               <div className="apply-price">
@@ -950,24 +1539,148 @@ export default function CourseDetail() {
 
                 <span className="apply-price-value">{fee}</span>
 
+                {/* Hybrid total */}
                 {hybridFee && (
-                  <span
-                    className="muted apply-price-total"
-                    style={{ marginTop: "6px", display: "block" }}
-                  >
-                    Total Hybrid program cost {hybridFee}
-                  </span>
+                  <p className="fee-row">
+                    Total Hybrid program cost{" "}
+                    {hybridDiscountPercent > 0 ? (
+                      <>
+                        <s>{formatINR(hybridBaseAmount)}</s>
+                        <span className="fee-final">
+                          {formatINR(hybridFinalAmount)}
+                        </span>
+                        <span className="promo-discount-pill">
+                          {hybridDiscountPercent}% OFF
+                        </span>
+                      </>
+                    ) : (
+                      <span className="fee-final">{hybridFee}</span>
+                    )}
+                  </p>
                 )}
 
+                {/* Online total */}
                 {totalFee && totalFee !== fee && (
-                  <span
-                    className="muted apply-price-total"
-                    style={{ marginTop: "6px", display: "block" }}
-                  >
-                    Total Online program cost {totalFee}
-                  </span>
+                  <p className="fee-row">
+                    Total Online program cost{" "}
+                    {onlineDiscountPercent > 0 ? (
+                      <>
+                        <s>{formatINR(onlineBaseAmount)}</s>
+                        <span className="fee-final">
+                          {formatINR(onlineFinalAmount)}
+                        </span>
+                        <span className="promo-discount-pill">
+                          {onlineDiscountPercent}% OFF
+                        </span>
+                      </>
+                    ) : (
+                      <span className="fee-final">{totalFee}</span>
+                    )}
+                  </p>
                 )}
               </div>
+            )}
+
+            {/* PROMO SECTION */}
+
+            {fee && (
+              <>
+                {!appliedPromo && !promoOpen && (
+                  <button
+                    type="button"
+                    className="promo-trigger"
+                    onClick={handleOpenPromo}
+                  >
+                    <Tag size={15} />
+                    Have a promo code?
+                  </button>
+                )}
+
+                {!appliedPromo && promoOpen && (
+                  <div className="promo-wrap">
+                    <p className="promo-label">Apply Promo Code</p>
+
+                    <div className="promo-mode-row">
+                      <button
+                        type="button"
+                        className={`promo-mode-btn ${
+                          feeMode === "online" ? "is-active" : ""
+                        }`}
+                        onClick={() => handleModeClick("online")}
+                      >
+                        Online
+                      </button>
+
+                      <button
+                        type="button"
+                        className={`promo-mode-btn ${
+                          feeMode === "hybrid" ? "is-active" : ""
+                        }`}
+                        onClick={() => handleModeClick("hybrid")}
+                        disabled={!hasHybrid}
+                        title={
+                          !hasHybrid ? "Hybrid option not available" : undefined
+                        }
+                      >
+                        Hybrid
+                      </button>
+                    </div>
+
+                    {feeMode && (
+                      <>
+                        <div className="promo-input-row">
+                          <input
+                            type="text"
+                            className="promo-input"
+                            placeholder="Enter promo code"
+                            value={promoInput}
+                            onChange={(e) => setPromoInput(e.target.value)}
+                            aria-label="Promo code"
+                          />
+
+                          <button
+                            type="button"
+                            className="promo-apply-btn"
+                            onClick={handleApplyPromo}
+                          >
+                            Apply
+                          </button>
+                        </div>
+
+                        {promoError && (
+                          <p className="promo-msg is-error">{promoError}</p>
+                        )}
+                      </>
+                    )}
+                  </div>
+                )}
+
+                {appliedPromo && (
+                  <div className="promo-applied">
+                    <div>
+                      <p className="promo-applied-text">
+                        <Tag size={15} />
+                        {appliedPromo.code} applied
+                      </p>
+                      <span className="promo-applied-sub">
+                        {appliedPromo.percent}% off on{" "}
+                        {appliedPromo.mode === "hybrid" ? "Hybrid" : "Online"}{" "}
+                        total
+                      </span>
+                    </div>
+
+                    <button
+                      type="button"
+                      className="promo-remove-btn"
+                      onClick={handleRemovePromo}
+                      aria-label="Remove promo code"
+                    >
+                      <X size={12} style={{ marginRight: 4 }} />
+                      Remove
+                    </button>
+                  </div>
+                )}
+              </>
             )}
 
             {/* BROCHURE */}
@@ -1094,7 +1807,10 @@ export default function CourseDetail() {
                 details, batch dates, and eligibility.
               </p>
 
-              <LeadForm idPrefix={`course-${slug}`} />
+              <LeadForm
+                idPrefix={`course-${slug}`}
+                onSuccess={handleLeadSuccess}
+              />
             </div>
           </div>
 
@@ -1245,7 +1961,7 @@ export default function CourseDetail() {
             </div>
           </div>
 
-          {/* CAREER / PROFESSIONAL RELEVANCE (below video) */}
+          {/* CAREER */}
 
           <div className="mga-sidebar-career" style={{ marginTop: 24 }}>
             <h4 className="mga-sidebar-career-title">
@@ -1261,8 +1977,59 @@ export default function CourseDetail() {
               degree.
             </p>
           </div>
+
+          {/* LEARNER REVIEWS: Career ke neeche, sirf video slider */}
+
+          <div style={{ marginTop: 24 }}>
+            <ReviewSlider />
+          </div>
         </aside>
       </div>
+
+      {/* LOCKED MODULE POPUP */}
+
+      {lockModalOpen && (
+        <div
+          className="cur-lock-overlay"
+          onClick={() => setLockModalOpen(false)}
+        >
+          <div
+            className="cur-lock-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="cur-lock-title"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="cur-lock-close"
+              onClick={() => setLockModalOpen(false)}
+              aria-label="Close"
+            >
+              <X size={18} />
+            </button>
+
+            <span className="cur-lock-icon">
+              <Lock size={22} />
+            </span>
+
+            <h3 id="cur-lock-title" className="cur-lock-title">
+              Fill the form to unlock the full curriculum
+            </h3>
+
+            <p className="cur-lock-text">
+              The first {FREE_MODULES} modules are open for preview. Share your
+              details and our team will give you the complete curriculum, fees
+              and batch details for this program.
+            </p>
+
+            <LeadForm
+              idPrefix={`curriculum-${slug}`}
+              onSuccess={handleLeadSuccess}
+            />
+          </div>
+        </div>
+      )}
     </article>
   );
 }

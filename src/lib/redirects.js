@@ -7,16 +7,16 @@ const REDIRECTS = {
   "fetal-medicine-fellowship": "fellowship-in-fetal-medicine",
   "fellowship-in-obstetrics-gynaecology": "fellowship-in-obstetrics-and-gynaecology",
   "fellowship-in-head-and-neck-surgicl-oncology": "fellowship-in-head-neck-surgery",
-  "fellowship-in-anorectal-plus-laser-proctology": "fellowship-in-anorectal-and-laser-proctology",
+  "fellowship-in-anorectal-and-laser-proctology": "fellowship-in-anorectal-plus-laser-proctology",
   "fellowship-in-aesthetic-dentistry": "fellowship-in-aesthetic-dentistry-surgery",
   "certificate-in-infection-and-prevention-control": "certificate-in-infection-control-and-prevention",
-  "fellowship-in-orthodontics": "fellowship-in-pediatric-orthodontics",
+
   "fellowship-in-laparoscopy": "fellowship-in-laparoscopic-surgery",
   "certificate-in-histopathology": "fellowship-in-histopathology",
   "fellowship-in-pediatric-dermatology": "fellowship-in-pediatrics-dermatology",
   "fellowship-in-pediatric-neonatology": "fellowship-in-pediatrics-neonatology",
 "fellowship-in-cardiac-intervention": "fellowship-in-interventional-cardiology",
-"fellowship-in-clinical-embryology":"fellowship-in-embryology",
+
   // ✅ Maxillofacial / Oral radiology variants — dono same target
   "fellowship-in-oral-and-maxillofacial-radiology": "fellowship-in-oral-radiology",
   "fellowship-in-maxillofacial-radiology": "fellowship-in-oral-radiology",
@@ -42,7 +42,7 @@ const REDIRECTS = {
   "fellowship-in-pediatric-genetics-and-metabolic": "fellowship-in-pediatric-genetics-and-metabolism",
   "fellowship-in-orthopaedic": "fellowship-in-orthopedic",
   "fellowship-in-gastrology": "fellowship-in-gastroenterology",
-
+"pg-diploma-in-reproductive-and-child-health":"pg-diploma-in-reproductive-child-health",
   // ✅ Naya redirect
   "fellowship-in-pediatric-dentistry": "fellowship-in-pedodontist",
 

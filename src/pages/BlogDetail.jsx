@@ -5,6 +5,8 @@ import { fetchPostBySlug } from "../lib/api";
 import { getBlogMeta, cleanTitle } from "../lib/blogMeta";
 import BlogPostSchema from "../components/BlogPostSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
+import ImageObjectSchema from "../components/ImageObjectSchema";
+import MetaDescription from "../components/MetaDescription";
 
 const SITE_URL = "https://medicalglobalacademy.com";
 
@@ -114,7 +116,7 @@ export default function BlogDetail() {
     <article className="detail-article">
       <Helmet>
         <title>{metaTitle}</title>
-        <meta name="description" content={metaDescription} />
+        {/* description yahan nahi hai: MetaDescription component handle karta hai */}
         {keywords && <meta name="keywords" content={keywords} />}
         <link rel="canonical" href={canonicalUrl} />
         <meta name="robots" content="index, follow" />
@@ -137,7 +139,9 @@ export default function BlogDetail() {
         {image && <meta name="twitter:image" content={image} />}
       </Helmet>
 
-      {/* SCHEMA: BlogPosting + Breadcrumb */}
+      <MetaDescription content={metaDescription} />
+
+      {/* SCHEMA: BlogPosting + Breadcrumb + ImageObject */}
       <BlogPostSchema
         title={h1}
         description={metaDescription}
@@ -152,6 +156,11 @@ export default function BlogDetail() {
         pageUrl={canonicalUrl}
         parentLabel="Blog"
         parentUrl={`${SITE_URL}/blog`}
+      />
+      <ImageObjectSchema
+        imageUrl={image}
+        caption={h1}
+        pageUrl={canonicalUrl}
       />
 
       <div className="container">

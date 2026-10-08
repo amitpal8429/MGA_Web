@@ -5,11 +5,36 @@ import { OFFER, isOfferLive } from "../config/offer";
 
 export default function SiteSchema() {
   const { pathname } = useLocation();
-  if (pathname !== "/") return null; // sirf home page
-
+  const isHome = pathname === "/";
   const orgId = `${SITE.url}/#organization`;
 
-  const organization = {
+  // WebSite: har page par
+  const website = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${SITE.url}/#website`,
+    url: `${SITE.url}/`,
+    name: SITE.name,
+    description: SITE.websiteDescription,
+    inLanguage: "en-IN",
+    publisher: {
+      "@type": "Organization",
+      "@id": orgId,
+      name: SITE.name,
+      url: `${SITE.url}/`,
+      logo: SITE.logo,
+    },
+    ...(SITE.searchUrlTemplate && {
+      potentialAction: {
+        "@type": "SearchAction",
+        target: { "@type": "EntryPoint", urlTemplate: SITE.searchUrlTemplate },
+        "query-input": "required name=search_term_string",
+      },
+    }),
+  };
+
+  // Organization: sirf home par
+  const organization = isHome && {
     "@context": "https://schema.org",
     "@type": ["Organization", "EducationalOrganization"],
     "@id": orgId,
@@ -55,40 +80,24 @@ export default function SiteSchema() {
     },
   };
 
-  const website = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": `${SITE.url}/#website`,
-    url: `${SITE.url}/`,
-    name: SITE.name,
-    description: SITE.websiteDescription,
-    publisher: { "@id": orgId },
-    inLanguage: "en-IN",
-    ...(SITE.searchUrlTemplate && {
-      potentialAction: {
-        "@type": "SearchAction",
-        target: { "@type": "EntryPoint", urlTemplate: SITE.searchUrlTemplate },
-        "query-input": "required name=search_term_string",
-      },
-    }),
-  };
-
-  const offer = isOfferLive() && {
-    "@context": "https://schema.org",
-    "@type": "Offer",
-    name: OFFER.headline,
-    description: OFFER.subtext,
-    url: `${SITE.url}/courses`,
-    image: OFFER.imageUrl,
-    validThrough: OFFER.expiresOn,
-    availability: "https://schema.org/InStock",
-    seller: { "@id": orgId },
-  };
+  // Offer: sirf home par, aur sirf jab offer live ho
+  const offer = isHome &&
+    isOfferLive() && {
+      "@context": "https://schema.org",
+      "@type": "Offer",
+      name: OFFER.headline,
+      description: OFFER.subtext,
+      url: `${SITE.url}/courses`,
+      image: OFFER.imageUrl,
+      validThrough: OFFER.expiresOn,
+      availability: "https://schema.org/InStock",
+      seller: { "@id": orgId },
+    };
 
   return (
     <>
-      <JsonLd id="organization" data={organization} />
       <JsonLd id="website" data={website} />
+      {organization && <JsonLd id="organization" data={organization} />}
       {offer && <JsonLd id="offer" data={offer} />}
     </>
   );

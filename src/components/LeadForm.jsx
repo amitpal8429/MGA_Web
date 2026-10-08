@@ -110,7 +110,8 @@ function captureUTM() {
   }
 }
 
-export default function LeadForm({ idPrefix = "lead" }) {
+// onSuccess: form successfully submit hone par call hota hai
+export default function LeadForm({ idPrefix = "lead", onSuccess }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -175,6 +176,9 @@ export default function LeadForm({ idPrefix = "lead" }) {
       localStorage.removeItem(UTM_STORAGE_KEY);
 
       setForm({ name: "", email: "", countryCode: "+91", phone: "", country: "India", course: "", qualification: "" });
+
+      // Parent ko batao: is course ke modules unlock karo
+      onSuccess?.();
     } catch (err) {
       setError(err?.message || "Something went wrong. Please try again.");
     } finally {

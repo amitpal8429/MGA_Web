@@ -1,16 +1,16 @@
 import { useEffect, lazy, Suspense } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 
-// Components (always needed, so loaded normally)
+// Components
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import StickyContactBar from "./components/StickyContactBar";
 
-// Home loads normally so the landing page appears instantly
+// Home
 import Home from "./pages/Home";
 
-// Other pages load only when visited
+// Lazy pages
 const Courses = lazy(() => import("./pages/Courses"));
 const CourseDetail = lazy(() => import("./pages/CourseDetail"));
 const Faculty = lazy(() => import("./pages/Faculty"));
@@ -25,60 +25,275 @@ const AppPage = lazy(() => import("./pages/AppPage"));
 const TermsPage = lazy(() => import("./pages/TermsPage"));
 const RefundPage = lazy(() => import("./pages/RefundPage"));
 const Sitemap = lazy(() => import("./pages/Sitemap"));
+const HRFormPage = lazy(() => import("./pages/HRFormPage"));
 
 import "./site.css";
 
+
 export default function App() {
+
   const location = useLocation();
 
-  // Load Gabs chatbot
+
+  // =====================================================
+  // HR FORM PAGE CHECK
+  // =====================================================
+
+  const isHRFormPage =
+    location.pathname === "/hr-form";
+
+
+  // =====================================================
+  // GETGABS CHATBOT
+  // =====================================================
+
   useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://app.getgabs.com/ai_answerbot/chatbot_widget.js";
-    script.setAttribute("data-agent-id", "e1acaff4-acee-4521-8bc7-372e52105ece");
+
+    // Don't load chatbot on HR page
+    if (isHRFormPage) {
+      return;
+    }
+
+
+    const script =
+      document.createElement("script");
+
+
+    script.src =
+      "https://app.getgabs.com/ai_answerbot/chatbot_widget.js";
+
+
+    script.setAttribute(
+      "data-agent-id",
+      "e1acaff4-acee-4521-8bc7-372e52105ece"
+    );
+
+
     script.async = true;
+
+
     document.body.appendChild(script);
 
-    return () => {
-      if (script.parentNode) script.parentNode.removeChild(script);
-    };
-  }, []);
 
-  // Bottom padding for sticky bar
+    return () => {
+
+      if (script.parentNode) {
+
+        script.parentNode.removeChild(
+          script
+        );
+
+      }
+
+    };
+
+  }, [isHRFormPage]);
+
+
+  // =====================================================
+  // STICKY BAR
+  // =====================================================
+
   useEffect(() => {
-    document.body.classList.add("has-sticky-bar");
-    return () => document.body.classList.remove("has-sticky-bar");
-  }, []);
+
+    if (!isHRFormPage) {
+
+      document.body.classList.add(
+        "has-sticky-bar"
+      );
+
+    } else {
+
+      document.body.classList.remove(
+        "has-sticky-bar"
+      );
+
+    }
+
+
+    return () => {
+
+      document.body.classList.remove(
+        "has-sticky-bar"
+      );
+
+    };
+
+  }, [isHRFormPage]);
+
+
+  // =====================================================
+  // APP
+  // =====================================================
 
   return (
-    <div className="site">
-      <ScrollToTop />
-      <Navbar />
 
-      <main className="page-enter" key={location.pathname}>
-        <Suspense fallback={<div style={{ minHeight: "60vh" }} />}>
+    <div
+      className={
+        isHRFormPage
+          ? "hr-site"
+          : "site"
+      }
+    >
+
+      <ScrollToTop />
+
+
+      {/* =================================================
+          NAVBAR
+      ================================================= */}
+
+      {!isHRFormPage && (
+        <Navbar />
+      )}
+
+
+      {/* =================================================
+          MAIN
+      ================================================= */}
+
+      <main
+        className={
+          isHRFormPage
+            ? ""
+            : "page-enter"
+        }
+        key={location.pathname}
+      >
+
+        <Suspense
+          fallback={
+            <div
+              style={{
+                minHeight: "60vh"
+              }}
+            />
+          }
+        >
+
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/courses" element={<Courses />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/faculty" element={<Faculty />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<BlogDetail />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/app" element={<AppPage />} />
-            <Route path="/terms" element={<TermsPage />} />
-            <Route path="/refund" element={<RefundPage />} />
-            <Route path="/sitemap" element={<Sitemap />} />
-            <Route path="/:slug" element={<CourseDetail />} />
-            <Route path="*" element={<NotFound />} />
+
+            <Route
+              path="/"
+              element={<Home />}
+            />
+
+            <Route
+              path="/courses"
+              element={<Courses />}
+            />
+
+            <Route
+              path="/about"
+              element={<About />}
+            />
+
+            <Route
+              path="/faculty"
+              element={<Faculty />}
+            />
+
+            <Route
+              path="/blog"
+              element={<Blog />}
+            />
+
+            <Route
+              path="/blog/:slug"
+              element={<BlogDetail />}
+            />
+
+            <Route
+              path="/login"
+              element={<Login />}
+            />
+
+            <Route
+              path="/signup"
+              element={<Signup />}
+            />
+
+            <Route
+              path="/privacy-policy"
+              element={<PrivacyPolicy />}
+            />
+
+            <Route
+              path="/app"
+              element={<AppPage />}
+            />
+
+            <Route
+              path="/terms"
+              element={<TermsPage />}
+            />
+
+            <Route
+              path="/refund"
+              element={<RefundPage />}
+            />
+
+            <Route
+              path="/sitemap"
+              element={<Sitemap />}
+            />
+
+
+            {/* =========================================
+                HR FORM
+            ========================================= */}
+
+            <Route
+              path="/hr-form"
+              element={<HRFormPage />}
+            />
+
+
+            {/* =========================================
+                COURSE DETAIL
+            ========================================= */}
+
+            <Route
+              path="/:slug"
+              element={<CourseDetail />}
+            />
+
+
+            {/* =========================================
+                NOT FOUND
+            ========================================= */}
+
+            <Route
+              path="*"
+              element={<NotFound />}
+            />
+
           </Routes>
+
         </Suspense>
+
       </main>
 
-      <Footer />
-      <StickyContactBar />
+
+      {/* =================================================
+          FOOTER
+      ================================================= */}
+
+      {!isHRFormPage && (
+        <Footer />
+      )}
+
+
+      {/* =================================================
+          STICKY CONTACT
+      ================================================= */}
+
+      {!isHRFormPage && (
+        <StickyContactBar />
+      )}
+
     </div>
+
   );
+
 }
