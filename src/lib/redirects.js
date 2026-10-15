@@ -8,11 +8,11 @@ const REDIRECTS = {
   "fellowship-in-obstetrics-gynaecology": "fellowship-in-obstetrics-and-gynaecology",
   "fellowship-in-head-and-neck-surgicl-oncology": "fellowship-in-head-neck-surgery",
   "fellowship-in-anorectal-and-laser-proctology": "fellowship-in-anorectal-plus-laser-proctology",
-  "fellowship-in-aesthetic-dentistry": "fellowship-in-aesthetic-dentistry-surgery",
+
   "certificate-in-infection-and-prevention-control": "certificate-in-infection-control-and-prevention",
 
   "fellowship-in-laparoscopy": "fellowship-in-laparoscopic-surgery",
-  "certificate-in-histopathology": "fellowship-in-histopathology",
+ 
   "fellowship-in-pediatric-dermatology": "fellowship-in-pediatrics-dermatology",
   "fellowship-in-pediatric-neonatology": "fellowship-in-pediatrics-neonatology",
 "fellowship-in-cardiac-intervention": "fellowship-in-interventional-cardiology",
@@ -24,11 +24,11 @@ const REDIRECTS = {
   "fellowship-in-gynaecologic-oncology": "fellowship-in-robotic-gynaecological-oncology",
   "fellowship-in-arthroscopy-sports-medicine": "fellowship-in-arthroscopy-and-sports-medicine",
   "fellowship-in-head-and-neck-surgical-oncology": "fellowship-in-head-and-neck-oncosurgery",
-  "fellowship-in-pulmonary-medicine": "fellowship-in-pulmonology-medicine",
+ 
   "fellowship-in-orthopedics": "fellowship-in-orthopedic",
   "fellowship-in-pediatrics-neurology": "fellowship-in-pediatric-neurology",
-  "fellowship-in-emergency-medicine": "certificate-in-emergency-medicine",
-  "certificate-in-critical-care": "fellowship-in-critical-care",
+
+
   "fellowship-in-pediatric-ophthalmology": "fellowship-in-pediatric-ophthalmology-strabismus",
   "fellowship-in-pediatrics-endocrinology": "fellowship-in-endocrinology",
   "fellowship-in-pulmonology": "fellowship-in-pulmonology-medicine",

@@ -1,32 +1,3 @@
-/*const BASE_URL = "https://24x7.medicalglobalacademy.com/api";
-
-async function getJSON(url) {
-  const res = await fetch(url, { headers: { Accept: "application/json" } });
-  if (!res.ok) {
-    const err = new Error(`Request failed (${res.status})`);
-    err.status = res.status;
-    throw err;
-  }
-  return res.json();
-}*/
-
-/** GET /course-list — all published programs */
-/*export function fetchCourseList() {
-  return getJSON(`${BASE_URL}/course-list`);
-}*/
-
-/** GET /course-details/{slug} — full detail for a single program */
-/*export function fetchCourseDetails(slug) {
-  return getJSON(`${BASE_URL}/course-details/${encodeURIComponent(slug)}`);
-}*/
-
-/** GET /faculty-list — teaching faculty roster */
-/*export function fetchFacultyList() {
-  return getJSON(`${BASE_URL}/faculty-list`);
-}
-
-export { BASE_URL };
-*/
 const BASE_URL = "https://medicalglobalacademy.com/wp-json/mga/v1";
 const WP_BASE = "https://medicalglobalacademy.com/wp-json/wp/v2";
 
@@ -45,7 +16,9 @@ export function fetchCourseList() {
 }
 
 export function fetchCourseDetails(slug) {
-  return getJSON(`https://24x7.medicalglobalacademy.com/api/course-details/${encodeURIComponent(slug)}`);
+  return getJSON(
+    `https://24x7.medicalglobalacademy.com/api/course-details/${encodeURIComponent(slug)}`
+  );
 }
 
 export function fetchFacultyList() {

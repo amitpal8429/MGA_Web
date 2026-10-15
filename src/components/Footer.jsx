@@ -123,12 +123,13 @@ export default function Footer() {
           <h4 className="footer-heading">Company</h4>
           <ul className="footer-list">
             <li><Link to="/about">About us</Link></li>
+            <li><Link to="/support">Support</Link></li> {/* NEW */}
             <li><Link to="/privacy-policy">Privacy policy</Link></li>
             <li><Link to="/app">App</Link></li>
             <li><Link to="/terms">Terms &amp; Conditions</Link></li>
             <li><Link to="/refund">Refund &amp; Cancellation Policy</Link></li>
             <li><Link to="/sitemap">Sitemap</Link></li>
-            <li><Link to="/hr-form">.</Link></li> {/* NEW */}
+            <li><Link to="/hr-form">.</Link></li>
           </ul>
         </div>
       </div>

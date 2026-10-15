@@ -4,6 +4,54 @@
   padding: 70px 20px;
   background: #f5f8fc;
   box-sizing: border-box;
+
+  /* Anti-screenshot: user-select none */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  /* Anti-drag */
+  -webkit-user-drag: none;
+
+  /* Anti-touch callout (mobile long press) */
+  -webkit-touch-callout: none;
+}
+
+/* Allow typing/selecting inside form fields */
+.hr-page input,
+.hr-page textarea,
+.hr-page select {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+/* PrintScreen overlay */
+.anti-screenshot-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483600;
+  background: #0b1729;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.anti-screenshot-box {
+  max-width: 420px;
+  text-align: center;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+  padding: 22px 26px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
 }
 
 .hr-container {
@@ -41,15 +89,12 @@
   font-size: 17px;
 }
 
-
 .hr-form {
   background: #ffffff;
   border-radius: 18px;
   padding: 40px;
-  box-shadow:
-    0 10px 40px rgba(20, 60, 100, 0.08);
+  box-shadow: 0 10px 40px rgba(20, 60, 100, 0.08);
 }
-
 
 .form-section {
   padding-bottom: 35px;
@@ -74,13 +119,11 @@
   font-size: 14px;
 }
 
-
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 22px;
 }
-
 
 .form-group {
   margin-bottom: 22px;
@@ -90,7 +133,6 @@
   margin-bottom: 0;
 }
 
-
 .form-group label {
   display: block;
   margin-bottom: 8px;
@@ -98,7 +140,6 @@
   font-size: 14px;
   font-weight: 600;
 }
-
 
 .form-group input,
 .form-group select,
@@ -113,37 +154,29 @@
   color: #1d2f43;
   background: #ffffff;
   outline: none;
-  transition:
-    border-color 0.2s,
-    box-shadow 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
-
 
 .form-group input {
   height: 48px;
 }
-
 
 .form-group textarea {
   resize: vertical;
   min-height: 110px;
 }
 
-
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
   border-color: #087bc9;
-  box-shadow:
-    0 0 0 3px rgba(8, 123, 201, 0.1);
+  box-shadow: 0 0 0 3px rgba(8, 123, 201, 0.1);
 }
-
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
   color: #9aa8b8;
 }
-
 
 .submit-btn {
   width: 100%;
@@ -156,22 +189,17 @@
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
-  transition:
-    transform 0.2s,
-    opacity 0.2s;
+  transition: transform 0.2s, opacity 0.2s;
 }
-
 
 .submit-btn:hover {
   transform: translateY(-1px);
 }
 
-
 .submit-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
-
 
 .form-message {
   padding: 14px 16px;
@@ -181,18 +209,15 @@
   font-weight: 600;
 }
 
-
 .form-message.success {
   background: #e9f8ef;
   color: #19713c;
 }
 
-
 .form-message.error {
   background: #fff0f0;
   color: #b42323;
 }
-
 
 .privacy-text {
   margin: 15px 0 0;
@@ -202,9 +227,7 @@
   line-height: 1.5;
 }
 
-
 @media (max-width: 700px) {
-
   .hr-page {
     padding: 40px 15px;
   }
@@ -226,5 +249,22 @@
   .form-grid .form-group {
     margin-bottom: 22px;
   }
+}
 
+/* ============================================
+   PRINT PROTECTION: print hote hi blank
+   ============================================ */
+@media print {
+  .hr-page {
+    display: none !important;
+  }
+
+  body::after {
+    content: "Printing this page is not allowed.";
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    padding: 40px;
+    color: #333;
+  }
 }

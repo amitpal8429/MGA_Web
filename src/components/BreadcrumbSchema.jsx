@@ -1,7 +1,12 @@
 import JsonLd from "./JsonLd";
 import { SITE } from "../config/site";
 
-export default function BreadcrumbSchema({ pageTitle, pageUrl, parentLabel, parentUrl }) {
+export default function BreadcrumbSchema({
+  pageTitle,
+  pageUrl,
+  parentLabel,
+  parentUrl,
+}) {
   const url =
     pageUrl ||
     (typeof window !== "undefined"
@@ -15,7 +20,7 @@ export default function BreadcrumbSchema({ pageTitle, pageUrl, parentLabel, pare
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: `${SITE.url}/` },
       { "@type": "ListItem", position: 2, name: parentLabel, item: parentUrl },
-      { "@type": "ListItem", position: 3, name: pageTitle },
+      { "@type": "ListItem", position: 3, name: pageTitle, item: url },
     ],
   };
 

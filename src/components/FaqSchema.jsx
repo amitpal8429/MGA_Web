@@ -1,16 +1,25 @@
 import JsonLd from "./JsonLd";
 import { FAQS } from "../lib/faqs";
+import { normalizeFaqs } from "./schemaNodes";
 
-export default function FaqSchema({ faqs = FAQS }) {
-  if (!faqs || faqs.length === 0) return null;
+export default function FaqSchema({ faqs = FAQS, url }) {
+  const items = normalizeFaqs(faqs);
+  if (items.length === 0) return null;
+
+  const pageUrl =
+    url ||
+    (typeof window !== "undefined"
+      ? window.location.origin + window.location.pathname
+      : "");
 
   const data = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: faqs.map((f) => ({
+    ...(pageUrl && { "@id": `${pageUrl}#faq` }),
+    mainEntity: items.map((f) => ({
       "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
+      name: f.question,
+      acceptedAnswer: { "@type": "Answer", text: f.answer },
     })),
   };
 

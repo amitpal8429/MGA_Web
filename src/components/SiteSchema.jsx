@@ -2,28 +2,21 @@ import { useLocation } from "react-router-dom";
 import JsonLd from "./JsonLd";
 import { SITE } from "../config/site";
 import { OFFER, isOfferLive } from "../config/offer";
+import { ORG_ID, SITE_ID, LOGO_ID, buildOrganization } from "./schemaNodes";
 
 export default function SiteSchema() {
   const { pathname } = useLocation();
   const isHome = pathname === "/";
-  const orgId = `${SITE.url}/#organization`;
 
-  // WebSite: har page par
   const website = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": `${SITE.url}/#website`,
+    "@id": SITE_ID,
     url: `${SITE.url}/`,
     name: SITE.name,
     description: SITE.websiteDescription,
     inLanguage: "en-IN",
-    publisher: {
-      "@type": "Organization",
-      "@id": orgId,
-      name: SITE.name,
-      url: `${SITE.url}/`,
-      logo: SITE.logo,
-    },
+    publisher: { "@id": ORG_ID },
     ...(SITE.searchUrlTemplate && {
       potentialAction: {
         "@type": "SearchAction",
@@ -33,71 +26,42 @@ export default function SiteSchema() {
     }),
   };
 
-  // Organization: sirf home par
-  const organization = isHome && {
+  const organization = buildOrganization();
+
+  // WebPage: sirf home par
+  const webPage = isHome && {
     "@context": "https://schema.org",
-    "@type": ["Organization", "EducationalOrganization"],
-    "@id": orgId,
-    name: SITE.name,
-    alternateName: "MGA",
+    "@type": "WebPage",
+    "@id": `${SITE.url}/#webpage`,
     url: `${SITE.url}/`,
-    logo: {
-      "@type": "ImageObject",
-      "@id": `${SITE.url}/#logo`,
-      url: SITE.logo,
-      contentUrl: SITE.logo,
-    },
-    image: { "@id": `${SITE.url}/#logo` },
-    description: SITE.description,
-    founder: { "@type": "Person", name: SITE.founder },
-    telephone: SITE.phone,
-    email: SITE.email,
-    contactPoint: ["admissions", "customer support"].map((type) => ({
-      "@type": "ContactPoint",
-      telephone: SITE.phone,
-      contactType: type,
-      areaServed: "IN",
-      availableLanguage: ["English", "Hindi"],
-    })),
-    address: { "@type": "PostalAddress", ...SITE.address },
-    sameAs: SITE.social,
-    knowsAbout: SITE.knowsAbout,
-    audience: {
-      "@type": "Audience",
-      audienceType: "MBBS students, doctors and healthcare professionals",
-    },
-    areaServed: { "@type": "Country", name: "India" },
-    availableLanguage: ["English", "Hindi"],
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Medical Global Academy Programs",
-      itemListElement: SITE.programs.map((name) => ({
-        "@type": "Course",
-        name,
-        courseMode: "online",
-        provider: { "@id": orgId },
-      })),
-    },
+    name: SITE.name,
+    description: SITE.websiteDescription,
+    isPartOf: { "@id": SITE_ID },
+    about: { "@id": ORG_ID },
+    primaryImageOfPage: { "@id": LOGO_ID },
+    inLanguage: "en-IN",
   };
 
-  // Offer: sirf home par, aur sirf jab offer live ho
+  // Offer: sirf home par, jab live ho
   const offer = isHome &&
     isOfferLive() && {
       "@context": "https://schema.org",
       "@type": "Offer",
+      "@id": `${SITE.url}/#offer`,
       name: OFFER.headline,
       description: OFFER.subtext,
       url: `${SITE.url}/courses`,
       image: OFFER.imageUrl,
       validThrough: OFFER.expiresOn,
       availability: "https://schema.org/InStock",
-      seller: { "@id": orgId },
+      seller: { "@id": ORG_ID },
     };
 
   return (
     <>
       <JsonLd id="website" data={website} />
-      {organization && <JsonLd id="organization" data={organization} />}
+      <JsonLd id="organization" data={organization} />
+      {webPage && <JsonLd id="webpage" data={webPage} />}
       {offer && <JsonLd id="offer" data={offer} />}
     </>
   );

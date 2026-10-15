@@ -26,6 +26,7 @@ const TermsPage = lazy(() => import("./pages/TermsPage"));
 const RefundPage = lazy(() => import("./pages/RefundPage"));
 const Sitemap = lazy(() => import("./pages/Sitemap"));
 const HRFormPage = lazy(() => import("./pages/HRFormPage"));
+const Support = lazy(() => import("./pages/Support"));
 
 import "./site.css";
 
@@ -237,7 +238,7 @@ export default function App() {
               path="/sitemap"
               element={<Sitemap />}
             />
-
+ <Route path="/support" element={<Support />} />
 
             {/* =========================================
                 HR FORM
