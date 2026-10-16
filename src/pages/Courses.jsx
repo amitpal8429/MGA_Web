@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Search } from "lucide-react";
 import { fetchCourseList } from "../lib/api";
@@ -12,9 +12,45 @@ export default function Courses() {
   const [tick, setTick] = useState(0);
   const [params, setParams] = useSearchParams();
 
-  const query = params.get("q") || "";
+  const urlQuery = params.get("q") || "";
   const activeType = params.get("type") || "";
   const activeCategory = params.get("category") || "";
+
+  // Typing isi local state se hoti hai, isliye cursor kabhi jump nahi karta
+  const [searchText, setSearchText] = useState(urlQuery);
+
+  // Last value jo humne khud URL me push ki (back/forward detect karne ke liye)
+  const pushedRef = useRef(urlQuery);
+
+  /* =========================================================
+     SEARCH SYNC
+     ========================================================= */
+
+  // typing -> URL (debounced)
+  useEffect(() => {
+    if (searchText === pushedRef.current) return undefined;
+
+    const t = setTimeout(() => {
+      pushedRef.current = searchText;
+
+      const next = new URLSearchParams(params);
+      if (searchText) next.set("q", searchText);
+      else next.delete("q");
+
+      setParams(next, { replace: true });
+    }, 250);
+
+    return () => clearTimeout(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchText]);
+
+  // URL -> input (sirf jab URL bahar se badle, jaise back button)
+  useEffect(() => {
+    if (urlQuery !== pushedRef.current) {
+      pushedRef.current = urlQuery;
+      setSearchText(urlQuery);
+    }
+  }, [urlQuery]);
 
   /* =========================================================
      FETCH ALL COURSES — no filtering, no exclusions
@@ -46,8 +82,6 @@ export default function Courses() {
 
   /* =========================================================
      DYNAMIC TYPES — pulled from actual API data
-     So "PG Diploma" shows up automatically even if the
-     casing is different ("Pg Diploma", "PG diploma", etc.)
      ========================================================= */
   const types = useMemo(() => {
     if (!courses) return [];
@@ -68,7 +102,7 @@ export default function Courses() {
      ========================================================= */
   const filtered = useMemo(() => {
     if (!courses) return [];
-    const q = query.trim().toLowerCase();
+    const q = searchText.trim().toLowerCase();
 
     return courses.filter((c) => {
       // Type filter (case-insensitive)
@@ -80,10 +114,7 @@ export default function Courses() {
       }
 
       // Category filter
-      if (
-        activeCategory &&
-        (c.category?.name || "") !== activeCategory
-      ) {
+      if (activeCategory && (c.category?.name || "") !== activeCategory) {
         return false;
       }
 
@@ -92,12 +123,18 @@ export default function Courses() {
 
       return true;
     });
-  }, [courses, query, activeType, activeCategory]);
+  }, [courses, searchText, activeType, activeCategory]);
 
+  // type / category ke liye (search ka text bhi saath rakhta hai)
   function updateParam(key, value) {
     const next = new URLSearchParams(params);
     if (value) next.set(key, value);
     else next.delete(key);
+
+    if (searchText) next.set("q", searchText);
+    else next.delete("q");
+
+    pushedRef.current = searchText;
     setParams(next, { replace: true });
   }
 
@@ -121,8 +158,8 @@ export default function Courses() {
             <input
               type="search"
               placeholder="Search by program name"
-              value={query}
-              onChange={(e) => updateParam("q", e.target.value)}
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
               className="catalog-search"
               aria-label="Search programs"
             />

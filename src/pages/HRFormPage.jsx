@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import "./HRFormPage.css";
 
 // =====================================================
@@ -27,54 +27,105 @@ const initialForm = {
   leaving: "",
 };
 
+// Input / textarea / select ke andar normal editing (copy, cut, select all) allow rahe
+const isFormField = (el) => {
+  const tag = el?.tagName;
+  return tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT";
+};
+
 export default function HRFormPage() {
   const [form, setForm] = useState(initialForm);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [success, setSuccess] = useState(false);
 
-  // Anti-screenshot: content hidden state
-  const [hidden, setHidden] = useState(false);
+  // Content hide hone ke do reason:
+  // 1) keyHidden  -> PrintScreen / Mac screenshot shortcut dabaya
+  // 2) awayHidden -> window focus gaya (Snipping Tool, tab switch, etc.)
+  const [keyHidden, setKeyHidden] = useState(false);
+  const [awayHidden, setAwayHidden] = useState(false);
+  const hidden = keyHidden || awayHidden;
 
   // =====================================================
-  // ANTI-SCREENSHOT PROTECTION
+  // WATERMARK (screenshot leak hone par trace karne ke liye)
+  // =====================================================
+  const watermarkStyle = useMemo(() => {
+    const stamp = new Date().toLocaleString("en-IN", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+
+    const svg =
+      `<svg xmlns='http://www.w3.org/2000/svg' width='360' height='220'>` +
+      `<text x='20' y='120' transform='rotate(-25 180 110)' ` +
+      `font-family='Arial, sans-serif' font-size='15' font-weight='700' ` +
+      `fill='rgba(16,47,82,0.10)'>MGA CONFIDENTIAL - ${stamp}</text>` +
+      `</svg>`;
+
+    return {
+      backgroundImage: `url("data:image/svg+xml;utf8,${encodeURIComponent(svg)}")`,
+    };
+  }, []);
+
+  // =====================================================
+  // COPY / SCREENSHOT DETERRENTS
+  // NOTE: browser mein screenshot 100% block nahi ho sakta.
+  // Yeh sirf rukawat aur deterrent hai.
   // =====================================================
   useEffect(() => {
+    let keyTimer;
+
+    const hideTemporarily = (ms = 1500) => {
+      setKeyHidden(true);
+      clearTimeout(keyTimer);
+      keyTimer = setTimeout(() => setKeyHidden(false), ms);
+    };
+
     // 1) Right click block
     const handleContextMenu = (e) => e.preventDefault();
 
-    // 2) Copy / cut block
-    const handleCopy = (e) => e.preventDefault();
-    const handleCut = (e) => e.preventDefault();
-
-    // 3) Drag block (images/text)
-    const handleDragStart = (e) => e.preventDefault();
-
-    // 4) Select start block (text selection)
-    const handleSelectStart = (e) => {
-      const tag = e.target?.tagName;
-      // Allow typing in form fields
-      if (tag === "INPUT" || tag === "TEXTAREA") return;
+    // 2) Copy / cut block (form fields ke andar allow)
+    const handleCopy = (e) => {
+      if (isFormField(e.target)) return;
+      e.preventDefault();
+    };
+    const handleCut = (e) => {
+      if (isFormField(e.target)) return;
       e.preventDefault();
     };
 
-    // 5) Keyboard shortcuts block
+    // 3) Drag block
+    const handleDragStart = (e) => e.preventDefault();
+
+    // 4) Text selection block (form fields ke andar allow)
+    const handleSelectStart = (e) => {
+      if (isFormField(e.target)) return;
+      e.preventDefault();
+    };
+
+    // 5) Keyboard shortcuts
     const handleKeyDown = (e) => {
       const k = e.key?.toLowerCase();
+      const mod = e.ctrlKey || e.metaKey;
 
-      // Ctrl/Cmd + P (print), S (save), U (view source), A (select all)
-      if ((e.ctrlKey || e.metaKey) && ["p", "s", "u", "a"].includes(k)) {
+      // Ctrl/Cmd + P (print), S (save), U (view source)
+      if (mod && ["p", "s", "u"].includes(k)) {
         e.preventDefault();
         e.stopPropagation();
         return false;
       }
 
+      // Ctrl/Cmd + A (select all): sirf page par block, form fields mein allow
+      if (mod && k === "a" && !isFormField(e.target)) {
+        e.preventDefault();
+        return false;
+      }
+
       // Ctrl/Cmd + Shift + I / J / C (devtools)
-      if (
-        (e.ctrlKey || e.metaKey) &&
-        e.shiftKey &&
-        ["i", "j", "c"].includes(k)
-      ) {
+      if (mod && e.shiftKey && ["i", "j", "c"].includes(k)) {
         e.preventDefault();
         return false;
       }
@@ -85,25 +136,44 @@ export default function HRFormPage() {
         return false;
       }
 
-      // PrintScreen — content hide karo (screenshot avoid)
+      // Mac screenshot shortcuts: Cmd + Shift + 3 / 4 / 5
+      if (e.metaKey && e.shiftKey && ["3", "4", "5", "#", "$", "%"].includes(e.key)) {
+        hideTemporarily(2000);
+      }
+
+      // Windows Snip shortcut: Win + Shift + S
+      if (e.metaKey && e.shiftKey && k === "s") {
+        hideTemporarily(2000);
+      }
+
+      // PrintScreen
       if (e.key === "PrintScreen" || k === "printscreen") {
-        // Clipboard ko blank kar do (best effort — sirf modern browsers mein)
         try {
           navigator.clipboard.writeText("");
         } catch {
           /* ignore */
         }
-        setHidden(true);
-        setTimeout(() => setHidden(false), 1200);
+        hideTemporarily(1500);
       }
     };
 
-    // 6) KeyUp par bhi PrintScreen check (kuch browsers keydown miss karte hain)
+    // PrintScreen kuch browsers mein sirf keyup par aata hai
     const handleKeyUp = (e) => {
       if (e.key === "PrintScreen") {
-        setHidden(true);
-        setTimeout(() => setHidden(false), 1200);
+        try {
+          navigator.clipboard.writeText("");
+        } catch {
+          /* ignore */
+        }
+        hideTemporarily(1500);
       }
+    };
+
+    // 6) Window focus gaya (Snipping Tool, tab switch, devtools click) -> content hide
+    const handleWindowBlur = () => setAwayHidden(true);
+    const handleWindowFocus = () => setAwayHidden(false);
+    const handleVisibility = () => {
+      setAwayHidden(document.visibilityState === "hidden");
     };
 
     document.addEventListener("contextmenu", handleContextMenu);
@@ -113,8 +183,12 @@ export default function HRFormPage() {
     document.addEventListener("selectstart", handleSelectStart);
     document.addEventListener("keydown", handleKeyDown);
     document.addEventListener("keyup", handleKeyUp);
+    document.addEventListener("visibilitychange", handleVisibility);
+    window.addEventListener("blur", handleWindowBlur);
+    window.addEventListener("focus", handleWindowFocus);
 
     return () => {
+      clearTimeout(keyTimer);
       document.removeEventListener("contextmenu", handleContextMenu);
       document.removeEventListener("copy", handleCopy);
       document.removeEventListener("cut", handleCut);
@@ -122,6 +196,9 @@ export default function HRFormPage() {
       document.removeEventListener("selectstart", handleSelectStart);
       document.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("keyup", handleKeyUp);
+      document.removeEventListener("visibilitychange", handleVisibility);
+      window.removeEventListener("blur", handleWindowBlur);
+      window.removeEventListener("focus", handleWindowFocus);
     };
   }, []);
 
@@ -171,10 +248,11 @@ export default function HRFormPage() {
     <section
       className={`hr-page ${hidden ? "is-hidden" : ""}`}
       onContextMenu={(e) => e.preventDefault()}
-      onCopy={(e) => e.preventDefault()}
-      onCut={(e) => e.preventDefault()}
       onDragStart={(e) => e.preventDefault()}
     >
+      {/* Watermark: poore page par halka repeating text */}
+      <div className="hr-watermark" style={watermarkStyle} aria-hidden="true" />
+
       <div className="hr-container">
         {/* HEADER */}
         <div className="hr-header">
@@ -371,9 +449,7 @@ export default function HRFormPage() {
             </div>
 
             <div className="form-group">
-              <label>
-                Reason for leaving current/previous company
-              </label>
+              <label>Reason for leaving current/previous company</label>
               <textarea
                 name="leaving"
                 value={form.leaving}
@@ -396,11 +472,7 @@ export default function HRFormPage() {
           )}
 
           {/* SUBMIT */}
-          <button
-            type="submit"
-            className="submit-btn"
-            disabled={loading}
-          >
+          <button type="submit" className="submit-btn" disabled={loading}>
             {loading ? "Submitting..." : "Submit Application"}
           </button>
 
@@ -412,11 +484,15 @@ export default function HRFormPage() {
         </form>
       </div>
 
-      {/* PrintScreen overlay — jab user PrintScreen dabaye */}
+      {/* Overlay: screenshot shortcut ya window focus jaane par */}
       {hidden && (
         <div className="anti-screenshot-overlay" aria-hidden="true">
           <div className="anti-screenshot-box">
-            <p>Screenshots are not allowed on this page.</p>
+            <p>
+              {keyHidden
+                ? "Screenshots are not allowed on this page."
+                : "Content is hidden while this window is not active. Return to this tab to continue."}
+            </p>
           </div>
         </div>
       )}

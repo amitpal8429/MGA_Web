@@ -27,7 +27,7 @@ const REDIRECTS = {
  
   "fellowship-in-orthopedics": "fellowship-in-orthopedic",
   "fellowship-in-pediatrics-neurology": "fellowship-in-pediatric-neurology",
-
+"fellowship-in-clinical-embryology":"fellowship-in-embryology",
 
   "fellowship-in-pediatric-ophthalmology": "fellowship-in-pediatric-ophthalmology-strabismus",
   "fellowship-in-pediatrics-endocrinology": "fellowship-in-endocrinology",
