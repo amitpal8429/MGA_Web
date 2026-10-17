@@ -36,6 +36,7 @@ import BreadcrumbSchema from "../components/BreadcrumbSchema";
 import ImageObjectSchema from "../components/ImageObjectSchema";
 import MetaDescription from "../components/MetaDescription";
 import ReviewSlider from "../components/ReviewSlider";
+import NotFound from "./NotFound";
 
 import {
   formatINR,
@@ -180,12 +181,20 @@ const COURSE_OUTCOMES = [
   "Manage common outpatient presentations across age groups with a structured approach",
   "Apply preventive-care and chronic-disease frameworks in daily OPD practice",
   "Strengthen clinical reasoning through case-based discussion",
-  "Add a UK CPD & ACTD accredited credential to your professional profile",
+  "Add a UK CPD Or ACTD accredited credential to your professional profile",
 ];
 
 /* =========================================================
    CERTIFICATE IMAGES
    ========================================================= */
+
+/* CPD certificate: pehle PDF ko JPG/PNG me export karke WordPress me upload karo,
+   phir uska URL yahan CPD_CERTIFICATE_IMAGE me paste karo.
+   Click karne par PDF khulega. */
+const CPD_CERTIFICATE_IMAGE =
+  "https://medicalglobalacademy.com/wp-content/uploads/2026/10/WhatsApp-Image-2026-10-17-at-10.15.41-AM.jpeg";
+const CPD_CERTIFICATE_PDF =
+  "https://medicalglobalacademy.com/wp-content/uploads/2026/10/Accreditation-Certificate-Medical-Global-Academy.pdf";
 
 const CERTIFICATE_IMAGES = [
   {
@@ -195,10 +204,11 @@ const CERTIFICATE_IMAGES = [
   },
   {
     id: 2,
-    src: "https://medicalglobalacademy.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-22-at-3.51.36-PM.jpeg",
-    alt: "Certificate sample 2",
+    src: CPD_CERTIFICATE_IMAGE,
+    alt: "CPD accreditation certificate – Medical Global Academy",
+    href: CPD_CERTIFICATE_PDF,
   },
-];
+].filter((img) => img.src);
 
 /* =========================================================
    ACCREDITATION LOGOS
@@ -452,6 +462,19 @@ const PAGE_CSS = `
     color: #596b7e;
     font-size: 15px;
     line-height: 1.65;
+  }
+
+  .mga-accreditation-cert-link {
+    color: #1f7ac4;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-align: center;
+  }
+
+  .mga-accreditation-cert-link:hover {
+    color: #1867a8;
   }
 
   .mga-course-audience-section {
@@ -1134,12 +1157,32 @@ export default function CourseDetail() {
     fetchCourseDetails(fetchSlug)
       .then((data) => {
         if (cancelled) return;
-        setCourse(data);
+
+        /* API 200 de kar bhi khali / invalid data de to bhi 404 maano */
+        const course = Array.isArray(data) ? data[0] : data;
+        const isEmpty =
+          !course ||
+          typeof course !== "object" ||
+          !(course.name || course.slug || course.id);
+
+        if (isEmpty) {
+          setError("notfound");
+          return;
+        }
+
+        setCourse(course);
       })
       .catch((e) => {
-        if (!cancelled) {
-          setError(e.status === 404 ? "notfound" : e.message);
-        }
+        if (cancelled) return;
+
+        const status = Number(e?.status ?? e?.response?.status);
+        const msg = String(e?.message || "");
+
+        const isNotFound =
+          [400, 404, 410].includes(status) ||
+          /not\s*found|404|no course|does not exist|invalid/i.test(msg);
+
+        setError(isNotFound ? "notfound" : msg || "Something went wrong");
       });
 
     return () => {
@@ -1185,16 +1228,14 @@ export default function CourseDetail() {
 
   if (error === "notfound") {
     return (
-      <div className="wrap detail-error">
-        <ErrorState
-          title="We couldn't find that program"
-          message="It may have been renamed or removed from the catalog."
-        />
+      <>
+        <Helmet>
+          <title>Page not found | Medical Global Academy</title>
+          <meta name="robots" content="noindex, follow" />
+        </Helmet>
 
-        <Link to="/courses" className="btn btn-primary">
-          Back to all programs
-        </Link>
-      </div>
+        <NotFound />
+      </>
     );
   }
 
@@ -2207,6 +2248,53 @@ export default function CourseDetail() {
                   </>
                 );
 
+                const linkStyle = {
+                  textDecoration: "none",
+                  color: "inherit",
+                  cursor: "pointer",
+                };
+
+                /* CPD item: verify link + certificate PDF link
+                   (nested <a> invalid hota hai, isliye alag rakhe hain) */
+                if (item.certificateHref) {
+                  return (
+                    <div
+                      key={item.id}
+                      className="accreditation-item"
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        gap: 8,
+                      }}
+                    >
+                      {item.href ? (
+                        <a
+                          href={item.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{ ...linkStyle, display: "contents" }}
+                          aria-label={`${item.name} - verify accreditation (opens in new tab)`}
+                        >
+                          {content}
+                        </a>
+                      ) : (
+                        content
+                      )}
+
+                      <a
+                        href={item.certificateHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mga-accreditation-cert-link"
+                        aria-label={`${item.name} - view accreditation certificate PDF (opens in new tab)`}
+                      >
+                        View certificate (PDF)
+                      </a>
+                    </div>
+                  );
+                }
+
                 return item.href ? (
                   <a
                     key={item.id}
@@ -2214,11 +2302,7 @@ export default function CourseDetail() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="accreditation-item"
-                    style={{
-                      textDecoration: "none",
-                      color: "inherit",
-                      cursor: "pointer",
-                    }}
+                    style={linkStyle}
                     aria-label={`${item.name} - verify accreditation (opens in new tab)`}
                   >
                     {content}
@@ -2251,25 +2335,44 @@ export default function CourseDetail() {
             </p>
 
             <div className="certificate-gallery">
-              {CERTIFICATE_IMAGES.map((img) => (
-                <div
-                  key={img.id}
-                  className="certificate-image-wrap"
-                  onContextMenu={(e) => e.preventDefault()}
-                >
-                  <img
-                    src={img.src}
-                    alt={img.alt}
-                    className="certificate-image"
-                    loading="lazy"
-                    draggable={false}
+              {CERTIFICATE_IMAGES.map((img) => {
+                const inner = (
+                  <div
+                    className="certificate-image-wrap"
                     onContextMenu={(e) => e.preventDefault()}
-                    onDragStart={(e) => e.preventDefault()}
-                  />
+                  >
+                    <img
+                      src={img.src}
+                      alt={img.alt}
+                      className="certificate-image"
+                      loading="lazy"
+                      draggable={false}
+                      onContextMenu={(e) => e.preventDefault()}
+                      onDragStart={(e) => e.preventDefault()}
+                    />
 
-                  <span className="certificate-image-overlay" aria-hidden="true" />
-                </div>
-              ))}
+                    <span
+                      className="certificate-image-overlay"
+                      aria-hidden="true"
+                    />
+                  </div>
+                );
+
+                return img.href ? (
+                  <a
+                    key={img.id}
+                    href={img.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ display: "block", textDecoration: "none" }}
+                    aria-label={`${img.alt} - open PDF (opens in new tab)`}
+                  >
+                    {inner}
+                  </a>
+                ) : (
+                  <div key={img.id}>{inner}</div>
+                );
+              })}
             </div>
           </div>
 

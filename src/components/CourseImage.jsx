@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 
-// BASE_URL se nahi, directly hardcode karo
+
 const ORIGIN = "https://24x7.medicalglobalacademy.com";
 
 function candidatesFor(filename) {

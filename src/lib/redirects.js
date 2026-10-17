@@ -12,10 +12,10 @@ const REDIRECTS = {
   "certificate-in-infection-and-prevention-control": "certificate-in-infection-control-and-prevention",
 
   "fellowship-in-laparoscopy": "fellowship-in-laparoscopic-surgery",
- 
+
   "fellowship-in-pediatric-dermatology": "fellowship-in-pediatrics-dermatology",
   "fellowship-in-pediatric-neonatology": "fellowship-in-pediatrics-neonatology",
-"fellowship-in-cardiac-intervention": "fellowship-in-interventional-cardiology",
+  "fellowship-in-cardiac-intervention": "fellowship-in-interventional-cardiology",
 
   // ✅ Maxillofacial / Oral radiology variants — dono same target
   "fellowship-in-oral-and-maxillofacial-radiology": "fellowship-in-oral-radiology",
@@ -24,10 +24,14 @@ const REDIRECTS = {
   "fellowship-in-gynaecologic-oncology": "fellowship-in-robotic-gynaecological-oncology",
   "fellowship-in-arthroscopy-sports-medicine": "fellowship-in-arthroscopy-and-sports-medicine",
   "fellowship-in-head-and-neck-surgical-oncology": "fellowship-in-head-and-neck-oncosurgery",
- 
+
+  // ✅ FIXED: key/target me trailing "/" nahi hona chahiye
+  // (getRedirectSlug pehle slash hata deta hai, phir match karta hai)
+  "fellowship-in-clinical-neurology": "fellowship-in-neurology",
+
   "fellowship-in-orthopedics": "fellowship-in-orthopedic",
   "fellowship-in-pediatrics-neurology": "fellowship-in-pediatric-neurology",
-"fellowship-in-clinical-embryology":"fellowship-in-embryology",
+  "fellowship-in-clinical-embryology": "fellowship-in-embryology",
 
   "fellowship-in-pediatric-ophthalmology": "fellowship-in-pediatric-ophthalmology-strabismus",
   "fellowship-in-pediatrics-endocrinology": "fellowship-in-endocrinology",
@@ -37,12 +41,13 @@ const REDIRECTS = {
   "fellowship-in-clinical-nutrition": "certificate-in-clinical-nutrition-and-dietetics",
   "fellowship-in-laparoscopy-hysteroscopy": "fellowship-in-laparoscopy-and-hysteroscopy",
   "certificate-in-obstetrics-gynaecology": "certificate-in-obstetrics-and-gynaecology",
-  "fellowship-in-neonatal-surgery": "fellowship-in-neonatology",
+
   "certificate-in-nutrition-and-dietetics": "certificate-in-clinical-nutrition-and-dietetics",
   "fellowship-in-pediatric-genetics-and-metabolic": "fellowship-in-pediatric-genetics-and-metabolism",
   "fellowship-in-orthopaedic": "fellowship-in-orthopedic",
   "fellowship-in-gastrology": "fellowship-in-gastroenterology",
-"pg-diploma-in-reproductive-and-child-health":"pg-diploma-in-reproductive-child-health",
+  "pg-diploma-in-reproductive-and-child-health": "pg-diploma-in-reproductive-child-health",
+
   // ✅ Naya redirect
   "fellowship-in-pediatric-dentistry": "fellowship-in-pedodontist",
 
@@ -174,9 +179,7 @@ const REDIRECTS = {
 
 // 🎭 CONTENT ALIAS: URL apni jagah rahegi (address bar change nahi hoga),
 // sirf backend se CONTENT doosre (target) slug ka fetch hoga.
-export const ALIASES = {
- 
-};
+export const ALIASES = {};
 
 export function getRedirectSlug(slug) {
   if (!slug) return null;

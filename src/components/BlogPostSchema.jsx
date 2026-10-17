@@ -7,16 +7,16 @@ export default function BlogPostSchema({
   description,
   url,
   image,
-  datePublished, // ISO string
+  datePublished, 
   dateModified,
-  keywords, // "a, b, c"
+  keywords, 
   authorName = SITE.name,
   authorUrl,
 
   breadcrumbParentLabel = "Blog",
   breadcrumbParentUrl = `${SITE.url}/blog`,
 
-  // [{question, answer}] ya [{q, a}] dono chalenge
+
   faqItems = [],
 }) {
   if (!title || !url) return null;

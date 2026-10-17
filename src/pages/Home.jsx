@@ -25,6 +25,10 @@ const HOME_TITLE = "Online Medical Courses: Fellowship, PG Diploma & Certificate
 const HOME_DESCRIPTION =
   "Certificate, PG Diploma and fellowship programs for doctors across medicine and surgery. UK CPD accredited, live online classes, 1-year mentorship.";
 
+/* Course type detection (case-insensitive) */
+const PG_TYPE_RE = /\bpg\b|post[\s-]?graduate|diploma/i;
+const CERT_TYPE_RE = /certificate/i;
+
 const FEATURES = [
   {
     icon: GraduationCap,
@@ -130,9 +134,16 @@ export default function Home() {
 
   const stats = useMemo(() => {
     if (!courses) return null;
+
+    const typeOf = (c) => String(c.type || "");
+
     return {
       total: courses.length,
       fellowships: courses.filter((c) => c.type === "Fellowship").length,
+      pgDiplomas: courses.filter((c) => PG_TYPE_RE.test(typeOf(c))).length,
+      certificates: courses.filter(
+        (c) => CERT_TYPE_RE.test(typeOf(c)) && !PG_TYPE_RE.test(typeOf(c))
+      ).length,
       faculty: faculty?.length ?? null,
     };
   }, [courses, faculty]);
@@ -195,6 +206,18 @@ export default function Home() {
                 <span><strong>{stats.total}+</strong> active programs</span>
                 <span className="dot" />
                 <span><strong>{stats.fellowships}+</strong> fellowships</span>
+                {stats.certificates > 0 && (
+                  <>
+                    <span className="dot" />
+                    <span><strong>{stats.certificates}+</strong> certificates</span>
+                  </>
+                )}
+                {stats.pgDiplomas > 0 && (
+                  <>
+                    <span className="dot" />
+                    <span><strong>{stats.pgDiplomas}+</strong> PG diplomas</span>
+                  </>
+                )}
                 {stats.faculty && (
                   <>
                     <span className="dot" />

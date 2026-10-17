@@ -1,57 +1,35 @@
-// src/lib/courseSeo.js
-// Har course ka SEO data. Key = page ka slug (URL ka last part).
-// Har field page ke ek specific tag ki jagah aati hai (sheet ke "Use" column ke hisaab se).
-//
-// Field -> page par kahan dikhta hai:
-//   h1             -> H1
-//   metaTitle      -> <title>
-//   metaDescription-> meta description
-//   overviewH2     -> Overview ka H2            (+ intro = opening para)
-//   deliveryH2     -> Program Highlights ka H2  ("delivery section")
-//   eligibilityH2  -> Eligibility ka H2
-//   curriculumH2   -> Curriculum ka H2
-//   learnH2        -> "What you'll learn" ka H2
-//   detailsH3      -> PG Note ka H3             ("course details section")
-//   overviewH3     -> Overview ke neeche H3     ("course overview")
-//   curriculumH3   -> Curriculum ke neeche H3
-//   faqs           -> FAQ (Body / FAQ)
-//   ctaText        -> Enroll button ke upar line (Body / CTA)
+
 
 export const COURSE_SEO = {
-  /* =======================================================
-     1) PG Diploma in Reproductive Child Health
-     ======================================================= */
+
   "pg-diploma-in-reproductive-child-health": {
-    // Primary: H1, Title, URL
+   
     h1: "PG Diploma in Reproductive Child Health: Build Skills in Maternal & Child Care",
     metaTitle: "PG Diploma in Reproductive Child Health for Doctors",
 
-    // H2, Meta Description: rch diploma for mbbs doctors
+
     metaDescription:
       "A 12-month RCH diploma for MBBS doctors covering antenatal, postnatal, newborn and child healthcare. CPD & ACTD accredited.",
     learnH2: "What You'll Learn in the RCH Diploma for MBBS Doctors",
 
-    // H2, opening para: reproductive and child health programme for doctors
+  
     overviewH2: "Reproductive and Child Health Programme for Doctors",
     intro:
       "This reproductive and child health programme for doctors builds practical skills in maternal and child care through a structured, self-paced format.",
 
-    // H2, eligibility section: diploma in reproductive medicine
+  
     eligibilityH2: "Diploma in Reproductive Medicine: Eligibility",
 
-    // H2, curriculum section: reproductive health and family planning diploma
     curriculumH2: "Reproductive Health and Family Planning Diploma Curriculum",
 
-    // H3, course details section: 12 month reproductive child health diploma
+   
     detailsH3: "12 Month Reproductive Child Health Diploma",
 
-    // H3, curriculum section: antenatal postnatal and newborn care diploma
     curriculumH3: "Antenatal Postnatal and Newborn Care Diploma",
 
-    // H3, course overview: reproductive and child health programme india
+   
     overviewH3: "Reproductive and Child Health Programme India",
 
-    // Body / FAQ: self-paced rch programme for doctors
     faqs: [
       {
         q: "Is this a self-paced RCH programme for doctors?",
@@ -63,46 +41,38 @@ export const COURSE_SEO = {
       },
     ],
 
-    // Body / CTA: reproductive child health course after mbbs
+   
     ctaText: "Start your reproductive child health course after MBBS today.",
   },
 
-  /* =======================================================
-     2) PG Diploma in Obstetrics and Gynaecology
-     NOTE: sheet mein URL, H1 aur Meta Description kat gaye the.
-     Slug aur H1 ka aakhri hissa confirm kar lena.
-     ======================================================= */
+
   "pg-diploma-in-obstetrics-and-gynaecology": {
-    // Primary: H1, Title, URL: diploma in gynaecology and obstetrics
+
     h1: "Diploma in Gynaecology and Obstetrics: Build Core Skills in Women's Health",
     metaTitle: "Diploma in Gynaecology and Obstetrics for Doctors",
 
-    // H2, Meta Description: postgraduate diploma in obstetrics and gynaecology
     metaDescription:
       "Learn online with MGA's 12-month postgraduate diploma in obstetrics and gynaecology for doctors. CPD & ACTD accredited.",
     learnH2: "What You'll Learn in the Postgraduate Diploma in Obstetrics and Gynaecology",
 
-    // H2, opening para: diploma in gynaecology and obstetrics course
     overviewH2: "Diploma in Gynaecology and Obstetrics Course",
     intro:
       "This diploma in gynaecology and obstetrics course helps doctors build core clinical skills in antenatal care, labour, delivery and women's health through a structured online format.",
 
-    // H2, delivery section: pg diploma in obstetrics and gynaecology
+
     deliveryH2: "PG Diploma in Obstetrics and Gynaecology",
 
-    // H2, eligibility section: diploma in gynaecology and obstetrics for doctors
     eligibilityH2: "Diploma in Gynaecology and Obstetrics for Doctors: Eligibility",
 
-    // H3, course details section: 12 month diploma in obstetrics and gynaecology
+
     detailsH3: "12 Month Diploma in Obstetrics and Gynaecology",
 
-    // H3, course overview: women's health diploma course for doctors
     overviewH3: "Women's Health Diploma Course for Doctors",
 
-    // H3, curriculum section: obstetrics and gynaecology diploma after mbbs
+ 
     curriculumH3: "Obstetrics and Gynaecology Diploma After MBBS",
 
-    // Body / FAQ: diploma in gynaecology and obstetrics fees
+ 
     faqs: [
       {
         q: "What are the diploma in gynaecology and obstetrics fees?",
@@ -114,15 +84,455 @@ export const COURSE_SEO = {
       },
     ],
 
-    // Body / CTA: online diploma in obstetrics and gynaecology india
     ctaText: "Enrol in the online diploma in obstetrics and gynaecology India today.",
   },
 
-  /* =======================================================
-     CERTIFICATE COURSES (sheet se add kiye gaye)
-     Sirf h1 / metaTitle / metaDescription sheet mein the,
-     baaki fields (H2/H3/FAQ/CTA) jab ready ho tab add karna.
-     ======================================================= */
+
+
+  "pg-diploma-in-endocrinology": {
+    h1: "Post Graduate Diploma in Endocrinology: Build Skills in Hormone & Metabolic Care",
+    metaTitle: "Post Graduate Diploma in Endocrinology for Doctors",
+    metaDescription:
+      "Learn online with MGA’s Post Graduate Diploma in Endocrinology — a 12-month program for MBBS doctors, UK CPD & ACTD accredited, with live mentorship.",
+  },
+
+  "pg-diploma-in-clinical-neurology": {
+    h1: "Diploma in Neurology: Build Clinical Skills in Stroke, Epilepsy & EEG",
+    metaTitle: "Diploma in Neurology for Doctors Online",
+    metaDescription:
+      "Learn online with MGA’s Diploma in Neurology for doctors — a 12-month program covering stroke, epilepsy & EEG, UK CPD & ACTD accredited.",
+  },
+
+  "pg-diploma-in-ultrasonography": {
+    h1: "PG Diploma in Ultrasonography: Build Advanced Imaging Skills",
+    metaTitle: "PG Diploma in Ultrasonography for Doctors in India",
+    metaDescription:
+      "Learn online with MGA’s PG Diploma in Ultrasonography for doctors — 12 months covering abdominal, obstetric & Doppler imaging, UK CPD & ACTD accredited.",
+  },
+
+  "pg-diploma-in-intensive-care": {
+    h1: "PG Diploma in Intensive Care: Build Critical ICU Skills",
+    metaTitle: "PG Diploma in Intensive Care for Doctors in India",
+    metaDescription:
+      "Learn online with MGA’s PG Diploma in Intensive Care for doctors — 12 months covering ventilator management & ICU protocols, UK CPD & ACTD accredited.",
+  },
+
+  "pg-diploma-in-respiratory-medicine": {
+    h1: "PG Diploma in Respiratory Medicine: Master Asthma & COPD Care",
+    metaTitle: "PG Diploma in Respiratory Medicine for Doctors in India",
+    metaDescription:
+      "Learn online with MGA’s PG Diploma in Respiratory Medicine for doctors — covering asthma, COPD & pulmonary diagnostics, UK CPD & ACTD accredited.",
+  },
+
+  "pg-diploma-in-clinical-psychiatry": {
+    h1: "PG Dip in Clinical Psychiatry: Master Psychiatric Assessment",
+    metaTitle: "PG Dip in Clinical Psychiatry for Doctors in India",
+    metaDescription:
+      "Learn online with MGA’s PG Dip in Clinical Psychiatry for doctors — covering psychiatric assessment & psychopharmacology, UK CPD & ACTD accredited.",
+  },
+
+  "pg-diploma-in-oncology": {
+    h1: "PG Diploma in Oncology: Build Skills in Cancer Diagnosis & Care",
+    metaTitle: "PG Diploma in Oncology for Doctors Across India",
+    metaDescription:
+      "Strengthen your cancer diagnosis, chemotherapy and palliative care skills through this 12-month PG Diploma in Oncology, CPD & ACTD accredited.",
+  },
+
+  "pg-diploma-in-renal-medicine": {
+    h1: "PG Diploma in Renal Medicine: Master Kidney Disease & Dialysis Care",
+    metaTitle: "PG Diploma in Renal Medicine for Doctors in India",
+    metaDescription:
+      "Build expertise in CKD, AKI and dialysis care with this PG Diploma in Renal Medicine for MBBS/MD doctors — CPD & ACTD accredited credential.",
+  },
+
+  "pg-diploma-in-cosmetology-and-aesthetic-medicine": {
+    h1: "PG Diploma in Clinical Cosmetology and Aesthetics: Master Injectables & Laser Aesthetics",
+    metaTitle: "PG Diploma in Clinical Cosmetology and Aesthetics",
+    metaDescription:
+      "Master Botox, fillers, lasers and skin rejuvenation with this PG Diploma in Clinical Cosmetology and Aesthetics for MBBS doctors — CPD & ACTD accredited.",
+  },
+
+  "pg-diploma-in-maternal-and-child-health": {
+    h1: "Post Graduate Diploma in Maternal and Child Health: Strengthen Antenatal to Pediatric Care Skills",
+    metaTitle: "Post Graduate Diploma in Maternal and Child Health",
+    metaDescription:
+      "Build expertise in antenatal and newborn care with this Post Graduate Diploma in Maternal and Child Health for MBBS doctors — CPD & ACTD accredited.",
+  },
+
+  "pg-diploma-in-orthopedics": {
+    h1: "PG Diploma in Orthopedics: Strengthen Trauma, Fracture & Joint Care Skills",
+    metaTitle: "PG Diploma in Orthopedics for Doctors in India",
+    // NOTE: sheet mein description ke shuru mein ": " tha -- hata diya
+    metaDescription:
+      "Build skills in fracture management, trauma care and joint disorders with this PG Diploma in Orthopedics for doctors — CPD & ACTD accredited.",
+  },
+
+  // NOTE: sheet mein indexing status "submit" hai -- confirm kar lena ki page live hai
+  "pg-diploma-in-gastroenterology": {
+    h1: "PG Diploma in Gastroenterology: Master GI & Hepatology Clinical Skills",
+    metaTitle: "PG Diploma in Gastroenterology for Doctors in India",
+    metaDescription:
+      "Build expertise in GERD, IBD, hepatology and GI endoscopy with this PG Diploma in Gastroenterology for doctors — CPD & ACTD accredited.",
+  },
+
+  "pg-diploma-in-critical-care": {
+    h1: "PG Diploma in Critical Care: Master ICU Protocols & Ventilator Management",
+    metaTitle: "PG Diploma in Critical Care Online in India",
+    metaDescription:
+      "Build expertise in ICU protocols, ventilator management and sepsis care with this PG Diploma in Critical Care for doctors — CPD & ACTD accredited.",
+  },
+
+  "pg-diploma-in-clinical-cardiology": {
+    h1: "PG Diploma in Clinical Cardiology: Master ECG, Echo & Cardiac Care Skills",
+    metaTitle: "PG Diploma in Clinical Cardiology for Doctors in India",
+    metaDescription:
+      "Build expertise in ECG, echocardiography and cardiac care with this PG Diploma in Clinical Cardiology for doctors — CPD & ACTD accredited.",
+  },
+
+  "pg-diploma-in-dermatology": {
+    h1: "PG Diploma in Dermatology: Master Clinical & Cosmetic Skin Care Skills",
+    metaTitle: "PG Diploma in Dermatology: 12-Month Online Program",
+    metaDescription:
+      "Build expertise in clinical and cosmetic dermatology with this PG Diploma in Dermatology for doctors — CPD & ACTD accredited, 12-month program.",
+  },
+
+  // NOTE: sheet mein URL trailing slash ke saath tha (/pg-diploma-in-embryology/) -- slug bina slash ke
+  "pg-diploma-in-embryology": {
+    h1: "PG Diploma in Clinical Embryology: Build IVF and ART Expertise",
+    metaTitle: "PG Diploma in Clinical Embryology India – CPD Accredited",
+    metaDescription:
+      "This postgraduate diploma in embryology covers ICSI, embryo culture and cryopreservation for doctors — CPD & ACTD accredited clinical embryology program.",
+  },
+
+  "pg-diploma-in-general-medicine": {
+    h1: "PG Diploma in General Medicine: Strengthen Core Clinical Skills",
+    metaTitle: "PG Diploma in General Medicine for Doctors in India",
+    metaDescription:
+      "Build skills in diabetes, hypertension and infectious disease management with this PG Diploma in General Medicine for doctors — CPD & ACTD accredited.",
+  },
+
+  "pg-diploma-in-pathology": {
+    h1: "PG Diploma in Pathology: Build Diagnostic Pathology Expertise",
+    metaTitle: "PG Diploma in Pathology for Doctors – CPD Accredited",
+    metaDescription:
+      "This PG Diploma in Pathology covers histopathology, microbiology and lab diagnosis for doctors — CPD & ACTD accredited, 12-month hybrid program.",
+  },
+
+  "pg-diploma-in-emergency-medicine": {
+    h1: "PG Diploma in Emergency Medicine: Build Trauma and Critical Care Skills",
+    metaTitle: "PG Diploma in Emergency Medicine – CPD & ACTD Accredited",
+    metaDescription:
+      "This PG Diploma in Emergency Medicine builds trauma, ACLS and critical-care skills for doctors — CPD & ACTD accredited, 12-month hybrid program.",
+  },
+
+  "pg-diploma-in-child-health": {
+    h1: "PG Diploma in Child Health: Gain the Skills Every Child Deserves",
+    metaTitle: "PG Diploma in Child Health – Skills That Save Lives",
+    metaDescription:
+      "This PG Diploma in Child Health turns everyday care into life-saving skill — pediatric diagnosis, emergencies and treatment, CPD & ACTD accredited.",
+  },
+
+  "pg-diploma-in-diabetology": {
+    h1: "PG Diploma in Diabetology: Build Expertise in Diabetes Care",
+    metaTitle: "PG Diploma in Diabetology – Master Diabetes Care",
+    metaDescription:
+      "This PG Diploma in Diabetology builds diabetes care skills for doctors, available Online or Hybrid — CPD & ACTD accredited, 12-month program.",
+  },
+
+  "pg-diploma-in-family-medicine": {
+    h1: "PG Diploma in Family Medicine: Build Whole-Person Care Skills",
+    metaTitle: "PG Diploma in Family Medicine – Care for Every Patient",
+    metaDescription:
+      "This PG Diploma in Family Medicine builds skills to treat patients at every life stage, online or hybrid — CPD & ACTD accredited, 12 months.",
+  },
+
+  "pg-diploma-in-anesthesiology": {
+    h1: "PG Diploma in Anesthesiology: Build Perioperative Care Skills",
+    metaTitle: "PG Diploma in Anesthesiology – Confidence Under Pressure",
+    metaDescription:
+      "This PG Diploma in Anesthesiology builds airway management and perioperative care skills for doctors — CPD & ACTD accredited, 12-month program.",
+  },
+
+  "pg-diploma-in-pulmonary-medicine": {
+    h1: "PG Diploma in Pulmonary Medicine: Build Respiratory Care Expertise",
+    metaTitle: "PG Diploma Pulmonary & Respiratory Medicine | CPD Certified",
+    metaDescription:
+      "This PG Diploma in Pulmonary & Respiratory Medicine builds skills in asthma, COPD and lung disease management for doctors — CPD & ACTD accredited.",
+  },
+
+  "pg-diploma-in-rheumatology": {
+    h1: "PG Diploma in Rheumatology: Strengthen Your Rheumatology Practice",
+    metaTitle: "PG Diploma in Rheumatology – Master Autoimmune & Joint Care",
+    metaDescription:
+      "Earn a PG Diploma in Rheumatology with CPD & ACTD accredited training in autoimmune and joint disorders. Online and hybrid formats for doctors.",
+  },
+
+  "pg-diploma-in-reproductive-and-child-health": {
+    h1: "PG Diploma in Reproductive Medicine: Advance Your Fertility Care Skills",
+    metaTitle: "PG Diploma in Reproductive Medicine – Master ART & Fertility",
+    metaDescription:
+      "Earn a PG Diploma in Reproductive Medicine with CPD & ACTD accredited training in fertility and ART. Online and hybrid formats for doctors. Apply now.",
+  },
+
+  "pg-diploma-in-reproductive-medicine": {
+    h1: "PG Diploma in Reproductive Medicine: Advance Your Fertility Care Skills",
+    metaTitle: "PG Diploma in Reproductive Medicine – Master ART & Fertility",
+    metaDescription:
+      "Earn a PG Diploma in Reproductive Medicine with CPD & ACTD accredited training in fertility and ART. Online and hybrid formats for doctors. Apply now.",
+  },
+
+  "pg-diploma-in-urology": {
+    h1: "PG Diploma in Urology: Build Urological Expertise",
+    metaTitle: "PG Diploma in Urology – Build Expertise in Urological Care",
+    metaDescription:
+      "Earn a PG Diploma in Urology with CPD & ACTD accredited training in urological care. Online and hybrid formats for doctors. Apply now.",
+  },
+
+  "pg-diploma-in-echocardiography": {
+    h1: "PG Diploma in Echocardiography: Build Imaging Skills",
+    metaTitle: "PG Diploma in Echocardiography – Master Cardiac Imaging",
+    metaDescription:
+      "Earn a PG Diploma in Echocardiography with CPD & ACTD accredited training in cardiac imaging. Online and hybrid formats for doctors. Apply now.",
+  },
+
+  "pg-diploma-in-geriatric-medicine": {
+    h1: "PG Diploma in Geriatric Medicine: Core Clinical Skills",
+    metaTitle: "PG Diploma in Geriatric Medicine – Master Elder Care",
+    metaDescription:
+      "Earn a PG Diploma in Geriatric Medicine with CPD & ACTD accredited training in elder care. Online and hybrid formats for doctors. Apply now.",
+  },
+
+  "pg-diploma-in-nephrology": {
+    h1: "PG Diploma in Nephrology: Build Kidney Care Skills",
+    metaTitle: "PG Diploma in Nephrology – Master Kidney Care",
+    metaDescription:
+      "Earn a PG Diploma in Nephrology with CPD & ACTD accredited training in kidney care. Self-paced online learning for doctors. Apply now.",
+  },
+
+  "pg-diploma-in-internal-medicine": {
+    h1: "PG Diploma in Internal Medicine: Core Clinical Skills",
+    metaTitle: "PG Diploma in Internal Medicine – Strengthen Adult Care",
+    metaDescription:
+      "Earn a PG Diploma in Internal Medicine with CPD & ACTD accredited training in adult patient care. Self-paced online learning for doctors. Apply now.",
+  },
+
+  "pg-diploma-in-orthodontics": {
+    h1: "PG Diploma in Orthodontics: Build Clinical Skills",
+    metaTitle: "PG Diploma in Orthodontics – Master Dental Care",
+    metaDescription:
+      "Earn a PG Diploma in Orthodontics with CPD & ACTD accredited training in malocclusion and aligner therapy. Online and hybrid formats. Apply now.",
+  },
+
+  "pg-diploma-in-tuberculosis": {
+    h1: "PG Diploma in Tuberculosis: Core Clinical Skills",
+    metaTitle: "PG Diploma in Tuberculosis – Master TB Care",
+    metaDescription:
+      "Earn a PG Diploma in Tuberculosis with CPD & ACTD accredited training in TB diagnosis and treatment. Self-paced online learning for doctors. Apply now.",
+  },
+
+  "pg-diploma-in-otorhinolaryngology": {
+    h1: "PG Diploma in Otorhinolaryngology: Core ENT Skills",
+    metaTitle: "PG Diploma in Otorhinolaryngology – Master ENT Care",
+    metaDescription:
+      "Earn a PG Diploma in Otorhinolaryngology with CPD & ACTD accredited training in ENT diagnosis and care. Online and hybrid formats. Apply now.",
+  },
+
+  "pg-diploma-in-infertility-management": {
+    h1: "PG Diploma in Infertility Management: Build ART Expertise",
+    metaTitle: "PG Diploma in Infertility Management: Master ART and IVF Care",
+    metaDescription:
+      "Build expertise in ART and IVF with the PG Diploma in Infertility Management for doctors. CPD & ACTD accredited, Online & Hybrid formats.",
+  },
+
+  "pg-diploma-in-pediatrics": {
+    h1: "Postgraduate Diploma in Pediatrics: Build Child Care Skills",
+    metaTitle: "Postgraduate Diploma in Pediatrics: Build Child Care Expertise",
+    metaDescription:
+      "Advance your career with the Postgraduate Diploma in Pediatrics for doctors. CPD & ACTD accredited, Online & Hybrid formats, hands-on clinical training.",
+  },
+
+  "pg-diploma-in-psychiatry-medicine": {
+    h1: "PG Diploma in Psychiatry: Assess and Treat Mental Illness",
+    metaTitle: "Pg Diploma in Psychiatry: Strengthen Mental Health Practice",
+    metaDescription:
+      "Gain psychiatric assessment and treatment skills with the Pg Diploma in Psychiatry for doctors. CPD & ACTD accredited, flexible Online & Hybrid formats.",
+  },
+
+  "pg-diploma-in-addiction-medicine": {
+    h1: "PG Diploma in Addiction Medicine: Guide Patient Recovery",
+    metaTitle: "PG Diploma in Addiction Medicine: Build Treatment Skills",
+    metaDescription:
+      "Gain substance use and recovery treatment skills with the PG Diploma in Addiction Medicine for doctors. CPD & ACTD accredited, Online & Hybrid formats.",
+  },
+
+  "pg-diploma-in-aesthetic-dentistry": {
+    h1: "PG Diploma in Aesthetic Dentistry: Design Confident Smiles",
+    metaTitle: "PG Diploma in Aesthetic Dentistry: Master Smile Design",
+    metaDescription:
+      "Master smile design and cosmetic procedures with the PG Diploma in Aesthetic Dentistry for dentists. CPD & ACTD accredited, Online & Hybrid formats.",
+  },
+
+  "pg-diploma-in-alternative-medicine": {
+    h1: "PG Diploma in Alternative Medicine: Natural Healing Skills",
+    metaTitle: "PG Diploma in Alternative Medicine: Build Holistic Skills",
+    metaDescription:
+      "Blend holistic and conventional care with the PG Diploma in Alternative Medicine for doctors. CPD & ACTD accredited, Online & Hybrid formats.",
+  },
+
+  "pg-diploma-in-anti-aging-medicine": {
+    h1: "PG Diploma in Anti-Aging Medicine: Design Longevity Plans",
+    metaTitle: "PG Diploma in Anti-Aging Medicine: Master Longevity Care",
+    metaDescription:
+      "Master hormone, nutrition and regenerative therapies with the PG Diploma in Anti-Aging Medicine for doctors. CPD & ACTD accredited, Online & Hybrid.",
+  },
+
+  "pg-diploma-in-child-psychiatry": {
+    h1: "PG Diploma in Child Psychiatry: Diagnose Youth Disorders",
+    metaTitle: "PG Diploma in Child Psychiatry: Build Pediatric Skills",
+    metaDescription:
+      "Diagnose and treat ADHD, autism and mood disorders with the PG Diploma in Child Psychiatry for doctors. CPD & ACTD accredited, Online & Hybrid formats.",
+  },
+
+  "pg-diploma-in-cosmetology": {
+    h1: "PG Diploma in Cosmetology: Treat Skin and Hair Conditions",
+    metaTitle: "PG Diploma in Cosmetology: Master Aesthetic Procedures",
+    metaDescription:
+      "Master laser, injectables and skin treatments with the PG Diploma in Cosmetology for doctors. CPD & ACTD accredited, Online & Hybrid formats.",
+  },
+
+  "pg-diploma-in-dental-crown-and-bridges": {
+    h1: "PG Diploma in Dental Crown and Bridges: Master Precision",
+    metaTitle: "PG Diploma in Dental Crown and Bridges: Master Prosthodontics",
+    metaDescription:
+      "Master crown and bridge procedures with the PG Diploma in Dental Crown and Bridges for dentists. CPD & ACTD accredited, Online & Hybrid formats.",
+  },
+
+  "pg-diploma-in-dentistry": {
+    h1: "PG Diploma in Dentistry: Comprehensive Clinical Training",
+    metaTitle: "PG Diploma in Dentistry: Build Comprehensive Dental Skills",
+    metaDescription:
+      "Build skills across oral surgery, prosthodontics and more with the PG Diploma in Dentistry for dentists. CPD & ACTD accredited, Online & Hybrid.",
+  },
+
+  "pg-diploma-in-endodontics": {
+    h1: "PG Diploma in Endodontics: Treat Complex Root Canals",
+    metaTitle: "PG Diploma in Endodontics: Master Root Canal Treatment",
+    metaDescription:
+      "Master root canal diagnosis and treatment with the PG Diploma in Endodontics for dentists. CPD & ACTD accredited, Online & Hybrid formats.",
+  },
+
+  "pg-diploma-in-ent": {
+    h1: "PG Diploma in ENT: Treat Ear, Nose & Throat Disorders",
+    metaTitle: "PG Diploma in ENT: Advance Your Otolaryngology Skills",
+    metaDescription:
+      "Build advanced ENT diagnostic and surgical skills with the PG Diploma in ENT for doctors. CPD & ACTD accredited, Online & Hybrid formats.",
+  },
+
+  "pg-diploma-in-hematology": {
+    h1: "PG Diploma in Hematology: Diagnose & Treat Blood Disorders",
+    metaTitle: "PG Diploma in Hematology: Master Blood Disorder Care",
+    metaDescription:
+      "Build expertise in diagnosing and managing blood disorders with the PG Diploma in Hematology for doctors. CPD & ACTD accredited, Online & Hybrid.",
+  },
+
+  "pg-diploma-in-hospital-management": {
+    h1: "PG Diploma in Hospital & Health Management: Lead Hospitals",
+    metaTitle: "Post Graduate Diploma in Hospital and Health Management",
+    metaDescription:
+      "Build leadership and administrative skills with the Post Graduate Diploma in Hospital and Health Management. CPD & ACTD accredited, Online & Hybrid.",
+  },
+
+  "pg-diploma-in-infectious-diseases": {
+    h1: "PG Diploma in Infectious Diseases: From AMR to Outbreaks",
+    metaTitle: "PG Diploma in Infectious Diseases: Advance Your Expertise",
+    metaDescription:
+      "Build expertise in diagnosing, treating and preventing infections with the PG Diploma in Infectious Diseases. CPD & ACTD accredited, Online & Hybrid.",
+  },
+
+  "pg-diploma-in-musculoskeletal-ultrasound": {
+    h1: "PG Diploma in MSK Ultrasound: Scan & Guide Injections",
+    metaTitle: "PG Diploma in Musculoskeletal Ultrasound: Scan with Confidence",
+    metaDescription:
+      "Master probe technique, sonoanatomy and US-guided procedures with the PG Diploma in Musculoskeletal Ultrasound. CPD & ACTD accredited, Online & Hybrid.",
+  },
+
+  "pg-diploma-in-nutrition-and-dietetics": {
+    h1: "PG Diploma in Nutrition & Dietetics: Guide Patient Diets",
+    metaTitle: "PG Diploma in Nutrition and Dietetics: Prescribe Better Diets",
+    metaDescription:
+      "Build expertise in clinical nutrition and therapeutic diet planning with the PG Diploma in Nutrition and Dietetics for doctors. CPD & ACTD accredited.",
+  },
+
+  "pg-diploma-in-ophthalmology": {
+    h1: "PG Diploma in Ophthalmology: Diagnose & Treat Eye Disorders",
+    metaTitle: "PG Diploma in Ophthalmology: Diagnose & Treat Eye Disorders",
+    metaDescription:
+      "Build advanced diagnostic and surgical skills in eye care with the PG Diploma in Ophthalmology for doctors. CPD & ACTD accredited, Online & Hybrid.",
+  },
+
+  "pg-diploma-in-oral-implantology": {
+    h1: "PG Diploma in Oral Implantology: Plan, Place & Restore",
+    metaTitle: "PG Diploma in Oral Implantology: Master Implant Surgery",
+    metaDescription:
+      "Master implant placement, bone grafting and prosthetic restoration with the PG Diploma in Oral Implantology for dentists. CPD & ACTD accredited.",
+  },
+
+  "pg-diploma-in-oral-medicine": {
+    h1: "PG Diploma in Oral Medicine: Diagnose & Manage Oral Disease",
+    metaTitle: "PG Diploma in Oral Medicine: Sharpen Your Diagnostic Skills",
+    metaDescription:
+      "Build expertise in diagnosing oral mucosal disease and orofacial pain with the PG Diploma in Oral Medicine for dentists. CPD & ACTD accredited.",
+  },
+
+  "pg-diploma-in-oral-surgery": {
+    h1: "PG Diploma in Oral Surgery: Diagnose, Operate & Recover",
+    metaTitle: "PG Diploma in Oral Surgery: Master Surgical Technique",
+    metaDescription:
+      "Master extractions, trauma management and maxillofacial procedures with the PG Diploma in Oral Surgery for dentists. CPD & ACTD accredited.",
+  },
+
+  "pg-diploma-in-pediatrics-medicine": {
+    h1: "PG Diploma in Pediatrics: From Newborn to Adolescent Care",
+    metaTitle: "PG Diploma in Pediatrics: Advance Your Child Care Skills",
+    metaDescription:
+      "Build advanced clinical skills in child health, from neonatal care to adolescent medicine, with the PG Diploma in Pediatrics. CPD & ACTD accredited.",
+  },
+
+  "pg-diploma-in-prosthodontics": {
+    h1: "PG Diploma in Prosthodontics: Restore Function & Esthetics",
+    metaTitle: "PG Diploma in Prosthodontics: Restore Smiles with Precision",
+    metaDescription:
+      "Master crowns, bridges, dentures and implant prosthodontics with the PG Diploma in Prosthodontics for dentists. CPD & ACTD accredited.",
+  },
+
+  "pg-diploma-in-regenerative-medicine": {
+    h1: "PG Diploma in Regenerative Medicine: Stem Cells to Repair",
+    metaTitle: "PG Diploma in Regenerative Medicine: Master Cell Therapy",
+    metaDescription:
+      "Build expertise in stem cell therapy, PRP and tissue engineering with the PG Diploma in Regenerative Medicine. CPD & ACTD accredited, Online & Hybrid.",
+  },
+
+  "pg-diploma-in-research-methodology": {
+    h1: "PG Diploma in Research Methodology: Design & Publish",
+    metaTitle: "PG Diploma in Research Methodology: Design Better Studies",
+    metaDescription:
+      "Build skills in research design, biostatistics and scientific writing with the PG Diploma in Research Methodology for doctors. CPD & ACTD accredited.",
+  },
+
+  "pg-diploma-in-restorative-dentistry": {
+    h1: "PG Diploma in Restorative Dentistry: Function & Aesthetics",
+    metaTitle: "PG Diploma in Restorative Dentistry That Builds Real Skill",
+    metaDescription:
+      "Build real skill in fillings, crowns, veneers and smile design with the PG Diploma in Restorative Dentistry. CPD & ACTD accredited.",
+  },
+
+  "pg-in-pediatric-infectious-disease": {
+    h1: "PG in Pediatric Infectious Disease: Sepsis to Stewardship",
+    metaTitle: "PG in Pediatric Infectious Disease That Builds Real Skill",
+    metaDescription:
+      "Learn to diagnose and manage sepsis, meningitis, TB and emerging infections in children. PG in Pediatric Infectious Disease, CPD & ACTD accredited.",
+  },
+
 
   "certificate-in-family-medicine": {
     h1: "Certificate in Family Medicine: Build Confidence in Primary Care",
@@ -224,7 +634,7 @@ export const COURSE_SEO = {
       "Enroll in the CPD & ACTD accredited Certificate in Pain Management. Master acute, chronic, cancer and neuropathic pain management online in 6 months.",
   },
 
-  // NOTE: sheet mein is slug ki 2 entries thi (S.No 15 + neeche wali newer row). Newer row use ki hai.
+ 
   "certificate-in-diabetic-foot-care": {
     h1: "Certificate Course in Diabetic Footcare: Prevent Complications",
     metaTitle: "Certificate Course in Diabetic Footcare for Doctors",
@@ -414,7 +824,6 @@ export const COURSE_SEO = {
       "Interpreting obstetric and gynecological ultrasound — this 6-month online Certificate Course in Gynecology and Obstetrics is CPD & ACTD accredited.",
   },
 
-  // NOTE: sheet mein status "redirect" hai -- confirm kar lena ki ye page live hai
   "certificate-in-critical-care": {
     h1: "Certificate in Critical Care: Build Core ICU Skills",
     metaTitle: "Certificate in Critical Care for Doctors in India",
@@ -422,7 +831,6 @@ export const COURSE_SEO = {
       "Learn online with MGA’s Certificate in Critical Care for doctors — covering ICU protocols, sepsis & ventilator management, UK CPD & ACTD accredited.",
   },
 
-  // NOTE: sheet mein status "redirect" hai -- confirm kar lena ki ye page live hai
   "certificate-in-histopathology": {
     h1: "Certificate in Histopathology: Build Core Diagnostic Skills",
     metaTitle: "Certificate in Histopathology for Doctors",
@@ -430,7 +838,7 @@ export const COURSE_SEO = {
       "Learn online with MGA’s Certificate in Histopathology for doctors — covering tissue processing, staining & diagnostic reporting, UK CPD & ACTD accredited.",
   },
 
-  // Naya course add karna ho to yahan isi format mein ek aur block daalo
+
 };
 
 export const getCourseSeo = (slug) => COURSE_SEO[slug] || null;
