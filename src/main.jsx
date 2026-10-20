@@ -22,9 +22,7 @@ const app = (
   </React.StrictMode>
 );
 
-// react-snap jab prerender karta hai, us waqt #root me pehle se HTML hota hai (childNodes).
-// Us case me hydrateRoot use hota hai (existing HTML ko "zinda" karta hai),
-// normal browser me createRoot use hota hai (fresh render).
+
 if (container.hasChildNodes()) {
   ReactDOM.hydrateRoot(container, app);
 } else {

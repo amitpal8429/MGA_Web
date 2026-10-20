@@ -1,9 +1,4 @@
-/* =========================================================
-   Medical Global Academy — design tokens (doctyn-style)
-   Palette: white/soft-blue background, deep navy headings,
-   teal-blue primary, warm coral CTA accent, rounded cards.
-   Type: Plus Jakarta Sans (headings) + Inter (body)
-   ========================================================= */
+
 :root{
   --bg: #F4F8FB;
   --bg-soft: #EAF2F8;
@@ -96,7 +91,6 @@ img{ max-width: 100%; display: block; }
 .btn-navy{ background: var(--navy); color: #fff; }
 .btn-navy:hover{ background: #0f3160; }
 
-/* skeleton loading shimmer */
 .skel{ position: relative; overflow: hidden; background: #E7EEF4; border-radius: var(--radius-sm); }
 .skel::after{
   content: "";

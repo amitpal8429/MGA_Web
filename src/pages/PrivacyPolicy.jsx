@@ -8,7 +8,7 @@ export default function PrivacyPolicy() {
       
 
 
-      {/* Content */}
+     
       <main className="privacy-container privacy-content">
 
         <section className="privacy-section">

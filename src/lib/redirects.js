@@ -9,6 +9,10 @@ const REDIRECTS = {
   "fellowship-in-head-and-neck-surgicl-oncology": "fellowship-in-head-neck-surgery",
   "fellowship-in-anorectal-and-laser-proctology": "fellowship-in-anorectal-plus-laser-proctology",
 
+  // ✅ FIXED: key/target me trailing "/" nahi hona chahiye
+  // (getRedirectSlug pehle slash hata deta hai, phir match karta hai)
+  "fellowship-in-general-laparoscopic-surgery": "fellowship-in-laparoscopic-surgery",
+
   "certificate-in-infection-and-prevention-control": "certificate-in-infection-control-and-prevention",
 
   "fellowship-in-laparoscopy": "fellowship-in-laparoscopic-surgery",
@@ -25,8 +29,6 @@ const REDIRECTS = {
   "fellowship-in-arthroscopy-sports-medicine": "fellowship-in-arthroscopy-and-sports-medicine",
   "fellowship-in-head-and-neck-surgical-oncology": "fellowship-in-head-and-neck-oncosurgery",
 
-  // ✅ FIXED: key/target me trailing "/" nahi hona chahiye
-  // (getRedirectSlug pehle slash hata deta hai, phir match karta hai)
   "fellowship-in-clinical-neurology": "fellowship-in-neurology",
 
   "fellowship-in-orthopedics": "fellowship-in-orthopedic",
@@ -48,10 +50,11 @@ const REDIRECTS = {
   "fellowship-in-gastrology": "fellowship-in-gastroenterology",
   "pg-diploma-in-reproductive-and-child-health": "pg-diploma-in-reproductive-child-health",
 
-  // ✅ Naya redirect
   "fellowship-in-pediatric-dentistry": "fellowship-in-pedodontist",
 
-  // ---- Blog redirects: root (/slug) -> /blog/slug ----
+  // ✅ NEW: paediatric -> pediatrics
+  "fellowship-in-paediatric": "fellowship-in-pediatrics",
+
   "types-of-genetic-testing": "blog/types-of-genetic-testing",
   "congenital-heart-disease": "blog/congenital-heart-disease",
   "cancer-screening-guidelines-india": "blog/cancer-screening-guidelines-india",
@@ -131,8 +134,7 @@ const REDIRECTS = {
   "career-after-mbbs": "blog/career-after-mbbs",
   "fellowship-courses-after-mbbs-in-india": "blog/fellowship-courses-after-mbbs-in-india",
   "courses-after-mbbs-in-india": "blog/courses-after-mbbs-in-india",
-  // ⚠️ SKIPPED: "fellowship-in-robotic-gynaecological-oncology" — ye slug tumhare
-  // LIVE COURSE PAGE ka hai (fellowship-in-gynaecologic-oncology redirect ka target).
+
   "what-to-do-after-mbbs": "blog/what-to-do-after-mbbs",
   "fellowship-in-dermatology-skills": "blog/fellowship-in-dermatology-skills",
   "key-benefits-of-fellowship-in-oncology-for-doctors": "blog/key-benefits-of-fellowship-in-oncology-for-doctors",
@@ -177,8 +179,6 @@ const REDIRECTS = {
   "the-importance-of-fellowship-in-interventional-cardiology": "blog/the-importance-of-fellowship-in-interventional-cardiology",
 };
 
-// 🎭 CONTENT ALIAS: URL apni jagah rahegi (address bar change nahi hoga),
-// sirf backend se CONTENT doosre (target) slug ka fetch hoga.
 export const ALIASES = {};
 
 export function getRedirectSlug(slug) {

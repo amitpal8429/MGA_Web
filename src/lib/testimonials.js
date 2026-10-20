@@ -1,5 +1,4 @@
-// Swap these for real quotes from your own graduates before launch —
-// keeping them generic for now rather than inventing named endorsements.
+
 export const TESTIMONIALS = [
   {
     quote:

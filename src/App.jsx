@@ -1,16 +1,15 @@
 import { useEffect, lazy, Suspense } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 
-// Components
+
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import StickyContactBar from "./components/StickyContactBar";
 
-// Home
+
 import Home from "./pages/Home";
 
-// Lazy pages
 const Courses = lazy(() => import("./pages/Courses"));
 const CourseDetail = lazy(() => import("./pages/CourseDetail"));
 const Faculty = lazy(() => import("./pages/Faculty"));
@@ -34,18 +33,13 @@ import "./site.css";
 export default function App() {
   const location = useLocation();
 
-  // =====================================================
-  // HR FORM PAGE CHECK
-  // =====================================================
+
 
   const isHRFormPage = location.pathname === "/hr-form";
 
-  // =====================================================
-  // GETGABS CHATBOT
-  // =====================================================
 
   useEffect(() => {
-    // Don't load chatbot on HR page
+
     if (isHRFormPage) {
       return;
     }
@@ -70,9 +64,7 @@ export default function App() {
     };
   }, [isHRFormPage]);
 
-  // =====================================================
-  // STICKY BAR
-  // =====================================================
+
 
   useEffect(() => {
     if (!isHRFormPage) {
@@ -86,23 +78,16 @@ export default function App() {
     };
   }, [isHRFormPage]);
 
-  // =====================================================
-  // APP
-  // =====================================================
+
 
   return (
     <div className={isHRFormPage ? "hr-site" : "site"}>
       <ScrollToTop />
 
-      {/* =================================================
-          NAVBAR
-      ================================================= */}
 
       {!isHRFormPage && <Navbar />}
 
-      {/* =================================================
-          MAIN
-      ================================================= */}
+
 
       <main
         className={isHRFormPage ? "" : "page-enter"}
@@ -126,7 +111,6 @@ export default function App() {
 
             <Route path="/faculty" element={<Faculty />} />
 
-            {/* ACCREDITATION */}
             <Route path="/accreditation" element={<Accreditation />} />
 
             <Route path="/blog" element={<Blog />} />
@@ -149,36 +133,23 @@ export default function App() {
 
             <Route path="/support" element={<Support />} />
 
-            {/* =========================================
-                HR FORM
-            ========================================= */}
+      
 
             <Route path="/hr-form" element={<HRFormPage />} />
 
-            {/* =========================================
-                COURSE DETAIL
-            ========================================= */}
+       
 
             <Route path="/:slug" element={<CourseDetail />} />
 
-            {/* =========================================
-                NOT FOUND
-            ========================================= */}
 
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </main>
 
-      {/* =================================================
-          FOOTER
-      ================================================= */}
 
       {!isHRFormPage && <Footer />}
 
-      {/* =================================================
-          STICKY CONTACT
-      ================================================= */}
 
       {!isHRFormPage && <StickyContactBar />}
     </div>

@@ -8,7 +8,7 @@ const TITLE = "Accreditation | Medical Global Academy";
 const DESCRIPTION =
   "Verify Medical Global Academy's CPD (UK) and ACTD accreditation directly with the accrediting bodies, and view our accreditation certificate.";
 
-/* Each card: logo, name, one-line description, verify link, certificate image. */
+
 const ACCREDITATIONS = [
   {
     id: "cpd",

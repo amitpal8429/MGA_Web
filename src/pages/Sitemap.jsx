@@ -8,9 +8,7 @@ import "./Sitemap.css";
 
 const SITE_URL = "https://medicalglobalacademy.com";
 
-/* =========================================================
-   STATIC PAGES
-   ========================================================= */
+
 
 const MAIN_PAGES = [
   { title: "Home", to: "/" },
@@ -40,9 +38,7 @@ const TAG_PAGES = [
 
 const TYPE_ORDER = ["Certificate", "Fellowship", "PG Diploma"];
 
-/* =========================================================
-   HELPERS
-   ========================================================= */
+
 
 function decodeEntities(html) {
   if (!html) return "";
@@ -51,7 +47,6 @@ function decodeEntities(html) {
   return el.value;
 }
 
-// "Pg Diploma" / "PG Diploma" -> one group
 function normalizeType(type) {
   if (!type) return "Other";
   return /^pg\s*diploma$/i.test(type.trim()) ? "PG Diploma" : type.trim();
@@ -59,8 +54,6 @@ function normalizeType(type) {
 
 const toId = (text) => text.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 
-// Loads blog posts page after page until the API has no more.
-// Each batch is handed over immediately so links appear while the rest loads.
 async function loadAllPosts(onBatch) {
   const seen = new Set();
 
@@ -71,7 +64,7 @@ async function loadAllPosts(onBatch) {
       const res = await fetchPosts({ page, perPage: 50 });
       batch = res?.data || [];
     } catch (e) {
-      // WordPress errors when asking for a page past the end -> done
+   
       break;
     }
 
@@ -100,7 +93,7 @@ function SitemapSection({ id, title, items }) {
       <ul className="sitemap-list">
         {items.map((item) => (
           <li key={item.to}>
-            {/* External / static file links use <a>, internal uses <Link> */}
+           
             {item.external ? (
               <a
                 href={item.to}
@@ -119,9 +112,6 @@ function SitemapSection({ id, title, items }) {
   );
 }
 
-/* =========================================================
-   PAGE
-   ========================================================= */
 
 export default function Sitemap() {
   const [courses, setCourses] = useState([]);
@@ -145,7 +135,6 @@ export default function Sitemap() {
     };
   }, []);
 
-  // Courses grouped by type: Certificate, Fellowship, PG Diploma, then others
   const courseGroups = useMemo(() => {
     const groups = new Map();
 
@@ -188,7 +177,7 @@ export default function Sitemap() {
     [posts]
   );
 
-  // Main pages list — with the XML sitemap added
+
   const mainPages = useMemo(
     () => [
       ...MAIN_PAGES,

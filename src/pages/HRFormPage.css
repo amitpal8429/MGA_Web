@@ -5,20 +5,20 @@
   background: #f5f8fc;
   box-sizing: border-box;
 
-  /* Anti-screenshot: user-select none */
+
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 
-  /* Anti-drag */
+  
   -webkit-user-drag: none;
 
-  /* Anti-touch callout (mobile long press) */
+
   -webkit-touch-callout: none;
 }
 
-/* Allow typing/selecting inside form fields */
+
 .hr-page input,
 .hr-page textarea,
 .hr-page select {
@@ -28,7 +28,6 @@
   user-select: text;
 }
 
-/* PrintScreen overlay */
 .anti-screenshot-overlay {
   position: fixed;
   inset: 0;
@@ -251,9 +250,7 @@
   }
 }
 
-/* ============================================
-   PRINT PROTECTION: print hote hi blank
-   ============================================ */
+
 @media print {
   .hr-page {
     display: none !important;

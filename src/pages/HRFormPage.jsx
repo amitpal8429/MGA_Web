@@ -1,15 +1,11 @@
 import React, { useState, useEffect, useMemo } from "react";
 import "./HRFormPage.css";
 
-// =====================================================
-// GOOGLE APPS SCRIPT WEB APP URL
-// =====================================================
+
 const FORM_URL =
   "https://script.google.com/macros/s/AKfycbx8lIPrX-w75_rPZX-rKeUuuyHT5P4aeeYHC5L_uWHl_gtQvy77o75P52kWK9AMYULuwA/exec";
 
-// =====================================================
-// INITIAL FORM
-// =====================================================
+
 const initialForm = {
   name: "",
   email: "",
@@ -27,7 +23,7 @@ const initialForm = {
   leaving: "",
 };
 
-// Input / textarea / select ke andar normal editing (copy, cut, select all) allow rahe
+
 const isFormField = (el) => {
   const tag = el?.tagName;
   return tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT";
@@ -39,16 +35,11 @@ export default function HRFormPage() {
   const [message, setMessage] = useState("");
   const [success, setSuccess] = useState(false);
 
-  // Content hide hone ke do reason:
-  // 1) keyHidden  -> PrintScreen / Mac screenshot shortcut dabaya
-  // 2) awayHidden -> window focus gaya (Snipping Tool, tab switch, etc.)
+
   const [keyHidden, setKeyHidden] = useState(false);
   const [awayHidden, setAwayHidden] = useState(false);
   const hidden = keyHidden || awayHidden;
 
-  // =====================================================
-  // WATERMARK (screenshot leak hone par trace karne ke liye)
-  // =====================================================
   const watermarkStyle = useMemo(() => {
     const stamp = new Date().toLocaleString("en-IN", {
       day: "2-digit",
@@ -70,11 +61,6 @@ export default function HRFormPage() {
     };
   }, []);
 
-  // =====================================================
-  // COPY / SCREENSHOT DETERRENTS
-  // NOTE: browser mein screenshot 100% block nahi ho sakta.
-  // Yeh sirf rukawat aur deterrent hai.
-  // =====================================================
   useEffect(() => {
     let keyTimer;
 
@@ -84,10 +70,8 @@ export default function HRFormPage() {
       keyTimer = setTimeout(() => setKeyHidden(false), ms);
     };
 
-    // 1) Right click block
     const handleContextMenu = (e) => e.preventDefault();
 
-    // 2) Copy / cut block (form fields ke andar allow)
     const handleCopy = (e) => {
       if (isFormField(e.target)) return;
       e.preventDefault();
@@ -97,79 +81,72 @@ export default function HRFormPage() {
       e.preventDefault();
     };
 
-    // 3) Drag block
+  
     const handleDragStart = (e) => e.preventDefault();
 
-    // 4) Text selection block (form fields ke andar allow)
     const handleSelectStart = (e) => {
       if (isFormField(e.target)) return;
       e.preventDefault();
     };
 
-    // 5) Keyboard shortcuts
     const handleKeyDown = (e) => {
       const k = e.key?.toLowerCase();
       const mod = e.ctrlKey || e.metaKey;
 
-      // Ctrl/Cmd + P (print), S (save), U (view source)
+      
       if (mod && ["p", "s", "u"].includes(k)) {
         e.preventDefault();
         e.stopPropagation();
         return false;
       }
 
-      // Ctrl/Cmd + A (select all): sirf page par block, form fields mein allow
+
       if (mod && k === "a" && !isFormField(e.target)) {
         e.preventDefault();
         return false;
       }
 
-      // Ctrl/Cmd + Shift + I / J / C (devtools)
+   
       if (mod && e.shiftKey && ["i", "j", "c"].includes(k)) {
         e.preventDefault();
         return false;
       }
 
-      // F12 (devtools)
       if (e.key === "F12") {
         e.preventDefault();
         return false;
       }
 
-      // Mac screenshot shortcuts: Cmd + Shift + 3 / 4 / 5
       if (e.metaKey && e.shiftKey && ["3", "4", "5", "#", "$", "%"].includes(e.key)) {
         hideTemporarily(2000);
       }
 
-      // Windows Snip shortcut: Win + Shift + S
+ 
       if (e.metaKey && e.shiftKey && k === "s") {
         hideTemporarily(2000);
       }
 
-      // PrintScreen
       if (e.key === "PrintScreen" || k === "printscreen") {
         try {
           navigator.clipboard.writeText("");
         } catch {
-          /* ignore */
+         
         }
         hideTemporarily(1500);
       }
     };
 
-    // PrintScreen kuch browsers mein sirf keyup par aata hai
     const handleKeyUp = (e) => {
       if (e.key === "PrintScreen") {
         try {
           navigator.clipboard.writeText("");
         } catch {
-          /* ignore */
+          
         }
         hideTemporarily(1500);
       }
     };
 
-    // 6) Window focus gaya (Snipping Tool, tab switch, devtools click) -> content hide
     const handleWindowBlur = () => setAwayHidden(true);
     const handleWindowFocus = () => setAwayHidden(false);
     const handleVisibility = () => {
@@ -202,17 +179,13 @@ export default function HRFormPage() {
     };
   }, []);
 
-  // =====================================================
-  // HANDLE INPUT CHANGE
-  // =====================================================
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  // =====================================================
-  // HANDLE FORM SUBMIT
-  // =====================================================
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
@@ -241,29 +214,27 @@ export default function HRFormPage() {
     }
   };
 
-  // =====================================================
-  // PAGE
-  // =====================================================
+
   return (
     <section
       className={`hr-page ${hidden ? "is-hidden" : ""}`}
       onContextMenu={(e) => e.preventDefault()}
       onDragStart={(e) => e.preventDefault()}
     >
-      {/* Watermark: poore page par halka repeating text */}
+
       <div className="hr-watermark" style={watermarkStyle} aria-hidden="true" />
 
       <div className="hr-container">
-        {/* HEADER */}
+     
         <div className="hr-header">
           <span className="hr-badge">CAREERS</span>
           <h1>HR Candidate Form</h1>
           <p>Join Medical Global Academy and grow your career with us.</p>
         </div>
 
-        {/* FORM */}
+ 
         <form className="hr-form" onSubmit={handleSubmit}>
-          {/* PERSONAL INFORMATION */}
+       
           <div className="form-section">
             <h2>Personal Information</h2>
             <p className="section-description">
@@ -321,7 +292,7 @@ export default function HRFormPage() {
             </div>
           </div>
 
-          {/* PROFESSIONAL DETAILS */}
+       
           <div className="form-section">
             <h2>Professional Details</h2>
             <p className="section-description">
@@ -394,7 +365,7 @@ export default function HRFormPage() {
             </div>
           </div>
 
-          {/* ABOUT YOU */}
+         
           <div className="form-section">
             <h2>About You</h2>
             <p className="section-description">
@@ -460,7 +431,7 @@ export default function HRFormPage() {
             </div>
           </div>
 
-          {/* MESSAGE */}
+        
           {message && (
             <div
               className={
@@ -471,12 +442,12 @@ export default function HRFormPage() {
             </div>
           )}
 
-          {/* SUBMIT */}
+          
           <button type="submit" className="submit-btn" disabled={loading}>
             {loading ? "Submitting..." : "Submit Application"}
           </button>
 
-          {/* PRIVACY */}
+         
           <p className="privacy-text">
             By submitting this form, you agree that the information provided
             may be used for recruitment purposes.
@@ -484,7 +455,7 @@ export default function HRFormPage() {
         </form>
       </div>
 
-      {/* Overlay: screenshot shortcut ya window focus jaane par */}
+      
       {hidden && (
         <div className="anti-screenshot-overlay" aria-hidden="true">
           <div className="anti-screenshot-box">

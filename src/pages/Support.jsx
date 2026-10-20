@@ -26,13 +26,11 @@ import JsonLd from "../components/JsonLd";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 import MetaDescription from "../components/MetaDescription";
 
-/* =========================================================
-   CONTACT & APP DETAILS (yahan apni asli details check karo)
-   ========================================================= */
+
 
 const APP_NAME = "Medical Global Academy";
 const APP_PLATFORM = "Android & iOS";
-// Optional: latest version likhna ho to yahan daalo (jaise "1.0.0"). Khali chhodo to hide ho jayega.
+
 const APP_VERSION = "";
 
 const WHATSAPP_NUMBER = "+91 9289994218";
@@ -47,7 +45,7 @@ const SUPPORT_EMAIL = SITE?.email || "support@medicalglobalacademy.com";
 
 const SUPPORT_HOURS = "Mon–Sat, 10:00 AM – 6:00 PM IST";
 
-// SITE.address (config/site.js) se address banta hai. Na ho to yeh fallback dikhega.
+
 const FALLBACK_ADDRESS = "Medical Global Academy, India";
 
 const buildAddress = (addr) => {
@@ -65,14 +63,11 @@ const buildAddress = (addr) => {
 
 const OFFICE_ADDRESS = buildAddress(SITE?.address) || FALLBACK_ADDRESS;
 
-// Account deletion: apni asli policy ke hisaab se confirm karke badlo
 const DELETION_REVIEW_DAYS = "30";
 
 const RESPONSE_TIME = "We usually respond within 24–48 business hours.";
 
-/* =========================================================
-   SEO
-   ========================================================= */
+
 
 const SITE_URL = "https://medicalglobalacademy.com";
 
@@ -80,9 +75,7 @@ const META_TITLE = "Support | Medical Global Academy App";
 const META_DESCRIPTION =
   "Get help with login, enrolment, course access, live classes, payments, certificates and account deletion for the Medical Global Academy app.";
 
-/* =========================================================
-   CONTENT
-   ========================================================= */
+
 
 const HELP_TOPICS = [
   {
@@ -166,9 +159,6 @@ const DELETION_RETAINED = [
   "Certificate issuance records, where required to verify certificates already issued",
 ];
 
-/* =========================================================
-   PAGE CSS
-   ========================================================= */
 
 const PAGE_CSS = `
   .sp-hero {
@@ -524,9 +514,7 @@ const PAGE_CSS = `
   }
 `;
 
-/* =========================================================
-   COMPONENT
-   ========================================================= */
+
 
 export default function Support() {
   const { pathname } = useLocation();
@@ -582,7 +570,6 @@ export default function Support() {
       />
       <JsonLd id="support-faq" data={faqSchema} />
 
-      {/* HERO */}
 
       <section className="sp-hero">
         <div className="wrap">
@@ -602,7 +589,7 @@ export default function Support() {
       </section>
 
       <div className="wrap">
-        {/* ABOUT */}
+   
 
         <section className="sp-section" id="about" aria-labelledby="sp-about-title">
           <h2 id="sp-about-title" className="sp-h2">
@@ -623,7 +610,6 @@ export default function Support() {
           </p>
         </section>
 
-        {/* CONTACT INFORMATION */}
 
         <section
           className="sp-section"
@@ -697,7 +683,6 @@ export default function Support() {
           </div>
         </section>
 
-        {/* HOW WE CAN HELP */}
 
         <section className="sp-section" id="how-we-can-help" aria-labelledby="sp-help-title">
           <h2 id="sp-help-title" className="sp-h2">
@@ -719,7 +704,6 @@ export default function Support() {
           </div>
         </section>
 
-        {/* FAQ */}
 
         <section className="sp-section" id="faqs" aria-labelledby="sp-faq-title">
           <h2 id="sp-faq-title" className="sp-h2">
@@ -752,7 +736,7 @@ export default function Support() {
           </div>
         </section>
 
-        {/* DELETE ACCOUNT */}
+       
 
         <section
           className="sp-section"
@@ -813,7 +797,6 @@ export default function Support() {
           </div>
         </section>
 
-        {/* RESPONSE TIME */}
 
         <section className="sp-section" id="response-time" aria-labelledby="sp-response-title">
           <h2 id="sp-response-title" className="sp-h2">
@@ -823,7 +806,7 @@ export default function Support() {
           <p className="sp-p">{RESPONSE_TIME}</p>
         </section>
 
-        {/* USEFUL LINKS */}
+     
 
         <section className="sp-section" id="useful-links" aria-labelledby="sp-links-title">
           <h2 id="sp-links-title" className="sp-h2">
@@ -843,7 +826,6 @@ export default function Support() {
           </ul>
         </section>
 
-        {/* APP INFORMATION */}
 
         <section className="sp-section" id="app-information" aria-labelledby="sp-app-title">
           <h2 id="sp-app-title" className="sp-h2">

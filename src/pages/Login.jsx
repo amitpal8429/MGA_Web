@@ -71,9 +71,7 @@ export default function Signup() {
     <>
       <div className="mga-signup-page">
 
-        {/* =====================================
-            LEFT SIDE
-        ====================================== */}
+       
 
         <section className="mga-signup-left">
 
@@ -151,15 +149,13 @@ export default function Signup() {
         </section>
 
 
-        {/* =====================================
-            RIGHT SIDE
-        ====================================== */}
+     
 
         <section className="mga-signup-right">
 
           <div className="mga-signup-card">
 
-            {/* MOBILE BRAND */}
+           
 
             <div className="mga-signup-mobile-brand">
 
@@ -174,7 +170,7 @@ export default function Signup() {
             </div>
 
 
-            {/* HEADING */}
+           
 
             <div className="mga-signup-heading">
 
@@ -193,8 +189,6 @@ export default function Signup() {
             </div>
 
 
-            {/* ERROR */}
-
             {error && (
               <div className="mga-signup-error">
 
@@ -206,7 +200,6 @@ export default function Signup() {
             )}
 
 
-            {/* SUCCESS */}
 
             {success && (
               <div className="mga-signup-success">
@@ -219,18 +212,13 @@ export default function Signup() {
             )}
 
 
-            {/* =================================
-                FORM
-            ================================== */}
+        
 
             <form
               className="mga-signup-form"
               onSubmit={handleSubmit}
             >
 
-              {/* ===============================
-                  NAME
-              ================================ */}
 
               <div className="mga-signup-group">
 
@@ -261,9 +249,7 @@ export default function Signup() {
               </div>
 
 
-              {/* ===============================
-                  EMAIL
-              ================================ */}
+         
 
               <div className="mga-signup-group">
 
@@ -294,9 +280,6 @@ export default function Signup() {
               </div>
 
 
-              {/* ===============================
-                  PHONE
-              ================================ */}
 
               <div className="mga-signup-group">
 
@@ -326,10 +309,6 @@ export default function Signup() {
 
               </div>
 
-
-              {/* ===============================
-                  PASSWORD
-              ================================ */}
 
               <div className="mga-signup-group">
 
@@ -385,9 +364,7 @@ export default function Signup() {
               </div>
 
 
-              {/* ===============================
-                  SUBMIT
-              ================================ */}
+           
 
               <button
                 type="submit"
@@ -412,9 +389,7 @@ export default function Signup() {
             </form>
 
 
-            {/* ===============================
-                LOGIN
-            ================================ */}
+
 
             <div className="mga-signup-login">
 
@@ -429,9 +404,7 @@ export default function Signup() {
             </div>
 
 
-            {/* ===============================
-                TERMS
-            ================================ */}
+            
 
             <p className="mga-signup-terms">
 
@@ -456,9 +429,7 @@ export default function Signup() {
       </div>
 
 
-      {/* =====================================
-          CSS
-      ====================================== */}
+
 
       <style>{`
 

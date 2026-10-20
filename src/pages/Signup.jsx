@@ -13,14 +13,13 @@ import {
 
 import { BASE_URL } from "../lib/api";
 
-// ===== Country codes (suggestions) =====
+
 const COUNTRY_CODES = [
   "+91", "+1", "+44", "+971", "+966", "+974", "+965", "+973",
   "+968", "+65", "+60", "+61", "+64", "+27", "+234", "+254",
   "+880", "+92", "+94", "+977",
 ];
 
-// ===== Countries (suggestions) =====
 const COUNTRIES = [
   "India", "United States", "United Kingdom", "UAE", "Saudi Arabia",
   "Qatar", "Kuwait", "Bahrain", "Oman", "Singapore", "Malaysia",
@@ -28,7 +27,6 @@ const COUNTRIES = [
   "Bangladesh", "Pakistan", "Sri Lanka", "Nepal", "Other",
 ];
 
-// ===== Courses (suggestions) =====
 const COURSES = [
   "Fellowship in Orthopedic",
   "Fellowship in Internal Medicine",
@@ -45,7 +43,7 @@ const COURSES = [
   "Other",
 ];
 
-// ===== Qualifications (suggestions) =====
+
 const QUALIFICATIONS = [
   "MBBS", "MBBS + MD", "MBBS + MS", "MBBS + DNB", "MBBS + Diploma",
   "BDS", "BAMS", "BHMS", "Physiotherapy (BPT/MPT)", "Nursing", "Other",
@@ -134,7 +132,6 @@ export default function Signup() {
     <>
       <div className="mga-signup-page">
 
-        {/* ================= LEFT SIDE ================= */}
         <section className="mga-signup-left">
           <div className="mga-signup-brand">
             <div className="mga-signup-logo">MGA</div>
@@ -184,7 +181,7 @@ export default function Signup() {
         </section>
 
 
-        {/* ================= RIGHT SIDE ================= */}
+       
         <section className="mga-signup-right">
           <div className="mga-signup-card">
 
@@ -215,7 +212,6 @@ export default function Signup() {
 
             <form className="mga-signup-form" onSubmit={handleSubmit}>
 
-              {/* 1. FULL NAME */}
               <div className="mga-signup-group mga-full">
                 <label htmlFor="name">Full name</label>
                 <div className="mga-signup-input">
@@ -232,7 +228,6 @@ export default function Signup() {
                 </div>
               </div>
 
-              {/* 2. EMAIL */}
               <div className="mga-signup-group mga-full">
                 <label htmlFor="email">Email address</label>
                 <div className="mga-signup-input">
@@ -249,7 +244,7 @@ export default function Signup() {
                 </div>
               </div>
 
-              {/* 3. PHONE + COUNTRY CODE */}
+              
               <div className="mga-signup-group mga-full">
                 <label htmlFor="phone">Phone number</label>
                 <div className="mga-signup-phone-wrap">
@@ -287,7 +282,7 @@ export default function Signup() {
                 </div>
               </div>
 
-              {/* 4. COUNTRY */}
+              
               <div className="mga-signup-group mga-full">
                 <label htmlFor="country">Country</label>
                 <div className="mga-signup-input">
@@ -310,7 +305,6 @@ export default function Signup() {
                 </div>
               </div>
 
-              {/* 5. COURSE */}
               <div className="mga-signup-group mga-full">
                 <label htmlFor="course">Interested course</label>
                 <div className="mga-signup-input">
@@ -333,7 +327,6 @@ export default function Signup() {
                 </div>
               </div>
 
-              {/* 6. QUALIFICATION */}
               <div className="mga-signup-group mga-full">
                 <label htmlFor="qualification">Highest qualification</label>
                 <div className="mga-signup-input">
@@ -356,7 +349,7 @@ export default function Signup() {
                 </div>
               </div>
 
-              {/* SUBMIT */}
+ 
               <button
                 type="submit"
                 className="mga-signup-submit mga-full"
@@ -392,7 +385,7 @@ export default function Signup() {
       </div>
 
 
-      {/* ================= CSS ================= */}
+  
       <style>{`
 
         .mga-signup-page {

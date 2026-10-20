@@ -55,7 +55,7 @@ export default function AppPage() {
             </ul>
           </div>
 
-          {/* Right panel: image + QR */}
+     
           <aside className="app-hero-side">
             <div className="app-hero-image-wrap">
               <img

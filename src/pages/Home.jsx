@@ -69,12 +69,20 @@ const ACCREDITATIONS = [
     src: "https://medicalglobalacademy.com/wp-content/uploads/2026/09/Untitled-design-8.png",
     alt: "CPD Accreditation",
     href: "https://directory.cpdstandards.com/providers/medical-global-academy/",
+    certificate: {
+      src: "https://medicalglobalacademy.com/wp-content/uploads/2026/10/WhatsApp-Image-2026-10-17-at-10.15.41-AM.jpeg",
+      alt: "CPD accreditation certificate – Medical Global Academy",
+    },
   },
   {
     id: 2,
     src: "https://medicalglobalacademy.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-24-at-12.17.06-PM.jpeg",
     alt: "ACTD Accreditation",
     href: "https://www.actd.us/medicalglobalacademy/",
+    certificate: {
+      src: "https://medicalglobalacademy.com/wp-content/uploads/2026/10/WhatsApp-Image-2026-10-17-at-5.58.43-PM.jpeg",
+      alt: "ACTD accreditation certificate – Medical Global Academy",
+    },
   },
 ];
 
@@ -98,6 +106,54 @@ const TESTIMONIALS = [
       "Hospital training combined with structured online modules gave me confidence to manage complex ICU cases independently.",
   },
 ];
+
+const HOME_CSS = `
+  .hero-accreditation-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    max-width: 700px;
+    margin-top: 14px;
+    align-items: stretch;
+  }
+
+  .hero-accreditation-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+  }
+
+  .hero-accreditation-group .hero-accreditation-card {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .hero-accreditation-cert {
+    margin: 0;
+    flex: 1 1 auto;
+    aspect-ratio: 1.4 / 1;
+    border: 1px solid #dce4ea;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #ffffff;
+    box-sizing: border-box;
+  }
+
+  .hero-accreditation-cert img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  @media (max-width: 560px) {
+    .hero-accreditation-grid {
+      grid-template-columns: 1fr;
+      max-width: 100%;
+    }
+  }
+`;
 
 export default function Home() {
   const [courses, setCourses] = useState(null);
@@ -150,6 +206,8 @@ export default function Home() {
 
   return (
     <>
+      <style>{HOME_CSS}</style>
+
       <Helmet>
         <title>{HOME_TITLE}</title>
         <meta name="description" content={HOME_DESCRIPTION} />
@@ -218,12 +276,6 @@ export default function Home() {
                     <span><strong>{stats.pgDiplomas}+</strong> PG diplomas</span>
                   </>
                 )}
-                {stats.faculty && (
-                  <>
-                    <span className="dot" />
-                    <span><strong>{stats.faculty}+</strong> faculty mentors</span>
-                  </>
-                )}
               </div>
             )}
 
@@ -235,29 +287,44 @@ export default function Home() {
               <p className="hero-accreditation-text">
                 Globally recognised CPD & ACTD-aligned certification
               </p>
-              <div className="hero-accreditation-logos">
+              <div className="hero-accreditation-grid">
                 {ACCREDITATIONS.map((a) => (
-                  <a
-                    className="hero-accreditation-card"
-                    key={a.id}
-                    href={a.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${a.alt} - verify accreditation (opens in new tab)`}
-                    style={{
-                      textDecoration: "none",
-                      color: "inherit",
-                      cursor: "pointer",
-                    }}
-                  >
-                    <img
-                      src={a.src}
-                      alt={a.alt}
-                      className="hero-accreditation-image"
-                      loading="lazy"
-                      draggable={false}
-                    />
-                  </a>
+                  <div className="hero-accreditation-group" key={a.id}>
+                    <a
+                      className="hero-accreditation-card"
+                      href={a.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${a.alt} - verify accreditation (opens in new tab)`}
+                      style={{
+                        textDecoration: "none",
+                        color: "inherit",
+                        cursor: "pointer",
+                      }}
+                    >
+                      <img
+                        src={a.src}
+                        alt={a.alt}
+                        className="hero-accreditation-image"
+                        loading="lazy"
+                        draggable={false}
+                      />
+                    </a>
+
+                    {a.certificate && (
+                      <figure
+                        className="hero-accreditation-cert"
+                        onContextMenu={(e) => e.preventDefault()}
+                      >
+                        <img
+                          src={a.certificate.src}
+                          alt={a.certificate.alt}
+                          loading="lazy"
+                          draggable={false}
+                        />
+                      </figure>
+                    )}
+                  </div>
                 ))}
               </div>
             </div>

@@ -29,7 +29,7 @@ function formatPostDate(dateStr) {
   });
 }
 
-// Everything a card (and the search) needs from one post
+
 function toCard(post) {
   const manualMeta = getBlogMeta(post.slug);
 
@@ -82,7 +82,6 @@ export default function Blog() {
     };
   }, []);
 
-  /* Normal paginated list (Load More) */
 
   useEffect(() => {
     let cancelled = false;
@@ -110,7 +109,6 @@ export default function Blog() {
 
   const handleLoadMore = () => setPage((p) => p + 1);
 
-  /* Search: loads every article once, the first time someone types */
 
   const loadAllForSearch = useCallback(async () => {
     if (searchStartedRef.current) return;
@@ -153,7 +151,7 @@ export default function Blog() {
     if (isSearching) loadAllForSearch();
   }, [isSearching, loadAllForSearch]);
 
-  // Pool = posts already on screen + everything loaded for search (no duplicates)
+
   const searchIndex = useMemo(() => {
     if (!isSearching) return [];
 
@@ -179,11 +177,11 @@ export default function Blog() {
 
   return (
     <section className="blog-section">
-      {/* SCHEMA: Blog */}
+      
       <BlogSchema />
 
       <div className="container">
-        {/* SEARCH */}
+    
 
         <div className="blog-search" role="search">
           <Search size={18} className="blog-search-icon" aria-hidden="true" />
@@ -221,7 +219,6 @@ export default function Blog() {
           </p>
         )}
 
-        {/* GRID */}
 
         <div className="blog-grid">
           {cards.map((card) => (

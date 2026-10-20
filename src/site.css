@@ -1,10 +1,3 @@
-/* =========================================================
-   MGA WEBSITE - COMPLETE RESPONSIVE CSS
-========================================================= */
-
-/* =========================================================
-   GLOBAL
-========================================================= */
 
 *,
 *::before,
@@ -46,9 +39,7 @@ textarea {
 }
 
 
-/* =========================================================
-   TOP BAR + NAVBAR
-========================================================= */
+
 
 .nav-wrap {
   position: sticky;
@@ -88,11 +79,6 @@ textarea {
   gap: 20px;
 }
 
-
-/* =========================================================
-   BRAND
-========================================================= */
-
 .brand {
   display: flex;
   align-items: center;
@@ -120,9 +106,7 @@ textarea {
 }
 
 
-/* =========================================================
-   NAVIGATION (desktop)
-========================================================= */
+
 
 .nav-links {
   display: flex;
@@ -186,9 +170,6 @@ textarea {
 }
 
 
-/* =========================================================
-   NAVBAR CTA
-========================================================= */
 
 .nav-cta {
   background: #087bc9 !important;
@@ -206,9 +187,6 @@ textarea {
 }
 
 
-/* =========================================================
-   HERO
-========================================================= */
 
 .hero {
   position: relative;
@@ -343,9 +321,6 @@ textarea {
 }
 
 
-/* =========================================================
-   SECTIONS
-========================================================= */
 
 .section {
   padding: 60px 0;
@@ -401,10 +376,6 @@ textarea {
 }
 
 
-/* =========================================================
-   BADGES
-========================================================= */
-
 .badge {
   display: inline-flex;
   align-items: center;
@@ -438,9 +409,7 @@ textarea {
 }
 
 
-/* =========================================================
-   COURSE GRID / CARD
-========================================================= */
+
 
 .course-grid {
   display: grid;
@@ -544,9 +513,7 @@ textarea {
 }
 
 
-/* =========================================================
-   FEATURE GRID
-========================================================= */
+
 
 .feature-grid {
   display: grid;
@@ -585,9 +552,6 @@ textarea {
 }
 
 
-/* =========================================================
-   FACULTY
-========================================================= */
 
 .faculty-strip {
   display: grid;
@@ -636,9 +600,6 @@ textarea {
 }
 
 
-/* =========================================================
-   TESTIMONIALS
-========================================================= */
 
 .testimonial-grid {
   display: grid;
@@ -680,9 +641,6 @@ textarea {
 }
 
 
-/* =========================================================
-   FAQ
-========================================================= */
 
 .faq-list {
   max-width: 760px;
@@ -732,9 +690,7 @@ textarea {
 }
 
 
-/* =========================================================
-   CTA BAND
-========================================================= */
+
 
 .cta-band {
   background: linear-gradient(120deg, var(--navy), #0f3160);
@@ -765,9 +721,7 @@ textarea {
 }
 
 
-/* =========================================================
-   CATALOG
-========================================================= */
+
 
 .catalog { padding-top: 44px; }
 .catalog-head { margin-bottom: 30px; }
@@ -840,9 +794,6 @@ textarea {
 }
 
 
-/* =========================================================
-   FACULTY PAGE
-========================================================= */
 
 .catalog-group { margin-bottom: 40px; }
 
@@ -878,9 +829,6 @@ textarea {
 }
 
 
-/* =========================================================
-   ERROR / EMPTY / 404
-========================================================= */
 
 .error-state { padding: 48px 0; text-align: left; max-width: 480px; }
 .error-state h3 { font-size: 22px; margin-bottom: 10px; }
@@ -891,9 +839,6 @@ textarea {
 .not-found p { margin-bottom: 24px; }
 
 
-/* =========================================================
-   COURSE DETAIL
-========================================================= */
 
 .detail-hero { padding: 36px 0 30px; }
 
@@ -1157,9 +1102,7 @@ textarea {
 }
 
 
-/* =========================================================
-   FOOTER
-========================================================= */
+
 
 .site-footer {
   margin-top: auto;
@@ -1259,9 +1202,6 @@ textarea {
 .footer-bottom span { text-align: center !important; }
 
 
-/* =========================================================
-   LARGE DESKTOP 1440px+
-========================================================= */
 
 @media (min-width: 1440px) {
   .container { width: min(1320px, calc(100% - 80px)); margin-inline: auto; }
@@ -1276,9 +1216,6 @@ textarea {
 }
 
 
-/* =========================================================
-   DESKTOP 1200px - 1439px
-========================================================= */
 
 @media (min-width: 1200px) and (max-width: 1439px) {
   .container { width: min(1140px, calc(100% - 60px)); margin-inline: auto; }
@@ -1286,9 +1223,6 @@ textarea {
 }
 
 
-/* =========================================================
-   LAPTOP 1001px - 1199px
-========================================================= */
 
 @media (min-width: 1001px) and (max-width: 1199px) {
   .container { width: min(94%, 1100px); margin-inline: auto; }
@@ -1307,9 +1241,7 @@ textarea {
 }
 
 
-/* =========================================================
-   TABLET 769px - 1000px
-========================================================= */
+
 
 @media (min-width: 769px) and (max-width: 1000px) {
   .container { width: min(92%, 900px); margin-inline: auto; }
@@ -1343,10 +1275,6 @@ textarea {
 }
 
 
-/* =========================================================
-   MOBILE — 0px to 768px
-========================================================= */
-
 @media (max-width: 768px) {
   .container { width: calc(100% - 32px); margin-inline: auto; }
 
@@ -1358,16 +1286,15 @@ textarea {
     line-height: 1.4;
   }
 
-  /* NAV */
+
   .nav-row { height: 68px; gap: 12px; }
 
   .brand-logo { width: 44px; height: 44px; }
   .brand-name { font-size: 15px; }
 
-  /* Hamburger visible */
   .nav-toggle { display: flex; }
 
-  /* Slide-out panel */
+  
   .nav-links {
     position: fixed;
     top: 0;
@@ -1413,7 +1340,7 @@ textarea {
     border-bottom: none;
   }
 
-  /* Overlay */
+
   .nav-overlay {
     display: block;
     position: fixed;
@@ -1430,7 +1357,6 @@ textarea {
     pointer-events: auto;
   }
 
-  /* HERO */
   .hero { padding: 45px 0; }
   .hero-grid { grid-template-columns: 1fr; gap: 30px; }
   .hero-copy { max-width: 100%; }
@@ -1440,28 +1366,25 @@ textarea {
   .hero-actions > * { max-width: 100%; }
   .hero-card { padding: 22px; width: 100%; }
 
-  /* SECTIONS */
+ 
   .section { padding: 48px 0; }
   .section-head { margin-bottom: 25px; }
   .section-head h2 { font-size: 25px; }
   .section-sub { font-size: 15px; }
 
-  /* COURSES */
   .course-grid { grid-template-columns: 1fr; gap: 18px; }
   .course-card { width: 100%; }
   .course-card-media { aspect-ratio: 16 / 10; }
 
-  /* FEATURES */
   .feature-grid { grid-template-columns: 1fr; gap: 18px; }
 
-  /* FACULTY */
+ 
   .faculty-strip { grid-template-columns: 1fr; gap: 14px; }
   .faculty-grid { grid-template-columns: 1fr; }
 
-  /* TESTIMONIAL */
+ 
   .testimonial-grid { grid-template-columns: 1fr; gap: 18px; }
 
-  /* CATALOG */
   .catalog { padding-top: 30px; }
   .catalog-head h1 { font-size: 32px; }
   .catalog-controls {
@@ -1476,7 +1399,6 @@ textarea {
   .pill { flex: 1 1 auto; text-align: center; }
   .catalog-select { width: 100%; }
 
-  /* DETAIL */
   .detail-hero { padding: 28px 0 22px; }
   .breadcrumb { flex-wrap: wrap; font-size: 12px; }
   .detail-title { font-size: clamp(28px, 7vw, 38px); }
@@ -1497,19 +1419,16 @@ textarea {
   .session-list { padding: 0 16px 18px 45px; }
   .apply-card { width: 100%; padding: 22px; }
 
-  /* CTA */
+  
   .cta-band { padding: 42px 0; }
   .cta-band-inner { flex-direction: column; align-items: flex-start; }
   .cta-title { font-size: 24px; }
 
-  /* FOOTER */
+
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px 20px; }
 }
 
 
-/* =========================================================
-   SMALL MOBILE 521px - 720px
-========================================================= */
 
 @media (max-width: 720px) {
   .topbar-inner { min-height: 34px; padding: 7px 12px; font-size: 10.5px; }
@@ -1557,9 +1476,7 @@ textarea {
 }
 
 
-/* =========================================================
-   VERY SMALL MOBILE 0px - 520px
-========================================================= */
+
 
 @media (max-width: 520px) {
   .container { width: calc(100% - 28px); }
@@ -1625,9 +1542,6 @@ textarea {
 }
 
 
-/* =========================================================
-   EXTRA SMALL 0px - 380px
-========================================================= */
 
 @media (max-width: 380px) {
   .container { width: calc(100% - 22px); }
@@ -1645,9 +1559,7 @@ textarea {
 }
 
 
-/* =========================================================
-   LANDSCAPE MOBILE
-========================================================= */
+
 
 @media (max-height: 600px) and (orientation: landscape) {
   .hero { padding-top: 30px; padding-bottom: 30px; }
@@ -1656,9 +1568,6 @@ textarea {
 }
 
 
-/* =========================================================
-   TOUCH DEVICES
-========================================================= */
 
 @media (hover: none) and (pointer: coarse) {
   .course-card:hover { transform: none; }
@@ -1666,9 +1575,7 @@ textarea {
 }
 
 
-/* =========================================================
-   REDUCE MOTION
-========================================================= */
+
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -1680,9 +1587,7 @@ textarea {
 }
 
 
-/* =========================================================
-   LEAD FORM (popup + hero + course detail sidebar)
-========================================================= */
+
 
 .mga-auth-overlay {
   position: fixed;
@@ -1989,9 +1894,6 @@ textarea {
 
 
 
-/* ================================
-   Certificate card (sidebar)
-   ================================ */
 .certificate-card {
   background: #fff;
   border: 1px solid #e5e7eb;
@@ -2037,7 +1939,7 @@ textarea {
   line-height: 1.5;
 }
 
-/* Certificate gallery wrapper */
+
 .certificate-gallery {
   display: flex;
   flex-direction: column;
@@ -2050,7 +1952,7 @@ textarea {
   overflow: hidden;
   border: 1px solid #e5e7eb;
   background: #f9fafb;
-  /* 🔒 Selection aur callout block */
+ 
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -2063,20 +1965,19 @@ textarea {
   width: 100%;
   height: auto;
   object-fit: contain;
-  /* 🔒 Drag & select block */
+ 
   user-select: none;
   -webkit-user-select: none;
   -webkit-user-drag: none;
-  pointer-events: none;   /* right-click, long-press, drag sab block */
+  pointer-events: none;   
   transition: transform 0.25s ease;
 }
 
-/* Hover pe halka zoom (optional, view-friendly) */
 .certificate-image-wrap:hover .certificate-image {
   transform: scale(1.02);
 }
 
-/* 🔒 Transparent overlay — upar se right-click / long-press capture karta hai */
+
 .certificate-image-overlay {
   position: absolute;
   inset: 0;
@@ -2093,9 +1994,6 @@ textarea {
 
 
 
-/* ================================
-   Hero accreditation (left side, stats ke niche)
-   ================================ */
 .hero-accreditation {
   margin-top: 44px;
   padding-top: 32px;
@@ -2161,7 +2059,7 @@ textarea {
   object-fit: contain;
 }
 
-/* Tablet */
+
 @media (max-width: 860px) {
   .hero-accreditation {
     max-width: 100%;
@@ -2176,7 +2074,7 @@ textarea {
   }
 }
 
-/* Mobile */
+
 @media (max-width: 640px) {
   .hero-accreditation {
     margin-top: 36px;
@@ -2202,9 +2100,6 @@ textarea {
 
 
 
-/* ================================
-   Video card (sidebar, certificate ke niche)
-   ================================ */
 .video-card {
   background: #fff;
   border: 1px solid #e5e7eb;
@@ -2253,7 +2148,6 @@ textarea {
   width: 100%;
 }
 
-/* iframe (jab video play ho) */
 .certificate-video {
   position: absolute;
   inset: 0;
@@ -2263,9 +2157,6 @@ textarea {
   display: block;
 }
 
-/* ================================
-   Custom thumbnail (play se pehle)
-   ================================ */
 .video-thumb-btn {
   position: absolute;
   inset: 0;
@@ -2314,10 +2205,10 @@ textarea {
 }
 
 .video-play-overlay svg {
-  margin-left: 4px; /* play icon optical center */
+  margin-left: 4px; 
 }
 
-/* Mobile adjustments */
+
 @media (max-width: 640px) {
   .video-play-overlay {
     width: 60px;
@@ -2331,7 +2222,6 @@ textarea {
 
 
 
-/* ===== Accreditation Card ===== */
 
 .accreditation-card {
   background: #fff;
@@ -2415,10 +2305,6 @@ textarea {
 
 
 
-/* =========================================================
-   BLOG LISTING
-========================================================= */
-
 .blog-section {
   padding: 40px 0;
 }
@@ -2435,7 +2321,7 @@ textarea {
 }
 
 .blog-grid > * {
-  min-width: 0; /* ⭐ grid items ko shrink hone deta hai */
+  min-width: 0;
 }
 
 .blog-card {
@@ -2485,7 +2371,7 @@ textarea {
   margin: 0 0 10px;
   line-height: 1.3;
   color: #102d50;
-  overflow-wrap: anywhere; /* ⭐ long words tode */
+  overflow-wrap: anywhere; 
   word-break: break-word;
 }
 
@@ -2531,9 +2417,6 @@ textarea {
 }
 
 
-/* =========================================================
-   BLOG DETAIL
-========================================================= */
 
 .detail-article {
   padding: 40px 0;
@@ -2565,7 +2448,6 @@ textarea {
   color: #1f2937;
 }
 
-/* WordPress content safety */
 .detail-article .content img,
 .detail-article .content iframe,
 .detail-article .content video,
@@ -2592,9 +2474,6 @@ textarea {
 }
 
 
-/* =========================================================
-   BLOG — TABLET
-========================================================= */
 
 @media (max-width: 1000px) {
   .blog-grid {
@@ -2604,9 +2483,6 @@ textarea {
 }
 
 
-/* =========================================================
-   BLOG — MOBILE
-========================================================= */
 
 @media (max-width: 768px) {
   .blog-section {
@@ -2654,9 +2530,7 @@ textarea {
 
 
 
-/* ================================
-   Hero accreditation (left side, stats ke niche)
-   ================================ */
+
 .hero-accreditation {
   margin-top: 44px;
   padding-top: 32px;
@@ -2703,9 +2577,9 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* ⭐ Fixed height hata di — ab content ke hisaab se size hoga */
+ 
   min-width: 220px;
-  min-height: 170px;   /* ⭐ thoda bada minimum */
+  min-height: 170px;  
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -2716,7 +2590,7 @@ textarea {
 }
 
 .hero-accreditation-image {
-  /* ⭐ Image ko bada kiya — 105px se 135px */
+ 
   max-width: 100%;
   max-height: 135px;
   width: auto;
@@ -2725,7 +2599,6 @@ textarea {
   display: block;
 }
 
-/* Tablet */
 @media (max-width: 860px) {
   .hero-accreditation {
     max-width: 100%;
@@ -2740,7 +2613,7 @@ textarea {
   }
 }
 
-/* Mobile */
+
 @media (max-width: 640px) {
   .hero-accreditation {
     margin-top: 36px;
@@ -2763,11 +2636,6 @@ textarea {
   }
 }
 
-
-
-/* =========================================================
-   ENROLL & PAY BUTTON — matches screenshot blue (#1f7ac4)
-========================================================= */
 
 .apply-btn-pay {
   width: 100%;
@@ -2849,7 +2717,6 @@ textarea {
   box-shadow: 0 0 0 3px rgba(31, 122, 196, 0.15);
 }
 
-/* hide the browser's own clear button, we have our own */
 .blog-search-input::-webkit-search-cancel-button {
   display: none;
 }
@@ -2889,32 +2756,31 @@ textarea {
 }
 
 
-/* Mobile Menu Overlay */
+
 .nav-links {
-  /* Your existing desktop styles */
+
 }
 
 @media (max-width: 768px) {
   .nav-links {
     position: fixed;
     top: 0;
-    right: -100%; /* Hidden by default */
+    right: -100%; 
     width: 80%;
     height: 100vh;
     background: white;
     flex-direction: column;
-    padding: 80px 20px 40px; /* Top padding makes room for the close button */
+    padding: 80px 20px 40px;
     transition: right 0.3s ease-in-out;
     z-index: 1000;
     box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-    display: flex; /* Ensure it's flex even when hidden */
+    display: flex; 
   }
 
   .nav-links.is-open {
-    right: 0; /* Slide in */
+    right: 0; 
   }
 
-  /* The Close Button inside the menu */
   .nav-close-mobile {
     position: absolute;
     top: 20px;
@@ -2924,22 +2790,20 @@ textarea {
     cursor: pointer;
     color: #333;
     padding: 5px;
-    display: block; /* Visible only on mobile */
+    display: block; 
   }
 
-  /* Hide the desktop hamburger when menu is open */
+
   .nav-toggle.is-active {
     display: none; 
   }
 
-  /* Ensure the hamburger button is visible when menu is closed */
   .nav-toggle {
     display: block;
-    z-index: 1001; /* Above the menu */
+    z-index: 1001; 
   }
 }
 
-/* Hide the close button on desktop */
 @media (min-width: 769px) {
   .nav-close-mobile {
     display: none;
@@ -2987,7 +2851,6 @@ textarea {
 }
 .of-title { margin: 10px 0 0; font-size: 19px; line-height: 1.3; color: #14203b; }
 
-/* Flyer: halka 3D entrance + light sweep */
 .of-flyer-wrap {
   position: relative; overflow: hidden; border-radius: 12px;
   perspective: 900px; background: #f4f6fa;
@@ -3006,7 +2869,7 @@ textarea {
   pointer-events: none;
 }
 
-/* Countdown */
+
 .of-timer {
   display: flex; align-items: center; justify-content: center; gap: 8px;
   margin-top: 14px; color: #14203b;
@@ -3049,7 +2912,7 @@ textarea {
 }
 
 
-  /* Curriculum: text ki jagah wahi, bullet uske left mein (desktop) */
+
   .module-item .session-list li {
     position: relative;
   }
@@ -3065,7 +2928,6 @@ textarea {
     background: #1f7ac4;
   }
 
-  /* Phone: wahi look jo abhi sahi aa raha hai */
   @media (max-width: 768px) {
     .module-item .session-list {
       padding: 4px 16px 16px 20px;

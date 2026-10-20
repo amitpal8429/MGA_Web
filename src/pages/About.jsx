@@ -8,7 +8,7 @@ const STATS = [
   { value: "203+", label: "Fellowships" },
   { value: "41+", label: "Certificates" },
   { value: "64+", label: "PG diplomas" },
-  { value: "25+", label: "Faculty mentors" },
+  
 ];
 
 const SPECIALITIES = [
@@ -109,7 +109,6 @@ export default function About() {
   return (
     <div className="mga-about">
 
-      {/* ================= HERO ================= */}
       <section className="about-hero">
         <div className="about-hero-blob" aria-hidden="true" />
         <div className="about-hero-blob about-hero-blob-2" aria-hidden="true" />
@@ -153,7 +152,7 @@ export default function About() {
       </section>
 
 
-      {/* ================= WHO WE ARE ================= */}
+   
       <section className="about-section" id="our-story">
         <div className="about-container about-grid">
 
@@ -206,7 +205,6 @@ export default function About() {
       </section>
 
 
-      {/* ================= MISSION & VISION ================= */}
       <section className="about-section about-light">
         <div className="about-container">
 
@@ -258,7 +256,6 @@ export default function About() {
       </section>
 
 
-      {/* ================= WHAT WE OFFER ================= */}
       <section className="about-section">
         <div className="about-container">
 
@@ -322,7 +319,7 @@ export default function About() {
       </section>
 
 
-      {/* ================= HOW IT WORKS ================= */}
+   
       <section className="about-section about-light">
         <div className="about-container">
 
@@ -348,7 +345,6 @@ export default function About() {
       </section>
 
 
-      {/* ================= SPECIALITIES ================= */}
       <section className="about-section">
         <div className="about-container">
 
@@ -375,7 +371,7 @@ export default function About() {
       </section>
 
 
-      {/* ================= ACCREDITATION ================= */}
+   
       <section className="about-section about-light">
         <div className="about-container">
           <div className="about-feature">
@@ -412,7 +408,6 @@ export default function About() {
       </section>
 
 
-      {/* ================= FACULTY ================= */}
       <section className="about-section">
         <div className="about-container">
           <div className="about-feature">
@@ -444,7 +439,6 @@ export default function About() {
       </section>
 
 
-      {/* ================= WHY MGA ================= */}
       <section className="about-section about-light">
         <div className="about-container">
 
@@ -474,7 +468,7 @@ export default function About() {
       </section>
 
 
-      {/* ================= CTA ================= */}
+   
       <section className="about-cta">
         <div className="about-container">
           <h2>Ready to advance your medical career?</h2>

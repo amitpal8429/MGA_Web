@@ -188,13 +188,9 @@ const COURSE_OUTCOMES = [
    CERTIFICATE IMAGES
    ========================================================= */
 
-/* CPD certificate: pehle PDF ko JPG/PNG me export karke WordPress me upload karo,
-   phir uska URL yahan CPD_CERTIFICATE_IMAGE me paste karo.
-   Click karne par PDF khulega. */
+/* CPD certificate image (click par kuch nahi khulta) */
 const CPD_CERTIFICATE_IMAGE =
-  "https://medicalglobalacademy.com/wp-content/uploads/2026/10/WhatsApp-Image-2026-10-17-at-10.15.41-AM.jpeg";
-const CPD_CERTIFICATE_PDF =
-  "https://medicalglobalacademy.com/wp-content/uploads/2026/10/Accreditation-Certificate-Medical-Global-Academy.pdf";
+  "https://medicalglobalacademy.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-22-at-3.51.36-PM.jpeg";
 
 const CERTIFICATE_IMAGES = [
   {
@@ -205,8 +201,7 @@ const CERTIFICATE_IMAGES = [
   {
     id: 2,
     src: CPD_CERTIFICATE_IMAGE,
-    alt: "CPD accreditation certificate – Medical Global Academy",
-    href: CPD_CERTIFICATE_PDF,
+    alt: "CPD certificate sample",
   },
 ].filter((img) => img.src);
 
@@ -1178,8 +1173,11 @@ export default function CourseDetail() {
         const status = Number(e?.status ?? e?.response?.status);
         const msg = String(e?.message || "");
 
+        /* API ka koi bhi HTTP error (404 / 500 etc.) galat slug par aata hai,
+           isliye status mile to NotFound. Network error (status nahi) par
+           purana ErrorState + retry dikhega. */
         const isNotFound =
-          [400, 404, 410].includes(status) ||
+          (Number.isFinite(status) && status >= 400) ||
           /not\s*found|404|no course|does not exist|invalid/i.test(msg);
 
         setError(isNotFound ? "notfound" : msg || "Something went wrong");

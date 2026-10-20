@@ -23,20 +23,16 @@ function stripHtml(html) {
   return (doc.body.textContent || "").trim();
 }
 
-/**
- * Final safety net: strip "MGA" / "Medical Global Academy" from any title
- * string, regardless of where it appears or which separator is used.
- */
 function safeTitle(text) {
   if (!text) return "";
   return text
-    // "| MGA", "- MGA", "– MGA", "— MGA", ": MGA", "• MGA" at end
+
     .replace(/[\|\-–—:•]\s*(MGA|Medical\s*Global\s*Academy)\s*$/i, "")
-    // "MGA |", "MGA -", "MGA –", "MGA —", "MGA :", "MGA •" at start
+   
     .replace(/^\s*(MGA|Medical\s*Global\s*Academy)\s*[\|\-–—:•]\s*/i, "")
-    // any remaining standalone brand word
+   
     .replace(/\b(MGA|Medical\s*Global\s*Academy)\b/gi, "")
-    // tidy up
+    
     .replace(/\s{2,}/g, " ")
     .replace(/^[\|\-–—:•\s]+|[\|\-–—:•\s]+$/g, "")
     .trim();
@@ -84,9 +80,7 @@ export default function BlogDetail() {
     return <p className="detail-status">Could not load article: {error}</p>;
   if (!post) return <p className="detail-status">Loading…</p>;
 
-  // Manual per-blog overrides (H1, keywords, title, canonical, description,
-  // image, tags) keyed by slug. Falls back to WordPress data when a blog
-  // isn't in the override map.
+
   const manualMeta = getBlogMeta(slug);
 
   const wpImage = post._embedded?.["wp:featuredmedia"]?.[0]?.source_url;
@@ -95,7 +89,6 @@ export default function BlogDetail() {
   const h1 = manualMeta?.h1 || wpTitle;
   const image = manualMeta?.image || wpImage;
 
-  // Title never contains "MGA" or "Medical Global Academy".
   const metaTitle = safeTitle(
     manualMeta?.title ? manualMeta.title : cleanTitle(wpTitle) || wpTitle
   );
@@ -116,7 +109,7 @@ export default function BlogDetail() {
     <article className="detail-article">
       <Helmet>
         <title>{metaTitle}</title>
-        {/* description yahan nahi hai: MetaDescription component handle karta hai */}
+ 
         {keywords && <meta name="keywords" content={keywords} />}
         <link rel="canonical" href={canonicalUrl} />
         <meta name="robots" content="index, follow" />
@@ -141,7 +134,7 @@ export default function BlogDetail() {
 
       <MetaDescription content={metaDescription} />
 
-      {/* SCHEMA: BlogPosting + Breadcrumb + ImageObject */}
+    
       <BlogPostSchema
         title={h1}
         description={metaDescription}

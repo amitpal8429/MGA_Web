@@ -16,17 +16,12 @@ export default function Courses() {
   const activeType = params.get("type") || "";
   const activeCategory = params.get("category") || "";
 
-  // Typing isi local state se hoti hai, isliye cursor kabhi jump nahi karta
   const [searchText, setSearchText] = useState(urlQuery);
 
-  // Last value jo humne khud URL me push ki (back/forward detect karne ke liye)
+
   const pushedRef = useRef(urlQuery);
 
-  /* =========================================================
-     SEARCH SYNC
-     ========================================================= */
 
-  // typing -> URL (debounced)
   useEffect(() => {
     if (searchText === pushedRef.current) return undefined;
 
@@ -41,10 +36,10 @@ export default function Courses() {
     }, 250);
 
     return () => clearTimeout(t);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  
   }, [searchText]);
 
-  // URL -> input (sirf jab URL bahar se badle, jaise back button)
+  
   useEffect(() => {
     if (urlQuery !== pushedRef.current) {
       pushedRef.current = urlQuery;
@@ -52,9 +47,6 @@ export default function Courses() {
     }
   }, [urlQuery]);
 
-  /* =========================================================
-     FETCH ALL COURSES — no filtering, no exclusions
-     ========================================================= */
   useEffect(() => {
     let cancelled = false;
     setError(null);
@@ -63,14 +55,12 @@ export default function Courses() {
       .then((data) => {
         if (cancelled) return;
 
-        // 🔍 DEBUG — open DevTools Console to verify types
         console.log("[Courses] Total from API:", data.length);
         console.log(
           "[Courses] Unique types:",
           [...new Set(data.map((c) => c.type))]
         );
 
-        // Show EVERYTHING the API returns
         setCourses(data);
       })
       .catch((e) => !cancelled && setError(e.message));
@@ -80,32 +70,24 @@ export default function Courses() {
     };
   }, [tick]);
 
-  /* =========================================================
-     DYNAMIC TYPES — pulled from actual API data
-     ========================================================= */
+ 
   const types = useMemo(() => {
     if (!courses) return [];
     return [...new Set(courses.map((c) => c.type).filter(Boolean))].sort();
   }, [courses]);
 
-  /* =========================================================
-     CATEGORIES — dynamic from API
-     ========================================================= */
   const categories = useMemo(() => {
     if (!courses) return [];
     const set = new Set(courses.map((c) => c.category?.name).filter(Boolean));
     return Array.from(set).sort();
   }, [courses]);
 
-  /* =========================================================
-     FILTERED — case-insensitive type matching
-     ========================================================= */
   const filtered = useMemo(() => {
     if (!courses) return [];
     const q = searchText.trim().toLowerCase();
 
     return courses.filter((c) => {
-      // Type filter (case-insensitive)
+    
       if (
         activeType &&
         (c.type || "").toLowerCase() !== activeType.toLowerCase()
@@ -113,19 +95,16 @@ export default function Courses() {
         return false;
       }
 
-      // Category filter
       if (activeCategory && (c.category?.name || "") !== activeCategory) {
         return false;
       }
 
-      // Search filter
       if (q && !c.name.toLowerCase().includes(q)) return false;
 
       return true;
     });
   }, [courses, searchText, activeType, activeCategory]);
 
-  // type / category ke liye (search ka text bhi saath rakhta hai)
   function updateParam(key, value) {
     const next = new URLSearchParams(params);
     if (value) next.set(key, value);
@@ -152,7 +131,7 @@ export default function Courses() {
         </div>
 
         <div className="catalog-controls">
-          {/* SEARCH */}
+         
           <div className="catalog-search-wrap">
             <Search size={17} className="catalog-search-icon" />
             <input
@@ -165,7 +144,6 @@ export default function Courses() {
             />
           </div>
 
-          {/* TYPE PILLS — dynamically generated from API data */}
           <div className="pill-row">
             <button
               className={`pill ${!activeType ? "is-active" : ""}`}
@@ -194,7 +172,6 @@ export default function Courses() {
             ))}
           </div>
 
-          {/* CATEGORY DROPDOWN */}
           {categories.length > 0 && (
             <select
               className="catalog-select"
@@ -212,7 +189,7 @@ export default function Courses() {
           )}
         </div>
 
-        {/* ERROR */}
+        
         {error && (
           <ErrorState
             message={error}
@@ -220,7 +197,6 @@ export default function Courses() {
           />
         )}
 
-        {/* LOADING */}
         {!error && courses === null && <CourseGridSkeleton count={9} />}
 
         {/* EMPTY */}
@@ -231,7 +207,7 @@ export default function Courses() {
           />
         )}
 
-        {/* GRID */}
+      
         {!error && courses !== null && filtered.length > 0 && (
           <div className="course-grid">
             {filtered.map((c) => (
