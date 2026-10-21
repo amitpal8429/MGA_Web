@@ -25,7 +25,6 @@ const REDIRECTS = {
   "fellowship-in-oral-and-maxillofacial-radiology": "fellowship-in-oral-radiology",
   "fellowship-in-maxillofacial-radiology": "fellowship-in-oral-radiology",
 
-  "fellowship-in-gynaecologic-oncology": "fellowship-in-robotic-gynaecological-oncology",
   "fellowship-in-arthroscopy-sports-medicine": "fellowship-in-arthroscopy-and-sports-medicine",
   "fellowship-in-head-and-neck-surgical-oncology": "fellowship-in-head-and-neck-oncosurgery",
 
@@ -47,6 +46,7 @@ const REDIRECTS = {
   "certificate-in-nutrition-and-dietetics": "certificate-in-clinical-nutrition-and-dietetics",
   "fellowship-in-pediatric-genetics-and-metabolic": "fellowship-in-pediatric-genetics-and-metabolism",
   "fellowship-in-orthopaedic": "fellowship-in-orthopedic",
+  "fellowship-in-spinal-cord-surgery": "fellowship-in-spine-surgery",   // ✅ NEW
   "fellowship-in-gastrology": "fellowship-in-gastroenterology",
   "pg-diploma-in-reproductive-and-child-health": "pg-diploma-in-reproductive-child-health",
 

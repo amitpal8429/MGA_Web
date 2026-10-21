@@ -188,7 +188,6 @@ const COURSE_OUTCOMES = [
    CERTIFICATE IMAGES
    ========================================================= */
 
-/* CPD certificate image (click par kuch nahi khulta) */
 const CPD_CERTIFICATE_IMAGE =
   "https://medicalglobalacademy.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-22-at-3.51.36-PM.jpeg";
 
@@ -268,6 +267,26 @@ const applyBtnBase = {
   cursor: "pointer",
   transition:
     "background-color 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease",
+};
+
+/* =========================================================
+   SHEET TABLE STYLES (keyword / intent / use)
+   ========================================================= */
+
+const sheetTh = {
+  padding: "10px 12px",
+  borderBottom: "2px solid #cfe4f6",
+  fontWeight: 750,
+  color: "#16324f",
+  fontSize: 13,
+  textTransform: "uppercase",
+  letterSpacing: "0.03em",
+  textAlign: "left",
+};
+
+const sheetTd = {
+  padding: "10px 12px",
+  verticalAlign: "top",
 };
 
 /* =========================================================
@@ -425,6 +444,30 @@ const PAGE_CSS = `
     font-size: 18px;
     line-height: 1.35;
     font-weight: 700;
+  }
+
+  .mga-topic-title {
+    margin: 0 0 14px;
+  }
+
+  .mga-topic-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .mga-topic-chip {
+    padding: 8px 14px;
+    background: #f0f7fd;
+    border: 1px solid #cfe4f6;
+    border-radius: 999px;
+    color: #0c3a6b;
+    font-size: 14px;
+    line-height: 1.35;
+    font-weight: 500;
   }
 
   .mga-cta-text {
@@ -1153,7 +1196,6 @@ export default function CourseDetail() {
       .then((data) => {
         if (cancelled) return;
 
-        /* API 200 de kar bhi khali / invalid data de to bhi 404 maano */
         const course = Array.isArray(data) ? data[0] : data;
         const isEmpty =
           !course ||
@@ -1173,9 +1215,6 @@ export default function CourseDetail() {
         const status = Number(e?.status ?? e?.response?.status);
         const msg = String(e?.message || "");
 
-        /* API ka koi bhi HTTP error (404 / 500 etc.) galat slug par aata hai,
-           isliye status mile to NotFound. Network error (status nahi) par
-           purana ErrorState + retry dikhega. */
         const isNotFound =
           (Number.isFinite(status) && status >= 400) ||
           /not\s*found|404|no course|does not exist|invalid/i.test(msg);
@@ -1278,6 +1317,52 @@ export default function CourseDetail() {
     manualMeta?.description ||
     course.meta_description ||
     cleanText(course.description).slice(0, 155);
+
+  /* TAGS (sheet) -> meta keywords */
+  const tagList = (
+    Array.isArray(seo?.tags) ? seo.tags : String(seo?.tags || "").split(",")
+  )
+    .map((t) => t.trim())
+    .filter(Boolean);
+
+  /* Sheet ke 10 auto keywords (courseSeo.js mein add kiye hain) */
+  const sheetKeywords = Array.isArray(seo?.keywords)
+    ? seo.keywords.map((k) => String(k || "").trim()).filter(Boolean)
+    : [];
+
+  /* Primary keyword fallback: primaryKeyword -> keywords[0] -> tags[0] */
+  const primaryKeyword =
+    String(seo?.primaryKeyword || "").trim() ||
+    sheetKeywords[0] ||
+    tagList[0] ||
+    "";
+
+  /* Meta keywords: primary + sheet keywords + tags (duplicates hata ke) */
+  const keywordList = [primaryKeyword, ...sheetKeywords, ...tagList]
+    .map((k) => String(k || "").trim())
+    .filter(Boolean)
+    .filter(
+      (k, i, arr) =>
+        arr.findIndex((x) => x.toLowerCase() === k.toLowerCase()) === i
+    );
+
+  const metaKeywords = keywordList.join(", ");
+
+  /* Chips ke liye sirf primary + tags (sheet ke 10 keywords nahi) */
+  const chipKeywords = [primaryKeyword, ...tagList]
+    .map((k) => String(k || "").trim())
+    .filter(Boolean)
+    .filter(
+      (k, i, arr) =>
+        arr.findIndex((x) => x.toLowerCase() === k.toLowerCase()) === i
+    );
+
+  /* Sheet ka intent + use table (page par render hoga) */
+  const sheetKeywordsRows = sheetKeywords.map((kw, i) => ({
+    keyword: kw,
+    intent: seo?.intent?.[i] || "—",
+    use: seo?.use?.[i] || "—",
+  }));
 
   const canonicalUrl = `${SITE_URL}${pathname}`;
 
@@ -1513,6 +1598,7 @@ export default function CourseDetail() {
         <title>{metaTitle}</title>
         <link rel="canonical" href={canonicalUrl} />
         <meta name="robots" content="index, follow" />
+        {metaKeywords && <meta name="keywords" content={metaKeywords} />}
 
         <meta property="og:type" content="website" />
         <meta property="og:title" content={metaTitle} />
@@ -1911,7 +1997,92 @@ export default function CourseDetail() {
             </section>
           )}
 
-          {/* FAQ — ✅ FIX: pass slug & courseName so course-specific FAQs load */}
+          {/* ============ COURSE FOCUS — sheet keywords / intent / use ============ */}
+
+          {sheetKeywordsRows.length > 0 && (
+            <section
+              className="detail-block"
+              aria-labelledby="course-focus-title"
+              style={{ marginTop: 32 }}
+            >
+              <h2 id="course-focus-title">
+                {course.name}: Keywords, Search Intent &amp; Content Placement
+              </h2>
+
+              <p className="muted" style={{ marginBottom: 18 }}>
+                Ye table sheet se seedha aata hai — 10 target keywords, unka
+                search intent, aur page par kahan use hote hain.
+              </p>
+
+              <div style={{ overflowX: "auto" }}>
+                <table
+                  style={{
+                    width: "100%",
+                    borderCollapse: "collapse",
+                    fontSize: 14,
+                    lineHeight: 1.5,
+                  }}
+                >
+                  <thead>
+                    <tr style={{ background: "#f0f7fd" }}>
+                      <th style={sheetTh}>#</th>
+                      <th style={sheetTh}>Keyword</th>
+                      <th style={sheetTh}>Intent</th>
+                      <th style={sheetTh}>Use</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {sheetKeywordsRows.map((row, i) => (
+                      <tr
+                        key={row.keyword}
+                        style={{
+                          borderBottom: "1px solid #dce4ea",
+                          background: i % 2 === 0 ? "#ffffff" : "#f7f9fb",
+                        }}
+                      >
+                        <td style={sheetTd}>{i + 1}</td>
+                        <td
+                          style={{
+                            ...sheetTd,
+                            fontWeight: 600,
+                            color: "#16324f",
+                          }}
+                        >
+                          {row.keyword}
+                        </td>
+                        <td style={sheetTd}>
+                          <span
+                            style={{
+                              display: "inline-block",
+                              padding: "2px 10px",
+                              borderRadius: 999,
+                              fontSize: 12,
+                              fontWeight: 700,
+                              background:
+                                row.intent === "Commercial"
+                                  ? "#dff7e8"
+                                  : "#e8f3fc",
+                              color:
+                                row.intent === "Commercial"
+                                  ? "#166534"
+                                  : "#0c3a6b",
+                            }}
+                          >
+                            {row.intent}
+                          </span>
+                        </td>
+                        <td style={{ ...sheetTd, color: "#596b7e" }}>
+                          {row.use}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          )}
+
+          {/* FAQ */}
 
           <section className="detail-block" id="faq">
             <h2>Frequently asked questions</h2>
@@ -1922,6 +2093,27 @@ export default function CourseDetail() {
               courseName={course.name}
             />
           </section>
+
+          {/* RELATED TOPICS (sheet tags) */}
+
+          {chipKeywords.length > 0 && (
+            <section
+              className="detail-block mga-topic-section"
+              aria-labelledby="related-topics-title"
+            >
+              <h2 id="related-topics-title" className="mga-topic-title">
+                Related Topics
+              </h2>
+
+              <ul className="mga-topic-list">
+                {chipKeywords.map((tag) => (
+                  <li key={tag} className="mga-topic-chip">
+                    {tag}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
         </div>
 
         {/* SIDEBAR */}
@@ -2252,8 +2444,6 @@ export default function CourseDetail() {
                   cursor: "pointer",
                 };
 
-                /* CPD item: verify link + certificate PDF link
-                   (nested <a> invalid hota hai, isliye alag rakhe hain) */
                 if (item.certificateHref) {
                   return (
                     <div

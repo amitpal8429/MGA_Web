@@ -5,10 +5,6 @@ export default function PrivacyPolicy() {
   return (
     <div className="mga-privacy-page">
 
-      
-
-
-     
       <main className="privacy-container privacy-content">
 
         <section className="privacy-section">
@@ -174,7 +170,149 @@ export default function PrivacyPolicy() {
         </section>
 
 
-     
+        <section className="privacy-section">
+          <h2>9. Mobile Application</h2>
+
+          <p>
+            This Privacy Policy also applies to the MGA Academy mobile
+            application and its employee attendance features. The information
+            we collect depends on the features you use.
+          </p>
+        </section>
+
+
+        <section className="privacy-section">
+          <h2>10. Employee Attendance and Location</h2>
+
+          <p>
+            The MGA Academy app uses foreground location access to verify an
+            employee's proximity to their assigned workplace for check-in and
+            check-out.
+          </p>
+
+          <p>
+            Location is accessed only while the employee uses the check-in or
+            check-out feature. Location coordinates are used to calculate the
+            distance to the assigned workplace and are not stored beyond what
+            is required for attendance records.
+          </p>
+
+          <p>
+            Attendance records include employee identification, check-in and
+            check-out times, attendance status and, where retained, location
+            information. These records are accessible only to authorized
+            personnel and service providers who require access for attendance
+            administration.
+          </p>
+
+          <p>
+            You can disable location permission through your device settings.
+            Doing so may prevent location-based check-in and check-out.
+            Unrelated app features do not require attendance location access.
+          </p>
+        </section>
+
+
+        <section className="privacy-section">
+          <h2>11. Mobile App Permissions</h2>
+
+          <p>Depending on the features you use, the app may request:</p>
+
+          <ul>
+            <li>
+              <strong>Location:</strong> To verify workplace proximity for
+              employee check-in and check-out.
+            </li>
+            <li>
+              <strong>Camera and Photos:</strong> To capture or select images
+              for supported profile, work-update or document-submission
+              features.
+            </li>
+            <li>
+              <strong>Notifications:</strong> To deliver relevant reminders,
+              account notifications and service updates.
+            </li>
+          </ul>
+
+          <p>
+            You can manage permissions through your device settings.
+            Disabling a permission may limit the related feature.
+          </p>
+        </section>
+
+
+        <section className="privacy-section">
+          <h2>12. Mobile Service Providers</h2>
+
+          <p>
+            We use third-party service providers for authentication, hosting,
+            storage and notifications. These providers process the information
+            necessary to deliver their services and are required to provide
+            appropriate protection for personal information.
+          </p>
+
+          <p>
+            Where analytics or advertising services receive personal
+            information, we disclose the information shared, its purpose and
+            applicable consent choices. If no such services are used, this
+            sentence does not apply.
+          </p>
+        </section>
+
+
+        <section className="privacy-section">
+          <h2>13. Retention and Account Deletion</h2>
+
+          <p>
+            We retain attendance records and stored location information for
+            the period required to administer attendance and meet legal
+            obligations.
+          </p>
+
+          <p>
+            You can initiate account deletion within the app through the
+            account settings menu. For assistance, contact{" "}
+            <a href="mailto:support@medicalglobalacademy.com">
+              support@medicalglobalacademy.com
+            </a>.
+          </p>
+
+          <p>
+            Requests are processed within a reasonable timeframe. Associated
+            personal information is deleted unless retention is required by
+            law. Any retained records are limited to the applicable legal
+            purpose and retention period.
+          </p>
+        </section>
+
+
+        <section className="privacy-section">
+          <h2>14. Security and Data Processing</h2>
+
+          <p>
+            We use appropriate technical and organizational security measures
+            to protect personal information against unauthorized access,
+            disclosure, alteration and loss.
+          </p>
+
+          <p>
+            Personal information may be stored or processed in the countries
+            or regions where our service providers operate. Where
+            international transfers occur, we apply safeguards required by
+            applicable law.
+          </p>
+        </section>
+
+
+        <section className="privacy-section">
+          <h2>15. Payments on Different Platforms</h2>
+
+          <p>
+            Programme payments may be available through our website and
+            processed by our payment partners. Course purchases and payment
+            checkout are not available within the MGA Academy iOS app.
+          </p>
+        </section>
 
       </main>
 

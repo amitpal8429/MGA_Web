@@ -1,4 +1,3 @@
-
 *,
 *::before,
 *::after {
@@ -171,6 +170,7 @@ textarea {
 
 
 
+/* 👇 UPDATED BUTTON STYLES HERE 👇 */
 .nav-cta {
   background: #087bc9 !important;
   color: #ffffff !important;
@@ -178,13 +178,25 @@ textarea {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  
+  /* Updated to make it smaller and sleek */
+  padding: 8px 18px !important; 
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  border-radius: 50px !important;
+  height: auto !important;
+  min-height: unset !important;
+  box-shadow: none !important; /* Removes bulky shadow */
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .nav-cta:hover {
   background: #066daf !important;
   color: #ffffff !important;
   border-color: #066daf !important;
+  transform: translateY(-1px);
 }
+/* 👆 UPDATED BUTTON STYLES END 👆 */
 
 
 
@@ -1332,13 +1344,16 @@ textarea {
 
   .nav-divider { display: none; }
 
+  /* 👇 UPDATED MOBILE BUTTON STYLES HERE 👇 */
   .nav-links .nav-cta {
     margin-top: 20px;
     justify-content: center;
-    padding: 14px 20px;
-    font-size: 15px;
+    padding: 12px 20px !important;
+    font-size: 14px !important;
     border-bottom: none;
+    width: 100%;
   }
+  /* 👆 UPDATED MOBILE BUTTON STYLES END 👆 */
 
 
   .nav-overlay {
@@ -2809,6 +2824,7 @@ textarea {
     display: none;
   }
 }
+
 
 
 
