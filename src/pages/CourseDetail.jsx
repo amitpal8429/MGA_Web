@@ -188,6 +188,7 @@ const COURSE_OUTCOMES = [
    CERTIFICATE IMAGES
    ========================================================= */
 
+/* CPD certificate image (click par kuch nahi khulta) */
 const CPD_CERTIFICATE_IMAGE =
   "https://medicalglobalacademy.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-22-at-3.51.36-PM.jpeg";
 
@@ -267,26 +268,6 @@ const applyBtnBase = {
   cursor: "pointer",
   transition:
     "background-color 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease",
-};
-
-/* =========================================================
-   SHEET TABLE STYLES (keyword / intent / use)
-   ========================================================= */
-
-const sheetTh = {
-  padding: "10px 12px",
-  borderBottom: "2px solid #cfe4f6",
-  fontWeight: 750,
-  color: "#16324f",
-  fontSize: 13,
-  textTransform: "uppercase",
-  letterSpacing: "0.03em",
-  textAlign: "left",
-};
-
-const sheetTd = {
-  padding: "10px 12px",
-  verticalAlign: "top",
 };
 
 /* =========================================================
@@ -459,13 +440,18 @@ const PAGE_CSS = `
     gap: 10px;
   }
 
+  .mga-topic-inline {
+    margin-top: 16px;
+    gap: 8px;
+  }
+
   .mga-topic-chip {
-    padding: 8px 14px;
+    padding: 6px 12px;
     background: #f0f7fd;
     border: 1px solid #cfe4f6;
     border-radius: 999px;
     color: #0c3a6b;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.35;
     font-weight: 500;
   }
@@ -1196,6 +1182,7 @@ export default function CourseDetail() {
       .then((data) => {
         if (cancelled) return;
 
+        /* API 200 de kar bhi khali / invalid data de to bhi 404 maano */
         const course = Array.isArray(data) ? data[0] : data;
         const isEmpty =
           !course ||
@@ -1215,6 +1202,9 @@ export default function CourseDetail() {
         const status = Number(e?.status ?? e?.response?.status);
         const msg = String(e?.message || "");
 
+        /* API ka koi bhi HTTP error (404 / 500 etc.) galat slug par aata hai,
+           isliye status mile to NotFound. Network error (status nahi) par
+           purana ErrorState + retry dikhega. */
         const isNotFound =
           (Number.isFinite(status) && status >= 400) ||
           /not\s*found|404|no course|does not exist|invalid/i.test(msg);
@@ -1325,20 +1315,8 @@ export default function CourseDetail() {
     .map((t) => t.trim())
     .filter(Boolean);
 
-  /* Sheet ke 10 auto keywords (courseSeo.js mein add kiye hain) */
-  const sheetKeywords = Array.isArray(seo?.keywords)
-    ? seo.keywords.map((k) => String(k || "").trim()).filter(Boolean)
-    : [];
-
-  /* Primary keyword fallback: primaryKeyword -> keywords[0] -> tags[0] */
-  const primaryKeyword =
-    String(seo?.primaryKeyword || "").trim() ||
-    sheetKeywords[0] ||
-    tagList[0] ||
-    "";
-
-  /* Meta keywords: primary + sheet keywords + tags (duplicates hata ke) */
-  const keywordList = [primaryKeyword, ...sheetKeywords, ...tagList]
+  /* Primary keyword + tags, duplicates hata ke */
+  const keywordList = [seo?.primaryKeyword, ...tagList]
     .map((k) => String(k || "").trim())
     .filter(Boolean)
     .filter(
@@ -1348,22 +1326,6 @@ export default function CourseDetail() {
 
   const metaKeywords = keywordList.join(", ");
 
-  /* Chips ke liye sirf primary + tags (sheet ke 10 keywords nahi) */
-  const chipKeywords = [primaryKeyword, ...tagList]
-    .map((k) => String(k || "").trim())
-    .filter(Boolean)
-    .filter(
-      (k, i, arr) =>
-        arr.findIndex((x) => x.toLowerCase() === k.toLowerCase()) === i
-    );
-
-  /* Sheet ka intent + use table (page par render hoga) */
-  const sheetKeywordsRows = sheetKeywords.map((kw, i) => ({
-    keyword: kw,
-    intent: seo?.intent?.[i] || "—",
-    use: seo?.use?.[i] || "—",
-  }));
-
   const canonicalUrl = `${SITE_URL}${pathname}`;
 
   const filteredWhatYouLearn =
@@ -1372,6 +1334,14 @@ export default function CourseDetail() {
     ) || [];
 
   const showPgNote = isPgCourse(slug, course.name);
+
+  /* H3 sub-headings (string ya array dono chalte hain) */
+  const renderH3s = (v) =>
+    (Array.isArray(v) ? v : v ? [v] : []).map((t) => (
+      <h3 key={t} className="mga-sub-heading">
+        {t}
+      </h3>
+    ));
 
   /* =========================================================
      HIGHLIGHT SECTION (API se)
@@ -1447,6 +1417,56 @@ export default function CourseDetail() {
 
   const totalModules = course.module?.length || 0;
   const lockedCount = leadDone ? 0 : Math.max(0, totalModules - FREE_MODULES);
+
+  
+
+  const topicGroups = {
+    overview: [],
+    eligibility: [],
+    delivery: [],
+    curriculum: [],
+    accreditation: [],
+  };
+
+  keywordList.forEach((k, i) => {
+    const t = k.toLowerCase();
+    let group;
+
+    if (/cpd|actd|accredit/.test(t)) group = "accreditation";
+    else if (/after (mbbs|bds)|mbbs|bds|eligib|\bdr\.?$/.test(t))
+      group = "eligibility";
+    else if (/self-paced|online|hybrid|\blive\b|programme|\bprogram\b|india/.test(t))
+      group = "delivery";
+    else if (
+      i === 0 ||
+      /^(certificate|certification|pg |post ?graduate|postgraduate|diploma)/.test(t)
+    )
+      group = "overview";
+    else group = "curriculum";
+
+    topicGroups[group].push(k);
+  });
+
+  /* Jis section ka content page par nahi hai, uske tags overview me */
+  if (highlightList.length === 0) {
+    topicGroups.overview.push(...topicGroups.delivery);
+    topicGroups.delivery = [];
+  }
+  if (totalModules === 0) {
+    topicGroups.overview.push(...topicGroups.curriculum);
+    topicGroups.curriculum = [];
+  }
+
+  const renderTopics = (list, label) =>
+    list.length > 0 ? (
+      <ul className="mga-topic-list mga-topic-inline" aria-label={label}>
+        {list.map((tag) => (
+          <li key={tag} className="mga-topic-chip">
+            {tag}
+          </li>
+        ))}
+      </ul>
+    ) : null;
 
   /* OVERVIEW */
 
@@ -1697,6 +1717,8 @@ export default function CourseDetail() {
                 </h2>
               </div>
 
+              {renderH3s(seo?.highlightsH3)}
+
               <ul className="mga-highlight-list">
                 {highlightList.map((item, i) => (
                   <li key={i} className="mga-highlight-item">
@@ -1708,6 +1730,8 @@ export default function CourseDetail() {
                   </li>
                 ))}
               </ul>
+
+              {renderTopics(topicGroups.delivery, "Program format topics")}
             </section>
           )}
 
@@ -1744,8 +1768,10 @@ export default function CourseDetail() {
               id="who-is-this-course-for-title"
               className="mga-course-audience-title"
             >
-              Who Is This Course For?
+              {seo?.audienceH2 || "Who Is This Course For?"}
             </h2>
+
+            {renderH3s(seo?.audienceH3)}
 
             <ul className="mga-course-audience-list">
               <li>
@@ -1765,6 +1791,8 @@ export default function CourseDetail() {
             <h2 className="mga-course-eligibility-title">
               {seo?.eligibilityH2 || "Eligibility"}
             </h2>
+
+            {renderH3s(seo?.eligibilityH3)}
 
             <div className="mga-course-eligibility-box">
               <div className="mga-course-eligibility-item">
@@ -1793,6 +1821,8 @@ export default function CourseDetail() {
                 <span>Open to doctors practising in India and internationally</span>
               </div>
             </div>
+
+            {renderTopics(topicGroups.eligibility, "Eligibility topics")}
           </section>
 
           {/* PG NOTE */}
@@ -1823,9 +1853,7 @@ export default function CourseDetail() {
           <section className="detail-block">
             <h2>{seo?.overviewH2 || "Overview"}</h2>
 
-            {seo?.overviewH3 && (
-              <h3 className="mga-sub-heading">{seo.overviewH3}</h3>
-            )}
+            {renderH3s(seo?.overviewH3)}
 
             {seo?.intro && <p>{seo.intro}</p>}
 
@@ -1845,6 +1873,8 @@ export default function CourseDetail() {
                 </>
               )}
             </p>
+
+            {renderTopics(topicGroups.overview, "Program topics")}
           </section>
 
           {/* WHAT YOU'LL LEARN */}
@@ -1879,9 +1909,7 @@ export default function CourseDetail() {
                 <span className="muted">{totalModules} modules</span>
               </div>
 
-              {seo?.curriculumH3 && (
-                <h3 className="mga-sub-heading">{seo.curriculumH3}</h3>
-              )}
+              {renderH3s(seo?.curriculumH3)}
 
               <div className="module-list">
                 {course.module.map((m, i) => {
@@ -1955,6 +1983,8 @@ export default function CourseDetail() {
                   locked. Fill the form to unlock
                 </button>
               )}
+
+              {renderTopics(topicGroups.curriculum, "Curriculum topics")}
             </section>
           )}
 
@@ -1997,92 +2027,7 @@ export default function CourseDetail() {
             </section>
           )}
 
-          {/* ============ COURSE FOCUS — sheet keywords / intent / use ============ */}
-
-          {sheetKeywordsRows.length > 0 && (
-            <section
-              className="detail-block"
-              aria-labelledby="course-focus-title"
-              style={{ marginTop: 32 }}
-            >
-              <h2 id="course-focus-title">
-                {course.name}: Keywords, Search Intent &amp; Content Placement
-              </h2>
-
-              <p className="muted" style={{ marginBottom: 18 }}>
-                Ye table sheet se seedha aata hai — 10 target keywords, unka
-                search intent, aur page par kahan use hote hain.
-              </p>
-
-              <div style={{ overflowX: "auto" }}>
-                <table
-                  style={{
-                    width: "100%",
-                    borderCollapse: "collapse",
-                    fontSize: 14,
-                    lineHeight: 1.5,
-                  }}
-                >
-                  <thead>
-                    <tr style={{ background: "#f0f7fd" }}>
-                      <th style={sheetTh}>#</th>
-                      <th style={sheetTh}>Keyword</th>
-                      <th style={sheetTh}>Intent</th>
-                      <th style={sheetTh}>Use</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {sheetKeywordsRows.map((row, i) => (
-                      <tr
-                        key={row.keyword}
-                        style={{
-                          borderBottom: "1px solid #dce4ea",
-                          background: i % 2 === 0 ? "#ffffff" : "#f7f9fb",
-                        }}
-                      >
-                        <td style={sheetTd}>{i + 1}</td>
-                        <td
-                          style={{
-                            ...sheetTd,
-                            fontWeight: 600,
-                            color: "#16324f",
-                          }}
-                        >
-                          {row.keyword}
-                        </td>
-                        <td style={sheetTd}>
-                          <span
-                            style={{
-                              display: "inline-block",
-                              padding: "2px 10px",
-                              borderRadius: 999,
-                              fontSize: 12,
-                              fontWeight: 700,
-                              background:
-                                row.intent === "Commercial"
-                                  ? "#dff7e8"
-                                  : "#e8f3fc",
-                              color:
-                                row.intent === "Commercial"
-                                  ? "#166534"
-                                  : "#0c3a6b",
-                            }}
-                          >
-                            {row.intent}
-                          </span>
-                        </td>
-                        <td style={{ ...sheetTd, color: "#596b7e" }}>
-                          {row.use}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </section>
-          )}
-
-          {/* FAQ */}
+          {/* FAQ — ✅ FIX: pass slug & courseName so course-specific FAQs load */}
 
           <section className="detail-block" id="faq">
             <h2>Frequently asked questions</h2>
@@ -2094,32 +2039,14 @@ export default function CourseDetail() {
             />
           </section>
 
-          {/* RELATED TOPICS (sheet tags) */}
-
-          {chipKeywords.length > 0 && (
-            <section
-              className="detail-block mga-topic-section"
-              aria-labelledby="related-topics-title"
-            >
-              <h2 id="related-topics-title" className="mga-topic-title">
-                Related Topics
-              </h2>
-
-              <ul className="mga-topic-list">
-                {chipKeywords.map((tag) => (
-                  <li key={tag} className="mga-topic-chip">
-                    {tag}
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
         </div>
 
         {/* SIDEBAR */}
 
         <aside className="detail-sidebar">
           <div className="apply-card">
+            {renderH3s(seo?.deliveryH3)}
+
             {fee && (
               <div className="apply-price">
                 <span className="apply-price-label">Registration fee</span>
@@ -2444,6 +2371,8 @@ export default function CourseDetail() {
                   cursor: "pointer",
                 };
 
+                /* CPD item: verify link + certificate PDF link
+                   (nested <a> invalid hota hai, isliye alag rakhe hain) */
                 if (item.certificateHref) {
                   return (
                     <div
@@ -2502,6 +2431,8 @@ export default function CourseDetail() {
                 );
               })}
             </div>
+
+            {renderTopics(topicGroups.accreditation, "Accreditation topics")}
           </div>
 
           {/* CERTIFICATE */}

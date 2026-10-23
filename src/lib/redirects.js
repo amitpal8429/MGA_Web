@@ -15,7 +15,7 @@ const REDIRECTS = {
 
   "certificate-in-infection-and-prevention-control": "certificate-in-infection-control-and-prevention",
 
-  "fellowship-in-laparoscopy": "fellowship-in-laparoscopic-surgery",
+ 
 
   "fellowship-in-pediatric-dermatology": "fellowship-in-pediatrics-dermatology",
   "fellowship-in-pediatric-neonatology": "fellowship-in-pediatrics-neonatology",
@@ -55,6 +55,12 @@ const REDIRECTS = {
   // ✅ NEW: paediatric -> pediatrics
   "fellowship-in-paediatric": "fellowship-in-pediatrics",
 
+  // ✅ NEW: cosmetology "and" wala URL -> bina "and" wala URL
+  "fellowship-in-cosmetology-and-aesthetic-medicine": "fellowship-in-cosmetology-aesthetic-medicine",
+
+  // ✅ NEW: breast surgical oncology -> breast onco surgery
+  "fellowship-in-breast-surgical-oncology": "fellowship-in-breast-onco-surgery",
+ "fellowship-in-gynecologic-oncology": "fellowship-in-gynaecologic-oncology",
   "types-of-genetic-testing": "blog/types-of-genetic-testing",
   "congenital-heart-disease": "blog/congenital-heart-disease",
   "cancer-screening-guidelines-india": "blog/cancer-screening-guidelines-india",

@@ -1,10 +1,10 @@
 export const OFFER = {
   active: true,
   id: "offer-oct-2026",          // naya offer aaye to id badlo, popup sabko dobara dikhega
-  expiresOn: "2026-11-08",       // countdown aur auto-expiry isi se chalta hai
+  expiresOn: "2026-11-06",       // countdown aur auto-expiry isi se chalta hai
   topbarText: "Special admission offer live now — limited seats!",
   imageUrl:
-    "https://medicalglobalacademy.com/wp-content/uploads/2026/10/WhatsApp-Image-2026-10-21-at-4.29.43-PM.jpeg",
+    "https://medicalglobalacademy.com/wp-content/uploads/2026/10/WhatsApp-Image-2026-10-23-at-10.59.25-AM.jpeg",
 
   badge: "Limited-Time Offer",
   headline: "Exclusive offer on our programs",
