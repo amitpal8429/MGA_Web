@@ -19,15 +19,16 @@ import {
   Sparkles,
 } from "lucide-react";
 
+import { useCart } from "../context/CartContext";
 import { fetchCourseDetails } from "../lib/api";
 import { getRedirectSlug, getAliasSlug } from "../lib/redirects";
 import { getCourseMeta, cleanTitle } from "../lib/courseMeta";
-import { getCourseSeo } from "../lib/courseSeo";
+import { getCourseSeo } from "../lib/courseSeo"; // <-- Note: If you made courseSeoAll.js, change this to import { getCourseSeo } from "../lib/courseSeoAll";
 
 import CourseImage from "../components/CourseImage";
 import { DetailSkeleton } from "../components/Skeletons";
 import ErrorState from "../components/ErrorState";
-import Faq from "../components/Faq";
+import Faq, { getFaqsForSlug } from "../components/Faq";
 import LeadForm from "../components/LeadForm";
 import PayButton from "../components/PayButton";
 import CourseSchema from "../components/CourseSchema";
@@ -285,8 +286,65 @@ function validatePayer({ name, email, phone }) {
 }
 
 /* =========================================================
-   PAGE CSS
+   PAGE CSS (Full CSS preserved from your file)
    ========================================================= */
+
+/* =========================================================
+   SLUG VARIANTS
+   URL me British spelling (gynaecologic) ho aur API me American
+   (gynecologic) ho (ya ulta), to dono try karte hain.
+   ========================================================= */
+
+const NOT_FOUND = Symbol("course-not-found");
+
+const isNotFoundError = (e) => {
+  const status = Number(e?.status ?? e?.response?.status);
+  const msg = String(e?.message || "");
+  return (
+    (Number.isFinite(status) && status >= 400) ||
+    /not\s*found|404|no course|does not exist|invalid/i.test(msg)
+  );
+};
+
+const slugVariants = (slug) => {
+  const base = String(slug || "");
+
+  const american = base
+    .replace(/gynaecolog/g, "gynecolog")
+    .replace(/paediatr/g, "pediatr")
+    .replace(/orthopaedic/g, "orthopedic")
+    .replace(/anaesthe/g, "anesthe")
+    .replace(/haematolog/g, "hematolog")
+    .replace(/oesophag/g, "esophag")
+    .replace(/oestr/g, "estr")
+    .replace(/diarrhoea/g, "diarrhea");
+
+  const british = base
+    .replace(/gynecolog/g, "gynaecolog")
+    .replace(/pediatr/g, "paediatr")
+    .replace(/orthopedic/g, "orthopaedic")
+    .replace(/anesthe/g, "anaesthe")
+    .replace(/hematolog/g, "haematolog");
+
+  return [...new Set([base, american, british])].filter(Boolean);
+};
+
+const isEmptyCourse = (c) =>
+  !c || typeof c !== "object" || !(c.name || c.slug || c.id);
+
+/* Pehle original slug, na mile to spelling variants */
+async function loadCourse(slug) {
+  for (const candidate of slugVariants(slug)) {
+    try {
+      const data = await fetchCourseDetails(candidate);
+      const found = Array.isArray(data) ? data[0] : data;
+      if (!isEmptyCourse(found)) return found;
+    } catch (e) {
+      if (!isNotFoundError(e)) throw e; // network / server error: seedha bahar
+    }
+  }
+  throw NOT_FOUND;
+}
 
 const PAGE_CSS = `
   .mga-course-outcomes-grid {
@@ -1122,6 +1180,8 @@ const PAGE_CSS = `
 export default function CourseDetail() {
   const { slug } = useParams();
   const { pathname } = useLocation();
+  const { addItem, isInCart } = useCart();
+  const [cartMode, setCartMode] = useState("online");
 
   const redirectSlug = getRedirectSlug(slug);
   const fetchSlug = getAliasSlug(slug) || slug;
@@ -1163,6 +1223,7 @@ export default function CourseDetail() {
     setCourse(null);
     setError(null);
     setOpenModule(0);
+    setCartMode("online");
     setPaid(false);
     setOverviewExpanded(false);
     setLockModalOpen(false);
@@ -1178,46 +1239,26 @@ export default function CourseDetail() {
     setPromoClaim(saved.claim);
     setAppliedPromo(saved.applied);
 
-    fetchCourseDetails(fetchSlug)
-      .then((data) => {
+    loadCourse(fetchSlug)
+      .then((found) => {
         if (cancelled) return;
-
-        /* API 200 de kar bhi khali / invalid data de to bhi 404 maano */
-        const course = Array.isArray(data) ? data[0] : data;
-        const isEmpty =
-          !course ||
-          typeof course !== "object" ||
-          !(course.name || course.slug || course.id);
-
-        if (isEmpty) {
-          setError("notfound");
-          return;
-        }
-
-        setCourse(course);
+        setCourse(found);
       })
       .catch((e) => {
         if (cancelled) return;
 
-        const status = Number(e?.status ?? e?.response?.status);
-        const msg = String(e?.message || "");
+        if (e === NOT_FOUND || isNotFoundError(e)) {
+          setError("notfound");
+          return;
+        }
 
-        /* API ka koi bhi HTTP error (404 / 500 etc.) galat slug par aata hai,
-           isliye status mile to NotFound. Network error (status nahi) par
-           purana ErrorState + retry dikhega. */
-        const isNotFound =
-          (Number.isFinite(status) && status >= 400) ||
-          /not\s*found|404|no course|does not exist|invalid/i.test(msg);
-
-        setError(isNotFound ? "notfound" : msg || "Something went wrong");
+        setError(String(e?.message || "") || "Something went wrong");
       });
 
     return () => {
       cancelled = true;
     };
   }, [fetchSlug, redirectSlug, slug]);
-
-  /* POPUPS (curriculum lock + promo): Esc se band */
 
   const anyModalOpen = lockModalOpen || Boolean(promoModalMode);
 
@@ -1233,8 +1274,6 @@ export default function CourseDetail() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [anyModalOpen]);
-
-  /* POPUPS: background scroll band */
 
   useEffect(() => {
     if (!anyModalOpen) return undefined;
@@ -1326,7 +1365,10 @@ export default function CourseDetail() {
 
   const metaKeywords = keywordList.join(", ");
 
-  const canonicalUrl = `${SITE_URL}${pathname}`;
+  /* CANONICAL: hamesha bina trailing slash ke (/abc/ aur /abc dono par /abc) */
+  const cleanPath =
+    pathname.length > 1 ? pathname.replace(/\/+$/, "") : pathname;
+  const canonicalUrl = `${SITE_URL}${cleanPath}`;
 
   const filteredWhatYouLearn =
     course.what_you_learn?.filter(
@@ -1418,8 +1460,6 @@ export default function CourseDetail() {
   const totalModules = course.module?.length || 0;
   const lockedCount = leadDone ? 0 : Math.max(0, totalModules - FREE_MODULES);
 
-  
-
   const topicGroups = {
     overview: [],
     eligibility: [],
@@ -1468,9 +1508,18 @@ export default function CourseDetail() {
       </ul>
     ) : null;
 
-  /* OVERVIEW */
+  /* =========================================================
+     OVERVIEW
+     SEO overview agar diya hai to wahi priority, warna API description
+     ========================================================= */
 
-  const fullOverview = stripHandsOnSentences(cleanText(course.description));
+  const seoOverview =
+    typeof seo?.overview === "string" ? cleanText(seo.overview) : "";
+
+  const fullOverview = stripHandsOnSentences(
+    seoOverview || cleanText(course.description)
+  );
+
   const isLongOverview =
     fullOverview && fullOverview.length > OVERVIEW_LIMIT;
   const visibleOverview =
@@ -1507,6 +1556,13 @@ export default function CourseDetail() {
         hybridBaseAmount - (hybridBaseAmount * hybridDiscountPercent) / 100
       )
     : hybridBaseAmount;
+
+  /* CART: program cost (Online total / Hybrid total), registration fee nahi */
+
+  const onlineCartPrice = onlineBaseAmount || Number(course.fee) || 0;
+  const selectedMode = hasHybrid && cartMode === "hybrid" ? "hybrid" : "online";
+  const cartPrice =
+    selectedMode === "hybrid" ? hybridBaseAmount : onlineCartPrice;
 
   /* PROMO: handlers */
 
@@ -1645,7 +1701,7 @@ export default function CourseDetail() {
         price={Number(course.fee) || 0}
         startDate={course.start_date}
       />
-      <FaqSchema items={seo?.faqs} />
+      <FaqSchema items={seo?.faqs || getFaqsForSlug(slug, course.name)} />
       <BreadcrumbSchema
         pageTitle={course.name}
         pageUrl={canonicalUrl}
@@ -2027,14 +2083,14 @@ export default function CourseDetail() {
             </section>
           )}
 
-          {/* FAQ — ✅ FIX: pass slug & courseName so course-specific FAQs load */}
+          {/* FAQ */}
 
           <section className="detail-block" id="faq">
             <h2>Frequently asked questions</h2>
 
             <Faq
-              items={seo?.faqs}
-              slug={course.slug}
+              
+              slug={slug}  
               courseName={course.name}
             />
           </section>
@@ -2198,6 +2254,72 @@ export default function CourseDetail() {
                 )}
               </>
             )}
+
+            {/* ADD TO CART / VIEW IN CART */}
+
+            {cartPrice > 0 && hasHybrid && (
+              <div className="promo-mode-row" style={{ marginBottom: 12 }}>
+                <button
+                  type="button"
+                  className={`promo-mode-btn ${
+                    selectedMode === "online" ? "is-active" : ""
+                  }`}
+                  onClick={() => setCartMode("online")}
+                >
+                  Online
+                  <br />
+                  <small>{formatINR(onlineCartPrice)}</small>
+                </button>
+
+                <button
+                  type="button"
+                  className={`promo-mode-btn ${
+                    selectedMode === "hybrid" ? "is-active" : ""
+                  }`}
+                  onClick={() => setCartMode("hybrid")}
+                >
+                  Hybrid
+                  <br />
+                  <small>{formatINR(hybridBaseAmount)}</small>
+                </button>
+              </div>
+            )}
+
+            {cartPrice > 0 &&
+              (isInCart(slug, selectedMode) ? (
+                <Link
+                  to="/cart"
+                  style={{ ...applyBtnBase, marginBottom: "12px" }}
+                >
+                  View in Cart
+                </Link>
+              ) : (
+                <button
+                  type="button"
+                  style={{
+                    ...applyBtnBase,
+                    fontFamily: "inherit",
+                    marginBottom: "12px",
+                  }}
+                  onClick={() =>
+                    addItem({
+                      slug,
+                      name: course.name,
+                      price: cartPrice,
+                      mode: selectedMode,
+                      image: course.image,
+                    })
+                  }
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = BTN_BLUE_HOVER;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = BTN_BLUE;
+                  }}
+                >
+                  Add to Cart
+                </button>
+              ))}
 
             {/* BROCHURE */}
 

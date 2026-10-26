@@ -1,16 +1,12 @@
-// src/lib/redirects.js
-// Old slug -> New slug ka map, aur Alias map (URL same rahe, content dusre slug ka aaye)
 
-// 🔁 FULL REDIRECT: match hone par URL bhi badal jayegi (address bar update hoga)
 const REDIRECTS = {
-  // ---- Course redirects ----
+ 
   "fetal-medicine-fellowship": "fellowship-in-fetal-medicine",
   "fellowship-in-obstetrics-gynaecology": "fellowship-in-obstetrics-and-gynaecology",
-  "fellowship-in-head-and-neck-surgicl-oncology": "fellowship-in-head-neck-surgery",
+
   "fellowship-in-anorectal-and-laser-proctology": "fellowship-in-anorectal-plus-laser-proctology",
 
-  // ✅ FIXED: key/target me trailing "/" nahi hona chahiye
-  // (getRedirectSlug pehle slash hata deta hai, phir match karta hai)
+
   "fellowship-in-general-laparoscopic-surgery": "fellowship-in-laparoscopic-surgery",
 
   "certificate-in-infection-and-prevention-control": "certificate-in-infection-control-and-prevention",
@@ -21,7 +17,7 @@ const REDIRECTS = {
   "fellowship-in-pediatric-neonatology": "fellowship-in-pediatrics-neonatology",
   "fellowship-in-cardiac-intervention": "fellowship-in-interventional-cardiology",
 
-  // ✅ Maxillofacial / Oral radiology variants — dono same target
+"fellowship-in-pediatrics-endocrinology":"fellowship-in-paediatric-endocrinology",
   "fellowship-in-oral-and-maxillofacial-radiology": "fellowship-in-oral-radiology",
   "fellowship-in-maxillofacial-radiology": "fellowship-in-oral-radiology",
 
@@ -35,15 +31,14 @@ const REDIRECTS = {
   "fellowship-in-clinical-embryology": "fellowship-in-embryology",
 
   "fellowship-in-pediatric-ophthalmology": "fellowship-in-pediatric-ophthalmology-strabismus",
-  "fellowship-in-pediatrics-endocrinology": "fellowship-in-endocrinology",
+"fellowship in pulmonology medicine":"fellowship in pulmonary medicine ",
   "fellowship-in-pulmonology": "fellowship-in-pulmonology-medicine",
   "certificate-in-diabetic-footcare": "certificate-in-diabetic-foot-care",
   "fellowship-in-anesthesiology": "fellowship-in-anesthesia",
-  "fellowship-in-clinical-nutrition": "certificate-in-clinical-nutrition-and-dietetics",
+ 
   "fellowship-in-laparoscopy-hysteroscopy": "fellowship-in-laparoscopy-and-hysteroscopy",
   "certificate-in-obstetrics-gynaecology": "certificate-in-obstetrics-and-gynaecology",
 
-  "certificate-in-nutrition-and-dietetics": "certificate-in-clinical-nutrition-and-dietetics",
   "fellowship-in-pediatric-genetics-and-metabolic": "fellowship-in-pediatric-genetics-and-metabolism",
   "fellowship-in-orthopaedic": "fellowship-in-orthopedic",
   "fellowship-in-spinal-cord-surgery": "fellowship-in-spine-surgery",   // ✅ NEW
@@ -52,15 +47,14 @@ const REDIRECTS = {
 
   "fellowship-in-pediatric-dentistry": "fellowship-in-pedodontist",
 
-  // ✅ NEW: paediatric -> pediatrics
   "fellowship-in-paediatric": "fellowship-in-pediatrics",
 
-  // ✅ NEW: cosmetology "and" wala URL -> bina "and" wala URL
   "fellowship-in-cosmetology-and-aesthetic-medicine": "fellowship-in-cosmetology-aesthetic-medicine",
 
-  // ✅ NEW: breast surgical oncology -> breast onco surgery
+
   "fellowship-in-breast-surgical-oncology": "fellowship-in-breast-onco-surgery",
  "fellowship-in-gynecologic-oncology": "fellowship-in-gynaecologic-oncology",
+  "fellowship-in-hematology-oncology": "fellowship-in-hemato-oncology",   
   "types-of-genetic-testing": "blog/types-of-genetic-testing",
   "congenital-heart-disease": "blog/congenital-heart-disease",
   "cancer-screening-guidelines-india": "blog/cancer-screening-guidelines-india",

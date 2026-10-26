@@ -1,35 +1,23 @@
 export const COURSE_SEO = {
 
   "pg-diploma-in-reproductive-child-health": {
-   
-    h1: "PG Diploma in Reproductive Child Health: Build Skills in Maternal & Child Care",
+    h1: "PG Diploma in Reproductive Child Health",
     metaTitle: "PG Diploma in Reproductive Child Health for Doctors",
-
-
     metaDescription:
       "A 12-month PG Diploma in Reproductive Child Health for doctors — covering antenatal, postnatal, newborn and child healthcare, CPD & ACTD accredited.",
     tags:
       "pg diploma in reproductive child health, reproductive and child health diploma for doctors, maternal newborn and child health diploma online, post graduate diploma in RCH for MBBS doctors, self-paced reproductive child health programme, CPD and ACTD accredited RCH diploma, antenatal and postnatal care diploma course",
     learnH2: "What You'll Learn in the RCH Diploma for MBBS Doctors",
-
-  
     overviewH2: "Reproductive and Child Health Programme for Doctors",
     intro:
       "This reproductive and child health programme for doctors builds practical skills in maternal and child care through a structured, self-paced format.",
-
-  
+    overview:
+      "This PG Diploma in Reproductive Child Health, a reproductive and child health programme for doctors, builds practical skills in maternal and child care through a structured, self-paced format. The PG Diploma in Reproductive & Child Health from Medical Global Academy (MGA) is an advanced professional skill-development program designed to strengthen clinical knowledge and practical understanding across sexual and reproductive health, family planning, fertility, antenatal and postnatal care, pregnancy and childbirth, maternal health, newborn care, child health, growth and development, adolescent health, nutrition, immunization, preventive healthcare, and common maternal, neonatal and pediatric conditions. The program follows a comprehensive life-course approach, covering normal and high-risk pregnancy, maternal and newborn emergencies, breastfeeding, essential newborn care, childhood illnesses, developmental assessment, adolescent reproductive health, contraception, reproductive health counselling, prevention of sexually transmitted infections, and integrated, patient-centred care. The PG Diploma in Reproductive Child Health also emphasizes evidence-based practice, quality improvement, respectful maternity and newborn care, health education, early identification of complications, multidisciplinary care, and contemporary public-health approaches. This is a professional skill-development course and is not a government postgraduate medical degree, NEET-based PG residency, or regular 2-year medical college seat.",
     eligibilityH2: "Diploma in Reproductive Medicine: Eligibility",
-
     curriculumH2: "Reproductive Health and Family Planning Diploma Curriculum",
-
-   
     detailsH3: "12 Month Reproductive Child Health Diploma",
-
     curriculumH3: "Antenatal Postnatal and Newborn Care Diploma",
-
-   
     overviewH3: "Reproductive and Child Health Programme India",
-
     faqs: [
       {
         q: "Is this a self-paced RCH programme for doctors?",
@@ -40,41 +28,27 @@ export const COURSE_SEO = {
         a: "Yes, MBBS doctors with valid registration can enrol in this course.",
       },
     ],
-
-   
     ctaText: "Start your reproductive child health course after MBBS today.",
   },
 
-
   "pg-diploma-in-obstetrics-and-gynaecology": {
-
-    h1: "Diploma in Gynaecology and Obstetrics: Build Core Skills in Women's Health",
+    h1: "PG Diploma in Gynaecology and Obstetrics",
     metaTitle: "Diploma in Gynaecology and Obstetrics for Doctors",
-
     metaDescription:
       "Learn online with MGA's Diploma in Gynaecology and Obstetrics — a 12-month program for MBBS doctors, UK CPD & ACTD accredited, with live mentorship.",
     tags:
       "diploma in gynaecology and obstetrics, diploma in gynaecology and obstetrics course, gynaecology and obstetrics diploma for doctors, online diploma in gynaecology and obstetrics India, antenatal and postnatal care diploma for MBBS doctors, CPD and ACTD accredited gynaecology diploma, women's health diploma course for doctors",
     learnH2: "What You'll Learn in the Postgraduate Diploma in Obstetrics and Gynaecology",
-
     overviewH2: "Diploma in Gynaecology and Obstetrics Course",
     intro:
       "This diploma in gynaecology and obstetrics course helps doctors build core clinical skills in antenatal care, labour, delivery and women's health through a structured online format.",
-
-
+    overview:
+      "This diploma in gynaecology and obstetrics course helps doctors build core clinical skills in antenatal care, labour, delivery and women's health through a structured online format. The PG Diploma in Obstetrics & Gynaecology from Medical Global Academy (MGA) is a 1-year professional skill-development program designed for doctors seeking to strengthen their knowledge and clinical skills in contemporary women's healthcare. The program covers comprehensive antenatal and postnatal care, normal and high-risk pregnancy, obstetric emergencies, fetal assessment, maternal medicine, gynecological disorders, reproductive health, infertility, contraception, menopause, gynecological endocrinology, ultrasound and imaging, and evidence-based clinical decision-making. It also incorporates contemporary areas including advanced obstetric ultrasound, fetal surveillance, preterm birth, hypertensive disorders of pregnancy, gestational diabetes, postpartum hemorrhage, minimally invasive gynecologic surgery, hysteroscopy, laparoscopy, reproductive medicine, gynecological oncology, urogynecology, pelvic-floor disorders, fertility preservation, and multidisciplinary management of complex cases. The diploma in gynaecology and obstetrics curriculum also introduces digital health, telemedicine, artificial intelligence-assisted clinical decision support, precision medicine, and modern simulation-based learning, reflecting current developments in obstetric and gynecologic practice. The 2026 ACOG educational program emphasizes updated clinical knowledge, emergency obstetrics, menopause, women's mental health, emerging topics, simulation, and evidence-based patient care. Through expert-led academic sessions, case-based learning, clinical scenarios, diagnostic interpretation, digital resources, assessments, and practical-oriented training, this diploma in gynaecology and obstetrics helps doctors develop advanced knowledge and contemporary clinical skills in Obstetrics & Gynaecology. This is a professional skill-development course and is not a government postgraduate medical degree, NEET-based PG residency, or regular 2-year medical college seat.",
     deliveryH2: "PG Diploma in Obstetrics and Gynaecology",
-
     eligibilityH2: "Diploma in Gynaecology and Obstetrics for Doctors: Eligibility",
-
-
     detailsH3: "12 Month Diploma in Obstetrics and Gynaecology",
-
     overviewH3: "Women's Health Diploma Course for Doctors",
-
- 
     curriculumH3: "Obstetrics and Gynaecology Diploma After MBBS",
-
- 
     faqs: [
       {
         q: "What are the diploma in gynaecology and obstetrics fees?",
@@ -85,14 +59,11 @@ export const COURSE_SEO = {
         a: "Yes, MBBS doctors with valid registration can enrol in this course.",
       },
     ],
-
     ctaText: "Enrol in the online diploma in obstetrics and gynaecology India today.",
   },
 
-
-
   "pg-diploma-in-endocrinology": {
-    h1: "Post Graduate Diploma in Endocrinology: Build Skills in Hormone & Metabolic Care",
+    h1: "PG Diploma in Endocrinology",
     metaTitle: "Post Graduate Diploma in Endocrinology for Doctors",
     metaDescription:
       "Learn online with MGA’s Post Graduate Diploma in Endocrinology — a 12-month program for MBBS doctors, UK CPD & ACTD accredited, with live mentorship.",
@@ -103,6 +74,8 @@ export const COURSE_SEO = {
     overviewH2: "PG Diploma in Endocrinology",
     overviewH3: "Endocrinology Diploma After MBBS",
     intro: "This PG diploma in endocrinology gives learners a structured, self-paced route to build practical clinical skills.",
+    overview:
+      "The PG Diploma in Endocrinology from Medical Global Academy (MGA) is a post graduate diploma in endocrinology and a professional skill-development program designed for doctors and medical professionals seeking to strengthen their knowledge and clinical understanding of modern endocrinology and metabolic medicine. The program covers comprehensive evaluation and management of diabetes and glucose disorders, thyroid diseases, obesity and metabolic syndrome, dyslipidemia, adrenal disorders, pituitary and hypothalamic diseases, reproductive endocrinology, calcium and bone-mineral disorders, osteoporosis, endocrine hypertension, pediatric and geriatric endocrine conditions, and endocrine manifestations of systemic diseases. It also introduces contemporary approaches including continuous glucose monitoring, modern glucose-lowering therapies, incretin-based treatments, insulin technologies, obesity pharmacotherapy, endocrine imaging, molecular and genetic evaluation, endocrine oncology, personalized treatment strategies, and evidence-based clinical decision-making. Current endocrine practice increasingly incorporates evolving therapies and updated approaches across diabetes, obesity, adrenal disease, bone health, and other endocrine conditions. Through expert-led academic sessions, case-based learning, clinical scenarios, diagnostic interpretation, treatment-planning exercises, digital learning resources, assessments, and practical-oriented clinical discussions, participants in this post graduate diploma in endocrinology develop structured knowledge and skills relevant to contemporary endocrinology. This program is a professional skill-development course and is not a government postgraduate medical degree, NEET-based PG residency, or regular 2-year medical college seat. It should not be considered equivalent to an MD, DNB, DM, or other government-recognized postgraduate medical qualification in Endocrinology. This post graduate diploma in endocrinology is intended for continuing professional development, knowledge enhancement, and focused clinical skill development in endocrinology.",
     eligibilityH2: "Diploma in Endocrinology for Doctors: Eligibility",
     curriculumH3: "Thyroid and Hormone Disorders Diploma Course",
     detailsH3: "12 Month Endocrinology Diploma Course",
@@ -124,7 +97,7 @@ export const COURSE_SEO = {
   },
 
   "pg-diploma-in-clinical-neurology": {
-    h1: "Diploma in Neurology: Build Clinical Skills in Stroke, Epilepsy & EEG",
+    h1: "PG Diploma in Neurology",
     metaTitle: "Diploma in Neurology for Doctors Online",
     metaDescription:
       "Learn online with MGA’s Diploma in Neurology for doctors — a 12-month program covering stroke, epilepsy & EEG, UK CPD & ACTD accredited.",
@@ -134,6 +107,8 @@ export const COURSE_SEO = {
     overviewH2: "PG Diploma in Clinical Neurology",
     overviewH3: "Post Graduate Diploma in Neurology",
     intro: "This PG diploma in clinical neurology gives learners a structured, self-paced route to build practical clinical skills.",
+    overview:
+      "The PG Diploma in Clinical Neurology from Medical Global Academy (MGA) is an advanced professional skill-development program, a diploma in neurology designed for healthcare professionals seeking comprehensive knowledge and practical understanding of modern clinical neurology. The program covers advanced neurological examination and clinical reasoning, neuroanatomy and neurophysiology, stroke and cerebrovascular disorders, epilepsy and seizure management, headache and migraine medicine, movement disorders, Parkinson’s disease, cognitive and neurodegenerative disorders, multiple sclerosis and demyelinating diseases, autoimmune and inflammatory neurology, neuromuscular disorders, peripheral neuropathies, neuroinfectious diseases, neuro-oncology, spinal disorders, pediatric and geriatric neurology, sleep-related neurological disorders, neurocritical care, neurological emergencies, neuroimaging, EEG and electrophysiological investigations, biomarkers, precision neurology, digital health and AI-assisted neurological assessment. The diploma in neurology curriculum incorporates contemporary developments such as the revised McDonald criteria for multiple sclerosis, advanced MRI biomarkers, and current evidence-based approaches to seizure and neurological disorder management. This diploma in neurology is a professional skill-development course and is not a government postgraduate medical degree, NEET-based PG residency, or regular 2-year medical college seat.",
     curriculumH3: ["Stroke and Epilepsy Management Course", "EEG and Neurological Diagnostics Course"],
     highlightsH3: "Clinical Neurology Course for Doctors",
     deliveryH3: "Diploma in Neurology Online",
@@ -151,7 +126,7 @@ export const COURSE_SEO = {
   },
 
   "pg-diploma-in-ultrasonography": {
-    h1: "PG Diploma in Ultrasonography: Build Advanced Imaging Skills",
+    h1: "PG Diploma in Ultrasonography",
     metaTitle: "PG Diploma in Ultrasonography for Doctors in India",
     metaDescription:
       "Learn online with MGA’s PG Diploma in Ultrasonography for doctors — 12 months covering abdominal, obstetric & Doppler imaging, UK CPD & ACTD accredited.",
@@ -160,6 +135,8 @@ export const COURSE_SEO = {
     overviewH2: "Diploma in Ultrasonography",
     overviewH3: ["PG Diploma in Ultrasound", "Diploma in Sonography"],
     intro: "This diploma in ultrasonography gives learners a structured, self-paced route to build practical clinical skills.",
+    overview:
+      "The PG Diploma in Ultrasonography from Medical Global Academy (MGA) is a comprehensive professional skill-development program designed to strengthen clinical knowledge and practical understanding of diagnostic ultrasound and point-of-care ultrasonography. The program covers ultrasound physics, equipment and transducer selection, image optimization, abdominal and pelvic ultrasonography, hepatobiliary and pancreatic imaging, renal and urinary ultrasound, thyroid and neck imaging, breast and scrotal ultrasound, obstetric and gynecological ultrasonography, vascular and Doppler studies, musculoskeletal ultrasound, chest and lung ultrasound, cardiac and basic echocardiographic principles, pediatric and neonatal ultrasound, emergency and POCUS applications, ultrasound-guided procedures, elastography, contrast-enhanced ultrasound concepts, image interpretation, documentation, quality assurance, patient safety, and emerging applications of AI and advanced ultrasound technology. The curriculum of this PG Diploma in Ultrasonography is aligned with contemporary ultrasound practice parameters and emphasizes systematic image acquisition, interpretation, clinical correlation, case-based learning, recorded lectures, digital learning resources, assessments, and practical skill development. Current AIUM guidance emphasizes appropriate training, image acquisition, interpretation, documentation, quality assurance, and safe clinical use of ultrasound. This PG Diploma in Ultrasonography is a professional skill-development course and is not a government postgraduate medical degree, NEET-based PG residency, or regular 2-year medical college seat.",
     eligibilityH2: "Ultrasound Course Eligibility",
     curriculumH3: ["Sonography Diploma Course", "Ultrasound Diploma Course"],
     faqs: [
@@ -180,7 +157,7 @@ export const COURSE_SEO = {
   },
 
   "pg-diploma-in-intensive-care": {
-    h1: "PG Diploma in Intensive Care: Build Critical ICU Skills",
+    h1: "PG Diploma in Intensive Care",
     metaTitle: "PG Diploma in Intensive Care for Doctors in India",
     metaDescription:
       "Learn online with MGA’s PG Diploma in Intensive Care for doctors — 12 months covering ventilator management & ICU protocols, UK CPD & ACTD accredited.",
@@ -189,6 +166,8 @@ export const COURSE_SEO = {
     overviewH2: "Post Graduate Diploma in Intensive Care",
     overviewH3: "Diploma in Intensive Care Medicine",
     intro: "This post graduate diploma in intensive care gives learners a structured, self-paced route to build practical clinical skills.",
+    overview:
+      "The PG Diploma in Intensive Care from Medical Global Academy (MGA) is an advanced professional skill-development program designed for healthcare professionals seeking comprehensive knowledge and practical understanding of modern intensive care and critical care medicine. The program covers assessment and stabilization of critically ill patients, airway management, mechanical ventilation, hemodynamic monitoring, shock and sepsis management, acute respiratory failure, cardiac emergencies, acute kidney injury, neurological emergencies, trauma, infections, fluid and electrolyte management, critical-care pharmacology, nutrition, sedation, analgesia, organ-support strategies, point-of-care ultrasound, and multidisciplinary ICU care. The curriculum of this PG Diploma in Intensive Care emphasizes evidence-based clinical decision-making, patient safety, early recognition of deterioration, emergency stabilization, monitoring of critically ill patients, and coordination with multidisciplinary critical-care teams, reflecting contemporary critical-care competencies and the updated 2026 Surviving Sepsis Campaign guidance. Learning is supported through recorded lectures, live interactive sessions, digital resources, e-books, clinical case discussions, assignments, and MCQ assessments. Important: This PG Diploma in Intensive Care is a professional skill-development course and is not a government postgraduate medical degree, NEET-based PG residency, or regular 2-year medical college seat.",
     eligibilityH2: "Intensive Care Diploma for Doctors: Eligibility",
     curriculumH3: ["Ventilator Management Course for Doctors", "ICU Patient Monitoring Course India"],
     detailsH3: "12 Month Intensive Care Diploma Course",
@@ -207,7 +186,7 @@ export const COURSE_SEO = {
   },
 
   "pg-diploma-in-respiratory-medicine": {
-    h1: "PG Diploma in Respiratory Medicine: Master Asthma & COPD Care",
+    h1: "PG Diploma in Respiratory Medicine",
     metaTitle: "PG Diploma in Respiratory Medicine for Doctors in India",
     metaDescription:
       "Learn online with MGA’s PG Diploma in Respiratory Medicine for doctors — covering asthma, COPD & pulmonary diagnostics, UK CPD & ACTD accredited.",
@@ -216,6 +195,8 @@ export const COURSE_SEO = {
     overviewH2: "Post Graduate Diploma in Respiratory Medicine",
     overviewH3: "Respiratory Medicine Course India",
     intro: "This post graduate diploma in respiratory medicine gives learners a structured, self-paced route to build practical clinical skills.",
+    overview:
+      "This post graduate diploma in respiratory medicine gives learners a structured, self-paced route to build practical clinical skills. The PG Diploma in Respiratory Medicine from Medical Global Academy (MGA) is an advanced professional skill-development program designed for healthcare professionals seeking comprehensive knowledge and practical understanding of modern respiratory and pulmonary medicine. The program covers advanced respiratory assessment, pulmonary function testing, chest imaging, asthma, COPD, interstitial lung diseases, pulmonary infections and tuberculosis, bronchiectasis, pulmonary hypertension, sleep-disordered breathing, pleural diseases, respiratory emergencies, non-invasive and invasive respiratory support, mechanical ventilation principles, bronchoscopy, thoracic oncology, occupational and environmental lung diseases, pulmonary rehabilitation, critical respiratory care, and emerging areas including precision medicine, biomarkers, digital health and AI-assisted respiratory care. The curriculum of this PG Diploma in Respiratory Medicine is designed around contemporary evidence-based respiratory practice and incorporates current international developments in asthma, COPD and respiratory support. This PG Diploma in Respiratory Medicine is a professional skill-development course and is not a government postgraduate medical degree, NEET-based PG residency, or regular 2-year medical college seat.",
     eligibilityH2: "Respiratory Medicine Diploma for Doctors: Eligibility",
     curriculumH3: ["Asthma and COPD Management Course for Doctors", "Respiratory Diagnostics Course for Doctors"],
     detailsH3: "12 Month Respiratory Medicine Diploma",
@@ -234,7 +215,7 @@ export const COURSE_SEO = {
   },
 
   "pg-diploma-in-clinical-psychiatry": {
-    h1: "PG Dip in Clinical Psychiatry: Master Psychiatric Assessment",
+    h1: "PG Diploma in Clinical Psychiatry",
     metaTitle: "PG Dip in Clinical Psychiatry for Doctors in India",
     metaDescription:
       "Learn online with MGA’s PG Dip in Clinical Psychiatry for doctors — covering psychiatric assessment & psychopharmacology, UK CPD & ACTD accredited.",
@@ -244,6 +225,8 @@ export const COURSE_SEO = {
     overviewH2: "Diploma in Clinical Psychiatry",
     overviewH3: "PG Diploma in Mental Health",
     intro: "This diploma in clinical psychiatry gives learners a structured, self-paced route to build practical clinical skills.",
+    overview:
+      "This diploma in clinical psychiatry gives learners a structured, self-paced route to build practical clinical skills. The PG Diploma in Clinical Psychiatry from Medical Global Academy (MGA) is an advanced professional skill-development program designed to strengthen comprehensive knowledge and clinical understanding of psychiatric assessment, diagnosis, treatment, and multidisciplinary mental healthcare. The program covers psychiatric history-taking and mental status examination, psychopathology, ICD-11-based diagnostic approaches, mood and anxiety disorders, psychotic disorders, bipolar disorder, obsessive-compulsive and related disorders, trauma-related disorders, personality disorders, substance-use and addictive disorders, neurodevelopmental disorders, child and adolescent psychiatry, geriatric psychiatry, consultation-liaison psychiatry, emergency psychiatry, suicide and self-harm assessment, sleep and behavioral disorders, psychopharmacology, psychotherapy principles, psychosocial interventions, neuropsychiatry, community mental health, digital psychiatry, and contemporary evidence-based psychiatric practice. The curriculum of this PG dip in clinical psychiatry also emphasizes clinical reasoning, risk assessment, patient safety, ethical practice, multidisciplinary care, and contemporary diagnostic frameworks, including the 2026 WHO ICD-11 release and its updated clinical classification framework. This PG Diploma in Clinical Psychiatry is a professional skill-development course and is not a government postgraduate medical degree, NEET-based PG residency, or regular 2-year medical college seat.",
     eligibilityH2: "PG Diploma in Clinical Psychiatry Course: Eligibility",
     curriculumH3: "Psychiatric Assessment and Psychopharmacology Course for Doctors",
     faqs: [
@@ -260,7 +243,7 @@ export const COURSE_SEO = {
   },
 
   "pg-diploma-in-oncology": {
-    h1: "PG Diploma in Oncology: Build Skills in Cancer Diagnosis & Care",
+    h1: "PG Diploma in Oncology",
     metaTitle: "PG Diploma in Oncology for Doctors Across India",
     metaDescription:
       "Strengthen your cancer diagnosis, chemotherapy and palliative care skills through this 12-month PG Diploma in Oncology, CPD & ACTD accredited.",
@@ -269,6 +252,8 @@ export const COURSE_SEO = {
     deliveryH2: "Oncology Diploma Course: Program Highlights",
     overviewH2: "Diploma in Oncology",
     intro: "This diploma in oncology gives learners a structured, self-paced route to build practical clinical skills.",
+    overview:
+      "This diploma in oncology gives learners a structured, self-paced route to build practical clinical skills. The PG Diploma in Oncology offered by MGA Medical Global Academy is designed to provide medical graduates and healthcare professionals with a structured understanding of cancer biology, diagnosis, and modern treatment approaches. This PG diploma in oncology typically covers core areas such as medical, surgical, and radiation oncology, along with chemotherapy protocols, tumor pathology, radiological imaging, and advancements in targeted and immunotherapy. Emphasis is placed on clinical exposure, case-based learning, and evidence-based practice to help learners develop practical skills in patient management, cancer prevention, and palliative care. By integrating theoretical knowledge with clinical training, the PG diploma in oncology aims to prepare participants to work effectively in oncology departments, research settings, and multidisciplinary cancer care teams.",
     curriculumH2: "Cancer Diagnosis and Treatment Diploma for Doctors Curriculum",
     curriculumH3: "Chemotherapy and Palliative Care Course for Doctors",
     deliveryH3: "Oncology Diploma Online",
@@ -286,7 +271,7 @@ export const COURSE_SEO = {
   },
 
   "pg-diploma-in-renal-medicine": {
-    h1: "PG Diploma in Renal Medicine: Master Kidney Disease & Dialysis Care",
+    h1: "PG Diploma in Renal Medicine",
     metaTitle: "PG Diploma in Renal Medicine for Doctors in India",
     metaDescription:
       "Build expertise in CKD, AKI and dialysis care with this PG Diploma in Renal Medicine for MBBS/MD doctors — CPD & ACTD accredited credential.",
@@ -296,6 +281,8 @@ export const COURSE_SEO = {
     overviewH2: "Postgraduate Diploma in Renal Medicine",
     overviewH3: "CKD Management",
     intro: "This postgraduate diploma in renal medicine gives learners a structured, self-paced route to build practical clinical skills.",
+    overview:
+      "This postgraduate diploma in renal medicine gives learners a structured, self-paced route to build practical clinical skills. The PG Diploma in Renal Medicine from Medical Global Academy (MGA) is an advanced professional skill-development program designed for medical professionals seeking comprehensive knowledge and practical understanding of renal and kidney-related disorders. The program covers acute kidney injury (AKI), acute kidney disease (AKD), chronic kidney disease (CKD), glomerular diseases, diabetic and hypertensive kidney disease, electrolyte and acid–base disorders, renal hypertension, nephrotic and nephritic syndromes, dialysis and kidney replacement therapies, renal emergencies, CKD-related anemia and mineral-bone disorders, fluid and electrolyte management, renal pharmacology, kidney transplantation, and multidisciplinary renal care. The curriculum of this PG Diploma in Renal Medicine incorporates contemporary evidence-based approaches and evolving clinical guidance in kidney medicine, including advances in AKI management, CKD progression prevention, anemia management, dialysis, and transplant care. The program is supported through structured academic learning, recorded lectures, digital learning resources, assessments, and case-based learning to strengthen clinical knowledge and professional skills in renal medicine. This PG Diploma in Renal Medicine is a professional skill-development course and is not a government postgraduate medical degree, NEET-based PG residency, or regular 2-year medical college seat.",
     curriculumH3: ["Hemodialysis Course", "Chronic Kidney Disease"],
     highlightsH3: "Nephrology Course",
     faqs: [
@@ -312,7 +299,7 @@ export const COURSE_SEO = {
   },
 
   "pg-diploma-in-cosmetology-and-aesthetic-medicine": {
-    h1: "PG Diploma in Clinical Cosmetology and Aesthetics: Master Injectables & Laser Aesthetics",
+    h1: "PG Diploma in Clinical Cosmetology and Aesthetics",
     metaTitle: "PG Diploma in Clinical Cosmetology and Aesthetics",
     metaDescription:
       "Master Botox, fillers, lasers and skin rejuvenation with this PG Diploma in Clinical Cosmetology and Aesthetics for MBBS doctors — CPD & ACTD accredited.",
@@ -321,6 +308,8 @@ export const COURSE_SEO = {
     deliveryH2: "PG Diploma in Clinical Cosmetology: Program Highlights",
     overviewH2: "PG Diploma in Cosmetology and Aesthetic Medicine",
     intro: "This PG diploma in cosmetology and aesthetic medicine gives learners a structured, self-paced route to build practical clinical skills.",
+    overview:
+      "This PG diploma in cosmetology and aesthetic medicine gives learners a structured, self-paced route to build practical clinical skills. The PG Diploma in Cosmetology and Aesthetic Medicine from Medical Global Academy (MGA) is a 1-year online skill-development program designed exclusively for doctors who wish to enhance their knowledge and clinical skills in cosmetology and aesthetic medicine. This PG Diploma in Clinical Cosmetology and Aesthetics is a professional skill-development course and is not a government postgraduate medical degree, NEET-based PG residency, or regular 2-year medical college seat. The PG Diploma in Clinical Cosmetology and Aesthetics focuses on contemporary aesthetic medicine including skin assessment, facial anatomy, acne and acne-scar management, pigmentation and melasma, chemical peels, microneedling, PRP, laser and light-based therapies, radiofrequency, HIFU, skin rejuvenation, hair and scalp disorders, botulinum toxin, dermal fillers, non-surgical facial aesthetics, body contouring, and aesthetic treatment planning. It also emphasizes patient selection, contraindications, infection control, clinical photography, treatment safety, prevention and management of complications, and evidence-based aesthetic practice. Through online lectures, case-based learning, expert-led sessions, clinical scenarios, digital resources, and assessments, the program enables practicing doctors to strengthen their cosmetology and aesthetic medicine knowledge and clinical skills alongside their professional practice.",
     eligibilityH2: "PG Diploma in Aesthetic Medicine: Eligibility",
     curriculumH3: ["Botox, Fillers and Laser Aesthetics Course for Doctors", "Skin Rejuvenation and Cosmetology Course"],
     highlightsH3: "Postgraduate Diploma in Aesthetic Medicine",
@@ -338,7 +327,7 @@ export const COURSE_SEO = {
   },
 
   "pg-diploma-in-maternal-and-child-health": {
-    h1: "Post Graduate Diploma in Maternal and Child Health: Strengthen Antenatal to Pediatric Care Skills",
+    h1: "PG Diploma in Maternal and Child Health",
     metaTitle: "Post Graduate Diploma in Maternal and Child Health",
     metaDescription:
       "Build expertise in antenatal and newborn care with this Post Graduate Diploma in Maternal and Child Health for MBBS doctors — CPD & ACTD accredited.",
@@ -348,6 +337,8 @@ export const COURSE_SEO = {
     overviewH2: "Post Graduate Diploma in Maternal and Child Health",
     overviewH3: "Reproductive and Child Health Course for Doctors",
     intro: "This post graduate diploma in maternal and child health gives learners a structured, self-paced route to build practical clinical skills.",
+    overview:
+      "This post graduate diploma in maternal and child health gives learners a structured, self-paced route to build practical clinical skills. The PG Diploma in Maternal & Child Health from Medical Global Academy (MGA) is an advanced professional program designed to develop comprehensive knowledge and practical understanding of maternal, newborn, and child healthcare across the life course. The program covers reproductive and preconception health, antenatal and postnatal care, high-risk pregnancy, obstetric emergencies, maternal nutrition, fetal assessment, safe childbirth, neonatal stabilization, prematurity, neonatal care, breastfeeding, child growth and development, pediatric nutrition, immunization, common childhood conditions, pediatric emergencies, adolescent health, maternal and child mental health, safeguarding, preventive healthcare, digital health, evidence-based practice, quality improvement, and multidisciplinary MCH care. The curriculum of this post graduate diploma in maternal and child health emphasizes contemporary, evidence-based and person-centred approaches to improving maternal, newborn and child health outcomes, consistent with current international priorities for quality and equitable care. This post graduate diploma in maternal and child health is a professional skill-development course and is not a government postgraduate medical degree, NEET-based PG residency, or regular 2-year medical college seat.",
     eligibilityH2: "Diploma in Maternal and Child Health: Eligibility",
     curriculumH3: ["Antenatal Care Course for Doctors", "Newborn and Pediatric Care Course for Doctors"],
     highlightsH3: "PG Diploma in Child Health",
@@ -365,7 +356,7 @@ export const COURSE_SEO = {
   },
 
   "pg-diploma-in-orthopedics": {
-    h1: "PG Diploma in Orthopedics: Strengthen Trauma, Fracture & Joint Care Skills",
+    h1: "PG Diploma in Orthopedics",
     metaTitle: "PG Diploma in Orthopedics for Doctors in India",
     // NOTE: sheet mein description ke shuru mein ": " tha -- hata diya
     metaDescription:
@@ -374,6 +365,8 @@ export const COURSE_SEO = {
       "pg diploma in orthopedics, pg diploma in orthopedics for doctors, self-paced orthopedics programme, fracture management and trauma care training, CPD accredited orthopedics certification, orthopedics course for medical professionals, pg diploma in orthopedics in India",
     overviewH2: "Postgraduate Diploma in Orthopaedics",
     intro: "This postgraduate diploma in orthopaedics gives learners a structured, self-paced route to build practical clinical skills.",
+    overview:
+      "This postgraduate diploma in orthopedics gives learners a structured, self-paced route to build practical clinical skills. The PG Diploma in Orthopedic Medicine & Surgery from Medical Global Academy (MGA) is an advanced professional skill-development program designed to strengthen comprehensive knowledge and practical understanding of orthopedic and musculoskeletal care. This PG diploma in orthopedics covers orthopedic assessment and clinical examination, musculoskeletal imaging, fracture and trauma management, joint disorders, osteoarthritis, sports injuries, arthroscopy principles, hip and knee disorders, shoulder and elbow conditions, spine and back disorders, pediatric orthopedics, hand and wrist conditions, foot and ankle disorders, osteoporosis and metabolic bone disease, orthopedic infections, bone tumors, rehabilitation, pain management, perioperative care, patient safety, and contemporary evidence-based orthopedic practice. The curriculum of this PG diploma in orthopedics incorporates major orthopedic domains including trauma, hip and knee, sports medicine, spine, pediatrics, hand and wrist, foot and ankle, oncology, and shoulder and elbow care, consistent with current orthopedic educational frameworks. This PG diploma in orthopedics is a professional skill-development course and is not a government postgraduate medical degree, NEET-based PG residency, or regular 2-year medical college seat.",
     eligibilityH2: "Diploma in Orthopaedics: Eligibility",
     eligibilityH3: "Diploma in Orthopaedics Eligibility",
     curriculumH3: ["Fracture Management and Trauma Care Course for Doctors", "Joint Disorders and Musculoskeletal Care Course"],
@@ -393,7 +386,7 @@ export const COURSE_SEO = {
 
   // NOTE: sheet mein indexing status "submit" hai -- confirm kar lena ki page live hai
   "pg-diploma-in-gastroenterology": {
-    h1: "PG Diploma in Gastroenterology: Master GI & Hepatology Clinical Skills",
+    h1: "PG Diploma in Gastroenterology",
     metaTitle: "PG Diploma in Gastroenterology for Doctors in India",
     metaDescription:
       "Build expertise in GERD, IBD, hepatology and GI endoscopy with this PG Diploma in Gastroenterology for doctors — CPD & ACTD accredited.",
@@ -401,6 +394,8 @@ export const COURSE_SEO = {
       "pg diploma in gastroenterology, pg diploma in gastroenterology for doctors, self-paced gastroenterology programme, GERD IBD and hepatology management training, CPD accredited gastroenterology certification, gastroenterology course for medical professionals, pg diploma in gastroenterology in India",
     overviewH2: "Post Graduate Diploma in Gastroenterology",
     intro: "This post graduate diploma in gastroenterology gives learners a structured, self-paced route to build practical clinical skills.",
+    overview:
+      "This post graduate diploma in gastroenterology gives learners a structured, self-paced route to build practical clinical skills. The PG Diploma in Gastroenterology from Medical Global Academy (MGA) is a 1-year online professional skill-development program designed for doctors seeking to strengthen their knowledge and clinical skills in the assessment, diagnosis, and management of gastrointestinal and hepatobiliary disorders. This PG diploma in gastroenterology is a professional skill-development course and is not a government postgraduate medical degree, NEET-based PG residency, or regular 2-year medical college seat. The program covers advanced gastroenterology including esophageal and gastric disorders, inflammatory bowel disease, gastrointestinal bleeding, liver and biliary diseases, pancreatitis, pancreatic disorders, gastrointestinal infections, GI oncology, nutrition, and gastrointestinal emergencies. It also introduces contemporary areas such as metabolic dysfunction-associated steatotic liver disease (MASLD), advanced non-invasive liver assessment, therapeutic endoscopy, endoscopic ultrasound, precision gastroenterology, digital health, artificial intelligence, and multidisciplinary management of complex gastrointestinal disease. Current 2026 gastroenterology and hepatology developments increasingly emphasize advanced endoscopic approaches, non-invasive diagnostics, emerging liver therapies, AI-enabled tools, telehealth, and personalized management strategies. Through expert-led online lectures, case-based learning, clinical scenarios, diagnostic interpretation, digital resources, assessments, and practical-oriented training, this PG diploma in gastroenterology enables doctors to develop a stronger understanding of contemporary gastroenterology and evidence-based approaches to gastrointestinal and hepatobiliary patient care.",
     eligibilityH2: "Diploma in Gastroenterology Eligibility",
     curriculumH3: ["GERD and IBD Management Course for Doctors", "Hepatology and Liver Disease Course", "GI Endoscopy Course for Doctors"],
     highlightsH3: "Gastroenterology Diploma Course for Doctors",
@@ -419,7 +414,7 @@ export const COURSE_SEO = {
   },
 
   "pg-diploma-in-critical-care": {
-    h1: "PG Diploma in Critical Care: Master ICU Protocols & Ventilator Management",
+    h1: "PG Diploma in Critical Care",
     metaTitle: "PG Diploma in Critical Care Online in India",
     metaDescription:
       "Build expertise in ICU protocols, ventilator management and sepsis care with this PG Diploma in Critical Care for doctors — CPD & ACTD accredited.",
@@ -428,6 +423,8 @@ export const COURSE_SEO = {
     deliveryH2: "Postgraduate Diploma in Critical Care: Program Highlights",
     overviewH2: "PG Diploma in Critical Care Medicine",
     intro: "This PG diploma in critical care medicine gives learners a structured, self-paced route to build practical clinical skills.",
+    overview:
+      "This PG diploma in critical care medicine gives learners a structured, self-paced route to build practical clinical skills. The PG Diploma in Critical Care from Medical Global Academy (MGA) is a 1-year online skill-development program designed exclusively for doctors who wish to enhance their knowledge and practical skills in critical-care medicine. This PG diploma in critical care is a professional skill-development course and is not a government postgraduate medical degree, NEET-based PG residency, or regular 2-year medical college seat. The program focuses on advanced critical-care concepts including airway management, mechanical ventilation, sepsis and septic shock, hemodynamic monitoring, acute respiratory and renal failure, cardiac and neurological emergencies, trauma, critical-care pharmacology, point-of-care ultrasound, renal replacement therapy, ECMO principles, ICU infection control, nutrition, and organ-support strategies. Through online lectures, case-based learning, expert-led sessions, digital resources, and assessments, the program enables practicing doctors to strengthen their critical-care knowledge and clinical skills alongside their professional practice.",
     eligibilityH2: "Diploma in Critical Care Medicine: Eligibility",
     curriculumH3: ["ICU Protocols and Ventilator Management Course for Doctors", "Sepsis Care and Critical Care Management Course"],
     highlightsH3: "Critical Care Diploma Course",
@@ -445,7 +442,7 @@ export const COURSE_SEO = {
   },
 
   "pg-diploma-in-clinical-cardiology": {
-    h1: "PG Diploma in Clinical Cardiology: Master ECG, Echo & Cardiac Care Skills",
+    h1: "PG Diploma in Clinical Cardiology",
     metaTitle: "PG Diploma in Clinical Cardiology for Doctors in India",
     metaDescription:
       "Build expertise in ECG, echocardiography and cardiac care with this PG Diploma in Clinical Cardiology for doctors — CPD & ACTD accredited.",
@@ -454,6 +451,8 @@ export const COURSE_SEO = {
     deliveryH2: "PG Diploma in Cardiology: Program Highlights",
     overviewH2: "Post Graduate Diploma in Clinical Cardiology",
     intro: "This post graduate diploma in clinical cardiology gives learners a structured, self-paced route to build practical clinical skills.",
+    overview:
+      "This post graduate diploma in clinical cardiology gives learners a structured, self-paced route to build practical clinical skills. The PG Diploma in Clinical Cardiology from Medical Global Academy (MGA) is a comprehensive program designed to provide healthcare professionals with advanced knowledge and skills in diagnosing, treating, and managing various cardiovascular conditions. This PG diploma in clinical cardiology covers a wide range of topics, including coronary artery disease, heart failure, arrhythmias, and cardiovascular risk management, with a focus on evidence-based practices and clinical decision-making. Delivered by experienced cardiologists and medical experts, the program blends theoretical learning with practical insights, ensuring participants gain the necessary expertise to excel in the field of clinical cardiology. Upon completion of this PG diploma in clinical cardiology, graduates are equipped to provide high-quality care and make informed clinical decisions in both inpatient and outpatient settings, advancing their careers in the growing field of cardiovascular medicine.",
     eligibilityH2: "Diploma in Clinical Cardiology: Eligibility",
     curriculumH3: ["ECG and Echocardiography Course for Doctors", "Cardiac Care and Clinical Cardiology Course"],
     highlightsH3: "Online Diploma in Clinical Cardiology",
@@ -471,7 +470,7 @@ export const COURSE_SEO = {
   },
 
   "pg-diploma-in-dermatology": {
-    h1: "PG Diploma in Dermatology: Master Clinical & Cosmetic Skin Care Skills",
+    h1: "PG Diploma in Dermatology",
     metaTitle: "PG Diploma in Dermatology: 12-Month Online Program",
     metaDescription:
       "Build expertise in clinical and cosmetic dermatology with this PG Diploma in Dermatology for doctors — CPD & ACTD accredited, 12-month program.",
@@ -480,6 +479,8 @@ export const COURSE_SEO = {
     deliveryH2: "PG in Dermatology: Program Highlights",
     overviewH2: "Postgraduate Diploma in Dermatology",
     intro: "This postgraduate diploma in dermatology gives learners a structured, self-paced route to build practical clinical skills.",
+    overview:
+      "This postgraduate diploma in dermatology gives learners a structured, self-paced route to build practical clinical skills. The PG Diploma in Dermatology from Medical Global Academy (MGA) is a professional skill-development program designed for doctors and medical professionals seeking to strengthen their knowledge and practical understanding of modern dermatology. This PG diploma in dermatology covers clinical dermatology, common and complex skin disorders, acne, eczema, psoriasis, fungal and bacterial infections, pigmentation disorders, hair and nail diseases, dermoscopy, dermatopathology, procedural dermatology, cosmetic dermatology, laser-based treatments, and contemporary approaches to patient assessment and management. Through expert-led lectures, case-based learning, clinical discussions, diagnostic image interpretation, practical-oriented sessions, digital learning resources, and assessments, participants develop structured knowledge and clinical skills relevant to dermatology practice. This PG diploma in dermatology is a professional skill-development course and is not a government postgraduate medical degree, NEET-based PG residency, or regular 2-year medical college seat. It should not be considered equivalent to an MD, DNB, DDVL, or other government-recognized postgraduate medical qualification in Dermatology. The program is intended to support continuing professional development, knowledge enhancement, and focused clinical skill development in dermatology.",
     eligibilityH2: "Diploma in Dermatology Eligibility",
     curriculumH3: ["Clinical Dermatology Course for Doctors", "Cosmetic Dermatology and Skin Procedures Course"],
     highlightsH3: "Dermatology Diploma Course",
@@ -499,7 +500,7 @@ export const COURSE_SEO = {
 
   // NOTE: sheet mein URL trailing slash ke saath tha (/pg-diploma-in-embryology/) -- slug bina slash ke
   "pg-diploma-in-embryology": {
-    h1: "PG Diploma in Clinical Embryology: Build IVF and ART Expertise",
+    h1: "PG Diploma in Clinical Embryology",
     metaTitle: "PG Diploma in Clinical Embryology India – CPD Accredited",
     metaDescription:
       "This postgraduate diploma in embryology covers ICSI, embryo culture and cryopreservation for doctors — CPD & ACTD accredited clinical embryology program.",
@@ -509,6 +510,8 @@ export const COURSE_SEO = {
     overviewH2: "Diploma in Clinical Embryology",
     overviewH3: ["IVF and ART Course for Doctors", "PG Diploma in Embryology"],
     intro: "This diploma in clinical embryology gives learners a structured, self-paced route to build practical clinical skills.",
+    overview:
+      "This diploma in clinical embryology gives learners a structured, self-paced route to build practical clinical skills. The Postgraduate Diploma in Clinical Embryology from Medical Global Academy (MGA) offers a comprehensive curriculum designed to equip students with essential skills and knowledge in the field of reproductive medicine. This PG diploma in embryology covers advanced topics such as gamete biology, embryo culture, and assisted reproductive technologies, combining theoretical learning with practical laboratory experience. Students will gain insights into the ethical considerations and clinical practices necessary for successful embryological procedures. With a focus on training, this PG diploma in embryology prepares graduates for a dynamic career in clinical embryology, contributing to advancements in fertility treatments and reproductive health.",
     curriculumH3: ["Icsi and Embryo Culture Training for Doctors", "Cryopreservation Techniques Course for Embryologists"],
     highlightsH3: "Clinical Embryology Courses",
     faqs: [
@@ -525,7 +528,7 @@ export const COURSE_SEO = {
   },
 
   "pg-diploma-in-general-medicine": {
-    h1: "PG Diploma in General Medicine: Strengthen Core Clinical Skills",
+    h1: "PG Diploma in General Medicine",
     metaTitle: "PG Diploma in General Medicine for Doctors in India",
     metaDescription:
       "Build skills in diabetes, hypertension and infectious disease management with this PG Diploma in General Medicine for doctors — CPD & ACTD accredited.",
@@ -534,6 +537,8 @@ export const COURSE_SEO = {
     overviewH2: "Diploma in General Medicine",
     overviewH3: "Adult Patient Care and Clinical Examination Course",
     intro: "This diploma in general medicine gives learners a structured, self-paced route to build practical clinical skills.",
+    overview:
+      "This diploma in general medicine gives learners a structured, self-paced route to build practical clinical skills. The Postgraduate Diploma in General Medicine (PG Diploma in General Medicine) offered by Medical Global Academy (MGA) is designed for healthcare professionals seeking to deepen their knowledge and clinical skills in the diagnosis, treatment, and management of common medical conditions. This PG diploma in general medicine provides a comprehensive curriculum covering a broad range of medical specialties, from cardiology to endocrinology, and equips students with the latest evidence-based practices. With a focus on both theoretical learning and clinical training, this PG diploma in general medicine prepares professionals for advanced roles in general medicine, enabling them to deliver high-quality care and improve patient outcomes. Through a combination of interactive lectures, case studies, and practical assessments, the program ensures that students are well-prepared to meet the challenges of modern medical practice.",
     eligibilityH2: "Diploma in General Practice: Eligibility",
     curriculumH3: ["Diabetes and Hypertension Management Course for Doctors", "Infectious Disease Management Course for Doctors"],
     highlightsH3: "PG Diploma in Internal Medicine",
@@ -552,7 +557,7 @@ export const COURSE_SEO = {
   },
 
   "pg-diploma-in-pathology": {
-    h1: "PG Diploma in Pathology: Build Diagnostic Pathology Expertise",
+    h1: "PG Diploma in Pathology",
     metaTitle: "PG Diploma in Pathology for Doctors – CPD Accredited",
     metaDescription:
       "This PG Diploma in Pathology covers histopathology, microbiology and lab diagnosis for doctors — CPD & ACTD accredited, 12-month hybrid program.",
@@ -578,7 +583,7 @@ export const COURSE_SEO = {
   },
 
   "pg-diploma-in-emergency-medicine": {
-    h1: "PG Diploma in Emergency Medicine: Build Trauma and Critical Care Skills",
+    h1: "PG Diploma in Emergency Medicine",
     metaTitle: "PG Diploma in Emergency Medicine – CPD & ACTD Accredited",
     metaDescription:
       "This PG Diploma in Emergency Medicine builds trauma, ACLS and critical-care skills for doctors — CPD & ACTD accredited, 12-month hybrid program.",
@@ -604,7 +609,7 @@ export const COURSE_SEO = {
   },
 
   "pg-diploma-in-child-health": {
-    h1: "PG Diploma in Child Health: Gain the Skills Every Child Deserves",
+    h1: "PG Diploma in Child Health",
     metaTitle: "PG Diploma in Child Health – Skills That Save Lives",
     metaDescription:
       "This PG Diploma in Child Health turns everyday care into life-saving skill — pediatric diagnosis, emergencies and treatment, CPD & ACTD accredited.",
@@ -634,7 +639,7 @@ export const COURSE_SEO = {
   },
 
   "pg-diploma-in-diabetology": {
-    h1: "PG Diploma in Diabetology: Build Expertise in Diabetes Care",
+    h1: "PG Diploma in Diabetology",
     metaTitle: "PG Diploma in Diabetology – Master Diabetes Care",
     metaDescription:
       "This PG Diploma in Diabetology builds diabetes care skills for doctors, available Online or Hybrid — CPD & ACTD accredited, 12-month program.",
@@ -662,7 +667,7 @@ export const COURSE_SEO = {
   },
 
   "pg-diploma-in-family-medicine": {
-    h1: "PG Diploma in Family Medicine: Build Whole-Person Care Skills",
+    h1: "PG Diploma in Family Medicine",
     metaTitle: "PG Diploma in Family Medicine – Care for Every Patient",
     metaDescription:
       "This PG Diploma in Family Medicine builds skills to treat patients at every life stage, online or hybrid — CPD & ACTD accredited, 12 months.",
@@ -689,7 +694,7 @@ export const COURSE_SEO = {
   },
 
   "pg-diploma-in-anesthesiology": {
-    h1: "PG Diploma in Anesthesiology: Build Perioperative Care Skills",
+    h1: "PG Diploma in Anesthesiology",
     metaTitle: "PG Diploma in Anesthesiology – Confidence Under Pressure",
     metaDescription:
       "This PG Diploma in Anesthesiology builds airway management and perioperative care skills for doctors — CPD & ACTD accredited, 12-month program.",
@@ -716,7 +721,7 @@ export const COURSE_SEO = {
   },
 
   "pg-diploma-in-pulmonary-medicine": {
-    h1: "PG Diploma in Pulmonary Medicine: Build Respiratory Care Expertise",
+    h1: "PG Diploma in Pulmonary Medicine",
     metaTitle: "PG Diploma Pulmonary & Respiratory Medicine | CPD Certified",
     metaDescription:
       "This PG Diploma in Pulmonary & Respiratory Medicine builds skills in asthma, COPD and lung disease management for doctors — CPD & ACTD accredited.",
@@ -743,7 +748,7 @@ export const COURSE_SEO = {
   },
 
   "pg-diploma-in-rheumatology": {
-    h1: "PG Diploma in Rheumatology: Strengthen Your Rheumatology Practice",
+    h1: "PG Diploma in Rheumatology",
     metaTitle: "PG Diploma in Rheumatology – Master Autoimmune & Joint Care",
     metaDescription:
       "Earn a PG Diploma in Rheumatology with CPD & ACTD accredited training in autoimmune and joint disorders. Online and hybrid formats for doctors.",
@@ -913,7 +918,7 @@ export const COURSE_SEO = {
   },
 
   "pg-diploma-in-internal-medicine": {
-    h1: "PG Diploma in Internal Medicine: Core Clinical Skills",
+    h1: "PG Diploma in Internal Medicine",
     metaTitle: "PG Diploma in Internal Medicine – Strengthen Adult Care",
     metaDescription:
       "Earn a PG Diploma in Internal Medicine with CPD & ACTD accredited training in adult patient care. Self-paced online learning for doctors. Apply now.",
@@ -1045,7 +1050,7 @@ export const COURSE_SEO = {
   },
 
   "pg-diploma-in-pediatrics": {
-    h1: "Postgraduate Diploma in Pediatrics: Build Child Care Skills",
+    h1: "PG Diploma in Pediatrics Medicine",
     metaTitle: "Postgraduate Diploma in Pediatrics: Build Child Care Expertise",
     metaDescription:
       "Advance your career with the Postgraduate Diploma in Pediatrics for doctors. CPD & ACTD accredited, Online & Hybrid formats, hands-on clinical training.",
@@ -1055,6 +1060,8 @@ export const COURSE_SEO = {
     overviewH2: "Postgraduate Diploma in Paediatrics",
     overviewH3: "Pediatric Emergencies and Common Illnesses Course",
     intro: "This postgraduate diploma in paediatrics gives learners a structured, self-paced route to build practical clinical skills.",
+    overview:
+      "This diploma in pediatrics gives learners a structured, self-paced route to build practical clinical skills. The PG Diploma in Pediatrics Medicine from Medical Global Academy (MGA) is an advanced professional skill-development program designed to strengthen doctors’ clinical knowledge and practical understanding of pediatric healthcare from infancy through adolescence. This PG diploma in pediatrics covers pediatric growth and development, newborn and infant care, nutrition and breastfeeding, immunization, common childhood illnesses, pediatric infectious diseases, respiratory and gastrointestinal disorders, pediatric cardiology, neurology, nephrology, endocrinology, hematology, emergency and critical care, pediatric infections and sepsis, developmental and behavioral disorders, adolescent health, pediatric pharmacology, preventive and community pediatrics, child safeguarding, and evidence-based clinical decision-making. Contemporary pediatric practice, as taught in this PG diploma in pediatrics, also emphasizes quality of care, early identification of developmental concerns, family-centred care, nutrition, prevention, and appropriate referral for children requiring specialist management. This PG diploma in pediatrics is a professional skill-development course and is not a government postgraduate medical degree, NEET-based PG residency, or regular 2-year medical college seat.",
     curriculumH3: ["Pediatric OPD and Case Management Course for Doctors", "Child Growth and Development Training Course"],
     highlightsH3: "Diploma in Paediatrics",
     deliveryH3: "Pediatric Diploma Course",
@@ -1491,7 +1498,7 @@ export const COURSE_SEO = {
   },
 
   "pg-diploma-in-ophthalmology": {
-    h1: "PG Diploma in Ophthalmology: Diagnose & Treat Eye Disorders",
+    h1: "PG Diploma in Ophthalmology",
     metaTitle: "PG Diploma in Ophthalmology: Diagnose & Treat Eye Disorders",
     metaDescription:
       "Build advanced diagnostic and surgical skills in eye care with the PG Diploma in Ophthalmology for doctors. CPD & ACTD accredited, Online & Hybrid.",
@@ -1597,7 +1604,7 @@ export const COURSE_SEO = {
   },
 
   "pg-diploma-in-pediatrics-medicine": {
-    h1: "PG Diploma in Pediatrics: From Newborn to Adolescent Care",
+    h1: "PG Diploma in Pediatrics Medicine",
     metaTitle: "PG Diploma in Pediatrics: Advance Your Child Care Skills",
     metaDescription:
       "Build advanced clinical skills in child health, from neonatal care to adolescent medicine, with the PG Diploma in Pediatrics. CPD & ACTD accredited.",
@@ -1607,6 +1614,8 @@ export const COURSE_SEO = {
     overviewH2: "Diploma in Paediatrics",
     overviewH3: "Child Growth and Development Course for Doctors",
     intro: "This diploma in paediatrics gives learners a structured, self-paced route to build practical clinical skills.",
+    overview:
+      "This diploma in paediatrics gives learners a structured, self-paced route to build practical clinical skills. The PG Diploma in Pediatrics Medicine from Medical Global Academy (MGA) is an advanced professional skill-development program designed to strengthen doctors’ clinical knowledge and practical understanding of pediatric healthcare from infancy through adolescence. This PG diploma in pediatrics covers pediatric growth and development, newborn and infant care, nutrition and breastfeeding, immunization, common childhood illnesses, pediatric infectious diseases, respiratory and gastrointestinal disorders, pediatric cardiology, neurology, nephrology, endocrinology, hematology, emergency and critical care, pediatric infections and sepsis, developmental and behavioral disorders, adolescent health, pediatric pharmacology, preventive and community pediatrics, child safeguarding, and evidence-based clinical decision-making. Contemporary pediatric practice, as taught in this PG diploma in pediatrics, also emphasizes quality of care, early identification of developmental concerns, family-centred care, nutrition, prevention, and appropriate referral for children requiring specialist management. This PG diploma in pediatrics is a professional skill-development course and is not a government postgraduate medical degree, NEET-based PG residency, or regular 2-year medical college seat.",
     eligibilityH2: "PG Diploma in Pediatrics Eligibility",
     curriculumH3: ["Neonatal and Adolescent Care Course for Doctors", "Pediatric Emergency and Critical Care Course"],
     deliveryH3: "PG Diploma in Pediatrics Online",

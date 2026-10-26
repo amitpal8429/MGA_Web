@@ -5,6 +5,7 @@ import { HelmetProvider } from "react-helmet-async";
 
 import App from "./App";
 import { AuthProvider } from "./auth/AuthContext";
+import { registerSW } from "./registerSW";
 
 import "./index.css";
 
@@ -22,9 +23,10 @@ const app = (
   </React.StrictMode>
 );
 
-
 if (container.hasChildNodes()) {
   ReactDOM.hydrateRoot(container, app);
 } else {
   ReactDOM.createRoot(container).render(app);
 }
+
+registerSW();

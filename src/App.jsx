@@ -1,12 +1,13 @@
 import { useEffect, lazy, Suspense } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 
-
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import StickyContactBar from "./components/StickyContactBar";
+import RemoveTrailingSlash from "./components/RemoveTrailingSlash";
 
+import { CartProvider } from "./context/CartContext";
 
 import Home from "./pages/Home";
 
@@ -27,19 +28,16 @@ const RefundPage = lazy(() => import("./pages/RefundPage"));
 const Sitemap = lazy(() => import("./pages/Sitemap"));
 const HRFormPage = lazy(() => import("./pages/HRFormPage"));
 const Support = lazy(() => import("./pages/Support"));
+const Cart = lazy(() => import("./pages/Cart"));
 
 import "./site.css";
 
 export default function App() {
   const location = useLocation();
 
-
-
   const isHRFormPage = location.pathname === "/hr-form";
 
-
   useEffect(() => {
-
     if (isHRFormPage) {
       return;
     }
@@ -64,8 +62,6 @@ export default function App() {
     };
   }, [isHRFormPage]);
 
-
-
   useEffect(() => {
     if (!isHRFormPage) {
       document.body.classList.add("has-sticky-bar");
@@ -78,16 +74,15 @@ export default function App() {
     };
   }, [isHRFormPage]);
 
-
-
   return (
+    <CartProvider>
     <div className={isHRFormPage ? "hr-site" : "site"}>
+      {/* Trailing slash hatao: /abc/ -> /abc (poori site ke liye) */}
+      <RemoveTrailingSlash />
+
       <ScrollToTop />
 
-
       {!isHRFormPage && <Navbar />}
-
-
 
       <main
         className={isHRFormPage ? "" : "page-enter"}
@@ -133,25 +128,21 @@ export default function App() {
 
             <Route path="/support" element={<Support />} />
 
-      
+            <Route path="/cart" element={<Cart />} />
 
             <Route path="/hr-form" element={<HRFormPage />} />
 
-       
-
             <Route path="/:slug" element={<CourseDetail />} />
-
 
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </main>
 
-
       {!isHRFormPage && <Footer />}
-
 
       {!isHRFormPage && <StickyContactBar />}
     </div>
+    </CartProvider>
   );
 }

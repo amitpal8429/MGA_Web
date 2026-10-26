@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, ShoppingCart } from "lucide-react";
+import { useCart } from "../context/CartContext";
 import LeadForm from "./LeadForm";
 import OfferCracker from "./OfferCracker";
 import SiteSchema from "./SiteSchema";
+import InstallButton from "./InstallButton";
 import { OFFER, isOfferLive } from "../config/offer";
 
 export default function Navbar() {
@@ -11,6 +13,21 @@ export default function Navbar() {
   const [authOpen, setAuthOpen] = useState(false);
   const [offerSignal, setOfferSignal] = useState(0);
   const offerLive = isOfferLive();
+  const { count } = useCart();
+
+  const headerRef = useRef(null);
+  const [headerH, setHeaderH] = useState(0);
+
+  // Measure header height so the spacer keeps page content from hiding under it
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+    const update = () => setHeaderH(el.offsetHeight);
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
   useEffect(() => {
     if (localStorage.getItem("mga_lead_submitted")) return;
@@ -44,7 +61,24 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="nav-wrap">
+      <style>{`
+        /* Fixed header: topbar + nav stay pinned while scrolling */
+        .nav-wrap {
+          position: fixed !important;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 1000;
+        }
+
+        .nav-cart { position: relative; display: inline-flex; align-items: center; justify-content: center; padding: 6px; color: inherit; }
+        .nav-cart-badge {
+          position: absolute; top: -4px; right: -6px; min-width: 18px; height: 18px; padding: 0 5px;
+          display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box;
+          background: #ef4444; color: #fff; font-size: 11px; font-weight: 700; line-height: 1; border-radius: 999px;
+        }
+      `}</style>
+      <header className="nav-wrap" ref={headerRef}>
         <div className="topbar">
           <div className="wrap topbar-inner">
             <span>
@@ -68,7 +102,7 @@ export default function Navbar() {
                 alt="Medical Global Academy"
                 className="brand-logo"
               />
-              <span className="brand-name">Medical Global Academy</span>
+              <span className="brand-name">MGA</span>
             </Link>
 
             {/* Mobile Overlay Menu */}
@@ -91,18 +125,21 @@ export default function Navbar() {
 
               <span className="nav-divider" />
 
+              <Link
+                to="/cart"
+                className="nav-cart"
+                aria-label={`Cart${count ? ` (${count} item${count > 1 ? "s" : ""})` : ""}`}
+                onClick={() => setOpen(false)}
+              >
+                <ShoppingCart size={22} />
+                {count > 0 && <span className="nav-cart-badge">{count}</span>}
+              </Link>
+
               <button type="button" className="nav-login" onClick={openSignup}>
                 Enquire Now
               </button>
 
-              <Link
-                to="/courses"
-                className="btn btn-primary nav-cta"
-                onClick={() => setOpen(false)}
-              >
-                <span>Explore programs</span>
-                <ArrowRight size={16} />
-              </Link>
+              <InstallButton />
             </nav>
 
             {/* Hamburger */}
@@ -117,6 +154,9 @@ export default function Navbar() {
           </div>
         </div>
       </header>
+
+      {/* Reserves space for the fixed header */}
+      <div style={{ height: headerH }} aria-hidden="true" />
 
       {/* Sitewide schema: Organization, WebSite, Offer */}
       <SiteSchema />
