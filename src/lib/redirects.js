@@ -29,8 +29,8 @@ const REDIRECTS = {
   "fellowship-in-orthopedics": "fellowship-in-orthopedic",
   "fellowship-in-pediatrics-neurology": "fellowship-in-pediatric-neurology",
   "fellowship-in-clinical-embryology": "fellowship-in-embryology",
-
-  "fellowship-in-pediatric-ophthalmology": "fellowship-in-pediatric-ophthalmology-strabismus",
+"fellowship-in-pediatric-ophthalmology-strabismus":"fellowship-in-pediatric-ophthalmology",
+ 
 "fellowship in pulmonology medicine":"fellowship in pulmonary medicine ",
   "fellowship-in-pulmonology": "fellowship-in-pulmonology-medicine",
   "certificate-in-diabetic-footcare": "certificate-in-diabetic-foot-care",

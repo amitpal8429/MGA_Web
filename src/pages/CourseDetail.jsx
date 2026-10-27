@@ -286,10 +286,6 @@ function validatePayer({ name, email, phone }) {
 }
 
 /* =========================================================
-   PAGE CSS (Full CSS preserved from your file)
-   ========================================================= */
-
-/* =========================================================
    SLUG VARIANTS
    URL me British spelling (gynaecologic) ho aur API me American
    (gynecologic) ho (ya ulta), to dono try karte hain.
@@ -345,6 +341,10 @@ async function loadCourse(slug) {
   }
   throw NOT_FOUND;
 }
+
+/* =========================================================
+   PAGE CSS
+   ========================================================= */
 
 const PAGE_CSS = `
   .mga-course-outcomes-grid {
@@ -485,33 +485,20 @@ const PAGE_CSS = `
     font-weight: 700;
   }
 
-  .mga-topic-title {
-    margin: 0 0 14px;
-  }
-
-  .mga-topic-list {
-    margin: 0;
+  /* Keywords: plain inline text, section ke content jaisa (no chip / pill) */
+  .mga-topic-text {
+    margin: 8px 0 16px;
     padding: 0;
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    background: none;
+    border: 0;
+    border-radius: 0;
+    color: inherit;
+    font: inherit;
+    line-height: inherit;
   }
 
-  .mga-topic-inline {
-    margin-top: 16px;
-    gap: 8px;
-  }
-
-  .mga-topic-chip {
-    padding: 6px 12px;
-    background: #f0f7fd;
-    border: 1px solid #cfe4f6;
-    border-radius: 999px;
-    color: #0c3a6b;
-    font-size: 13px;
-    line-height: 1.35;
-    font-weight: 500;
+  .mga-topic-lead {
+    font-weight: 600;
   }
 
   .mga-cta-text {
@@ -635,6 +622,13 @@ const PAGE_CSS = `
     line-height: 1.45;
   }
 
+  /* eligibility keywords: box ke neeche, box ke text jaisa */
+  .mga-course-audience-section .mga-topic-text {
+    color: #596b7e;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
   .mga-pg-note {
     margin: 0 0 32px;
     padding: 20px 24px;
@@ -662,6 +656,23 @@ const PAGE_CSS = `
 
   .mga-pg-note-text:last-child {
     margin-bottom: 0;
+  }
+
+  /* highlight box ke andar keywords: bullets wale text jaisa */
+  .mga-highlight-section .mga-topic-text {
+    margin-top: 14px;
+    color: #2c3e50;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  /* accreditation card ke andar */
+  .accreditation-card .mga-topic-text {
+    margin-top: 14px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: #596b7e;
+    text-align: center;
   }
 
   .overview-toggle {
@@ -1071,6 +1082,7 @@ const PAGE_CSS = `
     }
     .mga-highlight-title { font-size: 18px; }
     .mga-highlight-item  { font-size: 15px; }
+    .mga-highlight-section .mga-topic-text { font-size: 15px; }
 
     .mga-course-outcome-card {
       padding: 22px 20px 24px;
@@ -1110,7 +1122,8 @@ const PAGE_CSS = `
     }
 
     .mga-course-audience-list li,
-    .mga-course-eligibility-item {
+    .mga-course-eligibility-item,
+    .mga-course-audience-section .mga-topic-text {
       font-size: 15px;
     }
 
@@ -1123,6 +1136,7 @@ const PAGE_CSS = `
     .mga-highlight-section { padding: 18px 14px 20px; }
     .mga-highlight-title   { font-size: 17px; }
     .mga-highlight-item    { font-size: 14px; }
+    .mga-highlight-section .mga-topic-text { font-size: 14px; }
 
     .mga-course-outcome-card {
       padding: 20px 16px 22px;
@@ -1150,7 +1164,8 @@ const PAGE_CSS = `
     }
 
     .mga-course-audience-list li,
-    .mga-course-eligibility-item {
+    .mga-course-eligibility-item,
+    .mga-course-audience-section .mga-topic-text {
       font-size: 14px;
     }
 
@@ -1497,15 +1512,29 @@ export default function CourseDetail() {
     topicGroups.curriculum = [];
   }
 
-  const renderTopics = (list, label) =>
+  /* "a, b and c" */
+  const joinNatural = (items) => {
+    if (items.length <= 1) return items.join("");
+    return `${items.slice(0, -1).join(", ")} and ${items[items.length - 1]}`;
+  };
+
+  /* Keywords ko chips ki jagah section ke natural text ki tarah dikhao:
+     ek chhoti si line, "Lead-in: keyword1, keyword2 and keyword3." */
+  const ucFirst = (s) => {
+    const t = String(s || "").trim();
+    return t ? t.charAt(0).toUpperCase() + t.slice(1) : t;
+  };
+
+  /* Keywords ek natural sentence me: "<prefix>a, b and c." */
+  const topicSentence = (list, prefix = "") =>
+    list.length > 0 ? ucFirst(`${prefix}${joinNatural(list)}`) + "." : "";
+
+  /* Section ke apne text jaisa plain paragraph (koi label / chip nahi) */
+  const renderTopics = (list, label, prefix = "") =>
     list.length > 0 ? (
-      <ul className="mga-topic-list mga-topic-inline" aria-label={label}>
-        {list.map((tag) => (
-          <li key={tag} className="mga-topic-chip">
-            {tag}
-          </li>
-        ))}
-      </ul>
+      <p className="mga-topic-text" aria-label={label}>
+        {topicSentence(list, prefix)}
+      </p>
     ) : null;
 
   /* =========================================================
@@ -1516,9 +1545,17 @@ export default function CourseDetail() {
   const seoOverview =
     typeof seo?.overview === "string" ? cleanText(seo.overview) : "";
 
-  const fullOverview = stripHandsOnSentences(
+  const baseOverview = stripHandsOnSentences(
     seoOverview || cleanText(course.description)
   );
+
+  /* Overview keywords usi paragraph ke end me ek sentence ki tarah */
+  const fullOverview = [
+    baseOverview,
+    topicSentence(topicGroups.overview, "Key focus areas include "),
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   const isLongOverview =
     fullOverview && fullOverview.length > OVERVIEW_LIMIT;
@@ -1776,7 +1813,7 @@ export default function CourseDetail() {
               {renderH3s(seo?.highlightsH3)}
 
               <ul className="mga-highlight-list">
-                {highlightList.map((item, i) => (
+                {[...highlightList, ...topicGroups.delivery.map(ucFirst)].map((item, i) => (
                   <li key={i} className="mga-highlight-item">
                     <span className="mga-highlight-bullet" aria-hidden="true">
                       ✓
@@ -1786,8 +1823,6 @@ export default function CourseDetail() {
                   </li>
                 ))}
               </ul>
-
-              {renderTopics(topicGroups.delivery, "Program format topics")}
             </section>
           )}
 
@@ -1876,9 +1911,19 @@ export default function CourseDetail() {
                 </span>
                 <span>Open to doctors practising in India and internationally</span>
               </div>
-            </div>
 
-            {renderTopics(topicGroups.eligibility, "Eligibility topics")}
+              {topicGroups.eligibility.length > 0 && (
+                <div className="mga-course-eligibility-item">
+                  <span
+                    className="mga-course-eligibility-check"
+                    aria-hidden="true"
+                  >
+                    ✓
+                  </span>
+                  <span>{topicSentence(topicGroups.eligibility)}</span>
+                </div>
+              )}
+            </div>
           </section>
 
           {/* PG NOTE */}
@@ -1929,8 +1974,6 @@ export default function CourseDetail() {
                 </>
               )}
             </p>
-
-            {renderTopics(topicGroups.overview, "Program topics")}
           </section>
 
           {/* WHAT YOU'LL LEARN */}
@@ -1966,6 +2009,12 @@ export default function CourseDetail() {
               </div>
 
               {renderH3s(seo?.curriculumH3)}
+
+              {renderTopics(
+                topicGroups.curriculum,
+                "Curriculum topics",
+                "This curriculum covers "
+              )}
 
               <div className="module-list">
                 {course.module.map((m, i) => {
@@ -2039,8 +2088,6 @@ export default function CourseDetail() {
                   locked. Fill the form to unlock
                 </button>
               )}
-
-              {renderTopics(topicGroups.curriculum, "Curriculum topics")}
             </section>
           )}
 
@@ -2088,13 +2135,8 @@ export default function CourseDetail() {
           <section className="detail-block" id="faq">
             <h2>Frequently asked questions</h2>
 
-            <Faq
-              
-              slug={slug}  
-              courseName={course.name}
-            />
+            <Faq slug={slug} courseName={course.name} />
           </section>
-
         </div>
 
         {/* SIDEBAR */}
@@ -2554,7 +2596,11 @@ export default function CourseDetail() {
               })}
             </div>
 
-            {renderTopics(topicGroups.accreditation, "Accreditation topics")}
+            {renderTopics(
+              topicGroups.accreditation,
+              "Accreditation topics",
+              "Recognised as "
+            )}
           </div>
 
           {/* CERTIFICATE */}

@@ -118,7 +118,7 @@ export default function InstallButton() {
           setPromptEvent(null);
         }}
       >
-        📲 Install App
+        📲 Install WebApp
       </button>
     );
   }
@@ -128,7 +128,7 @@ export default function InstallButton() {
     return (
       <>
         <button type="button" style={btnStyle} onClick={() => setShowIOS(true)}>
-          📲 Install App
+          📲 Install WebApp
         </button>
         {showIOS && <IOSGuide onClose={() => setShowIOS(false)} />}
       </>
