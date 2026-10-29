@@ -230,12 +230,10 @@ export default function Home() {
           <div className="hero-copy">
             <p className="eyebrow">Fast-track your medical career with</p>
             <h1 className="hero-title">
-              India's most trusted upskilling platform for doctors
+             Your Trusted Platform for Online Medical Courses & Professional Upskilling
             </h1>
             <p className="hero-lede">
-              Certificate, PG Diploma and fellowship programs across medicine,
-              surgery, radiology and obstetrics — built around live clinical
-              mentorship, not a lecture hall.
+             Online certificate, PG Diploma and fellowship programs for doctors across medicine, surgery, radiology and obstetrics — combining advanced medical education with live clinical mentorship.
             </p>
             <div className="hero-actions">
               <Link

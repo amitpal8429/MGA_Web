@@ -1,4 +1,3 @@
-
 const REDIRECTS = {
  
   "fetal-medicine-fellowship": "fellowship-in-fetal-medicine",
@@ -23,6 +22,7 @@ const REDIRECTS = {
 
   "fellowship-in-arthroscopy-sports-medicine": "fellowship-in-arthroscopy-and-sports-medicine",
   "fellowship-in-head-and-neck-surgical-oncology": "fellowship-in-head-and-neck-oncosurgery",
+  "fellowship-in-head-and-neck-surgicl-oncology": "fellowship-in-head-and-neck-oncosurgery",   // ✅ NEW (typo slug)
 
   "fellowship-in-clinical-neurology": "fellowship-in-neurology",
 

@@ -2958,3 +2958,13 @@ textarea {
       left: 0;
     }
   }
+
+
+
+
+  .avatar-img {
+  object-fit: cover;
+  object-position: center top; /* keeps faces in frame */
+  display: block;
+  background: #e8ecf1;
+}
