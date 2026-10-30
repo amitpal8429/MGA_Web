@@ -24,13 +24,38 @@ const isHiddenFaculty = (f) => {
 
 // Keyed by normalized name (lowercase, no "Dr", no punctuation)
 const FACULTY_PHOTOS = {
+  // ── July batch ────────────────────────────────────────────
   "poonam pawadi": BASE + "WhatsApp-Image-2026-07-06-at-2.31.11-PM-1.jpeg",
   "aishwarya": BASE + "WhatsApp-Image-2026-07-06-at-2.31.11-PM.jpeg",
   "sandhya": BASE + "WhatsApp-Image-2026-07-06-at-2.31.12-PM-1.jpeg",
   "shivam talwar": BASE + "WhatsApp-Image-2026-07-06-at-2.31.13-PM-1.jpeg",
   "surbhi rastogi": BASE + "WhatsApp-Image-2026-07-06-at-2.31.13-PM.jpeg",
+
+  // ── October batch ─────────────────────────────────────────
   "vismaya molly siby": BASE_OCT + "WhatsApp-Image-2026-10-28-at-10.36.27-AM.jpeg",
-  "mahesh": BASE_OCT + "WhatsApp-Image-2026-10-28-at-10.46.15-AM.jpeg",
+  "mahesh chattopadhyay": BASE_OCT + "WhatsApp-Image-2026-10-28-at-10.46.15-AM.jpeg",
+  "mahesh": BASE_OCT + "WhatsApp-Image-2026-10-28-at-10.46.15-AM.jpeg", // fallback
+
+  "sanchari pal": BASE_OCT + "WhatsApp-Image-2026-10-28-at-12.02.52-PM.jpeg",
+  "ishfaq ahmad": BASE_OCT + "WhatsApp-Image-2026-10-28-at-11.59.04-AM.jpeg",
+  "prithvi raj": BASE_OCT + "WhatsApp-Image-2026-10-28-at-11.54.22-AM.jpeg",
+  "anmol": BASE_OCT + "WhatsApp-Image-2026-10-28-at-11.54.19-AM.jpeg",
+  "ajinkya shelke": BASE_OCT + "WhatsApp-Image-2026-10-28-at-11.54.16-AM.jpeg",
+  "shashank pandey": BASE_OCT + "WhatsApp-Image-2026-10-28-at-11.54.16-AM.jpeg", // same file as Ajinkya per your note
+  "shamika": BASE_OCT + "WhatsApp-Image-2026-10-28-at-11.54.11-AM.jpeg",
+  "rama krishna reddy pydala": BASE_OCT + "WhatsApp-Image-2026-10-28-at-11.54.09-AM.jpeg",
+  "soumita roy": BASE_OCT + "WhatsApp-Image-2026-10-28-at-11.54.07-AM.jpeg",
+  "gaurav pandey": BASE_OCT + "WhatsApp-Image-2026-10-28-at-10.36.25-AM.jpeg", // same file as Soumita per your note
+  "kirti anurag": BASE_OCT + "WhatsApp-Image-2026-10-28-at-10.48.09-AM.jpeg",
+  "shah fahad firdos": BASE_OCT + "WhatsApp-Image-2026-10-28-at-10.48.08-AM-1.jpeg",
+  "george sonu": BASE_OCT + "WhatsApp-Image-2026-10-28-at-10.46.13-AM.jpeg",
+  "loknath pandey": BASE_OCT + "WhatsApp-Image-2026-10-28-at-10.46.12-AM.jpeg",
+  "chandramouli": BASE_OCT + "WhatsApp-Image-2026-10-28-at-10.37.11-AM-scaled.jpeg",
+
+  // ── 30 Oct batch ──────────────────────────────────────────
+  "aman bansal": BASE_OCT + "WhatsApp-Image-2026-10-30-at-10.49.43-AM.jpeg",
+  "b u shubhankar": BASE_OCT + "WhatsApp-Image-2026-10-30-at-10.54.46-AM.jpeg",
+  "shubhankar": BASE_OCT + "WhatsApp-Image-2026-10-30-at-10.54.46-AM.jpeg", // fallback
 };
 
 const normalizeName = (name = "") =>

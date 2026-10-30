@@ -1705,6 +1705,137 @@ const COURSE_META = {
   },
 
   // ============================================================
+  // NEW FELLOWSHIP ENTRIES (from sheet) — paste inside COURSE_META,
+  // just before the "ALIASES" comment block.
+  // ============================================================
+  "fellowship-in-interventional-cardiology": {
+    title: "Fellowship in Interventional Cardiology | MGA India",
+    description:
+      "Join the Fellowship in Interventional Cardiology with CPD and ACTD accreditation, EMI options, live learning, specialist faculty and flexible study modes.",
+    overview:
+      "Medical Global Academy offers a Fellowship in Interventional Cardiology for doctors seeking structured training in this specialised field. This interventional cardiology fellowship course combines live sessions, recorded lectures, study material and LMS access with flexible online and hybrid learning options. Doctors can learn from specialist faculty and receive academic support through Q&A sessions, e-library access and one-year mentorship. The programme also provides clinical attachment or observation opportunities at a suitable hospital or clinic, subject to course structure and availability. The interventional cardiology training programme follows an updated curriculum and includes MCQ-based assessment. The course provides CPD and ACTD accreditation, supporting recognised professional learning. Flexible payment options, including EMI options where available, make enrolment more convenient. This cardiology fellowship course is designed for doctors who want focused learning, academic guidance and flexible training while continuing their professional commitments.",
+  },
+  "fellowship-in-pediatric-ophthalmology": {
+    title: "Fellowship in Pediatric Ophthalmology – Enroll Now",
+    description:
+      "Fellowship in Pediatric Ophthalmology for MBBS doctors – learn to diagnose & manage childhood eye disorders including strabismus with case-based training.",
+    overview:
+      "Medical Global Academy’s pediatric ophthalmology fellowship is a 12-month program for eligible doctors seeking training in pediatric ophthalmology and strabismus. Applicants must hold an MBBS degree, have valid NMC or State Medical Council registration, and at least one year of post-qualification clinical experience. Open to doctors in India and internationally, the 24-module curriculum covers pediatric eye examination, visual development, refraction, amblyopia, strabismus, pediatric cataract, and congenital eye disorders. The program highlights learning from pediatric ophthalmologists and strabismus experts, with clinical training in collaboration with pediatric eye hospitals and child vision centers. Choose the online option at ₹1,50,000 or the hybrid option at ₹1,80,000. The listed registration fee is ₹50,000. Certification is described as CPD-aligned and ACTD-aligned. Contact the academy to confirm fee inclusions, training arrangements, and certification terms before applying.",
+  },
+  "fellowship-in-geriatric-psychiatry": {
+    title: "Geriatric Psychiatry Fellowship for Doctors in India | MGA",
+    description:
+      "Join the Geriatric Psychiatry Fellowship with 12-month hybrid learning, clinical attachment, expert faculty, Q&A, flexible study and 1-year mentorship.",
+    overview:
+      "Medical Global Academy’s Fellowship in Geriatric Psychiatry is a 12-month program for eligible doctors seeking structured training in the mental health care of older adults. Choose the online or hybrid format to suit your learning needs. The 24-module curriculum covers geriatric psychiatric assessment, neurocognitive disorders and dementia, biomarkers and neuroimaging, delirium, psychopharmacology, late-life depression and anxiety, psychotherapy, sleep disorders, neuropsychiatry, ethics, rehabilitation and evidence-based practice. The program includes flexible, self-paced learning, clinical workshops using older-adult case simulations, and mentorship from practising faculty. Clinical training partnerships with geriatric psychiatry centres and hospitals are described as part of the program; contact the academy for details of the available arrangements. Applicants must hold an MBBS degree, have valid NMC or State Medical Council registration, and have at least one year of post-qualification clinical experience. Eligible doctors practising in India and internationally may apply. The total fee is ₹1,50,000 for the online format or ₹1,80,000 for the hybrid format. The ₹50,000 registration fee is included in each total. The program provides a certificate on completion, with CPD-aligned and ACTD-aligned certification. Contact Medical Global Academy to confirm admission steps, current delivery arrangements and certification terms.",
+  },
+  "fellowship-in-pediatric-cardiac-surgery": {
+    title: "Pediatric Cardiac Surgery Fellowship – 12-Month Program",
+    description:
+      "Join a Pediatric Cardiac Surgery Fellowship with 12-month training, clinical exposure, expert faculty, flexible learning, and academic support for doctors.",
+    overview:
+      "The Fellowship in Pediatric Cardiac Surgery at MGA Medical Global Academy is a comprehensive and advanced pediatric cardiac surgery fellowship designed for cardiothoracic surgeons seeking specialized expertise in the surgical management of congenital and acquired heart diseases in infants and children. Learning takes place under the guidance of leading pediatric cardiac surgeons, with exposure to a wide range of complex procedures including neonatal surgeries, valve repairs and correction of congenital anomalies. The pediatric cardiac surgery fellowship emphasizes surgical precision, perioperative care and multidisciplinary collaboration in the care of pediatric patients. With a strong focus on academic excellence, research and innovation, the program builds the skills and confidence needed to practise in the field of pediatric cardiac surgery.",
+  },
+  "fellowship-in-plastic-surgery": {
+    title: "Plastic Surgery Fellowship | 12-Month Course & MGA",
+    description:
+      "Enroll a 12-month Plastic Surgery Fellowship course with expert guidance, clinical learning, structured curriculum and flexible EMI options for doctors.",
+    overview:
+      "The Fellowship in Plastic Surgery from Medical Global Academy (MGA) is an advanced professional program designed to develop comprehensive knowledge and contemporary clinical skills across aesthetic, reconstructive and microsurgical plastic surgery. This plastic surgery fellowship covers core surgical principles, wound healing, skin and soft-tissue management, skin grafts and local/regional flaps, burns and trauma, hand and upper-extremity reconstruction, craniofacial and cleft surgery, breast reconstruction and aesthetic breast surgery, body contouring, facial aesthetic surgery, rhinoplasty, blepharoplasty, facial rejuvenation, hair restoration and minimally invasive aesthetic procedures. The plastic surgery fellowship also covers microsurgery and free-tissue transfer, nerve and tendon reconstruction, head and neck reconstruction, scar management, advanced wound care, perioperative management, complication prevention and patient safety. The curriculum incorporates surgical planning, tissue preservation, digital imaging, simulation, evidence-based practice, multidisciplinary care, clinical research and emerging technologies in plastic and reconstructive surgery, focusing on reconstructive microsurgery, hand surgery, craniofacial surgery and cosmetic and breast surgery.",
+  },
+  "fellowship-in-cytopathology": {
+    title: "Fellowship in Cytopathology: Hybrid Learning & Training",
+    description:
+      "Join a Cytopathology Fellowship with hybrid learning, clinical attachment, expert faculty, recorded lectures, Q&A support and flexible payment options.",
+    overview:
+      "The Fellowship in Cytopathology from Medical Global Academy (MGA) is an advanced professional program designed for doctors seeking comprehensive expertise in the diagnosis and interpretation of cellular specimens across gynecologic and nongynecologic cytology. The Fellowship in Cytopathology covers cervical and HPV-related cytology, thyroid, breast, lymph-node, respiratory, urinary, gastrointestinal, serous-fluid, salivary-gland, pancreaticobiliary and other fine-needle aspiration (FNA) specimens, with emphasis on systematic cytomorphological evaluation, differential diagnosis, specimen adequacy and clinicoradiological correlation. It incorporates ancillary techniques including cell-block preparation, immunocytochemistry, flow cytometry, HPV testing, FISH, PCR, molecular profiling and next-generation sequencing for selected cytology specimens. The curriculum also covers liquid-based cytology, digital cytology, whole-slide imaging, telecytology, computational image analysis, artificial intelligence-assisted interpretation, standardized reporting, quality assurance and diagnostic error reduction. Through expert-led academic sessions, case-based learning, digital slide interpretation, FNA case discussions, cytology-histology correlation, multidisciplinary tumor-board discussions, diagnostic reporting exercises and assessments, doctors develop advanced skills in contemporary cytopathology and evidence-based diagnostic practice. The Fellowship in Cytopathology integrates cytomorphology with molecular and digital methods. The program teaches correlation of cytology findings with histology, imaging and molecular results before issuing a structured diagnostic report.",
+  },
+  "fellowship-in-social-preventive-medicine": {
+    title: "Preventive Medicine Fellowship for Doctors | MGA",
+    description:
+      "Join a Preventive Medicine Fellowship for doctors with expert faculty, flexible learning, study resources, mentorship and structured course support at MGA.",
+    overview:
+      "The Fellowship in Social Preventive Medicine from MGA Medical Global Academy is a specialized preventive medicine fellowship designed to equip healthcare professionals with advanced knowledge and skills in public health, disease prevention and health promotion strategies. It emphasizes the integration of social determinants of health into preventive care. The preventive medicine fellowship focuses on community-based interventions, epidemiological research and health policy development. The program is designed for eligible doctors committed to preventive medicine and social health strategies that support public health and population wellbeing.",
+  },
+  "fellowship-in-phacoemulsification": {
+    title: "Phacoemulsification Fellowship | MGA Medical Academy",
+    description:
+      "Advance your skills with MGA’s Phacoemulsification Fellowship, featuring clinical attachment, expert faculty, mentorship, recordings, Q&A and flexible learning.",
+    overview:
+      "The Fellowship in Phacoemulsification at MGA Medical Global Academy is a comprehensive phacoemulsification Fellowship designed for ophthalmologists seeking to enhance their surgical skills in cataract management. This advanced program provides in-depth exposure to modern phacoemulsification techniques, including pre-operative evaluation, machine handling, fluidics management and intraoperative decision-making. Under the mentorship of experienced faculty, fellows gain confidence in surgical decision-making through case-based learning, structured teaching sessions and interactive case discussions. MGA Medical Global Academy emphasizes both technical excellence and patient safety, supporting participants in delivering high-quality cataract care with precision and efficiency through the phacoemulsification Fellowship.",
+  },
+  "fellowship-in-interventional-neurology": {
+    title: "Interventional Neurology Fellowship | 12-Month Program",
+    description:
+      "Join a 12-month Interventional Neurology Fellowship with expert faculty, flexible online learning, clinical exposure, CPD & ACTD accreditation, and mentorship.",
+    overview:
+      "The Fellowship in Interventional Neurology at MGA Medical Global Academy is a specialized interventional neurology fellowship designed to equip physicians with advanced knowledge and skills in the diagnosis and minimally invasive treatment of neurological disorders. This comprehensive curriculum emphasizes neuroimaging, catheter-based techniques, stroke intervention and endovascular procedures. Under the mentorship of experienced faculty, fellows gain exposure to a wide spectrum of complex cerebrovascular conditions, including acute ischemic stroke, cerebral aneurysms and arteriovenous malformations. The interventional neurology fellowship integrates case-based learning with current research, supporting fellows in the rapidly evolving field of interventional neurology.",
+  },
+  "fellowship-in-toxicology": {
+    title: "Fellowship in Toxicology | Clinical Toxicology Training",
+    description:
+      "Fellowship in Toxicology with specialist faculty, flexible learning, case-based training and 1-year mentorship to build focused clinical toxicology skills.",
+    overview:
+      "The Fellowship in Toxicology from Medical Global Academy (MGA) is an advanced professional program designed for doctors seeking comprehensive knowledge and contemporary clinical skills in the prevention, recognition, diagnosis and management of poisoning and toxicological emergencies. This fellowship in toxicology covers pharmaceutical overdoses, drugs of abuse and withdrawal, pesticides, toxic alcohols, metals and metalloids, hydrocarbons, poisonous plants and mushrooms, venomous bites and stings, inhalational and environmental toxins, occupational exposures, and chemical and radiological hazards. It emphasizes toxidrome recognition, toxicokinetics and toxicodynamics, risk assessment, laboratory and toxicology investigations, antidotal therapy, gastrointestinal decontamination, enhanced elimination, extracorporeal toxin removal, critical-care management and poisoning-related complications. The program also covers substance-use disorders, emerging recreational and pharmaceutical toxicities, pharmacogenomics, advanced toxicological diagnostics, poison-centre consultation, environmental and occupational health, emergency preparedness, advanced resuscitation, pediatric toxicity, neurotoxins, radiation and population-level toxicology. Through expert-led academic sessions, case-based learning, clinical scenarios, toxicology investigations, antidote and emergency-management exercises, multidisciplinary case discussions, digital learning resources and assessments, doctors develop an advanced understanding of modern clinical toxicology and evidence-based management of poisoned patients through the Fellowship in Toxicology. The fellowship builds a structured approach to assessing, treating and monitoring poisoned patients.",
+  },
+  "fellowship-in-pediatric-orthodontics": {
+    title: "Fellowship in Pediatric Orthodontics| 12 month",
+    description:
+      "Join Medical Global Academy’s Fellowship in Pediatric Orthodontics with live and recorded learning, expert faculty, LMS access, Q&A, and mentorship support.",
+    overview:
+      "The Fellowship in Pediatric Orthodontics from Medical Global Academy (MGA) is an advanced professional program designed for doctors and dental professionals seeking specialized knowledge and contemporary clinical skills in the orthodontic care of children and adolescents. This fellowship in pediatric orthodontics focuses on craniofacial growth and development, developing dentition, occlusion, malocclusion, space management, early orthodontic diagnosis, interceptive orthodontics, growth modification, functional appliances, habit correction, and management of Class I, Class II and Class III malocclusions. It also covers advanced pediatric orthodontic assessment, cephalometric analysis, digital orthodontic records, intraoral scanning, 3D imaging, aligner-based treatment concepts, fixed and removable appliances, mixed-dentition treatment, impacted and ectopically erupting teeth, cleft lip and palate, craniofacial anomalies, airway-related orthodontic considerations and multidisciplinary pediatric care. The program also emphasizes individualized treatment timing, growth-guided intervention, digital workflows and evidence-based space and occlusion management. Through expert-led academic sessions, case-based learning, orthodontic case analysis, treatment planning, digital resources and assessments, doctors develop an advanced understanding of modern pediatric orthodontics and comprehensive approaches to the growing child and adolescent patient through the Fellowship in Pediatric Orthodontics.",
+  },
+  "fellowship-in-oral-radiology": {
+    title: "Fellowship in Oral Radiology | 12-Month Course",
+    description:
+      "Explore MGA's 12-month oral radiology fellowship with 24 modules, flexible online or hybrid learning, expert mentorship and clinical case-based training.",
+    overview:
+      "The Fellowship in Oral Radiology at Medical Global Academy (MGA) is a 12-month program for eligible doctors seeking advanced training in oral and maxillofacial imaging. Its 24-module curriculum covers digital dental radiography, CBCT, head and neck CT, MRI, radiographic anatomy, image interpretation, implant imaging, craniofacial imaging, oral pathology, oncology, trauma, ultrasound and radiation protection. The program also explores 3D visualization, AI in oral radiology, radiomics and evidence-based case analysis. Learning options include online and hybrid formats, self-paced modules, clinical workshops using dental imaging cases, and mentorship from practising faculty. Practical training arrangements should be confirmed with MGA before enrolment. The program lists CPD-aligned and ACTD-aligned certifications, along with a certificate on completion. The total fee is ₹1,50,000 for the online format and ₹1,80,000 for the hybrid format, including the ₹50,000 registration fee. Eligibility requires an MBBS degree, valid NMC or State Medical Council registration, and at least one year of clinical experience after qualification. Review the curriculum, learning format and eligibility criteria before applying.",
+  },
+  "fellowship-in-orthodontics": {
+    title: "Fellowship in Orthodontics | 12-Month Programme",
+    description:
+      "Explore the Fellowship in Orthodontics at Medical Global Academy. Get 12-month training, faculty mentorship and CPD/ACTD-aligned certification. Enquire.",
+    overview:
+      "Medical Global Academy’s Fellowship in Orthodontics is a 12-month programme for eligible dental professionals seeking structured learning in orthodontic principles and techniques. The curriculum covers craniofacial growth, dental anatomy and occlusion, malocclusion classification, diagnosis and treatment planning, cephalometric analysis, dental imaging, fixed and removable appliances, clear aligners, digital orthodontics, and biomechanics. Learners receive practising-faculty mentorship and a certificate on completion, with CPD-aligned and ACTD-aligned certification. The total fee is ₹1,80,000 for the hybrid format and ₹1,50,000 for the online format; the ₹50,000 registration fee is included in each total. If you are considering a fellowship in orthodontics in India, review the programme details and confirm that you meet the accepted dental qualification and registration requirements. Contact Medical Global Academy to verify eligibility and the application process before enrolling.",
+  },
+  "fellowship-in-gynaecologic-oncology": {
+    title: "Gynae Oncology Fellowship | 12-Month Program",
+    description:
+      "Join MGA's Gynae Oncology Fellowship for doctors. Explore 24 modules, expert mentorship, flexible online or hybrid learning, and certification options.",
+    overview:
+      "Medical Global Academy’s Gynae Oncology Fellowship is a 12-month programme for eligible doctors seeking advanced training in gynaecologic oncology. This fellowship in gynae oncology covers cervical, ovarian, endometrial and other gynaecological cancers, including imaging, precision diagnosis, surgery, systemic therapy, radiotherapy, genetics, fertility preservation and multidisciplinary care. The fellowship in gynecologic oncology includes a 24-module curriculum, practising-faculty mentorship, CPD-aligned and ACTD-aligned certification, and a certificate on completion, subject to programme requirements. Applicants need an MBBS degree, valid NMC or State Medical Council registration, and at least one year of post-qualification clinical experience. The programme is open to eligible doctors in India and internationally. Total fees are ₹1,50,000 online and ₹1,80,000 hybrid. Confirm registration fee terms and certification conditions with Medical Global Academy before enrolment.",
+  },
+  "fellowship-in-neonatal-surgery": {
+    title: "Neonatal Surgery Fellowship | 12-Month Doctor Training",
+    description:
+      "Explore the 12-month Neonatal Surgery Fellowship for eligible doctors, with case-based learning, faculty mentorship, and online or hybrid study options available.",
+    overview:
+      "The Neonatal Surgery Fellowship is a 12-month program for eligible doctors seeking structured learning in neonatal surgical principles and newborn care. Topics include congenital gastrointestinal anomalies, neonatal intestinal obstruction, oesophageal atresia, tracheoesophageal fistula, diaphragmatic hernia, abdominal wall defects, and anorectal malformations. It also introduces neonatal urological and thoracic conditions, preoperative stabilisation, perioperative care, postoperative monitoring, and initial management of neonatal surgical emergencies. This neonatal surgery training program includes case-based learning and mentorship from practising faculty. CPD-aligned and ACTD-aligned certification are included, with a certificate on completion subject to program requirements. Applicants need an MBBS degree, valid NMC or State Medical Council registration, and at least one year of clinical experience. Online fees are ₹1,50,000 and hybrid fees ₹1,80,000; registration is ₹50,000.",
+  },
+  "fellowship-in-aesthetic-dentistry-surgery": {
+    title: "Fellowship in Aesthetic Dentistry Surgery Course | MGA",
+    description:
+      "Explore the Fellowship in Aesthetic Dentistry Surgery at MGA with a 12-month program, faculty mentorship, online and hybrid options, and certification.",
+    overview:
+      "The Fellowship in Aesthetic Dentistry Surgery at Medical Global Academy is a 12-month program designed for eligible dental professionals seeking to develop their knowledge of aesthetic dentistry and smile enhancement. The curriculum covers smile design, facial aesthetics, digital smile analysis, tooth whitening, shade selection, composite bonding, veneers, ceramic restorations, aesthetic crowns, gingival aesthetics, periodontal principles, dental materials and adhesive techniques. Participants explore patient assessment, personalised treatment planning, complication prevention, long-term maintenance and clinical case discussions focused on aesthetic outcomes. The program includes mentorship from practising faculty, CPD-aligned and ACTD-aligned certification, and a certificate on completion. Online and hybrid learning options are available, with total fees of ₹1,50,000 and ₹1,80,000, respectively. The ₹50,000 registration fee is included in the stated total fee. Eligible BDS and MDS professionals can review the admission requirements and program details before applying.",
+  },
+  "fellowship-in-breast-onco-surgery": {
+    title: "Fellowship in Breast Onco-Surgery | 12-Month",
+    description:
+      "Explore MGA’s 12-month Fellowship in Breast Onco-Surgery for doctors, with surgical workshops, breast cancer case simulations and flexible online or hybrid learning.",
+    overview:
+      "The Fellowship in Breast Onco-Surgery at Medical Global Academy (MGA) is a 12-month advanced programme for eligible doctors seeking to strengthen their knowledge of breast surgical oncology and breast cancer care. Its 24-module curriculum covers breast imaging, pathology, molecular classification, staging, treatment planning, breast-conserving surgery, mastectomy, sentinel lymph node biopsy, axillary surgery, oncoplastic techniques and reconstruction. It also addresses hereditary breast cancer, neoadjuvant treatment, recurrent disease, surgical complications and multidisciplinary decision-making. Learning includes recorded lectures, interactive sessions, case discussions, digital resources, assignments and MCQ assessments. Programme highlights include surgical workshops with breast cancer case simulations, flexible online and hybrid formats, and guidance from practising faculty. Confirm the availability and requirements for any hospital-based or practical training before enrolment. The flexible learning structure is designed to support study alongside clinical responsibilities. This breast surgical oncology fellowship is intended for doctors with an MBBS degree, valid NMC or State Medical Council registration, and at least one year of post-qualification clinical experience. The total fee is ₹1,50,000 online or ₹1,80,000 hybrid; the ₹50,000 registration fee is included in each total, not charged separately. Review the curriculum, eligibility and learning format, then contact MGA to discuss admission to the Fellowship in Breast Onco-Surgery.",
+  },
+  "fellowship-in-clinical-nutrition": {
+    title: "Fellowship in Clinical Nutrition | 12-Month Program",
+    description:
+      "Join a fellowship in clinical nutrition for doctors, with CPD & ACTD-aligned certification, 12-month training and flexible EMI options",
+    overview:
+      "Medical Global Academy offers the Fellowship in Clinical Nutrition, a 12-month program for doctors who want to strengthen their knowledge of clinical nutrition and evidence-based nutritional care. The curriculum covers nutritional assessment, identifying nutritional risks and planning therapeutic diets. Doctors explore nutrition management for diabetes, obesity and cardiovascular conditions, alongside nutrition considerations in gastrointestinal, renal and liver diseases. The program also covers vitamin and mineral deficiencies, enteral and parenteral nutrition support, hospital and critical care nutrition, nutritional needs across life stages, patient counselling and dietary education. This clinical nutrition fellowship includes mentorship from practising faculty and CPD-aligned and ACTD-aligned certification, with a certificate on completion. Applicants must hold an MBBS degree, have valid NMC or State Medical Council registration, and at least one year of post-qualification clinical experience. The program welcomes eligible doctors in India and internationally. Choose online learning at ₹1,50,000 or the hybrid option at ₹1,80,000. The ₹50,000 registration fee is included in the stated total program fee. Contact Medical Global Academy to enquire about admission.",
+  },
+
+  // ============================================================
   // ALIASES (same content, different slug)
   // ============================================================
 }; // <--- YAHAN OBJECT CLOSE HO RAHA HAI (FIX)

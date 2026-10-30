@@ -3012,4 +3012,10 @@ export const COURSE_SEO = {
 // Sheet URL slug: /pg-diploma-in-pediatric-infectious-disease (same content as pg-in-pediatric-infectious-disease)
 COURSE_SEO["pg-diploma-in-pediatric-infectious-disease"] = COURSE_SEO["pg-in-pediatric-infectious-disease"];
 
+// Sheet URL slugs that share content with an existing entry
+COURSE_SEO["pg-diploma-in-psychiatric-medicine"] = COURSE_SEO["pg-diploma-in-psychiatry-medicine"];
+COURSE_SEO["pg-diploma-in-obstetrics-gynecology"] = COURSE_SEO["pg-diploma-in-obstetrics-and-gynaecology"];
+COURSE_SEO["pg-diploma-in-cosmetology-aesthetic-medicine"] = COURSE_SEO["pg-diploma-in-cosmetology-and-aesthetic-medicine"];
+COURSE_SEO["pg-diploma-cosmetology-aesthetic-medicine"] = COURSE_SEO["pg-diploma-in-cosmetology-and-aesthetic-medicine"];
+
 export const getCourseSeo = (slug) => COURSE_SEO[slug] || null;

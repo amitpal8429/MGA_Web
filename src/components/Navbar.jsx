@@ -186,7 +186,7 @@ export default function Navbar() {
 
             <div className="mga-auth-heading">
               <div className="mga-auth-label">ENQUIRE NOW</div>
-              <h2>Get in touch</h2>
+              <div className="mga-auth-title" role="presentation">Get in touch</div>
               <p>
                 {offerLive
                   ? OFFER.formNote
