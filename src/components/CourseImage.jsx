@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
 
-
 const ORIGIN = "https://24x7.medicalglobalacademy.com";
 
 function candidatesFor(filename) {
@@ -20,12 +19,12 @@ function hueFrom(str) {
   return h % 360;
 }
 
-export default function CourseImage({ src, alt, className }) {
+// Koi fetch nahi. alt hamesha parent se aata hai.
+export default function CourseImage({ src, alt = "", className }) {
   const candidates = useMemo(() => candidatesFor(src), [src]);
   const [idx, setIdx] = useState(0);
-  const exhausted = idx >= candidates.length;
 
-  if (exhausted) {
+  if (idx >= candidates.length) {
     const hue = hueFrom(alt || src || "mga");
     return (
       <div

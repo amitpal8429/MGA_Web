@@ -51,7 +51,7 @@ const FACULTY_PHOTOS = {
   "george sonu": BASE_OCT + "WhatsApp-Image-2026-10-28-at-10.46.13-AM.jpeg",
   "loknath pandey": BASE_OCT + "WhatsApp-Image-2026-10-28-at-10.46.12-AM.jpeg",
   "chandramouli": BASE_OCT + "WhatsApp-Image-2026-10-28-at-10.37.11-AM-scaled.jpeg",
-
+" muthukumar": BASE_OCT + "WhatsApp-Image-2026-10-31-at-10.58.19-AM.jpeg",
   // ── 30 Oct batch ──────────────────────────────────────────
   "aman bansal": BASE_OCT + "WhatsApp-Image-2026-10-30-at-10.49.43-AM.jpeg",
   "b u shubhankar": BASE_OCT + "WhatsApp-Image-2026-10-30-at-10.54.46-AM.jpeg",

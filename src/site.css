@@ -2968,3 +2968,36 @@ textarea {
   display: block;
   background: #e8ecf1;
 }
+
+
+/* ===== Site-wide breadcrumb ===== */
+.site-crumbs {
+  padding-top: 20px;
+  padding-bottom: 4px;
+  position: relative;
+  z-index: 2;
+}
+
+.site-crumbs .breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #596b7e;
+}
+
+.site-crumbs .breadcrumb a {
+  color: #1f7ac4;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.site-crumbs .breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.site-crumbs .breadcrumb .muted {
+  color: #596b7e;
+}
+

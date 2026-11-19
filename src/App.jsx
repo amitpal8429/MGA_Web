@@ -1,13 +1,15 @@
 import { useEffect, lazy, Suspense } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import StickyContactBar from "./components/StickyContactBar";
 import RemoveTrailingSlash from "./components/RemoveTrailingSlash";
+import SiteBreadcrumb from "./components/SiteBreadcrumb";
 
 import { CartProvider } from "./context/CartContext";
+import { getRedirectSlug } from "./lib/redirects";
 
 import Home from "./pages/Home";
 
@@ -29,6 +31,7 @@ const Sitemap = lazy(() => import("./pages/Sitemap"));
 const HRFormPage = lazy(() => import("./pages/HRFormPage"));
 const Support = lazy(() => import("./pages/Support"));
 const Cart = lazy(() => import("./pages/Cart"));
+const Hospitals = lazy(() => import("./pages/Hospitals"));
 
 import "./site.css";
 
@@ -36,6 +39,12 @@ export default function App() {
   const location = useLocation();
 
   const isHRFormPage = location.pathname === "/hr-form";
+
+  /* Courses ke sab pages ek hi key use karein, taaki type tab click par remount na ho */
+  const isCoursesPath =
+    location.pathname === "/courses" ||
+    location.pathname.startsWith("/courses/");
+  const routeKey = isCoursesPath ? "/courses" : location.pathname;
 
   useEffect(() => {
     if (isHRFormPage) {
@@ -74,75 +83,89 @@ export default function App() {
     };
   }, [isHRFormPage]);
 
+  /* Sheet wale redirects: sab paths ke liye (hooks ke baad) */
+  const redirectTo = getRedirectSlug(location.pathname);
+  if (redirectTo !== null) {
+    return <Navigate to={`/${redirectTo}`} replace />;
+  }
+
   return (
     <CartProvider>
-    <div className={isHRFormPage ? "hr-site" : "site"}>
-      {/* Trailing slash hatao: /abc/ -> /abc (poori site ke liye) */}
-      <RemoveTrailingSlash />
+      <div className={isHRFormPage ? "hr-site" : "site"}>
+        {/* Trailing slash hatao: /abc/ -> /abc (poori site ke liye) */}
+        <RemoveTrailingSlash />
 
-      <ScrollToTop />
+        <ScrollToTop />
 
-      {!isHRFormPage && <Navbar />}
+        {!isHRFormPage && <Navbar />}
 
-      <main
-        className={isHRFormPage ? "" : "page-enter"}
-        key={location.pathname}
-      >
-        <Suspense
-          fallback={
-            <div
-              style={{
-                minHeight: "60vh",
-              }}
-            />
-          }
+        <main
+          className={isHRFormPage ? "" : "page-enter"}
+          key={routeKey}
         >
-          <Routes>
-            <Route path="/" element={<Home />} />
+          {/* Har page par breadcrumb (static, listing pages) */}
+          {!isHRFormPage && <SiteBreadcrumb />}
 
-            <Route path="/courses" element={<Courses />} />
+          <Suspense
+            fallback={
+              <div
+                style={{
+                  minHeight: "60vh",
+                }}
+              />
+            }
+          >
+            <Routes>
+              <Route path="/" element={<Home />} />
 
-            <Route path="/about" element={<About />} />
+              <Route path="/courses" element={<Courses />} />
 
-            <Route path="/faculty" element={<Faculty />} />
+              {/* Type wise listing: /courses/certificate, /courses/pg-diploma */}
+              <Route path="/courses/:type" element={<Courses />} />
 
-            <Route path="/accreditation" element={<Accreditation />} />
+              <Route path="/about" element={<About />} />
 
-            <Route path="/blog" element={<Blog />} />
+              <Route path="/faculty" element={<Faculty />} />
 
-            <Route path="/blog/:slug" element={<BlogDetail />} />
+              <Route path="/accreditation" element={<Accreditation />} />
 
-            <Route path="/login" element={<Login />} />
+              <Route path="/hospitals" element={<Hospitals />} />
 
-            <Route path="/signup" element={<Signup />} />
+              <Route path="/blog" element={<Blog />} />
 
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/blog/:slug" element={<BlogDetail />} />
 
-            <Route path="/app" element={<AppPage />} />
+              <Route path="/login" element={<Login />} />
 
-            <Route path="/terms" element={<TermsPage />} />
+              <Route path="/signup" element={<Signup />} />
 
-            <Route path="/refund" element={<RefundPage />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
-            <Route path="/sitemap" element={<Sitemap />} />
+              <Route path="/app" element={<AppPage />} />
 
-            <Route path="/support" element={<Support />} />
+              <Route path="/terms" element={<TermsPage />} />
 
-            <Route path="/cart" element={<Cart />} />
+              <Route path="/refund" element={<RefundPage />} />
 
-            <Route path="/hr-form" element={<HRFormPage />} />
+              <Route path="/sitemap" element={<Sitemap />} />
 
-            <Route path="/:slug" element={<CourseDetail />} />
+              <Route path="/support" element={<Support />} />
 
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
-      </main>
+              <Route path="/cart" element={<Cart />} />
 
-      {!isHRFormPage && <Footer />}
+              <Route path="/hr-form" element={<HRFormPage />} />
 
-      {!isHRFormPage && <StickyContactBar />}
-    </div>
+              <Route path="/:slug" element={<CourseDetail />} />
+
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
+        </main>
+
+        {!isHRFormPage && <Footer />}
+
+        {!isHRFormPage && <StickyContactBar />}
+      </div>
     </CartProvider>
   );
 }

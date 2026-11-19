@@ -24,7 +24,8 @@ import { fetchCourseDetails } from "../lib/api";
 import { getRedirectSlug, getAliasSlug } from "../lib/redirects";
 import { getCourseMeta, cleanTitle } from "../lib/courseMeta";
 import { getCourseSeo } from "../lib/courseSeo"; // <-- Note: If you made courseSeoAll.js, change this to import { getCourseSeo } from "../lib/courseSeoAll";
-
+import { getImageAlt } from "../lib/courseAlt";
+import { COURSE_OVERVIEWS } from "../lib/courseOverviews";
 import CourseImage from "../components/CourseImage";
 import { DetailSkeleton } from "../components/Skeletons";
 import ErrorState from "../components/ErrorState";
@@ -1257,6 +1258,14 @@ export default function CourseDetail() {
     loadCourse(fetchSlug)
       .then((found) => {
         if (cancelled) return;
+
+        // DEBUG (alt ka asli key mil jaye to ye 2 lines hata dena)
+        console.log("COURSE API DATA:", found);
+        console.log(
+          "ALT-LIKE KEYS:",
+          Object.keys(found).filter((k) => /alt|img|image|seo/i.test(k))
+        );
+
         setCourse(found);
       })
       .catch((e) => {
@@ -1348,6 +1357,9 @@ export default function CourseDetail() {
   const manualMeta = getCourseMeta(slug);
 
   const seo = getCourseSeo(slug);
+
+  /* IMAGE ALT: seo sheet -> API field -> course name */
+  const imageAlt = getImageAlt(course, seo);
 
   const metaTitle =
     seo?.metaTitle ||
@@ -1543,7 +1555,9 @@ export default function CourseDetail() {
      ========================================================= */
 
   const seoOverview =
-    typeof seo?.overview === "string" ? cleanText(seo.overview) : "";
+    typeof seo?.overview === "string" && seo.overview.trim()
+      ? cleanText(seo.overview)
+      : cleanText(COURSE_OVERVIEWS[slug] || manualMeta?.overview || "");
 
   const baseOverview = stripHandsOnSentences(
     seoOverview || cleanText(course.description)
@@ -1747,7 +1761,7 @@ export default function CourseDetail() {
       />
       <ImageObjectSchema
         imageUrl={course.image}
-        caption={course.name}
+        caption={imageAlt}
         pageUrl={canonicalUrl}
       />
 
@@ -1786,7 +1800,7 @@ export default function CourseDetail() {
         <div className="detail-main">
           <CourseImage
             src={course.image}
-            alt={course.name}
+            alt={imageAlt}
             className="detail-image"
           />
 

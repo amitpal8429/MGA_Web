@@ -1,60 +1,64 @@
 const REDIRECTS = {
- 
+  /* ===== Existing: course slug redirects ===== */
   "fetal-medicine-fellowship": "fellowship-in-fetal-medicine",
   "fellowship-in-obstetrics-gynaecology": "fellowship-in-obstetrics-and-gynaecology",
-
   "fellowship-in-anorectal-and-laser-proctology": "fellowship-in-anorectal-plus-laser-proctology",
-
-
   "fellowship-in-general-laparoscopic-surgery": "fellowship-in-laparoscopic-surgery",
-
   "certificate-in-infection-and-prevention-control": "certificate-in-infection-control-and-prevention",
-
- 
 
   "fellowship-in-pediatric-dermatology": "fellowship-in-pediatrics-dermatology",
   "fellowship-in-pediatric-neonatology": "fellowship-in-pediatrics-neonatology",
   "fellowship-in-cardiac-intervention": "fellowship-in-interventional-cardiology",
-
-"fellowship-in-pediatrics-endocrinology":"fellowship-in-paediatric-endocrinology",
+  "fellowship-in-pediatrics-endocrinology": "fellowship-in-paediatric-endocrinology",
   "fellowship-in-oral-and-maxillofacial-radiology": "fellowship-in-oral-radiology",
   "fellowship-in-maxillofacial-radiology": "fellowship-in-oral-radiology",
-
   "fellowship-in-arthroscopy-sports-medicine": "fellowship-in-arthroscopy-and-sports-medicine",
   "fellowship-in-head-and-neck-surgical-oncology": "fellowship-in-head-and-neck-oncosurgery",
-  "fellowship-in-head-and-neck-surgicl-oncology": "fellowship-in-head-and-neck-oncosurgery",   // ✅ NEW (typo slug)
-
+  "fellowship-in-head-and-neck-surgicl-oncology": "fellowship-in-head-and-neck-oncosurgery",
   "fellowship-in-clinical-neurology": "fellowship-in-neurology",
-
   "fellowship-in-orthopedics": "fellowship-in-orthopedic",
   "fellowship-in-pediatrics-neurology": "fellowship-in-pediatric-neurology",
   "fellowship-in-clinical-embryology": "fellowship-in-embryology",
-"fellowship-in-pediatric-ophthalmology-strabismus":"fellowship-in-pediatric-ophthalmology",
- 
-"fellowship in pulmonology medicine":"fellowship in pulmonary medicine ",
+  "fellowship-in-pediatric-ophthalmology-strabismus": "fellowship-in-pediatric-ophthalmology",
+  "fellowship in pulmonology medicine": "fellowship in pulmonary medicine",
   "fellowship-in-pulmonology": "fellowship-in-pulmonology-medicine",
   "certificate-in-diabetic-footcare": "certificate-in-diabetic-foot-care",
   "fellowship-in-anesthesiology": "fellowship-in-anesthesia",
- 
   "fellowship-in-laparoscopy-hysteroscopy": "fellowship-in-laparoscopy-and-hysteroscopy",
   "certificate-in-obstetrics-gynaecology": "certificate-in-obstetrics-and-gynaecology",
-
   "fellowship-in-pediatric-genetics-and-metabolic": "fellowship-in-pediatric-genetics-and-metabolism",
   "fellowship-in-orthopaedic": "fellowship-in-orthopedic",
-  "fellowship-in-spinal-cord-surgery": "fellowship-in-spine-surgery",   // ✅ NEW
+  "fellowship-in-spinal-cord-surgery": "fellowship-in-spine-surgery",
   "fellowship-in-gastrology": "fellowship-in-gastroenterology",
   "pg-diploma-in-reproductive-and-child-health": "pg-diploma-in-reproductive-child-health",
-
   "fellowship-in-pediatric-dentistry": "fellowship-in-pedodontist",
-
   "fellowship-in-paediatric": "fellowship-in-pediatrics",
-
   "fellowship-in-cosmetology-and-aesthetic-medicine": "fellowship-in-cosmetology-aesthetic-medicine",
-
-
   "fellowship-in-breast-surgical-oncology": "fellowship-in-breast-onco-surgery",
- "fellowship-in-gynecologic-oncology": "fellowship-in-gynaecologic-oncology",
-  "fellowship-in-hematology-oncology": "fellowship-in-hemato-oncology",   
+  "fellowship-in-gynecologic-oncology": "fellowship-in-gynaecologic-oncology",
+  "fellowship-in-hematology-oncology": "fellowship-in-hemato-oncology",
+
+  /* ===== NEW: sheet se (purane / galat URL -> sahi URL) ===== */
+
+  /* Course pages */
+  "pg-diploma-in-maternal-child-health": "pg-diploma-in-maternal-and-child-health",
+  "pg-diploma-in-obstetrics-gynecology": "pg-diploma-in-obstetrics-and-gynaecology",
+
+  /* Type pages (naye type route par) */
+  "fellowship": "courses/fellowship",
+  "pg-diploma-courses": "courses/pg-diploma",
+
+  /* Static pages */
+  "about1": "about",
+  "blogs": "blog",
+  "terms-condition": "terms",
+
+  /* Junk / extra URLs -> home */
+  "google": "",
+  "page": "",
+  "49226-2": "",
+
+  /* ===== Existing: blog redirects ===== */
   "types-of-genetic-testing": "blog/types-of-genetic-testing",
   "congenital-heart-disease": "blog/congenital-heart-disease",
   "cancer-screening-guidelines-india": "blog/cancer-screening-guidelines-india",
@@ -134,7 +138,6 @@ const REDIRECTS = {
   "career-after-mbbs": "blog/career-after-mbbs",
   "fellowship-courses-after-mbbs-in-india": "blog/fellowship-courses-after-mbbs-in-india",
   "courses-after-mbbs-in-india": "blog/courses-after-mbbs-in-india",
-
   "what-to-do-after-mbbs": "blog/what-to-do-after-mbbs",
   "fellowship-in-dermatology-skills": "blog/fellowship-in-dermatology-skills",
   "key-benefits-of-fellowship-in-oncology-for-doctors": "blog/key-benefits-of-fellowship-in-oncology-for-doctors",
@@ -177,14 +180,27 @@ const REDIRECTS = {
   "highest-paying-doctors-in-india": "blog/highest-paying-doctors-in-india",
   "fellowship-in-pediatric-opportunities-in-government-private-sector": "blog/fellowship-in-pediatric-opportunities-in-government-private-sector",
   "the-importance-of-fellowship-in-interventional-cardiology": "blog/the-importance-of-fellowship-in-interventional-cardiology",
+
+  /* Blog ke purane / galat URL (sheet se) */
+  "blog/ai-in-healthcare-fellowship": "blog/ai-in-healthcare",
+  "blog/fellowship-in-gi-endoscopyfellowship-in-gi-endoscopy-eligibility-curriculum-scope":
+    "blog/fellowship-in-gi-endoscopy-eligibility-curriculum-scope",
 };
 
 export const ALIASES = {};
 
+/* Slug/path ko normalize karke redirect target do.
+   Target "" ho to home ("/") par jayega. Target null ho to koi redirect nahi. */
+function lookup(input) {
+  if (input == null) return null;
+  const normalized = String(input).replace(/^\/+|\/+$/g, "");
+  return Object.prototype.hasOwnProperty.call(REDIRECTS, normalized)
+    ? REDIRECTS[normalized]
+    : null;
+}
+
 export function getRedirectSlug(slug) {
-  if (!slug) return null;
-  const normalized = slug.replace(/^\/+|\/+$/g, "");
-  return REDIRECTS[normalized] || null;
+  return lookup(slug);
 }
 
 export function getAliasSlug(slug) {

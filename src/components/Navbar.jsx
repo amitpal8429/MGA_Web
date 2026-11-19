@@ -121,6 +121,7 @@ export default function Navbar() {
               <NavLink to="/about" onClick={() => setOpen(false)}>About</NavLink>
               <NavLink to="/faculty" onClick={() => setOpen(false)}>Faculty</NavLink>
               <NavLink to="/accreditation" onClick={() => setOpen(false)}>Accreditation</NavLink>
+              <NavLink to="/hospitals" onClick={() => setOpen(false)}>Hospitals</NavLink>
               <Link to="/blog" onClick={() => setOpen(false)}>Blog</Link>
 
               <span className="nav-divider" />

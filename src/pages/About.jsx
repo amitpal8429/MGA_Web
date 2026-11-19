@@ -4,8 +4,8 @@ import "./About.css";
 const FOUNDED_YEAR = "2020";
 
 const STATS = [
-  { value: "321+", label: "Active programs" },
-  { value: "210+", label: "Fellowships" },
+  { value: "507+", label: "Active programs" },
+  { value: "396+", label: "Fellowships" },
   { value: "47+", label: "Certificates" },
   { value: "64+", label: "PG diplomas" },
   
