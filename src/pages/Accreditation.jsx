@@ -70,7 +70,7 @@ const PAGE_CSS = `
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px;
-    align-items: start;
+    align-items: stretch;
   }
 
   .mga-acc-card {
@@ -81,20 +81,25 @@ const PAGE_CSS = `
     border-radius: 18px;
     overflow: hidden;
     box-sizing: border-box;
+    min-width: 0;
   }
 
+  /* Fixed-height logo area so both cards match */
   .mga-acc-card-top {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 170px;
-    padding: 24px;
+    height: 180px;
+    padding: 20px;
+    box-sizing: border-box;
     background: #f7f9fb;
     border-bottom: 1px solid #dce4ea;
   }
 
   .mga-acc-logo {
     display: block;
+    width: auto;
+    height: auto;
     max-width: 100%;
     max-height: 130px;
     object-fit: contain;
@@ -104,7 +109,9 @@ const PAGE_CSS = `
     display: flex;
     flex-direction: column;
     gap: 12px;
-    padding: 22px 24px 24px;
+    padding: 22px 24px;
+    flex: 1;
+    box-sizing: border-box;
   }
 
   .mga-acc-name {
@@ -126,7 +133,8 @@ const PAGE_CSS = `
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin-top: 4px;
+    margin-top: auto;
+    padding-top: 4px;
   }
 
   .mga-acc-btn {
@@ -154,6 +162,7 @@ const PAGE_CSS = `
     outline-offset: 2px;
   }
 
+  /* Fixed-size certificate frame so both certificates match */
   .mga-acc-cert-wrap {
     padding: 0 24px 24px;
   }
@@ -166,17 +175,27 @@ const PAGE_CSS = `
   }
 
   .mga-acc-cert {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 320px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 10px;
+    background: #f7f9fb;
     border: 1px solid #dce4ea;
     border-radius: 12px;
     overflow: hidden;
-    text-decoration: none;
   }
 
   .mga-acc-cert img {
     display: block;
-    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
     height: auto;
+    object-fit: contain;
   }
 
   .mga-acc-footer {
@@ -202,6 +221,14 @@ const PAGE_CSS = `
     .mga-acc-hero { padding: 32px 0 8px; }
     .mga-acc-grid { grid-template-columns: 1fr; }
     .mga-acc-sub  { font-size: 16px; }
+    .mga-acc-card-top { height: 160px; }
+    .mga-acc-cert { height: 260px; }
+  }
+
+  @media (max-width: 560px) {
+    .mga-acc-card-body { padding: 18px; }
+    .mga-acc-cert-wrap { padding: 0 18px 18px; }
+    .mga-acc-cert { height: 220px; }
   }
 `;
 

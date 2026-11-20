@@ -46,7 +46,7 @@ export default function Hospitals() {
         }
         if (!cancelled) {
           const sorted = [...json.data].sort((a, b) =>
-            a.name.localeCompare(b.name)
+            (a.name || "").localeCompare(b.name || "")
           );
           setHospitals(sorted);
         }
@@ -68,7 +68,7 @@ export default function Hospitals() {
     if (!q) return hospitals;
     return hospitals.filter(
       (h) =>
-        h.name.toLowerCase().includes(q) ||
+        (h.name || "").toLowerCase().includes(q) ||
         (h.location || "").toLowerCase().includes(q)
     );
   }, [hospitals, query]);
@@ -79,7 +79,8 @@ export default function Hospitals() {
         <div style={styles.brand}>Medical Global Academy</div>
         <h1 style={styles.title}>Our Partner Hospitals</h1>
         <p style={styles.subtitle}>
-          Discover hospitals across India that are part of our clinical and training network.
+          Discover hospitals across India that are part of our clinical and
+          training network.
         </p>
       </header>
 
@@ -136,7 +137,7 @@ const styles = {
   },
   header: {
     background: `linear-gradient(135deg, ${theme.primary}, ${theme.primaryDark})`,
-    color: "#fff",
+    color: "#ffffff",
     padding: "48px 20px 56px",
     textAlign: "center",
   },
@@ -144,15 +145,18 @@ const styles = {
     fontSize: 14,
     letterSpacing: 2,
     textTransform: "uppercase",
+    color: "#ffffff",
     opacity: 0.8,
     marginBottom: 10,
   },
   title: {
     fontSize: "clamp(26px, 4vw, 38px)",
     fontWeight: 700,
+    color: "#ffffff",
     margin: "0 0 10px",
   },
   subtitle: {
+    color: "#ffffff",
     opacity: 0.85,
     maxWidth: 560,
     margin: "0 auto",

@@ -62,7 +62,7 @@ const FEATURES = [
   },
 ];
 
-// Accreditation data (shown inside the hero). Each logo links to its verification page.
+// Accreditation data. Each logo links to its verification page.
 const ACCREDITATIONS = [
   {
     id: 1,
@@ -86,72 +86,293 @@ const ACCREDITATIONS = [
   },
 ];
 
-const TESTIMONIALS = [
-  {
-    name: "Dr. R. Sharma",
-    role: "Fellowship in Internal Medicine",
-    quote:
-      "The clinical modules were far more practical than I expected. Weekly live sessions with faculty made complex cases easy to reason through.",
-  },
-  {
-    name: "Dr. A. Iyer",
-    role: "PG Diploma in Dermatology",
-    quote:
-      "Being able to study around OPD hours made this possible for me. The mentorship after each module was the most valuable part.",
-  },
-  {
-    name: "Dr. S. Bano",
-    role: "Fellowship in Critical Care",
-    quote:
-      "Hospital training combined with structured online modules gave me confidence to manage complex ICU cases independently.",
-  },
-];
-
 const HOME_CSS = `
-  .hero-accreditation-grid {
+  /* ---------- Hero grid: no stretching, so no extra white space ---------- */
+  .hero-grid {
+    align-items: start;
+  }
+
+  /* ---------- Compact hero form (shorter height) ---------- */
+  .hero-form-card {
+    max-width: 370px;
+    width: 100%;
+    justify-self: end;
+    align-self: start;
+  }
+
+  .hero-form-card .hero-form-head,
+  .hero-form-card .hero-form-body {
+    padding: 14px 16px;
+  }
+
+  .hero-form-card h3 {
+    font-size: 17px;
+    margin: 4px 0;
+  }
+
+  .hero-form-card h4 {
+    font-size: 15px;
+    margin: 0 0 4px;
+  }
+
+  .hero-form-card .hero-form-desc {
+    margin: 0 0 8px;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .hero-form-card input,
+  .hero-form-card select,
+  .hero-form-card textarea {
+    padding-top: 7px !important;
+    padding-bottom: 7px !important;
+    font-size: 13px !important;
+  }
+
+  .hero-form-card label {
+    margin-bottom: 3px !important;
+    font-size: 12px !important;
+  }
+
+  .hero-form-card form > * + *,
+  .hero-form-card form .field,
+  .hero-form-card form .form-group {
+    margin-top: 6px;
+  }
+
+  .hero-form-card button[type="submit"],
+  .hero-form-card .btn {
+    padding-top: 9px !important;
+    padding-bottom: 9px !important;
+  }
+
+  /* ---------- Hero stat boxes ---------- */
+  .hero-stat-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 28px;
+    max-width: 680px;
+  }
+
+  .hero-stat-card {
+    background: #ffffff;
+    border: 1px solid #dce4ea;
+    border-radius: 16px;
+    padding: 20px;
+    min-height: 110px;
+    box-shadow: 0 6px 18px rgba(15, 39, 68, 0.06);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-stat-card strong {
+    display: block;
+    font-size: 32px;
+    font-weight: 700;
+    color: #0e7490;
+    line-height: 1.1;
+  }
+
+  .hero-stat-card span {
+    display: block;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #64748b;
+    line-height: 1.3;
+  }
+
+  /* ---------- Accreditation section ---------- */
+  .accred-head {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .accred-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #066daf;
+    margin: 0 0 6px;
+  }
+
+  .accred-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0f2744;
+    margin: 0;
+  }
+
+  .accred-single-row {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 16px;
-    max-width: 700px;
-    margin-top: 14px;
+    max-width: 1200px;
+    margin: 0 auto;
     align-items: stretch;
   }
 
-  .hero-accreditation-group {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+  .accred-item {
     min-width: 0;
-  }
-
-  .hero-accreditation-group .hero-accreditation-card {
     width: 100%;
-    box-sizing: border-box;
   }
 
-  .hero-accreditation-cert {
+  /* Same fixed size for logo boxes and certificate boxes */
+  .accred-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 220px;
+    box-sizing: border-box;
+    padding: 16px;
     margin: 0;
-    flex: 1 1 auto;
-    aspect-ratio: 1.4 / 1;
-    border: 1px solid #dce4ea;
     border-radius: 14px;
-    overflow: hidden;
+    border: 1px solid #dce4ea;
     background: #ffffff;
-    box-sizing: border-box;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
   }
 
-  .hero-accreditation-cert img {
+  a.accred-box {
+    cursor: pointer;
+  }
+
+  .accred-box img {
     display: block;
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
     object-fit: contain;
   }
 
-  @media (max-width: 560px) {
-    .hero-accreditation-grid {
-      grid-template-columns: 1fr;
-      max-width: 100%;
+  /* ---------- Programs box ---------- */
+  .course-box {
+    background: #ffffff;
+    border: 1px solid #dce4ea;
+    border-radius: 22px;
+    padding: 28px;
+    box-shadow: 0 10px 30px rgba(15, 39, 68, 0.07);
+    box-sizing: border-box;
+  }
+
+  /* ---------- Blog cards ---------- */
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .blog-card {
+    background: #ffffff;
+    border: 1px solid #dce4ea;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .blog-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(15, 39, 68, 0.08);
+  }
+
+  .blog-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background: #f1f5f9;
+  }
+
+  .blog-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .blog-date {
+    font-size: 12px;
+    font-weight: 600;
+    color: #066daf;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+
+  .blog-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #0f2744;
+    margin: 0 0 12px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .blog-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .blog-title a:hover {
+    color: #066daf;
+  }
+
+  .blog-excerpt {
+    font-size: 14px;
+    color: #64748b;
+    line-height: 1.5;
+    margin: 0 0 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex: 1;
+  }
+
+  /* ---------- Media queries ---------- */
+  @media (max-width: 1024px) {
+    .accred-single-row {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      max-width: 760px;
     }
+    .blog-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 760px) {
+    .hero-stat-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .accred-single-row {
+      grid-template-columns: 1fr;
+      max-width: 420px;
+    }
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .course-box { padding: 16px; border-radius: 16px; }
+    .accred-title { font-size: 19px; }
+    .accred-box { height: 200px; }
+    .hero-stat-card strong { font-size: 26px; }
+    .hero-stat-card { min-height: 96px; padding: 14px; }
   }
 `;
 
@@ -161,6 +382,10 @@ export default function Home() {
   const [error, setError] = useState(null);
   const [tick, setTick] = useState(0);
 
+  // Blog state
+  const [blogs, setBlogs] = useState(null);
+  const [blogError, setBlogError] = useState(null);
+
   useEffect(() => {
     let cancelled = false;
     setError(null);
@@ -168,8 +393,6 @@ export default function Home() {
     Promise.all([fetchCourseList(), fetchFacultyList()])
       .then(([c, f]) => {
         if (cancelled) return;
-
-        // ✅ Show ALL courses — PG Diploma included
         setCourses(c);
         setFaculty(f);
       })
@@ -178,6 +401,25 @@ export default function Home() {
       cancelled = true;
     };
   }, [tick]);
+
+  // Fetch latest 3 blogs from WordPress API
+  useEffect(() => {
+    let cancelled = false;
+    fetch("https://medicalglobalacademy.com/wp-json/wp/v2/posts?per_page=3&_embed")
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to fetch blogs");
+        return res.json();
+      })
+      .then((data) => {
+        if (!cancelled) setBlogs(data);
+      })
+      .catch((err) => {
+        if (!cancelled) setBlogError(err.message);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const featured = useMemo(() => {
     if (!courses) return [];
@@ -190,9 +432,7 @@ export default function Home() {
 
   const stats = useMemo(() => {
     if (!courses) return null;
-
     const typeOf = (c) => String(c.type || "");
-
     return {
       total: courses.length,
       fellowships: courses.filter((c) => c.type === "Fellowship").length,
@@ -213,37 +453,32 @@ export default function Home() {
         <meta name="description" content={HOME_DESCRIPTION} />
         <link rel="canonical" href={SITE_URL} />
         <meta name="robots" content="index, follow" />
-
         <meta property="og:type" content="website" />
         <meta property="og:title" content={HOME_TITLE} />
         <meta property="og:description" content={HOME_DESCRIPTION} />
         <meta property="og:url" content={SITE_URL} />
-
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={HOME_TITLE} />
         <meta name="twitter:description" content={HOME_DESCRIPTION} />
       </Helmet>
 
+      {/* ---------- HERO ---------- */}
       <section className="hero">
         <div className="hero-blob" aria-hidden="true" />
         <div className="wrap hero-grid">
           <div className="hero-copy">
             <p className="eyebrow">Fast-track your medical career with</p>
             <h1 className="hero-title">
-             Your Trusted Platform for Online Medical Courses & Professional Upskilling
+              Your Trusted Platform for Online Medical Courses & Professional Upskilling
             </h1>
             <p className="hero-lede">
-             Online certificate, PG Diploma and fellowship programs for doctors across medicine, surgery, radiology and obstetrics — combining advanced medical education with live clinical mentorship.
+              Online certificate, PG Diploma and fellowship programs for doctors across medicine, surgery, radiology and obstetrics — combining advanced medical education with live clinical mentorship.
             </p>
             <div className="hero-actions">
               <Link
                 to="/courses"
                 className="btn btn-primary"
-                style={{
-                  backgroundColor: "#066daf",
-                  borderColor: "#066daf",
-                  color: "#ffffff",
-                }}
+                style={{ backgroundColor: "#066daf", borderColor: "#066daf", color: "#ffffff" }}
               >
                 Explore programs <ArrowRight size={16} />
               </Link>
@@ -258,82 +493,30 @@ export default function Home() {
             </div>
 
             {stats && (
-              <div className="hero-trust">
-                <span><strong>{stats.total}+</strong> active programs</span>
-                <span className="dot" />
-                <span><strong>{stats.fellowships}+</strong> fellowships</span>
-                {stats.certificates > 0 && (
-                  <>
-                    <span className="dot" />
-                    <span><strong>{stats.certificates}+</strong> certificates</span>
-                  </>
-                )}
-                {stats.pgDiplomas > 0 && (
-                  <>
-                    <span className="dot" />
-                    <span><strong>{stats.pgDiplomas}+</strong> PG diplomas</span>
-                  </>
-                )}
+              <div className="hero-stat-grid">
+                <div className="hero-stat-card">
+                  <strong>{stats.total}+</strong>
+                  <span>Active programs</span>
+                </div>
+                <div className="hero-stat-card">
+                  <strong>{stats.fellowships}+</strong>
+                  <span>Fellowships</span>
+                </div>
+                <div className="hero-stat-card">
+                  <strong>{stats.certificates}+</strong>
+                  <span>Certificates</span>
+                </div>
+                <div className="hero-stat-card">
+                  <strong>{stats.pgDiplomas}+</strong>
+                  <span>PG diplomas</span>
+                </div>
               </div>
             )}
-
-            {/* Accreditation — below trust stats, inside the hero */}
-            <div className="hero-accreditation">
-              <p className="hero-accreditation-eyebrow">
-                <ShieldCheck size={14} /> Accreditation
-              </p>
-              <p className="hero-accreditation-text">
-                Globally recognised CPD & ACTD-aligned certification
-              </p>
-              <div className="hero-accreditation-grid">
-                {ACCREDITATIONS.map((a) => (
-                  <div className="hero-accreditation-group" key={a.id}>
-                    <a
-                      className="hero-accreditation-card"
-                      href={a.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`${a.alt} - verify accreditation (opens in new tab)`}
-                      style={{
-                        textDecoration: "none",
-                        color: "inherit",
-                        cursor: "pointer",
-                      }}
-                    >
-                      <img
-                        src={a.src}
-                        alt={a.alt}
-                        className="hero-accreditation-image"
-                        loading="lazy"
-                        draggable={false}
-                      />
-                    </a>
-
-                    {a.certificate && (
-                      <figure
-                        className="hero-accreditation-cert"
-                        onContextMenu={(e) => e.preventDefault()}
-                      >
-                        <img
-                          src={a.certificate.src}
-                          alt={a.certificate.alt}
-                          loading="lazy"
-                          draggable={false}
-                        />
-                      </figure>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
 
-          {/* Inline lead form on the right side of the hero */}
           <div className="hero-form-card">
             <div className="hero-form-head">
-              <p className="hero-form-eyebrow">
-                ⚡ PRIORITY 2026 BATCH APPLICATION
-              </p>
+              <p className="hero-form-eyebrow">⚡ PRIORITY 2026 BATCH APPLICATION</p>
               <h3>Apply for Clinical Fellowship</h3>
               <p className="hero-form-sub">
                 Get full clinical curriculum & hospital slots on WhatsApp
@@ -359,30 +542,75 @@ export default function Home() {
 
       {!error && (
         <>
+          {/* ---------- ACCREDITATION ---------- */}
+          <section className="section section-alt">
+            <div className="wrap">
+              <div className="accred-head">
+                <p className="accred-eyebrow">
+                  <ShieldCheck size={14} /> Accreditation
+                </p>
+                <h2 className="accred-title">
+                  Globally recognised CPD & ACTD-aligned certification
+                </h2>
+              </div>
+
+              <div className="accred-single-row">
+                {ACCREDITATIONS.map((a) => (
+                  <div className="accred-item" key={`logo-${a.id}`}>
+                    <a
+                      className="accred-box"
+                      href={a.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${a.alt} - verify accreditation (opens in new tab)`}
+                    >
+                      <img src={a.src} alt={a.alt} loading="lazy" draggable={false} />
+                    </a>
+                  </div>
+                ))}
+
+                {ACCREDITATIONS.filter((a) => a.certificate).map((a) => (
+                  <div className="accred-item" key={`cert-${a.id}`}>
+                    <figure className="accred-box" onContextMenu={(e) => e.preventDefault()}>
+                      <img
+                        src={a.certificate.src}
+                        alt={a.certificate.alt}
+                        loading="lazy"
+                        draggable={false}
+                      />
+                    </figure>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* ---------- PROGRAMS ---------- */}
           <section className="section">
             <div className="wrap">
-              <div className="section-head">
-                <div>
-                  <p className="eyebrow eyebrow-sm">Our programs</p>
-                  <h2>Advance your career with programs built for practising doctors</h2>
-                </div>
+              <div className="section-head section-head-center">
+                <p className="eyebrow eyebrow-sm">Our programs</p>
+                <h2>Advance your career with programs built for practising doctors</h2>
                 <Link to="/courses" className="section-link">
                   View all programs <ArrowRight size={15} />
                 </Link>
               </div>
 
-              {courses === null ? (
-                <CourseGridSkeleton count={6} />
-              ) : (
-                <div className="course-grid">
-                  {featured.map((c) => (
-                    <CourseCard key={c.id} course={c} />
-                  ))}
-                </div>
-              )}
+              <div className="course-box">
+                {courses === null ? (
+                  <CourseGridSkeleton count={6} />
+                ) : (
+                  <div className="course-grid">
+                    {featured.map((c) => (
+                      <CourseCard key={c.id} course={c} />
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           </section>
 
+          {/* ---------- WHAT TO EXPECT ---------- */}
           <section className="section section-alt">
             <div className="wrap">
               <div className="section-head section-head-center">
@@ -406,6 +634,7 @@ export default function Home() {
             </div>
           </section>
 
+          {/* ---------- FACULTY ---------- */}
           <section className="section">
             <div className="wrap">
               <div className="section-head">
@@ -436,35 +665,94 @@ export default function Home() {
             </div>
           </section>
 
-          <section className="section section-alt">
+          {/* ---------- LATEST BLOGS ---------- */}
+          <section className="section">
             <div className="wrap">
-              <div className="section-head section-head-center">
-                <p className="eyebrow eyebrow-sm">Testimonials</p>
-                <h2>What our doctors say</h2>
-                <p className="muted section-sub">
-                  Real clinical experience, meaningful mentorship, and a
-                  training environment that pushes doctors to grow.
-                </p>
+              <div className="section-head">
+                <div>
+                  <p className="eyebrow eyebrow-sm">Latest Insights</p>
+                  <h2>Medical Blogs & Articles</h2>
+                </div>
+                <a
+                  href="https://medicalglobalacademy.com/blog/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="section-link"
+                >
+                  View all blogs <ArrowRight size={15} />
+                </a>
               </div>
 
-              <div className="testimonial-grid">
-                {TESTIMONIALS.map((t) => (
-                  <div className="testimonial-card" key={t.name}>
-                    <p className="testimonial-quote">"{t.quote}"</p>
-                    <div className="testimonial-person">
-                      <span className="avatar">{initials(t.name)}</span>
-                      <span>
-                        <strong>{t.name}</strong>
-                        <span className="muted testimonial-role">{t.role}</span>
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              {!blogs && !blogError && (
+                <div className="blog-grid">
+                  {[1, 2, 3].map((n) => (
+                    <div key={n} className="skel" style={{ height: 350, borderRadius: 16 }} />
+                  ))}
+                </div>
+              )}
+
+              {blogError && (
+                <p className="muted" style={{ textAlign: "center" }}>
+                  Could not load blogs at the moment.
+                </p>
+              )}
+
+              {blogs && (
+                <div className="blog-grid">
+                  {blogs.map((post) => {
+                    const imageUrl =
+                      post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
+                      "https://medicalglobalacademy.com/wp-content/uploads/2026/10/placeholder.jpg";
+                    const date = new Date(post.date).toLocaleDateString("en-IN", {
+                      day: "numeric",
+                      month: "short",
+                      year: "numeric",
+                    });
+                    const cleanExcerpt = post.excerpt?.rendered.replace(/<[^>]+>/g, "");
+
+                    return (
+                      <div className="blog-card" key={post.id}>
+                        <Link to={`/blog/${post.slug}`}>
+                          <img
+                            src={imageUrl}
+                            alt={post.title.rendered}
+                            className="blog-img"
+                            loading="lazy"
+                          />
+                        </Link>
+                        <div className="blog-content">
+                          <span className="blog-date">{date}</span>
+                          <h3 className="blog-title">
+                            <Link
+                              to={`/blog/${post.slug}`}
+                              dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+                            />
+                          </h3>
+                          <p className="blog-excerpt">{cleanExcerpt}</p>
+                          <Link
+                            to={`/blog/${post.slug}`}
+                            style={{
+                              color: "#066daf",
+                              fontWeight: 600,
+                              fontSize: 14,
+                              display: "flex",
+                              alignItems: "center",
+                              gap: 4,
+                            }}
+                          >
+                            Read Article <ArrowRight size={14} />
+                          </Link>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </section>
 
-          <section className="section" id="faq">
+          {/* ---------- FAQ ---------- */}
+          <section className="section section-alt" id="faq">
             <div className="wrap">
               <div className="section-head section-head-center">
                 <p className="eyebrow eyebrow-sm">Frequently asked questions</p>
@@ -480,17 +768,8 @@ export default function Home() {
             </div>
           </section>
 
-          <section className="cta-band">
-            <div className="wrap cta-band-inner">
-              <div>
-                <h2 className="cta-title">Ready to specialise without pausing your practice?</h2>
-                <p className="cta-sub">Browse the full catalog and find the program that fits your speciality.</p>
-              </div>
-              <Link to="/courses" className="btn btn-navy">
-                Explore programs <ArrowRight size={16} />
-              </Link>
-            </div>
-          </section>
+          {/* ---------- CTA ---------- */}
+      
         </>
       )}
     </>

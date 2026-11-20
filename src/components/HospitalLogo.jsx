@@ -1,62 +1,61 @@
-import React, { useState } from "react";
-
-const theme = {
-  primary: "#0c3a6b",
-};
+import React, { useEffect, useState } from "react";
 
 function getInitials(name = "") {
   const letters = name
-    .replace(/\(.*?\)/g, "")
     .split(/\s+/)
-    .filter((w) => /^[A-Za-z]/.test(w) && !["&", "of", "and"].includes(w.toLowerCase()))
+    .filter((w) => /^[A-Za-z]/.test(w))
     .slice(0, 2)
     .map((w) => w[0].toUpperCase())
     .join("");
   return letters || "H";
 }
 
-/*
- * Retry stages:
- * 0 -> normal load (referrerPolicy: no-referrer)
- * 1 -> retry with crossOrigin="anonymous"
- * 2 -> fallback to initials
- */
 export default function HospitalLogo({ name, logo }) {
-  const [stage, setStage] = useState(0);
+  const [failed, setFailed] = useState(false);
 
-  if (!logo || stage >= 2) {
-    return <span style={styles.initials}>{getInitials(name)}</span>;
+  // Naya logo aaye to purani error state reset karo
+  useEffect(() => {
+    setFailed(false);
+  }, [logo]);
+
+  const src = logo ? logo.trim().replace(/^http:\/\//, "https://") : null;
+
+  if (!src || failed) {
+    return (
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          background: "#0c3a6b",
+          color: "#fff",
+          fontSize: 24,
+          fontWeight: 700,
+        }}
+      >
+        {getInitials(name)}
+      </div>
+    );
   }
-
-  const useCors = stage === 1;
 
   return (
     <img
-      key={stage}
-      src={logo}
+      src={src}
       alt={`${name} logo`}
       loading="lazy"
-      referrerPolicy="no-referrer"
-      crossOrigin={useCors ? "anonymous" : undefined}
       onError={() => {
-        console.warn(`Logo failed (stage ${stage}):`, logo);
-        setStage((s) => s + 1);
+        console.warn("Logo failed to load:", name, src);
+        setFailed(true);
       }}
-      style={styles.logoImg}
+      style={{
+        width: "100%",
+        height: "100%",
+        objectFit: "contain",
+        padding: 8,
+        boxSizing: "border-box",
+      }}
     />
   );
 }
-
-const styles = {
-  logoImg: {
-    width: "100%",
-    height: "100%",
-    objectFit: "contain",
-    padding: 8,
-  },
-  initials: {
-    fontSize: 26,
-    fontWeight: 700,
-    color: theme.primary,
-  },
-};
