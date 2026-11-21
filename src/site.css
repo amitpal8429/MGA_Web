@@ -3001,3 +3001,26 @@ textarea {
   color: #596b7e;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+.footer-logo {
+  height: 48px;
+  width: auto;
+  max-width: 100%;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .footer-logo { height: 40px; }
+}

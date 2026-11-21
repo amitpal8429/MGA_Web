@@ -65,8 +65,13 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="wrap footer-grid">
         <div className="footer-brand">
-          <Link to="/" className="brand">
-            <span className="brand-mark">MGA</span>
+          <Link to="/" className="brand footer-brand-link">
+            <img
+              src="https://medicalglobalacademy.com/wp-content/uploads/2026/08/logo_new.png"
+              alt="Medical Global Academy"
+              className="footer-logo"
+              loading="lazy"
+            />
             <span className="brand-name footer-brand-name">Medical Global Academy</span>
           </Link>
           <p className="muted footer-copy">
@@ -123,13 +128,12 @@ export default function Footer() {
           <h4 className="footer-heading">Company</h4>
           <ul className="footer-list">
             <li><Link to="/about">About us</Link></li>
-            <li><Link to="/support">Support</Link></li> {/* NEW */}
+            <li><Link to="/support">Support</Link></li>
             <li><Link to="/privacy-policy">Privacy policy</Link></li>
             <li><Link to="/app">App</Link></li>
             <li><Link to="/terms">Terms &amp; Conditions</Link></li>
             <li><Link to="/refund">Refund &amp; Cancellation Policy</Link></li>
             <li><Link to="/sitemap">Sitemap</Link></li>
-            <li><Link to="/hr-form"></Link></li>
           </ul>
         </div>
       </div>

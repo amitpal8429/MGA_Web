@@ -12,17 +12,18 @@ const FALLBACK = {
 };
 
 /* Speciality chips. `match` = category.name values from the API. */
+/* Speciality chips. `match` = category.name values from the API. `href` = path-based category URL. */
 const SPECIALITIES = [
-  { name: "Cardiology", match: ["Cardiology"], href: "/courses?category=Cardiology" },
-  { name: "Medicine", match: ["Medicine"], href: "/courses?category=Medicine" },
-  { name: "Oncology", match: ["Oncology"], href: "/courses?category=Oncology" },
-  { name: "Nephrology", match: ["Nephrology"], href: "/courses?category=Nephrology" },
-  { name: "Neurology", match: ["Neurology"], href: "/courses?category=Neurology" },
-  { name: "Orthopedics", match: ["Orthopedic", "Orthopedics"], href: "/courses?category=Orthopedic" },
+  { name: "Cardiology", match: ["Cardiology"], href: "/courses/cardiology" },
+  { name: "Medicine", match: ["Medicine"], href: "/courses/medicine" },
+  { name: "Oncology", match: ["Oncology"], href: "/courses/oncology" },
+  { name: "Nephrology", match: ["Nephrology"], href: "/courses/nephrology" },
+  { name: "Neurology", match: ["Neurology"], href: "/courses/neurology" },
+  { name: "Orthopedics", match: ["Orthopedic", "Orthopedics"], href: "/courses/orthopedic" },
   {
     name: "Obstetrics & Gynaecology",
     match: ["Obstetrics & Gynaecology", "Obstetrics & Gynecology"],
-    href: "/courses?category=Obstetrics+%26+Gynaecology",
+    href: "/courses/obstetrics-gynaecology",
   },
 ];
 

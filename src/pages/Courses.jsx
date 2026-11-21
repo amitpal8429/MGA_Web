@@ -1,5 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Link, Navigate, useParams, useSearchParams } from "react-router-dom";
+import {
+  Link,
+  Navigate,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Search } from "lucide-react";
 import { fetchCourseList } from "../lib/api";
@@ -13,14 +19,15 @@ const SITE_URL = "https://medicalglobalacademy.com";
 
 export default function Courses() {
   const { type: typeSlug = "" } = useParams();
+  const navigate = useNavigate();
   const [courses, setCourses] = useState(null);
   const [error, setError] = useState(null);
   const [tick, setTick] = useState(0);
   const [params, setParams] = useSearchParams();
 
   const urlQuery = params.get("q") || "";
-  const activeCategory = params.get("category") || "";
   const legacyType = params.get("type") || ""; // purana ?type=Certificate
+  const legacyCategory = params.get("category") || ""; // purana ?category=Nephrology
 
   const [searchText, setSearchText] = useState(urlQuery);
   const pushedRef = useRef(urlQuery);
@@ -77,18 +84,25 @@ export default function Courses() {
     return [...new Set(courses.map((c) => c.type).filter(Boolean))].sort();
   }, [courses]);
 
-  /* URL ka type slug -> asli type name (data se). Jaise "pg-diploma" -> "Pg Diploma" */
+  const categories = useMemo(() => {
+    if (!courses) return [];
+    const set = new Set(courses.map((c) => c.category?.name).filter(Boolean));
+    return Array.from(set).sort();
+  }, [courses]);
+
+  /* URL ka slug -> asli type name. Jaise "pg-diploma" -> "Pg Diploma" */
   const activeType = useMemo(() => {
     if (!typeSlug) return "";
     const wanted = toSlug(typeSlug);
     return types.find((t) => toSlug(t) === wanted) || "";
   }, [types, typeSlug]);
 
-  const categories = useMemo(() => {
-    if (!courses) return [];
-    const set = new Set(courses.map((c) => c.category?.name).filter(Boolean));
-    return Array.from(set).sort();
-  }, [courses]);
+  /* URL ka slug -> asli category name. Jaise "nephrology" -> "Nephrology" */
+  const activeCategory = useMemo(() => {
+    if (!typeSlug || activeType) return "";
+    const wanted = toSlug(typeSlug);
+    return categories.find((c) => toSlug(c) === wanted) || "";
+  }, [categories, typeSlug, activeType]);
 
   const filtered = useMemo(() => {
     if (!courses) return [];
@@ -109,35 +123,25 @@ export default function Courses() {
     });
   }, [courses, searchText, activeType, activeCategory]);
 
-  /* Tab ke links: type path mein, baaki filters query mein (q, category) */
-  const buildSearch = (includeCategory = true) => {
-    const next = new URLSearchParams(params);
-    next.delete("type");
-
+  /* Search query (?q=) ko har link par saath rakhna */
+  const searchQuery = () => {
+    const next = new URLSearchParams();
     if (searchText) next.set("q", searchText);
-    else next.delete("q");
-
-    if (!includeCategory) next.delete("category");
-
     const s = next.toString();
     return s ? `?${s}` : "";
   };
 
-  const typeHref = (typeName) =>
-    typeName
-      ? `/courses/${toSlug(typeName)}${buildSearch()}`
-      : `/courses${buildSearch()}`;
+  /* Path banana: type ho to /courses/<type>, category ho to /courses/<category> */
+  const pathFor = (typeName = "", categoryName = "") => {
+    if (typeName) return `/courses/${toSlug(typeName)}`;
+    if (categoryName) return `/courses/${toSlug(categoryName)}`;
+    return "/courses";
+  };
+
+  const typeHref = (typeName) => `${pathFor(typeName)}${searchQuery()}`;
 
   function updateCategory(value) {
-    setParams(
-      (prev) => {
-        const next = new URLSearchParams(prev);
-        if (value) next.set("category", value);
-        else next.delete("category");
-        return next;
-      },
-      { replace: true }
-    );
+    navigate(`${pathFor("", value)}${searchQuery()}`, { replace: true });
   }
 
   /* Purana link: /courses?type=Certificate -> /courses/certificate */
@@ -153,20 +157,41 @@ export default function Courses() {
     );
   }
 
-  /* Type slug galat hai (data load hone ke baad check) */
-  if (typeSlug && courses !== null && !activeType) {
+  /* Purana link: /courses?category=Nephrology -> /courses/nephrology */
+  if (legacyCategory && !typeSlug) {
+    const next = new URLSearchParams(params);
+    next.delete("category");
+    const s = next.toString();
+    return (
+      <Navigate
+        replace
+        to={{ pathname: `/courses/${toSlug(legacyCategory)}`, search: s ? `?${s}` : "" }}
+      />
+    );
+  }
+
+  /* Slug galat hai: na type mila na category (data load hone ke baad) */
+  if (typeSlug && courses !== null && !activeType && !activeCategory) {
     return <NotFound />;
   }
 
   const canonical = activeType
     ? `${SITE_URL}/courses/${toSlug(activeType)}`
+    : activeCategory
+    ? `${SITE_URL}/courses/${toSlug(activeCategory)}`
     : `${SITE_URL}/courses`;
 
   const title = activeType
     ? `${activeType} Programs | Medical Global Academy`
+    : activeCategory
+    ? `${activeCategory} Programs | Medical Global Academy`
     : "All Programs | Medical Global Academy";
 
-  const heading = activeType ? `${activeType} Programs` : "All programs";
+  const heading = activeType
+    ? `${activeType} Programs`
+    : activeCategory
+    ? `${activeCategory} Programs`
+    : "All programs";
 
   return (
     <section className="section catalog">
@@ -203,8 +228,8 @@ export default function Courses() {
           <nav className="pill-row" aria-label="Program types">
             <Link
               to={typeHref("")}
-              className={`pill ${!activeType ? "is-active" : ""}`}
-              aria-current={!activeType ? "page" : undefined}
+              className={`pill ${!activeType && !activeCategory ? "is-active" : ""}`}
+              aria-current={!activeType && !activeCategory ? "page" : undefined}
             >
               All types
             </Link>

@@ -105,12 +105,13 @@ const HOME_CSS = `
     padding: 14px 16px;
   }
 
-  .hero-form-card h3 {
+  .hero-form-card h2 {
     font-size: 17px;
     margin: 4px 0;
+    color: #ffffff;
   }
 
-  .hero-form-card h4 {
+  .hero-form-card h3 {
     font-size: 15px;
     margin: 0 0 4px;
   }
@@ -172,8 +173,9 @@ const HOME_CSS = `
     display: block;
     font-size: 32px;
     font-weight: 700;
-    color: #0e7490;
+    color: #1e3a5ff;
     line-height: 1.1;
+    
   }
 
   .hero-stat-card span {
@@ -185,31 +187,32 @@ const HOME_CSS = `
     line-height: 1.3;
   }
 
-  /* ---------- Accreditation section ---------- */
-  .accred-head {
+  /* ---------- Section headings (same style on every section) ---------- */
+  .section-head.section-head-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    margin-bottom: 24px;
   }
 
-  .accred-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 13px;
+  .section-head.section-head-center .eyebrow-sm {
+    font-size: 20px;
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: #066daf;
+    color: #1e3a5f;
     margin: 0 0 6px;
   }
 
-  .accred-title {
-    font-size: 24px;
+  .section-head.section-head-center h2 {
+    font-size: 15px;
     font-weight: 700;
     color: #0f2744;
     margin: 0;
+    line-height: 1.4;
   }
 
+  /* ---------- Accreditation boxes ---------- */
   .accred-single-row {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -369,10 +372,10 @@ const HOME_CSS = `
 
   @media (max-width: 560px) {
     .course-box { padding: 16px; border-radius: 16px; }
-    .accred-title { font-size: 19px; }
     .accred-box { height: 200px; }
     .hero-stat-card strong { font-size: 26px; }
     .hero-stat-card { min-height: 96px; padding: 14px; }
+    .section-head.section-head-center .eyebrow-sm { font-size: 17px; }
   }
 `;
 
@@ -517,13 +520,13 @@ export default function Home() {
           <div className="hero-form-card">
             <div className="hero-form-head">
               <p className="hero-form-eyebrow">⚡ PRIORITY 2026 BATCH APPLICATION</p>
-              <h3>Apply for Clinical Fellowship</h3>
+              <h2>Apply for Clinical Fellowship</h2>
               <p className="hero-form-sub">
                 Get full clinical curriculum & hospital slots on WhatsApp
               </p>
             </div>
             <div className="hero-form-body">
-              <h4>Fast-Track Your Medical Career</h4>
+              <h3>Fast-Track Your Medical Career</h3>
               <p className="hero-form-desc">
                 Advance your clinical expertise with CPD-accredited
                 Fellowship, PG Diploma, and Certification programs.
@@ -545,13 +548,12 @@ export default function Home() {
           {/* ---------- ACCREDITATION ---------- */}
           <section className="section section-alt">
             <div className="wrap">
-              <div className="accred-head">
-                <p className="accred-eyebrow">
-                  <ShieldCheck size={14} /> Accreditation
+              <div className="section-head section-head-center">
+                <p className="eyebrow eyebrow-sm">
+                  <ShieldCheck size={18} style={{ marginRight: 8, verticalAlign: "-3px" }} />
+                  Accreditation
                 </p>
-                <h2 className="accred-title">
-                  Globally recognised CPD & ACTD-aligned certification
-                </h2>
+                <h2>Globally recognised CPD & ACTD-aligned certification</h2>
               </div>
 
               <div className="accred-single-row">
@@ -591,9 +593,7 @@ export default function Home() {
               <div className="section-head section-head-center">
                 <p className="eyebrow eyebrow-sm">Our programs</p>
                 <h2>Advance your career with programs built for practising doctors</h2>
-                <Link to="/courses" className="section-link">
-                  View all programs <ArrowRight size={15} />
-                </Link>
+              
               </div>
 
               <div className="course-box">
@@ -637,14 +637,10 @@ export default function Home() {
           {/* ---------- FACULTY ---------- */}
           <section className="section">
             <div className="wrap">
-              <div className="section-head">
-                <div>
-                  <p className="eyebrow eyebrow-sm">Our faculty</p>
-                  <h2>Learn from practising specialists</h2>
-                </div>
-                <Link to="/faculty" className="section-link">
-                  View full faculty <ArrowRight size={15} />
-                </Link>
+              <div className="section-head section-head-center">
+                <p className="eyebrow eyebrow-sm">Our faculty</p>
+                <h2>Learn from practising specialists</h2>
+               
               </div>
 
               {faculty === null ? (
@@ -668,11 +664,9 @@ export default function Home() {
           {/* ---------- LATEST BLOGS ---------- */}
           <section className="section">
             <div className="wrap">
-              <div className="section-head">
-                <div>
-                  <p className="eyebrow eyebrow-sm">Latest Insights</p>
-                  <h2>Medical Blogs & Articles</h2>
-                </div>
+              <div className="section-head section-head-center">
+                <p className="eyebrow eyebrow-sm">Latest Insights</p>
+                <h2>Medical Blogs & Articles</h2>
                 <a
                   href="https://medicalglobalacademy.com/blog/"
                   target="_blank"
@@ -767,9 +761,6 @@ export default function Home() {
               <Faq />
             </div>
           </section>
-
-          {/* ---------- CTA ---------- */}
-      
         </>
       )}
     </>

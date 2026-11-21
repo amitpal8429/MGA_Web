@@ -386,6 +386,12 @@
   align-items: start;
 }
 
+.mga-about .about-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 40px;
+}
 .about-feature-icon {
   display: flex;
   align-items: center;
