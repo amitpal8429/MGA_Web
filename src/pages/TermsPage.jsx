@@ -39,14 +39,30 @@ const SECTIONS = [
   },
   {
     id: "payment",
-    title: "5. Payment and Fees",
+    title: "5. Payment, Fees and GST",
     body: [
-      "All courses offered by Medical Global Academy are subject to fees, which are listed on the website. Payments must be made in full at the time of registration. No refunds will be issued once access to the course materials has been granted.",
+      "All courses offered by Medical Global Academy are subject to fees, which are listed on the website. Payments must be made in full at the time of registration.",
+      "All payments must be made only to the official bank or payment account of Medical Global Academy. We do not accept payments made to any other account, individual, or third party.",
+      "GST at 18% is payable by you in addition to the course fee.",
+    ],
+  },
+  {
+    id: "refunds",
+    title: "6. Refund Policy",
+    body: [
+      "All fees and payments are non-refundable in all circumstances. This includes situations where you leave a course midway, or where a case or dispute arises. We will not issue any refund under any condition.",
+    ],
+  },
+  {
+    id: "course-changes",
+    title: "7. Course Changes",
+    body: [
+      "Once you have enrolled in a course, you cannot change to a different course midway through the program.",
     ],
   },
   {
     id: "ip",
-    title: "6. Intellectual Property",
+    title: "8. Intellectual Property",
     body: [
       "All content on the Medical Global Academy website, including course materials, videos, and resources, is the property of Medical Global Academy.",
       "Users may not reproduce, distribute, or use the content for any purpose other than personal education without prior written consent.",
@@ -54,42 +70,43 @@ const SECTIONS = [
   },
   {
     id: "privacy",
-    title: "7. Privacy Policy",
+    title: "9. Privacy Policy",
     body: [
       "Your privacy is important to us. We collect and use personal information according to our Privacy Policy, which is available on our website.",
     ],
   },
   {
     id: "liability",
-    title: "8. Limitation of Liability",
+    title: "10. Limitation of Liability",
     body: [
-      "Medical Global Academy is not responsible for any errors or omissions in the content provided or any adverse outcomes that arise from applying the skills learned in our courses. Use of the information provided is at your own risk.",
+      "Medical Global Academy is not responsible for any errors or omissions in the content provided, or for any results, outcomes, or mistakes that arise from applying the skills learned in our courses. Information provided on this website and in our courses is used at your own risk.",
     ],
   },
   {
     id: "termination",
-    title: "9. Termination of Access",
+    title: "11. Suspension and Termination of Access",
     body: [
-      "Medical Global Academy reserves the right to terminate your access to the website and its services if you breach any of these terms.",
+      "If you break these terms and conditions, Medical Global Academy has the right to suspend or terminate your access to the website and its services.",
     ],
   },
   {
     id: "changes",
-    title: "10. Changes to the Terms",
+    title: "12. Changes to the Terms",
     body: [
       "Medical Global Academy may update these terms and conditions from time to time. Any changes will be posted on this page, and continued use of the website implies acceptance of the updated terms.",
     ],
   },
   {
     id: "governing",
-    title: "11. Governing Law",
+    title: "13. Governing Law and Jurisdiction",
     body: [
-      "These terms and conditions are governed by and construed in accordance with the laws of India. Any disputes related to these terms will be subject to the exclusive jurisdiction of the courts in India.",
+      "These terms and conditions are governed by and construed in accordance with the laws of India.",
+      "Any dispute arising from these terms must be brought before the courts of Delhi, India, regardless of where you reside.",
     ],
   },
   {
     id: "contact",
-    title: "12. Contact Us",
+    title: "14. Contact Us",
     body: [
       "If you have any questions or need further clarification on these terms, please contact us at:",
     ],

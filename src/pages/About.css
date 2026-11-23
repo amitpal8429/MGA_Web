@@ -1,4 +1,4 @@
-/* ========== Theme tokens (matches medicalglobalacademy.com, theme-color #0c3a6b) ========== */
+/* ========== Theme tokens ========== */
 .mga-about {
   --mga-navy: #0c3a6b;
   --mga-navy-deep: #082a4f;
@@ -10,12 +10,17 @@
   --mga-muted-bg: #f5f8fb;
   --mga-radius: 14px;
 
+  /* Fluid spacing: scales smoothly from phones to large desktops */
+  --mga-gutter: clamp(16px, 4vw, 48px);
+  --mga-section-y: clamp(36px, 6vw, 56px);
+
   width: 100%;
   background: #fff;
   color: var(--mga-heading);
   font-family: inherit;
   line-height: 1.6;
   overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
 }
 
 .mga-about *,
@@ -31,12 +36,14 @@
   color: var(--mga-heading);
   font-weight: 700;
   letter-spacing: -0.02em;
+  overflow-wrap: break-word;
 }
 
 .mga-about p {
   margin: 0;
   color: var(--mga-text);
   font-size: 16px;
+  overflow-wrap: break-word;
 }
 
 .mga-about a {
@@ -51,14 +58,17 @@
   padding: 0;
 }
 
+/* ========== Container ========== */
 .about-container {
-  width: min(1200px, calc(100% - 48px));
+  width: 100%;
+  max-width: 1600px;
   margin: 0 auto;
+  padding: 0 var(--mga-gutter);
 }
 
 /* ========== Shared ========== */
 .about-section {
-  padding: 48px 0;
+  padding: var(--mga-section-y) 0;
 }
 
 .about-muted {
@@ -66,7 +76,7 @@
 }
 
 .about-section h2 {
-  font-size: clamp(26px, 3vw, 34px);
+  font-size: clamp(24px, 3vw, 34px);
   line-height: 1.2;
 }
 
@@ -87,11 +97,11 @@
   height: 6px;
   border-radius: 50%;
   background: var(--mga-blue);
+  flex-shrink: 0;
 }
 
 .about-heading {
-  max-width: 720px;
-  margin-bottom: 24px;
+  margin-bottom: clamp(18px, 3vw, 24px);
 }
 
 .about-heading-sub {
@@ -114,26 +124,28 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-height: 44px;
   padding: 12px 24px;
   border-radius: 8px;
   font-size: 15px;
   font-weight: 600;
+  text-align: center;
   transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 /* ========== Hero ========== */
 .about-hero {
-  padding: 56px 0 36px;
+  padding: clamp(40px, 6vw, 64px) 0 clamp(40px, 6vw, 56px);
   background: linear-gradient(180deg, #f3f8fc 0%, #ffffff 100%);
   border-bottom: 1px solid var(--mga-border);
 }
 
 .about-hero-content {
-  max-width: 800px;
+  max-width: 100%;
 }
 
 .about-hero h1 {
-  font-size: clamp(34px, 4.4vw, 50px);
+  font-size: clamp(30px, 5vw, 52px);
   line-height: 1.12;
 }
 
@@ -143,42 +155,15 @@
 
 .about-hero p {
   margin-top: 14px;
-  max-width: 680px;
-  font-size: 17px;
+  font-size: clamp(15px, 1.4vw, 17px);
 }
 
-.about-hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 22px;
-}
-
-.about-btn-primary {
-  background: var(--mga-navy);
-  color: #fff;
-}
-
-.about-btn-primary:hover {
-  background: var(--mga-navy-deep);
-}
-
-.about-btn-ghost {
-  border: 1px solid #c5d4e2;
-  color: var(--mga-navy);
-  background: #fff;
-}
-
-.about-btn-ghost:hover {
-  border-color: var(--mga-navy);
-}
-
-/* ========== Stats (interlinked cards) ========== */
+/* ========== Stats ========== */
 .about-stats {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
-  margin-top: 40px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(10px, 1.5vw, 16px);
+  margin-top: clamp(26px, 4vw, 40px);
 }
 
 .about-stat {
@@ -186,7 +171,7 @@
   flex-direction: column;
   gap: 2px;
   height: 100%;
-  padding: 18px 20px;
+  padding: clamp(14px, 2vw, 18px) clamp(14px, 2vw, 20px);
   background: #fff;
   border: 1px solid var(--mga-border);
   border-top: 3px solid var(--mga-navy);
@@ -194,22 +179,20 @@
   transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-.about-stat:hover,
 .about-stat:focus-visible {
-  border-color: var(--mga-blue);
-  box-shadow: 0 10px 24px rgba(12, 58, 107, 0.08);
-  transform: translateY(-2px);
-  outline: none;
+  outline: 2px solid var(--mga-blue);
+  outline-offset: 2px;
 }
 
 .about-stat strong {
-  font-size: 28px;
+  font-size: clamp(22px, 3vw, 28px);
   font-weight: 700;
+  line-height: 1.2;
   color: var(--mga-navy);
 }
 
 .about-stat span {
-  font-size: 14px;
+  font-size: clamp(13px, 1.2vw, 14px);
   font-weight: 500;
   color: var(--mga-text);
 }
@@ -225,8 +208,8 @@
 /* ========== Who we are ========== */
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 48px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: clamp(24px, 4vw, 56px);
   align-items: start;
 }
 
@@ -260,12 +243,12 @@
 /* ========== Mission / Vision ========== */
 .about-mv-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 24px);
 }
 
 .about-mv-card {
-  padding: 26px 28px;
+  padding: clamp(20px, 2.5vw, 28px);
   background: #fff;
   border: 1px solid var(--mga-border);
   border-radius: var(--mga-radius);
@@ -273,18 +256,18 @@
 
 .about-mv-card h3 {
   margin-bottom: 8px;
-  font-size: 21px;
+  font-size: clamp(18px, 2vw, 21px);
 }
 
 /* ========== Steps ========== */
 .about-steps {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(12px, 1.8vw, 20px);
 }
 
 .about-step {
-  padding: 22px 20px;
+  padding: clamp(18px, 2vw, 22px) clamp(16px, 2vw, 20px);
   background: #fff;
   border: 1px solid var(--mga-border);
   border-radius: var(--mga-radius);
@@ -306,14 +289,14 @@
 
 .about-step h3 {
   margin-bottom: 6px;
-  font-size: 17px;
+  font-size: clamp(16px, 1.5vw, 17px);
 }
 
 .about-step p {
   font-size: 14.5px;
 }
 
-/* ========== Specialities (interlinked chips) ========== */
+/* ========== Specialities chips ========== */
 .about-chips {
   display: flex;
   flex-wrap: wrap;
@@ -324,7 +307,8 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 9px 16px;
+  min-height: 40px;
+  padding: 8px 16px;
   background: #fff;
   border: 1px solid #c5d4e2;
   border-radius: 999px;
@@ -381,17 +365,11 @@
 /* ========== Feature blocks (Accreditation / Faculty) ========== */
 .about-feature {
   display: grid;
-  grid-template-columns: 64px 1fr;
-  gap: 24px;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: clamp(16px, 2.5vw, 24px);
   align-items: start;
 }
 
-.mga-about .about-stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
-  margin-top: 40px;
-}
 .about-feature-icon {
   display: flex;
   align-items: center;
@@ -408,10 +386,10 @@
 }
 
 .about-feature p {
-  max-width: 760px;
+  max-width: 100%;
 }
 
-/* ========== Accreditation badges (logo as background) ========== */
+/* ========== Accreditation badges ========== */
 .about-badges {
   display: flex;
   flex-wrap: wrap;
@@ -461,12 +439,12 @@
 /* ========== Why MGA ========== */
 .why-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(12px, 1.8vw, 20px);
 }
 
 .why-card {
-  padding: 22px 20px;
+  padding: clamp(18px, 2vw, 22px) clamp(16px, 2vw, 20px);
   background: #fff;
   border: 1px solid var(--mga-border);
   border-radius: var(--mga-radius);
@@ -499,7 +477,7 @@
 
 /* ========== CTA ========== */
 .about-cta {
-  padding: 56px 0;
+  padding: clamp(40px, 6vw, 56px) 0;
   background: var(--mga-navy);
   text-align: center;
 }
@@ -542,77 +520,78 @@
 }
 
 /* ========== Button text color fix (overrides global link color) ========== */
-.mga-about a.about-btn-primary,
-.mga-about a.about-btn-primary:hover,
-.mga-about a.about-btn-primary:focus-visible {
-  color: #ffffff;
-}
-
-.mga-about a.about-btn-outline,
-.mga-about a.about-btn-outline:hover,
-.mga-about a.about-btn-outline:focus-visible {
-  color: #ffffff;
-}
-
-.mga-about a.about-btn-ghost,
-.mga-about a.about-btn-ghost:hover,
-.mga-about a.about-btn-ghost:focus-visible {
-  color: var(--mga-navy);
-}
-
 .mga-about a.about-btn-light,
 .mga-about a.about-btn-light:hover,
 .mga-about a.about-btn-light:focus-visible {
   color: var(--mga-navy);
 }
 
-/* ========== Responsive ========== */
+.mga-about a.about-btn-outline,
+.mga-about a.about-btn-outline:hover,
+.mga-about a.about-btn-outline:focus-visible {
+  color: #fff;
+}
+
+/* ========== Center card content on all devices (icon, title, text) ========== */
+.why-card,
+.about-mv-card,
+.about-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.why-icon,
+.about-card-icon,
+.about-step-num {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.why-card p,
+.about-mv-card p,
+.about-step p {
+  max-width: 32ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ========== Space between hero text and stats cards ========== */
+.mga-about .about-hero .about-stats {
+  margin-top: clamp(32px, 5vw, 48px);
+  margin-bottom: 0;
+}
+
+.mga-about .about-hero .about-hero-content p {
+  margin-bottom: 0;
+}
+
+/* ========== Responsive: large laptop / small desktop (<= 1200px) ========== */
+@media (max-width: 1200px) {
+  .why-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ========== Tablet landscape (<= 1000px) ========== */
 @media (max-width: 1000px) {
   .about-stats,
   .about-steps {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .about-grid {
     grid-template-columns: 1fr;
-    gap: 22px;
-  }
-
-  .why-grid {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 650px) {
-  .about-container {
-    width: calc(100% - 32px);
-  }
-
-  .about-section {
-    padding: 36px 0;
-  }
-
-  .about-hero {
-    padding: 40px 0 28px;
-  }
-
-  .about-hero-actions,
-  .about-buttons {
-    flex-direction: column;
-  }
-
-  .about-btn {
-    width: 100%;
-  }
-
+/* ========== Tablet portrait / large phone (<= 768px) ========== */
+@media (max-width: 768px) {
   .about-mv-grid,
   .about-steps,
   .why-grid {
     grid-template-columns: 1fr;
-  }
-
-  .about-mv-card {
-    padding: 22px;
   }
 
   .about-feature {
@@ -627,14 +606,94 @@
 
   .about-badge {
     min-width: 0;
-    flex: 1 1 140px;
+    flex: 1 1 160px;
   }
 
-  .about-cta {
-    padding: 40px 0;
+  .about-stat-cta {
+    display: none;
   }
 }
 
+/* ========== Mobile (<= 600px) ========== */
+@media (max-width: 600px) {
+  .about-hero-content {
+    text-align: left;
+  }
+
+  .about-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .about-btn {
+    width: 100%;
+  }
+
+  .about-chips {
+    gap: 8px;
+  }
+
+  .about-chip {
+    font-size: 14px;
+    padding: 7px 14px;
+  }
+
+  .about-since {
+    width: 100%;
+  }
+
+  .about-badges {
+    flex-direction: column;
+  }
+
+  .about-badge {
+    width: 100%;
+    height: 56px;
+  }
+
+  .mga-about .about-hero .about-stats {
+    margin-top: 28px;
+  }
+}
+
+/* ========== Small mobile (<= 380px) ========== */
+@media (max-width: 380px) {
+  .about-stats {
+    gap: 8px;
+  }
+
+  .about-stat {
+    padding: 12px;
+  }
+
+  .about-stat strong {
+    font-size: 20px;
+  }
+
+  .about-stat span {
+    font-size: 12px;
+  }
+
+  .about-label {
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+
+  .about-chip-count {
+    min-width: 20px;
+    padding: 0 6px;
+  }
+}
+
+/* ========== Touch devices: no hover lift ========== */
+@media (hover: none) {
+  .about-stat:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* ========== Reduced motion ========== */
 @media (prefers-reduced-motion: reduce) {
   .about-stat,
   .about-chip,

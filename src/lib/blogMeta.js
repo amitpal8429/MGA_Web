@@ -2106,6 +2106,47 @@ const RAW_BLOG_META = {
       "family medicine for doctors",
       "family medicine training course"
     ]
+  },
+
+
+
+    "advances-in-pediatric-oncology-care": {
+    "h1": "Advances in Pediatric Oncology Care: Latest Updates for Doctors",
+    "keywords": "advances in pediatric oncology care",
+    "title": "Advances in Pediatric Oncology Care: Latest Updates for Doctors",
+    "canonical": "advances-in-pediatric-oncology-care",
+    "description": "Explore the latest advances in pediatric oncology care, including targeted therapy, immunotherapy, precision medicine and modern cancer treatments for children.",
+    "image": null,
+    "tags": [
+      "advances in pediatric oncology care",
+      "pediatric oncology",
+      "targeted therapy in children",
+      "immunotherapy for pediatric cancer",
+      "precision medicine pediatric oncology",
+      "modern cancer treatment for children"
+    ]
+  },
+
+    "pediatric-skin-conditions-a-physicians-guide-to-diagnosis-and-care": {
+    "h1": "Recognising Pediatric Skin Conditions: A Quick-Reference Guide for MBBS & Family Physicians",
+    "keywords": "pediatric skin conditions physician guide",
+    "title": "Pediatric Skin Conditions Physician Guide: Diagnosis & Care",
+    "canonical": "pediatric-skin-conditions-a-physicians-guide-to-diagnosis-and-care",
+    "description": "Explore common pediatric skin conditions with this pediatric skin conditions physician guide covering symptoms, diagnosis and treatment approaches for better clinical care.",
+    "image": "https://medicalglobalacademy.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-02-at-6.04.03-PM.jpeg",
+    "tags": [
+      "atopic dermatitis children",
+      "child skin rash guide",
+      "clinical dermatology education",
+      "diaper dermatitis",
+      "family physician dermatology",
+      "infant skin conditions",
+      "mbbs doctor guide",
+      "pediatric dermatology",
+      "pediatric dermatoses india",
+      "pediatric skin conditions diagnosis",
+      "pediatric skin conditions treatment"
+    ]
   }
 };
 

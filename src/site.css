@@ -3024,3 +3024,44 @@ textarea {
 @media (max-width: 600px) {
   .footer-logo { height: 40px; }
 }
+
+
+
+
+
+.mga-terms-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 8px 0 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.mga-terms-check input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: #0a6cdb;
+  cursor: pointer;
+}
+
+.mga-terms-check a,
+.mga-terms-check a:visited {
+  color: #0a6cdb;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.mga-terms-check a:hover {
+  color: #0856b0;
+}
+
+.mga-auth-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

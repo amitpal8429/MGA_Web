@@ -115,6 +115,7 @@ export default function LeadForm({ idPrefix = "lead", onSuccess }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [agreed, setAgreed] = useState(false);
   const [form, setForm] = useState({
     name: "", email: "", countryCode: "+91", phone: "",
     country: "India", course: "", qualification: "",
@@ -132,6 +133,13 @@ export default function LeadForm({ idPrefix = "lead", onSuccess }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // T&C accept kiye bina submit nahi hoga
+    if (!agreed) {
+      setError("Please accept the Terms & Conditions to continue.");
+      return;
+    }
+
     setError(""); setSuccess(""); setLoading(true);
     try {
       const utm = captureUTM();
@@ -159,6 +167,9 @@ export default function LeadForm({ idPrefix = "lead", onSuccess }) {
         // Context
         referrer:     utm.referrer     || document.referrer || "",
         landing_page: utm.landing_page || window.location.href,
+
+        // Consent
+        terms_accepted: true,
       };
 
       console.log("📤 Sending lead:", payload);
@@ -176,6 +187,7 @@ export default function LeadForm({ idPrefix = "lead", onSuccess }) {
       localStorage.removeItem(UTM_STORAGE_KEY);
 
       setForm({ name: "", email: "", countryCode: "+91", phone: "", country: "India", course: "", qualification: "" });
+      setAgreed(false);
 
       // Parent ko batao: is course ke modules unlock karo
       onSuccess?.();
@@ -256,6 +268,29 @@ export default function LeadForm({ idPrefix = "lead", onSuccess }) {
           </datalist>
         </div>
       </div>
+
+      <label className="mga-terms-check">
+        <input
+          type="checkbox"
+          checked={agreed}
+          onChange={(e) => {
+            setAgreed(e.target.checked);
+            setError("");
+          }}
+        />
+        <span>
+          I have read and agree to the{" "}
+          <a
+            href="/terms"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+          >
+            Terms &amp; Conditions
+          </a>{" "}
+          of Medical Global Academy.
+        </span>
+      </label>
 
       <button type="submit" className="mga-auth-submit" disabled={loading}>
         {loading ? <><span className="mga-spinner" />Submitting...</> : <>Submit Form<ArrowRight size={18} /></>}

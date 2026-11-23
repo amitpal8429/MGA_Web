@@ -23,7 +23,7 @@ const SPECIALITIES = [
   {
     name: "Obstetrics & Gynaecology",
     match: ["Obstetrics & Gynaecology", "Obstetrics & Gynecology"],
-    href: "/courses/obstetrics-gynaecology",
+    href: "/courses/obstetrics--gynaecology",
   },
 ];
 

@@ -185,6 +185,10 @@ const REDIRECTS = {
   "blog/ai-in-healthcare-fellowship": "blog/ai-in-healthcare",
   "blog/fellowship-in-gi-endoscopyfellowship-in-gi-endoscopy-eligibility-curriculum-scope":
     "blog/fellowship-in-gi-endoscopy-eligibility-curriculum-scope",
+
+  /* Pediatric skin conditions: purana URL naye URL par */
+  "blog/pediatric-skin-conditions-physician-guide":
+    "blog/pediatric-skin-conditions-a-physicians-guide-to-diagnosis-and-care",
 };
 
 export const ALIASES = {};
