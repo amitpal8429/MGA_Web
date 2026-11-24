@@ -20,7 +20,7 @@ const REDIRECTS = {
   "fellowship-in-pediatrics-neurology": "fellowship-in-pediatric-neurology",
   "fellowship-in-clinical-embryology": "fellowship-in-embryology",
   "fellowship-in-pediatric-ophthalmology-strabismus": "fellowship-in-pediatric-ophthalmology",
-  "fellowship in pulmonology medicine": "fellowship in pulmonary medicine",
+  "fellowship-in-pulmonology-medicine-course": "fellowship-in-pulmonary-medicine", // verify live slug
   "fellowship-in-pulmonology": "fellowship-in-pulmonology-medicine",
   "certificate-in-diabetic-footcare": "certificate-in-diabetic-foot-care",
   "fellowship-in-anesthesiology": "fellowship-in-anesthesia",
@@ -59,9 +59,10 @@ const REDIRECTS = {
   "49226-2": "",
 
   /* ===== Existing: blog redirects ===== */
-  "types-of-genetic-testing": "blog/types-of-genetic-testing",
+  "types-of-genetic-testing": "blog/genetic-testing",
+  "blog/types-of-genetic-testing": "blog/genetic-testing",
   "congenital-heart-disease": "blog/congenital-heart-disease",
-  "cancer-screening-guidelines-india": "blog/cancer-screening-guidelines-india",
+  "cancer-screening-guidelines-india": "blog/cancer-screening-guidelines",
   "how-to-become-an-orthopedic-surgeon-after-mbbs": "blog/how-to-become-an-orthopedic-surgeon-after-mbbs",
   "medical-writing-career-after-mbbs": "blog/medical-writing-career-after-mbbs",
   "clinical-research-pharma-careers-after-mbbs": "blog/clinical-research-pharma-careers-after-mbbs",
@@ -77,7 +78,6 @@ const REDIRECTS = {
   "dermoscopy-training-general-physicians": "blog/dermoscopy-training-general-physicians",
   "doctor-specialization-salary-comparison": "blog/doctor-specialization-salary-comparison",
   "medical-vs-surgical-specialization": "blog/medical-vs-surgical-specialization",
-  "pediatric-skin-conditions-physician-guide": "blog/pediatric-skin-conditions-physician-guide",
   "future-scope-medical-specialization-india": "blog/future-scope-medical-specialization-india",
   "rmo-vs-duty-doctor-vs-junior-resident": "blog/rmo-vs-duty-doctor-vs-junior-resident",
   "trichology-vs-dermatology-hair-loss-india": "blog/trichology-vs-dermatology-hair-loss-india",
@@ -182,22 +182,40 @@ const REDIRECTS = {
   "the-importance-of-fellowship-in-interventional-cardiology": "blog/the-importance-of-fellowship-in-interventional-cardiology",
 
   /* Blog ke purane / galat URL (sheet se) */
+  "blog/cancer-screening-guidelines-india": "blog/cancer-screening-guidelines",
   "blog/ai-in-healthcare-fellowship": "blog/ai-in-healthcare",
   "blog/fellowship-in-gi-endoscopyfellowship-in-gi-endoscopy-eligibility-curriculum-scope":
     "blog/fellowship-in-gi-endoscopy-eligibility-curriculum-scope",
 
-  /* Pediatric skin conditions: purana URL naye URL par */
+  /* Pediatric skin conditions: purana URL naye URL par (single hop) */
+  "pediatric-skin-conditions-physician-guide":
+    "blog/pediatric-skin-conditions-a-physicians-guide-to-diagnosis-and-care",
   "blog/pediatric-skin-conditions-physician-guide":
     "blog/pediatric-skin-conditions-a-physicians-guide-to-diagnosis-and-care",
 };
 
 export const ALIASES = {};
 
-/* Slug/path ko normalize karke redirect target do.
+/* Input ko normalize karke redirect target do.
    Target "" ho to home ("/") par jayega. Target null ho to koi redirect nahi. */
 function lookup(input) {
   if (input == null) return null;
-  const normalized = String(input).replace(/^\/+|\/+$/g, "");
+
+  let s = String(input);
+  try {
+    s = decodeURIComponent(s);
+  } catch (_) {
+    // malformed encoding: raw string use karein
+  }
+
+  const normalized = s
+    .split("?")[0]
+    .split("#")[0]
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/^\/+|\/+$/g, "");
+
   return Object.prototype.hasOwnProperty.call(REDIRECTS, normalized)
     ? REDIRECTS[normalized]
     : null;

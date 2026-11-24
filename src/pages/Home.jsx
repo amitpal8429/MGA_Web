@@ -750,13 +750,8 @@ export default function Home() {
             <div className="wrap">
               <div className="section-head section-head-center">
                 <p className="eyebrow eyebrow-sm">Frequently asked questions</p>
-                <h2>Still have questions?</h2>
-                <p className="muted section-sub">
-                  Contact our admissions team at{" "}
-                  <a href="mailto:support@medicalglobalacademy.com" className="link">
-                    support@medicalglobalacademy.com
-                  </a>
-                </p>
+                
+                
               </div>
               <Faq />
             </div>

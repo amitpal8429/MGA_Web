@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
 import { createPortal } from "react-dom";
 import { Link, useParams, Navigate, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
@@ -31,14 +31,16 @@ import { DetailSkeleton } from "../components/Skeletons";
 import ErrorState from "../components/ErrorState";
 import Faq, { getFaqsForSlug } from "../components/Faq";
 import LeadForm from "../components/LeadForm";
-import PayButton from "../components/PayButton";
 import CourseSchema from "../components/CourseSchema";
 import FaqSchema from "../components/FaqSchema";
 import BreadcrumbSchema from "../components/BreadcrumbSchema";
 import ImageObjectSchema from "../components/ImageObjectSchema";
 import MetaDescription from "../components/MetaDescription";
-import ReviewSlider from "../components/ReviewSlider";
 import NotFound from "./NotFound";
+
+/* Heavy / below-the-fold components: sirf zaroorat par load hon */
+const ReviewSlider = lazy(() => import("../components/ReviewSlider"));
+const PayButton = lazy(() => import("../components/PayButton"));
 
 import {
   formatINR,
@@ -47,6 +49,8 @@ import {
   cleanText,
   typeClass,
 } from "../lib/format";
+
+
 
 /* =========================================================
    HANDS-ON FILTER
@@ -329,865 +333,35 @@ const slugVariants = (slug) => {
 const isEmptyCourse = (c) =>
   !c || typeof c !== "object" || !(c.name || c.slug || c.id);
 
-/* Pehle original slug, na mile to spelling variants */
+/* Sab spelling variants ek saath try karte hain (parallel, waterfall nahi).
+   Pehla successful variant (candidates ke order mein) use hota hai.
+   Network / server error ho to seedha bahar. */
 async function loadCourse(slug) {
-  for (const candidate of slugVariants(slug)) {
-    try {
+  const candidates = slugVariants(slug);
+
+  const results = await Promise.allSettled(
+    candidates.map(async (candidate) => {
       const data = await fetchCourseDetails(candidate);
       const found = Array.isArray(data) ? data[0] : data;
-      if (!isEmptyCourse(found)) return found;
-    } catch (e) {
-      if (!isNotFoundError(e)) throw e; // network / server error: seedha bahar
-    }
+      if (isEmptyCourse(found)) throw NOT_FOUND;
+      return found;
+    })
+  );
+
+  for (const r of results) {
+    if (r.status === "fulfilled") return r.value;
   }
+
+  const hard = results.find(
+    (r) =>
+      r.status === "rejected" &&
+      r.reason !== NOT_FOUND &&
+      !isNotFoundError(r.reason)
+  );
+  if (hard) throw hard.reason;
+
   throw NOT_FOUND;
 }
-
-/* =========================================================
-   PAGE CSS
-   ========================================================= */
-
-const PAGE_CSS = `
-  .mga-course-outcomes-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 52px;
-    row-gap: 18px;
-    margin-top: 20px;
-  }
-
-  .mga-course-outcome-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    min-width: 0;
-  }
-
-  .mga-course-outcome-text {
-    margin: 0;
-    color: #596b7e;
-    font-size: 16px;
-    line-height: 1.45;
-    font-weight: 400;
-  }
-
-  .mga-course-outcome-card {
-    margin-top: 32px;
-    margin-bottom: 32px;
-    padding: 28px 32px 30px;
-    background: #f7f9fb;
-    border: 1px solid #dce4ea;
-    border-radius: 18px;
-    box-sizing: border-box;
-  }
-
-  .mga-course-outcome-title {
-    margin: 0;
-    color: #16324f;
-    font-size: 21px;
-    line-height: 1.35;
-    font-weight: 750;
-    letter-spacing: -0.01em;
-  }
-
-  .mga-course-outcome-check {
-    flex: 0 0 auto;
-    width: 20px;
-    height: 20px;
-    margin-top: 2px;
-    border-radius: 50%;
-    background: #dff7e8;
-    color: #25b765;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .mga-highlight-section {
-    margin: 32px 0;
-    padding: 26px 28px 28px;
-    background: linear-gradient(135deg, #eaf4fd 0%, #f7fbff 100%);
-    border: 1px solid #cfe4f6;
-    border-left: 5px solid #1f7ac4;
-    border-radius: 18px;
-    box-sizing: border-box;
-  }
-
-  .mga-highlight-head {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 16px;
-  }
-
-  .mga-highlight-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: #1f7ac4;
-    color: #ffffff;
-    flex: 0 0 auto;
-  }
-
-  .mga-highlight-title {
-    margin: 0;
-    color: #16324f;
-    font-size: 20px;
-    line-height: 1.3;
-    font-weight: 750;
-    letter-spacing: -0.01em;
-  }
-
-  .mga-highlight-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: grid;
-    gap: 12px;
-  }
-
-  .mga-highlight-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    color: #2c3e50;
-    font-size: 16px;
-    line-height: 1.5;
-  }
-
-  .mga-highlight-bullet {
-    flex: 0 0 auto;
-    width: 22px;
-    height: 22px;
-    margin-top: 1px;
-    border-radius: 50%;
-    background: #ffffff;
-    border: 1px solid #1f7ac4;
-    color: #1f7ac4;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    font-weight: 800;
-  }
-
-  .mga-highlight-text {
-    margin: 0;
-  }
-
-  .mga-sub-heading {
-    margin: 14px 0 6px;
-    color: #16324f;
-    font-size: 18px;
-    line-height: 1.35;
-    font-weight: 700;
-  }
-
-  /* Keywords: plain inline text, section ke content jaisa (no chip / pill) */
-  .mga-topic-text {
-    margin: 8px 0 16px;
-    padding: 0;
-    background: none;
-    border: 0;
-    border-radius: 0;
-    color: inherit;
-    font: inherit;
-    line-height: inherit;
-  }
-
-  .mga-topic-lead {
-    font-weight: 600;
-  }
-
-  .mga-cta-text {
-    margin: 0 0 12px;
-    color: #16324f;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 1.5;
-    text-align: center;
-  }
-
-  .mga-sidebar-career {
-    padding: 22px 22px 24px;
-    background: #ffffff;
-    border: 1px solid #dce4ea;
-    border-radius: 16px;
-    box-sizing: border-box;
-  }
-
-  .mga-sidebar-career-title {
-    margin: 0 0 12px;
-    color: #16324f;
-    font-size: 18px;
-    line-height: 1.3;
-    font-weight: 750;
-  }
-
-  .mga-sidebar-career-text {
-    margin: 0;
-    color: #596b7e;
-    font-size: 15px;
-    line-height: 1.65;
-  }
-
-  .mga-accreditation-cert-link {
-    color: #1f7ac4;
-    font-size: 13px;
-    font-weight: 600;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    text-align: center;
-  }
-
-  .mga-accreditation-cert-link:hover {
-    color: #1867a8;
-  }
-
-  .mga-course-audience-section {
-    margin-top: 34px;
-    margin-bottom: 34px;
-  }
-
-  .mga-course-audience-title,
-  .mga-course-eligibility-title {
-    margin: 0;
-    color: #16324f;
-    font-weight: 750;
-    letter-spacing: -0.01em;
-  }
-
-  .mga-course-audience-title {
-    font-size: 24px;
-    line-height: 1.3;
-  }
-
-  .mga-course-audience-list {
-    margin: 14px 0 24px;
-    padding-left: 0;
-    list-style: none;
-  }
-
-  .mga-course-audience-list li {
-    position: relative;
-    margin: 0 0 10px;
-    padding-left: 14px;
-    color: #596b7e;
-    font-size: 16px;
-    line-height: 1.5;
-  }
-
-  .mga-course-audience-list li::before {
-    content: "•";
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: #596b7e;
-  }
-
-  .mga-course-eligibility-title {
-    margin-top: 4px;
-    margin-bottom: 12px;
-    font-size: 23px;
-    line-height: 1.3;
-  }
-
-  .mga-course-eligibility-box {
-    padding: 22px 24px;
-    border: 1px solid #dce4ea;
-    border-radius: 16px;
-    background: #ffffff;
-  }
-
-  .mga-course-eligibility-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 9px;
-    margin: 0 0 10px;
-    color: #596b7e;
-    font-size: 16px;
-    line-height: 1.45;
-  }
-
-  .mga-course-eligibility-item:last-child {
-    margin-bottom: 0;
-  }
-
-  .mga-course-eligibility-check {
-    flex: 0 0 auto;
-    color: #596b7e;
-    font-weight: 500;
-    line-height: 1.45;
-  }
-
-  /* eligibility keywords: box ke neeche, box ke text jaisa */
-  .mga-course-audience-section .mga-topic-text {
-    color: #596b7e;
-    font-size: 16px;
-    line-height: 1.5;
-  }
-
-  .mga-pg-note {
-    margin: 0 0 32px;
-    padding: 20px 24px;
-    background: #fff8e6;
-    border: 1px solid #f3dca0;
-    border-left: 4px solid #e0a800;
-    border-radius: 14px;
-    box-sizing: border-box;
-  }
-
-  .mga-pg-note-title {
-    margin: 0 0 8px;
-    color: #16324f;
-    font-size: 18px;
-    line-height: 1.3;
-    font-weight: 750;
-  }
-
-  .mga-pg-note-text {
-    margin: 0 0 8px;
-    color: #596b7e;
-    font-size: 15px;
-    line-height: 1.6;
-  }
-
-  .mga-pg-note-text:last-child {
-    margin-bottom: 0;
-  }
-
-  /* highlight box ke andar keywords: bullets wale text jaisa */
-  .mga-highlight-section .mga-topic-text {
-    margin-top: 14px;
-    color: #2c3e50;
-    font-size: 16px;
-    line-height: 1.5;
-  }
-
-  /* accreditation card ke andar */
-  .accreditation-card .mga-topic-text {
-    margin-top: 14px;
-    font-size: 14px;
-    line-height: 1.55;
-    color: #596b7e;
-    text-align: center;
-  }
-
-  .overview-toggle {
-    padding: 0;
-    margin: 0;
-    background: none;
-    border: none;
-    color: #1f7ac4;
-    font: inherit;
-    font-weight: 600;
-    font-size: 15px;
-    cursor: pointer;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    white-space: nowrap;
-  }
-
-  .overview-toggle:hover {
-    color: #1867a8;
-  }
-
-  .module-item.is-locked .module-toggle {
-    cursor: pointer;
-  }
-
-  .module-item.is-locked .module-index,
-  .module-item.is-locked .module-name {
-    opacity: 0.6;
-  }
-
-  .module-item.is-locked .module-icon {
-    color: #8a97a8;
-  }
-
-  .curriculum-unlock {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    width: 100%;
-    margin-top: 14px;
-    padding: 13px 16px;
-    background: #f0f7fd;
-    border: 1px dashed #1f7ac4;
-    border-radius: 12px;
-    color: #0c3a6b;
-    font: inherit;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background-color 0.15s ease;
-  }
-
-  .curriculum-unlock:hover {
-    background: #e4f0fb;
-  }
-
-  .cur-lock-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 2147483000;
-    background: rgba(12, 18, 32, 0.62);
-    backdrop-filter: blur(5px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-    box-sizing: border-box;
-  }
-
-  .cur-lock-modal {
-    position: relative;
-    width: min(94vw, 440px);
-    max-height: calc(100vh - 32px);
-    max-height: calc(100dvh - 32px);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
-    background: #ffffff;
-    border-radius: 18px;
-    padding: 26px 22px 22px;
-    box-shadow: 0 30px 80px rgba(8, 15, 40, 0.45);
-    box-sizing: border-box;
-  }
-
-  .cur-lock-close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    border: 0;
-    background: #eef1f6;
-    color: #3a4357;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .cur-lock-close:hover {
-    background: #dfe4ee;
-  }
-
-  .cur-lock-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 46px;
-    height: 46px;
-    margin-bottom: 12px;
-    border-radius: 50%;
-    background: #e8f3fc;
-    color: #1f7ac4;
-  }
-
-  .cur-lock-title {
-    margin: 0 0 6px;
-    color: #16324f;
-    font-size: 20px;
-    line-height: 1.3;
-    font-weight: 750;
-  }
-
-  .cur-lock-text {
-    margin: 0 0 16px;
-    color: #596b7e;
-    font-size: 15px;
-    line-height: 1.55;
-  }
-
-  .promo-trigger {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    width: 100%;
-    margin: 12px 0 16px;
-    padding: 12px 16px;
-    background: #f7f9fb;
-    border: 1px dashed #c9d6e2;
-    border-radius: 12px;
-    color: #16324f;
-    font: inherit;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: border-color 0.15s ease, background-color 0.15s ease;
-  }
-
-  .promo-trigger:hover {
-    border-color: #1f7ac4;
-    background: #eef5fc;
-  }
-
-  .promo-wrap {
-    margin: 12px 0 16px;
-    padding: 14px 14px 16px;
-    background: #f7f9fb;
-    border: 1px dashed #c9d6e2;
-    border-radius: 14px;
-    box-sizing: border-box;
-  }
-
-  .promo-label {
-    margin: 0 0 10px;
-    font-size: 13px;
-    font-weight: 700;
-    color: #16324f;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-  }
-
-  .promo-mode-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-  }
-
-  .promo-mode-btn {
-    padding: 10px 8px;
-    background: #ffffff;
-    color: #16324f;
-    border: 1px solid #dce4ea;
-    border-radius: 10px;
-    font: inherit;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: border-color 0.15s ease, background-color 0.15s ease;
-  }
-
-  .promo-mode-btn:hover {
-    border-color: #1f7ac4;
-  }
-
-  .promo-mode-btn.is-active {
-    background: #e8f3fc;
-    border-color: #1f7ac4;
-    color: #0c3a6b;
-  }
-
-  .promo-mode-btn:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-  }
-
-  .promo-input-row {
-    display: flex;
-    gap: 8px;
-    margin-top: 12px;
-  }
-
-  .promo-input {
-    flex: 1 1 auto;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 10px 12px;
-    border: 1px solid #dce4ea;
-    border-radius: 10px;
-    background: #ffffff;
-    color: #16324f;
-    font: inherit;
-    font-size: 14px;
-    text-transform: uppercase;
-  }
-
-  .promo-input:disabled {
-    background: #f0f4f8;
-    color: #16324f;
-    cursor: not-allowed;
-    opacity: 1;
-  }
-
-  .promo-input:focus {
-    outline: 2px solid #1f7ac4;
-    outline-offset: 1px;
-    border-color: #1f7ac4;
-  }
-
-  .promo-apply-btn {
-    padding: 10px 16px;
-    background: #1f7ac4;
-    color: #ffffff;
-    border: 1px solid #1f7ac4;
-    border-radius: 10px;
-    font: inherit;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-  }
-
-  .promo-apply-btn:hover {
-    background: #1867a8;
-  }
-
-  .promo-msg {
-    margin: 10px 0 0;
-    font-size: 13px;
-    line-height: 1.45;
-  }
-
-  .promo-msg.is-error {
-    color: #b42318;
-  }
-
-  .promo-code-box {
-    padding: 12px 14px;
-    background: #ffffff;
-    border: 1px dashed #1f7ac4;
-    border-radius: 10px;
-    color: #0c3a6b;
-    font-size: 18px;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    text-align: center;
-    user-select: all;
-  }
-
-  .promo-label-or {
-    margin-top: 16px;
-  }
-
-  .promo-msg.is-success {
-    color: #166534;
-    font-weight: 600;
-  }
-
-  .promo-applied {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    margin: 12px 0 16px;
-    padding: 12px 14px;
-    background: #eafaf0;
-    border: 1px solid #b7e4c7;
-    border-radius: 12px;
-    box-sizing: border-box;
-  }
-
-  .promo-applied-text {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin: 0;
-    color: #166534;
-    font-size: 14px;
-    font-weight: 700;
-  }
-
-  .promo-applied-sub {
-    display: block;
-    margin-top: 2px;
-    font-size: 12px;
-    font-weight: 500;
-    color: #3c7a54;
-  }
-
-  .promo-remove-btn {
-    flex: 0 0 auto;
-    padding: 6px 10px;
-    background: #ffffff;
-    color: #166534;
-    border: 1px solid #b7e4c7;
-    border-radius: 8px;
-    font: inherit;
-    font-size: 12px;
-    font-weight: 700;
-    cursor: pointer;
-  }
-
-  .promo-remove-btn:hover {
-    background: #dff7e8;
-  }
-
-  .fee-row {
-    margin-top: 6px;
-    font-size: 15px;
-    color: #596b7e;
-    line-height: 1.5;
-  }
-
-  .fee-row s {
-    opacity: 0.75;
-    margin-right: 6px;
-  }
-
-  .fee-row .fee-final {
-    color: #16324f;
-    font-weight: 700;
-  }
-
-  .promo-discount-pill {
-    display: inline-block;
-    margin-left: 8px;
-    padding: 2px 8px;
-    background: #dff7e8;
-    color: #166534;
-    font-size: 12px;
-    font-weight: 700;
-    border-radius: 999px;
-  }
-
-  .mga-pay-fields {
-    display: grid;
-    gap: 10px;
-    margin-bottom: 12px;
-  }
-
-  .mga-pay-input {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 12px 16px;
-    border: 1px solid #dce4ea;
-    border-radius: 12px;
-    background: #ffffff;
-    color: #16324f;
-    font: inherit;
-    font-size: 15px;
-  }
-
-  .mga-pay-input:focus {
-    outline: 2px solid #1f7ac4;
-    outline-offset: 1px;
-    border-color: #1f7ac4;
-  }
-
-  .mga-pay-success {
-    margin: 0;
-    padding: 14px 16px;
-    border-radius: 12px;
-    background: #dff7e8;
-    color: #166534;
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 1.45;
-    text-align: center;
-  }
-
-  @media (max-width: 768px) {
-    .mga-highlight-section {
-      margin: 26px 0;
-      padding: 20px 18px 22px;
-      border-radius: 16px;
-    }
-    .mga-highlight-title { font-size: 18px; }
-    .mga-highlight-item  { font-size: 15px; }
-    .mga-highlight-section .mga-topic-text { font-size: 15px; }
-
-    .mga-course-outcome-card {
-      padding: 22px 20px 24px;
-      border-radius: 16px;
-    }
-
-    .mga-course-outcome-title {
-      font-size: 19px;
-    }
-
-    .mga-course-outcomes-grid {
-      grid-template-columns: 1fr;
-      row-gap: 16px;
-      margin-top: 18px;
-    }
-
-    .mga-course-outcome-text {
-      font-size: 15px;
-      line-height: 1.45;
-    }
-
-    .mga-course-audience-section {
-      margin-top: 28px;
-      margin-bottom: 28px;
-    }
-
-    .mga-course-audience-title {
-      font-size: 21px;
-    }
-
-    .mga-course-eligibility-title {
-      font-size: 20px;
-    }
-
-    .mga-course-eligibility-box {
-      padding: 20px;
-    }
-
-    .mga-course-audience-list li,
-    .mga-course-eligibility-item,
-    .mga-course-audience-section .mga-topic-text {
-      font-size: 15px;
-    }
-
-    .mga-pg-note {
-      padding: 18px 20px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .mga-highlight-section { padding: 18px 14px 20px; }
-    .mga-highlight-title   { font-size: 17px; }
-    .mga-highlight-item    { font-size: 14px; }
-    .mga-highlight-section .mga-topic-text { font-size: 14px; }
-
-    .mga-course-outcome-card {
-      padding: 20px 16px 22px;
-    }
-
-    .mga-course-outcome-title {
-      font-size: 18px;
-    }
-
-    .mga-course-outcome-text {
-      font-size: 14px;
-    }
-
-    .mga-course-audience-title {
-      font-size: 20px;
-    }
-
-    .mga-course-eligibility-title {
-      font-size: 19px;
-    }
-
-    .mga-course-eligibility-box {
-      padding: 18px 16px;
-      border-radius: 14px;
-    }
-
-    .mga-course-audience-list li,
-    .mga-course-eligibility-item,
-    .mga-course-audience-section .mga-topic-text {
-      font-size: 14px;
-    }
-
-    .mga-pg-note {
-      padding: 16px;
-    }
-
-    .mga-pg-note-title {
-      font-size: 17px;
-    }
-
-    .mga-pg-note-text {
-      font-size: 14px;
-    }
-
-    .cur-lock-modal {
-      padding: 24px 16px 18px;
-      border-radius: 16px;
-    }
-  }
-`;
 
 /* =========================================================
    COMPONENT
@@ -1258,14 +432,6 @@ export default function CourseDetail() {
     loadCourse(fetchSlug)
       .then((found) => {
         if (cancelled) return;
-
-        // DEBUG (alt ka asli key mil jaye to ye 2 lines hata dena)
-        console.log("COURSE API DATA:", found);
-        console.log(
-          "ALT-LIKE KEYS:",
-          Object.keys(found).filter((k) => /alt|img|image|seo/i.test(k))
-        );
-
         setCourse(found);
       })
       .catch((e) => {
@@ -1717,8 +883,6 @@ export default function CourseDetail() {
 
   return (
     <article>
-      <style>{PAGE_CSS}</style>
-
       {/* SEO */}
 
       <Helmet>
@@ -1802,6 +966,10 @@ export default function CourseDetail() {
             src={course.image}
             alt={imageAlt}
             className="detail-image"
+            width={1200}
+            height={675}
+            loading="eager"
+            fetchPriority="high"
           />
 
           {/* PROGRAM HIGHLIGHTS */}
@@ -2435,18 +1603,20 @@ export default function CourseDetail() {
                   />
                 </div>
 
-                <PayButton
-                  course={course.name}
-                  amount={Number(course.fee) || 0}
-                  name={payer.name.trim()}
-                  email={payer.email.trim()}
-                  phone={payer.phone.trim()}
-                  label="Enroll & Pay Now"
-                  buttonStyle={{ ...applyBtnBase, fontFamily: "inherit" }}
-                  hoverBg={BTN_BLUE_HOVER}
-                  validate={() => validatePayer(payer)}
-                  onSuccess={() => setPaid(true)}
-                />
+                <Suspense fallback={<div style={{ minHeight: 52 }} />}>
+                  <PayButton
+                    course={course.name}
+                    amount={Number(course.fee) || 0}
+                    name={payer.name.trim()}
+                    email={payer.email.trim()}
+                    phone={payer.phone.trim()}
+                    label="Enroll & Pay Now"
+                    buttonStyle={{ ...applyBtnBase, fontFamily: "inherit" }}
+                    hoverBg={BTN_BLUE_HOVER}
+                    validate={() => validatePayer(payer)}
+                    onSuccess={() => setPaid(true)}
+                  />
+                </Suspense>
               </>
             )}
 
@@ -2534,7 +1704,10 @@ export default function CourseDetail() {
                         src={item.src}
                         alt={item.alt}
                         className="accreditation-item-img"
+                        width={300}
+                        height={200}
                         loading="lazy"
+                        decoding="async"
                         draggable={false}
                       />
                     </div>
@@ -2646,7 +1819,10 @@ export default function CourseDetail() {
                       src={img.src}
                       alt={img.alt}
                       className="certificate-image"
+                      width={600}
+                      height={424}
                       loading="lazy"
+                      decoding="async"
                       draggable={false}
                       onContextMenu={(e) => e.preventDefault()}
                       onDragStart={(e) => e.preventDefault()}
@@ -2713,7 +1889,10 @@ export default function CourseDetail() {
                     src={PROGRAM_VIDEO_THUMB}
                     alt="How We Work"
                     className="video-thumb-img"
+                    width={1280}
+                    height={720}
                     loading="lazy"
+                    decoding="async"
                     draggable={false}
                   />
 
@@ -2744,8 +1923,10 @@ export default function CourseDetail() {
 
           {/* LEARNER REVIEWS */}
 
-          <div style={{ marginTop: 24 }}>
-            <ReviewSlider />
+          <div style={{ marginTop: 24, minHeight: 320 }}>
+            <Suspense fallback={null}>
+              <ReviewSlider />
+            </Suspense>
           </div>
         </aside>
       </div>

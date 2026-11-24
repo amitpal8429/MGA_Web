@@ -32,13 +32,20 @@ const HRFormPage = lazy(() => import("./pages/HRFormPage"));
 const Support = lazy(() => import("./pages/Support"));
 const Cart = lazy(() => import("./pages/Cart"));
 const Hospitals = lazy(() => import("./pages/Hospitals"));
+const Ad = lazy(() => import("./pages/ad"));
 
 import "./site.css";
+
+const CHATBOT_SRC = "https://app.getgabs.com/ai_answerbot/chatbot_widget.js";
+const CHATBOT_AGENT_ID = "e1acaff4-acee-4521-8bc7-372e52105ece";
+
+/* Standalone pages: header, footer, chatbot nahi. Website par inka koi link nahi. */
+const STANDALONE_PATHS = ["/hr-form", "/ad"];
 
 export default function App() {
   const location = useLocation();
 
-  const isHRFormPage = location.pathname === "/hr-form";
+  const isStandalone = STANDALONE_PATHS.includes(location.pathname);
 
   /* Courses ke sab pages ek hi key use karein, taaki type tab click par remount na ho */
   const isCoursesPath =
@@ -46,33 +53,48 @@ export default function App() {
     location.pathname.startsWith("/courses/");
   const routeKey = isCoursesPath ? "/courses" : location.pathname;
 
+  /* Chatbot: page load ke baad, browser idle hone par load karein */
   useEffect(() => {
-    if (isHRFormPage) {
-      return;
-    }
+    if (isStandalone) return undefined;
 
-    const script = document.createElement("script");
+    let script = null;
+    let idleId = null;
+    let timerId = null;
 
-    script.src = "https://app.getgabs.com/ai_answerbot/chatbot_widget.js";
+    const loadBot = () => {
+      script = document.createElement("script");
+      script.src = CHATBOT_SRC;
+      script.setAttribute("data-agent-id", CHATBOT_AGENT_ID);
+      script.async = true;
+      document.body.appendChild(script);
+    };
 
-    script.setAttribute(
-      "data-agent-id",
-      "e1acaff4-acee-4521-8bc7-372e52105ece"
-    );
-
-    script.async = true;
-
-    document.body.appendChild(script);
-
-    return () => {
-      if (script.parentNode) {
-        script.parentNode.removeChild(script);
+    const schedule = () => {
+      if ("requestIdleCallback" in window) {
+        idleId = window.requestIdleCallback(loadBot, { timeout: 4000 });
+      } else {
+        timerId = window.setTimeout(loadBot, 3000);
       }
     };
-  }, [isHRFormPage]);
+
+    if (document.readyState === "complete") {
+      schedule();
+    } else {
+      window.addEventListener("load", schedule, { once: true });
+    }
+
+    return () => {
+      window.removeEventListener("load", schedule);
+      if (idleId !== null && "cancelIdleCallback" in window) {
+        window.cancelIdleCallback(idleId);
+      }
+      if (timerId !== null) window.clearTimeout(timerId);
+      if (script && script.parentNode) script.parentNode.removeChild(script);
+    };
+  }, [isStandalone]);
 
   useEffect(() => {
-    if (!isHRFormPage) {
+    if (!isStandalone) {
       document.body.classList.add("has-sticky-bar");
     } else {
       document.body.classList.remove("has-sticky-bar");
@@ -81,7 +103,7 @@ export default function App() {
     return () => {
       document.body.classList.remove("has-sticky-bar");
     };
-  }, [isHRFormPage]);
+  }, [isStandalone]);
 
   /* Sheet wale redirects: sab paths ke liye (hooks ke baad) */
   const redirectTo = getRedirectSlug(location.pathname);
@@ -91,20 +113,19 @@ export default function App() {
 
   return (
     <CartProvider>
-      <div className={isHRFormPage ? "hr-site" : "site"}>
+      <div className={isStandalone ? "hr-site" : "site"}>
         {/* Trailing slash hatao: /abc/ -> /abc (poori site ke liye) */}
         <RemoveTrailingSlash />
 
         <ScrollToTop />
 
-        {!isHRFormPage && <Navbar />}
+        {!isStandalone && <Navbar />}
 
         <main
-          className={isHRFormPage ? "" : "page-enter"}
+          className={isStandalone ? "" : "page-enter"}
           key={routeKey}
         >
-          {/* Har page par breadcrumb (static, listing pages) */}
-          {!isHRFormPage && <SiteBreadcrumb />}
+          {!isStandalone && <SiteBreadcrumb />}
 
           <Suspense
             fallback={
@@ -155,6 +176,9 @@ export default function App() {
 
               <Route path="/hr-form" element={<HRFormPage />} />
 
+              {/* Ad landing page: sirf direct URL se khulta hai, koi link nahi */}
+              <Route path="/ad" element={<Ad />} />
+
               <Route path="/:slug" element={<CourseDetail />} />
 
               <Route path="*" element={<NotFound />} />
@@ -162,9 +186,9 @@ export default function App() {
           </Suspense>
         </main>
 
-        {!isHRFormPage && <Footer />}
+        {!isStandalone && <Footer />}
 
-        {!isHRFormPage && <StickyContactBar />}
+        {!isStandalone && <StickyContactBar />}
       </div>
     </CartProvider>
   );
