@@ -61,7 +61,8 @@ const REDIRECTS = {
   /* ===== Existing: blog redirects ===== */
   "types-of-genetic-testing": "blog/genetic-testing",
   "blog/types-of-genetic-testing": "blog/genetic-testing",
-  "congenital-heart-disease": "blog/congenital-heart-disease",
+  "congenital-heart-disease": "blog/congenital-heart-disease-types",
+  "blog/congenital-heart-disease": "blog/congenital-heart-disease-types",
   "cancer-screening-guidelines-india": "blog/cancer-screening-guidelines",
   "how-to-become-an-orthopedic-surgeon-after-mbbs": "blog/how-to-become-an-orthopedic-surgeon-after-mbbs",
   "medical-writing-career-after-mbbs": "blog/medical-writing-career-after-mbbs",

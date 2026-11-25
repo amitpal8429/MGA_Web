@@ -173,9 +173,8 @@ const HOME_CSS = `
     display: block;
     font-size: 32px;
     font-weight: 700;
-    color: #1e3a5ff;
+    color: #1e3a5f;
     line-height: 1.1;
-    
   }
 
   .hero-stat-card span {
@@ -344,6 +343,33 @@ const HOME_CSS = `
     -webkit-box-orient: vertical;
     overflow: hidden;
     flex: 1;
+  }
+
+  /* ---------- Blog footer: View all button below cards ---------- */
+  .blog-footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+  }
+
+  .blog-view-all-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 22px;
+    border-radius: 999px;
+    border: 1.5px solid #066daf;
+    background: #ffffff;
+    color: #066daf;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .blog-view-all-btn:hover {
+    background: #066daf;
+    color: #ffffff;
   }
 
   /* ---------- Media queries ---------- */
@@ -593,7 +619,6 @@ export default function Home() {
               <div className="section-head section-head-center">
                 <p className="eyebrow eyebrow-sm">Our programs</p>
                 <h2>Advance your career with programs built for practising doctors</h2>
-              
               </div>
 
               <div className="course-box">
@@ -640,7 +665,6 @@ export default function Home() {
               <div className="section-head section-head-center">
                 <p className="eyebrow eyebrow-sm">Our faculty</p>
                 <h2>Learn from practising specialists</h2>
-               
               </div>
 
               {faculty === null ? (
@@ -667,14 +691,6 @@ export default function Home() {
               <div className="section-head section-head-center">
                 <p className="eyebrow eyebrow-sm">Latest Insights</p>
                 <h2>Medical Blogs & Articles</h2>
-                <a
-                  href="https://medicalglobalacademy.com/blog/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="section-link"
-                >
-                  View all blogs <ArrowRight size={15} />
-                </a>
               </div>
 
               {!blogs && !blogError && (
@@ -742,6 +758,17 @@ export default function Home() {
                   })}
                 </div>
               )}
+
+              <div className="blog-footer">
+                <a
+                  href="https://medicalglobalacademy.com/blog/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="blog-view-all-btn"
+                >
+                  View all blogs <ArrowRight size={15} />
+                </a>
+              </div>
             </div>
           </section>
 
@@ -750,8 +777,6 @@ export default function Home() {
             <div className="wrap">
               <div className="section-head section-head-center">
                 <p className="eyebrow eyebrow-sm">Frequently asked questions</p>
-                
-                
               </div>
               <Faq />
             </div>

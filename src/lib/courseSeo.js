@@ -299,7 +299,7 @@ export const COURSE_SEO = {
   },
 
   "pg-diploma-in-cosmetology-and-aesthetic-medicine": {
-    h1: "PG Diploma in Clinical Cosmetology and Aesthetics",
+    h1: "PG Diploma in Clinical Cosmetology and Aesthetics Medicine",
     metaTitle: "PG Diploma in Clinical Cosmetology and Aesthetics",
     metaDescription:
       "Master Botox, fillers, lasers and skin rejuvenation with this PG Diploma in Clinical Cosmetology and Aesthetics for MBBS doctors — CPD & ACTD accredited.",

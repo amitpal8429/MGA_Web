@@ -207,7 +207,7 @@ export default function LeadForm({ idPrefix = "lead", onSuccess }) {
         <label>Doctor Full Name *</label>
         <div className="mga-input-box">
           <User size={18} className="mga-input-icon" />
-          <input type="text" name="name" placeholder="e.g. Dr. Rajesh Kumar" value={form.name} onChange={handleChange} required />
+          <input type="text" name="name" placeholder="e.g. Dr. Amit Pal" value={form.name} onChange={handleChange} required />
         </div>
       </div>
 

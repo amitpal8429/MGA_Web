@@ -15,14 +15,22 @@ import { initials } from "../lib/format";
 import LeadForm from "../components/LeadForm";
 
 const SITE_URL = "https://medicalglobalacademy.com";
+const AD_PAGE_URL = `${SITE_URL}/ad`;
 
-const HOME_TITLE = "Online Medical Courses: Fellowship, PG Diploma & Certificate";
 const AD_TITLE = "Apply Now | Medical Global Academy";
-const HOME_DESCRIPTION =
+const AD_DESCRIPTION =
   "Certificate, PG Diploma and fellowship programs for doctors across medicine and surgery. UK CPD accredited, live online classes, 1-year mentorship.";
 
-const WHATSAPP_BROCHURE_URL =
-  "https://api.whatsapp.com/send?phone=919310027474&text=Hi%2C%20I%20would%20like%20to%20download%20the%20course%20brochure.";
+/* ---------- WhatsApp config (ad page only) ---------- */
+const WHATSAPP_NUMBER = "919310027474";
+
+const buildWhatsappUrl = (text) =>
+  `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(text)}`;
+
+const AD_MESSAGE = "Hi, I saw your ad and want to get more details.";
+const AD_HERO_URL = buildWhatsappUrl(AD_MESSAGE);
+const waCourseUrl = (courseName) =>
+  buildWhatsappUrl(`${AD_MESSAGE} Course: ${courseName}`);
 
 const PG_TYPE_RE = /\bpg\b|post[\s-]?graduate|diploma/i;
 const CERT_TYPE_RE = /certificate/i;
@@ -40,7 +48,6 @@ const SPECIALITIES = [
   },
 ];
 
-/* Why choose us: 4 points. Icons lucide-react se. */
 const WHY_CHOOSE_US = [
   {
     icon: GraduationCap,
@@ -102,10 +109,9 @@ const REVIEW_REELS = [
   "https://www.instagram.com/p/DZrpp8BBo_t/",
 ];
 
-const HOME_CSS = `
+const AD_CSS = `
   .hero-grid { align-items: start; }
 
-  /* ---------- Logo & Brand Name ---------- */
   .hero-brand {
     display: flex;
     align-items: center;
@@ -114,7 +120,7 @@ const HOME_CSS = `
   }
   .hero-logo {
     display: block;
-    height: 55px; /* Adjust size as needed */
+    height: 55px;
     width: auto;
   }
   .hero-brand-name {
@@ -125,7 +131,6 @@ const HOME_CSS = `
     letter-spacing: -0.5px;
   }
 
-  /* ---------- Lead form (compact) ---------- */
   .hero-form-card {
     max-width: 330px;
     width: 100%;
@@ -168,44 +173,19 @@ const HOME_CSS = `
     margin: 4px 0 8px !important;
   }
 
-    /* ---------- Tighter section spacing ---------- */
-  .section {
-    padding-top: 40px !important;
-    padding-bottom: 40px !important;
-  }
-  .section-head {
-    margin-bottom: 24px !important;
-  }
-  .section-head.section-head-center h2 {
-    margin-bottom: 0;
-  }
-  .dept-intro {
-    margin: 0 0 16px !important;
-  }
-  .reviews-section {
-    padding-bottom: 40px !important;
-  }
-  .review-slider {
-    padding-bottom: 12px !important;
-  }
-  .review-nav {
-    margin-top: 0 !important;
-  }
+  .section { padding-top: 40px !important; padding-bottom: 40px !important; }
+  .section-head { margin-bottom: 24px !important; }
+  .section-head.section-head-center h2 { margin-bottom: 0; }
+  .dept-intro { margin: 0 0 16px !important; }
+  .reviews-section { padding-bottom: 40px !important; }
+  .review-slider { padding-bottom: 12px !important; }
+  .review-nav { margin-top: 0 !important; }
 
   @media (max-width: 760px) {
-    .section {
-      padding-top: 28px !important;
-      padding-bottom: 28px !important;
-    }
-    .section-head {
-      margin-bottom: 18px !important;
-    }
-    .hero-logo {
-      height: 45px;
-    }
-    .hero-brand-name {
-      font-size: 20px;
-    }
+    .section { padding-top: 28px !important; padding-bottom: 28px !important; }
+    .section-head { margin-bottom: 18px !important; }
+    .hero-logo { height: 45px; }
+    .hero-brand-name { font-size: 20px; }
   }
 
   .hero-stat-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 28px; max-width: 680px; }
@@ -217,7 +197,6 @@ const HOME_CSS = `
   .section-head.section-head-center .eyebrow-sm { font-size: 20px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #1e3a5f; margin: 0 0 6px; }
   .section-head.section-head-center h2 { font-size: 15px; font-weight: 700; color: #0f2744; margin: 0; line-height: 1.4; }
 
-  /* ---------- Why choose us ---------- */
   .why-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin: 0; padding: 0; list-style: none; }
   .why-card { display: flex; flex-direction: column; align-items: center; text-align: center; height: 100%; padding: 22px 18px; background: #ffffff; border: 1px solid #dce4ea; border-radius: 14px; box-sizing: border-box; box-shadow: 0 6px 18px rgba(15, 39, 68, 0.05); transition: box-shadow 0.2s ease, transform 0.2s ease; }
   .why-card:hover { box-shadow: 0 10px 24px rgba(15, 39, 68, 0.08); transform: translateY(-2px); }
@@ -243,7 +222,6 @@ const HOME_CSS = `
   .dept-card-body { margin-bottom: 12px; }
   .dept-skel { min-height: 118px; border-radius: 14px; background: #eef3f7; }
 
-  /* ---------- Reviews / Instagram slider ---------- */
   .reviews-section { background: #f7fafc; overflow: hidden; }
   .review-slider-wrap { position: relative; }
   .review-slider { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 8px 4px 20px; scrollbar-width: none; -ms-overflow-style: none; }
@@ -286,7 +264,7 @@ const HOME_CSS = `
   }
 `;
 
-export default function Home({ standalone = false }) {
+export default function Ad() {
   const [courses, setCourses] = useState(null);
   const [faculty, setFaculty] = useState(null);
   const [error, setError] = useState(null);
@@ -295,9 +273,6 @@ export default function Home({ standalone = false }) {
   const [sliderRef, setSliderRef] = useState(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
-
-  const title = standalone ? AD_TITLE : HOME_TITLE;
-  const pageUrl = standalone ? `${SITE_URL}/ad` : SITE_URL;
 
   useEffect(() => {
     let cancelled = false;
@@ -379,32 +354,30 @@ export default function Home({ standalone = false }) {
 
   return (
     <>
-      <style>{HOME_CSS}</style>
+      <style>{AD_CSS}</style>
 
       <Helmet>
-        <title>{title}</title>
-        <meta name="description" content={HOME_DESCRIPTION} />
-        <link rel="canonical" href={pageUrl} />
-        <meta name="robots" content={standalone ? "noindex, nofollow" : "index, follow"} />
+        <title>{AD_TITLE}</title>
+        <meta name="description" content={AD_DESCRIPTION} />
+        <link rel="canonical" href={AD_PAGE_URL} />
+        <meta name="robots" content="noindex, nofollow" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={HOME_DESCRIPTION} />
-        <meta property="og:url" content={pageUrl} />
+        <meta property="og:title" content={AD_TITLE} />
+        <meta property="og:description" content={AD_DESCRIPTION} />
+        <meta property="og:url" content={AD_PAGE_URL} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={HOME_DESCRIPTION} />
+        <meta name="twitter:title" content={AD_TITLE} />
+        <meta name="twitter:description" content={AD_DESCRIPTION} />
       </Helmet>
 
       <section className="hero">
         <div className="hero-blob" aria-hidden="true" />
         <div className="wrap hero-grid">
           <div className="hero-copy">
-            
-            {/* LOGO & BRAND NAME ADDED HERE */}
             <div className="hero-brand">
-              <img 
-                src="https://medicalglobalacademy.com/wp-content/uploads/2026/08/logo_new.png" 
-                alt="Medical Global Academy Logo" 
+              <img
+                src="https://medicalglobalacademy.com/wp-content/uploads/2026/08/logo_new.png"
+                alt="Medical Global Academy Logo"
                 className="hero-logo"
               />
               <span className="hero-brand-name">Medical Global Academy</span>
@@ -426,7 +399,7 @@ export default function Home({ standalone = false }) {
                 Explore programs <ArrowRight size={16} />
               </Link>
               <a
-                href={WHATSAPP_BROCHURE_URL}
+                href={AD_HERO_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-ghost"
@@ -471,7 +444,7 @@ export default function Home({ standalone = false }) {
                 Advance your clinical expertise with CPD-accredited
                 Fellowship, PG Diploma, and Certification programs.
               </p>
-              <LeadForm idPrefix={standalone ? "ad" : "hero"} />
+              <LeadForm idPrefix="ad" />
             </div>
           </div>
         </div>
@@ -485,7 +458,6 @@ export default function Home({ standalone = false }) {
 
       {!error && (
         <>
-          {/* ---------- WHY CHOOSE US ---------- */}
           <section className="section">
             <div className="wrap">
               <div className="section-head section-head-center">
@@ -514,7 +486,6 @@ export default function Home({ standalone = false }) {
             </div>
           </section>
 
-          {/* ---------- ACCREDITATION ---------- */}
           <section className="section section-alt">
             <div className="wrap">
               <div className="section-head section-head-center">
@@ -556,7 +527,6 @@ export default function Home({ standalone = false }) {
             </div>
           </section>
 
-          {/* ---------- PROGRAMS ---------- */}
           <section className="section">
             <div className="wrap">
               <div className="section-head section-head-center">
@@ -585,7 +555,7 @@ export default function Home({ standalone = false }) {
                           <span className="dept-card-name">{s.name}</span>
                         </div>
                         <a
-                          href={WHATSAPP_BROCHURE_URL}
+                          href={waCourseUrl(s.name)}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="dept-card-btn"
@@ -604,7 +574,7 @@ export default function Home({ standalone = false }) {
                         <span className="dept-card-name">All programmes</span>
                       </div>
                       <a
-                        href={WHATSAPP_BROCHURE_URL}
+                        href={AD_HERO_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="dept-card-btn"
@@ -644,7 +614,6 @@ export default function Home({ standalone = false }) {
             </div>
           </section>
 
-          {/* ---------- REVIEWS (Instagram reels slider) ---------- */}
           <section className="section reviews-section">
             <div className="wrap">
               <div className="section-head section-head-center">

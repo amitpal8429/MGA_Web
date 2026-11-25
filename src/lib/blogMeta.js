@@ -31,6 +31,16 @@ const RAW_BLOG_META = {
     "image": null,
   
   },
+
+    "congenital-heart-disease-types": {
+    "h1": "Congenital Heart Disease in Children and Adults: A Clinical Guide for Doctors",
+    "keywords": "congenital heart disease",
+    "title": "Congenital Heart Disease: Types, Symptoms & Treatment Guide",
+    "canonical": "congenital-heart-disease-types",
+    "description": "Explore congenital heart disease in children and adults, including types, causes, symptoms, diagnosis and treatment approaches for doctors.",
+    "image": null,
+
+  },
   "congenital-heart-disease": {
     "h1": "Congenital Heart Disease: Types, Causes, Symptoms & Treatment",
     "keywords": "congenital heart disease",
@@ -1057,7 +1067,7 @@ const RAW_BLOG_META = {
     "title": "Cancer Screening Guidelines: A Protocol for Physicians",
     "canonical": "cancer-screening-guidelines",
     "description": "Cancer screening guidelines for Indian physicians: breast, cervical & oral cancer protocols, NCG/NP-NCD standards, and an early-detection checklist.",
-    "image": "https://medicalglobalacademy.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-16-at-4.24.45-PM.jpeg",
+    "image": "https://medicalglobalacademy.com/wp-content/uploads/2026/11/WhatsApp-Image-2026-11-24-at-5.29.59-PM.jpeg",
     
   },
   "genetic-testing": {
@@ -1091,10 +1101,7 @@ const RAW_BLOG_META = {
   }
 };
 
-// ---------------------------------------------------------------------------
-// Apply title cleanup to every entry so "MGA" / "Medical Global Academy"
-// never appears in the rendered <title>.
-// ---------------------------------------------------------------------------
+
 export const BLOG_META = Object.fromEntries(
   Object.entries(RAW_BLOG_META).map(([slug, meta]) => [
     slug,
@@ -1105,11 +1112,7 @@ export const BLOG_META = Object.fromEntries(
   ])
 );
 
-/**
- * Look up manual SEO/content overrides for a blog post by its slug.
- * Returns null if no override exists for that slug (falls back to WP data).
- * If the cleaned title ends up empty, falls back to h1 or a humanised slug.
- */
+
 export function getBlogMeta(slug) {
   if (!slug) return null;
 
