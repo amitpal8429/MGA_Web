@@ -7,9 +7,9 @@ import { Plus, Minus } from "lucide-react";
 const COMMON_FAQS = [
   { q: "What is the eligibility criteria for these programs?", a: "Most certificate and PG diploma programs require an MBBS degree with valid registration. Fellowships generally expect MBBS, MD, MS or DNB — the exact requirement is listed on each program's detail page." },
   { q: "How are the programs delivered?", a: "Programs combine self-paced online modules with live faculty-led sessions. Fellowships and diplomas add a hospital-based clinical training component in the later months." },
-  { q: "How do I enrol in a program?", a: "Open any program page and use the Enquire Now button — our admissions team will reach out with the fee structure, intake dates, and next steps." },
+  { q: "How do I enroll in a program?", a: "Open any program page and use the Enquire Now button — our admissions team will reach out with the fee structure, intake dates, and next steps." },
   { q: "Is the certification recognised?", a: "Yes. Certificates are ACTD, CPD-aligned and issued on successful completion of the assessments and, where applicable, the clinical training component." },
-  { q: "Can I enrol in more than one program at a time?", a: "Yes, you can enrol in multiple programs and access each of them at your own pace, provided the schedules don't clinically overlap." },
+  { q: "Can I enroll in more than one program at a time?", a: "Yes, you can enrol in multiple programs and access each of them at your own pace, provided the schedules don't clinically overlap." },
 ];
 
 /* ==================================================================
@@ -18,7 +18,7 @@ const COMMON_FAQS = [
 const PG_FAQS = {
   "pg-diploma-in-reproductive-child-health": [
     { q: "Is this a self-paced RCH programme for doctors?", a: "Yes. The diploma runs for 12 months on flexible online modules, with live sessions 2–3 times a month in the evenings and on weekends. Every session is recorded, so you can catch up if you miss a class and keep up with your clinical work." },
-    { q: "Can MBBS doctors enrol in the PG Diploma in Reproductive Child Health?", a: "Yes. You need an MBBS degree with valid NMC or State Medical Council registration and at least 1 year of post-qualification clinical experience. The program is open to doctors practising in India and internationally, and is also intended for professionals with MD, MS, DNB or DGO qualifications." },
+    { q: "Can MBBS doctors enroll in the PG Diploma in Reproductive Child Health?", a: "Yes. You need an MBBS degree with valid NMC or State Medical Council registration and at least 1 year of post-qualification clinical experience. The program is open to doctors practising in India and internationally, and is also intended for professionals with MD, MS, DNB or DGO qualifications." },
     { q: "Is the PG Diploma in Reproductive Child Health a government postgraduate degree?", a: "No. It is a professional skill-development course. It is not a government postgraduate medical degree, a NEET-based PG residency or a regular 2-year medical college seat. It is a 1-year upskilling and certification program for eligible medical professionals." },
     { q: "Which pregnancy and childbirth topics does the diploma cover?", a: "It covers normal and high-risk pregnancy, antenatal and postnatal care, breastfeeding, and maternal and newborn emergencies. Modules include advanced antenatal care and pregnancy surveillance, high-risk pregnancy and maternal-fetal care, and advanced intrapartum care, obstetric emergencies and referral." },
     { q: "Does the diploma include newborn and child health?", a: "Yes. It covers essential newborn care, childhood illnesses, developmental assessment, growth, development and nutrition, and immunization. Modules include advanced newborn care and neonatal stabilization, neonatal intensive care and high-risk newborns, and cold-chain systems." },
@@ -46,7 +46,7 @@ const PG_FAQS = {
     { q: "What is the purpose of this diploma?", a: "It is intended for continuing professional development, knowledge enhancement and focused clinical skill development in endocrinology. It helps you build structured knowledge and evidence-based clinical decision-making in contemporary endocrinology." },
   ],
   "pg-diploma-in-clinical-neurology": [
-    { q: "Who can enrol in the diploma in neurology?", a: "You need an MBBS degree with valid NMC or State Medical Council registration and at least 1 year of post-qualification clinical experience. The program is open to doctors practising in India and internationally." },
+    { q: "Who can enroll in the diploma in neurology?", a: "You need an MBBS degree with valid NMC or State Medical Council registration and at least 1 year of post-qualification clinical experience. The program is open to doctors practising in India and internationally." },
     { q: "How long is the PG Diploma in Clinical Neurology, and can I study it online?", a: "The program runs for 12 months in a self-paced online format. You attend 2–3 live classes a month, scheduled in the evenings and on weekends, and every session is recorded so you can revise or catch up. You also get 12 months of mentorship, e-books, notes and clinical guidelines." },
     { q: "What accreditation does the diploma in neurology carry?", a: "The program adds a UK CPD or ACTD accredited credential to your professional profile." },
     { q: "What certificate will I receive, and how do I earn it?", a: "You complete a final assessment and then an MCQ-based certification exam. On completion you receive an MGA course certificate in Clinical Neurology." },
@@ -54,7 +54,7 @@ const PG_FAQS = {
     { q: "Which neurology topics does the diploma cover?", a: "The curriculum includes stroke, epilepsy, headache and migraine, movement disorders, multiple sclerosis, neuromuscular disorders, neurocritical care and neuroimaging. It also incorporates the revised McDonald criteria for multiple sclerosis and advanced MRI biomarkers." },
   ],
   "pg-diploma-in-ultrasonography": [
-    { q: "Who can enrol in the PG Diploma in Ultrasonography?", a: "You need an MBBS degree with valid NMC or State Medical Council registration and at least 1 year of post-qualification clinical experience. The program is open to doctors practising in India and internationally." },
+    { q: "Who can enroll in the PG Diploma in Ultrasonography?", a: "You need an MBBS degree with valid NMC or State Medical Council registration and at least 1 year of post-qualification clinical experience. The program is open to doctors practising in India and internationally." },
     { q: "How long is the PG Diploma in Ultrasonography, and can I study it online?", a: "The program runs for 12 months in a self-paced online format. You attend 2–3 live classes a month, scheduled in the evenings and on weekends, and every session is recorded so you can revise or catch up. You also get 12 months of mentorship, e-books, notes and clinical guidelines." },
     { q: "What accreditation and certificate does the diploma include?", a: "You complete a final assessment and then an MCQ-based certification exam. On completion you receive an MGA course certificate in Ultrasonography, and the program adds a UK CPD or ACTD accredited credential to your professional profile." },
     { q: "Is the PG Diploma in Ultrasonography a government PG degree?", a: "No. It is a professional skill-development course, not a government postgraduate medical degree, a NEET-based PG residency or a regular 2-year medical college seat." },
@@ -62,7 +62,7 @@ const PG_FAQS = {
     { q: "Does the diploma include POCUS, ultrasound-guided procedures and AI?", a: "Yes. The program covers emergency and POCUS applications, ultrasound-guided procedures, elastography and contrast-enhanced ultrasound concepts. It also covers image interpretation, documentation, quality assurance and emerging applications of AI and advanced ultrasound technology." },
   ],
   "pg-diploma-in-intensive-care": [
-    { q: "Who can enrol in the PG Diploma in Intensive Care?", a: "You need an MBBS degree with valid NMC or State Medical Council registration and at least 1 year of post-qualification clinical experience. The program is open to doctors practising in India and internationally." },
+    { q: "Who can enroll in the PG Diploma in Intensive Care?", a: "You need an MBBS degree with valid NMC or State Medical Council registration and at least 1 year of post-qualification clinical experience. The program is open to doctors practising in India and internationally." },
     { q: "How long is the PG Diploma in Intensive Care, and how is it taught?", a: "The program runs for 12 months in a self-paced online format. Learning combines recorded lectures, live interactive sessions (2–3 a month, in the evenings and on weekends), digital resources, e-books, clinical case discussions, assignments and MCQ assessments. You also get 12 months of mentorship." },
     { q: "What accreditation and certificate does the diploma include?", a: "You complete a final assessment and then an MCQ-based certification exam. On completion you receive an MGA course certificate in Intensive Care, and the program adds a UK CPD or ACTD accredited credential to your professional profile." },
     { q: "Is the PG Diploma in Intensive Care a government PG degree?", a: "No. It is a professional skill-development course, not a government postgraduate medical degree, a NEET-based PG residency or a regular 2-year medical college seat." },
@@ -70,7 +70,7 @@ const PG_FAQS = {
     { q: "Does the diploma include organ support, point-of-care ultrasound and ICU teamwork?", a: "Yes. The program covers organ-support strategies, critical-care pharmacology, sedation and analgesia, nutrition, and point-of-care ultrasound. It also covers multidisciplinary ICU care and coordination with critical-care teams." },
   ],
   "pg-diploma-in-respiratory-medicine": [
-    { q: "Who can enrol in the PG Diploma in Respiratory Medicine?", a: "You need an MBBS degree with valid NMC or State Medical Council registration and at least 1 year of post-qualification clinical experience. The program is open to doctors practising in India and internationally." },
+    { q: "Who can enroll in the PG Diploma in Respiratory Medicine?", a: "You need an MBBS degree with valid NMC or State Medical Council registration and at least 1 year of post-qualification clinical experience. The program is open to doctors practising in India and internationally." },
     { q: "How long is the post graduate diploma in respiratory medicine, and can I study it online?", a: "The program runs for 12 months in a structured, self-paced online format. You attend 2–3 live classes a month, scheduled in the evenings and on weekends, and every session is recorded so you can revise or catch up. You also get 12 months of mentorship, e-books, notes and clinical guidelines." },
     { q: "What accreditation and certificate does the diploma include?", a: "You complete a final assessment and then an MCQ-based certification exam. On completion you receive an MGA course certificate in Respiratory Medicine, and the program adds a UK CPD or ACTD accredited credential to your professional profile." },
     { q: "Is the PG Diploma in Respiratory Medicine a government PG degree?", a: "No. It is a professional skill-development course, not a government postgraduate medical degree, a NEET-based PG residency or a regular 2-year medical college seat." },
@@ -78,7 +78,7 @@ const PG_FAQS = {
     { q: "Does the diploma include pulmonary function testing, bronchoscopy and ventilation?", a: "Yes. The program covers advanced respiratory assessment, pulmonary function testing, chest imaging and bronchoscopy. It also covers non-invasive and invasive respiratory support, mechanical ventilation principles, respiratory emergencies and pulmonary rehabilitation." },
   ],
   "pg-diploma-in-clinical-psychiatry": [
-    { q: "Who can enrol in the PG Diploma in Clinical Psychiatry?", a: "You need an MBBS degree with valid NMC or State Medical Council registration and at least 1 year of post-qualification clinical experience. The program is open to doctors practising in India and internationally." },
+    { q: "Who can enroll in the PG Diploma in Clinical Psychiatry?", a: "You need an MBBS degree with valid NMC or State Medical Council registration and at least 1 year of post-qualification clinical experience. The program is open to doctors practising in India and internationally." },
     { q: "How long is the PG dip in clinical psychiatry, and can I study it online?", a: "The program runs for 12 months in a structured, self-paced online format. You attend 2–3 live classes a month, scheduled in the evenings and on weekends, and every session is recorded so you can revise or catch up. You also get 12 months of mentorship, e-books, notes and clinical guidelines." },
     { q: "What accreditation and certificate does the diploma include?", a: "You complete a final assessment and then an MCQ-based certification exam. On completion you receive an MGA course certificate in Clinical Psychiatry, and the program adds a UK CPD or ACTD accredited credential to your professional profile." },
     { q: "Is the PG Diploma in Clinical Psychiatry a government PG degree?", a: "No. It is a professional skill-development course, not a government postgraduate medical degree, a NEET-based PG residency or a regular 2-year medical college seat." },
@@ -86,7 +86,7 @@ const PG_FAQS = {
     { q: "Does the diploma teach assessment, psychopharmacology and psychotherapy?", a: "Yes. The program covers psychiatric history-taking, mental status examination, ICD-11-based diagnostic approaches, and suicide and self-harm assessment. It also covers psychopharmacology, psychotherapy principles and psychosocial interventions." },
   ],
   "pg-diploma-in-oncology": [
-    { q: "Who can enrol in the PG Diploma in Oncology?", a: "You need an MBBS degree with valid NMC or State Medical Council registration and at least 1 year of post-qualification clinical experience. The program is open to doctors practising in India and internationally." },
+    { q: "Who can enroll in the PG Diploma in Oncology?", a: "You need an MBBS degree with valid NMC or State Medical Council registration and at least 1 year of post-qualification clinical experience. The program is open to doctors practising in India and internationally." },
     { q: "How long is the PG diploma in oncology, and can I study it online?", a: "The program runs for 12 months in a structured, self-paced online format. You attend 2–3 live classes a month, scheduled in the evenings and on weekends, and every session is recorded so you can revise or catch up. You also get 12 months of mentorship, e-books, notes and clinical guidelines." },
     { q: "What accreditation and certificate does the diploma include?", a: "You complete a final assessment and then an MCQ-based certification exam. On completion you receive an MGA course certificate in Oncology, and the program adds a UK CPD or ACTD accredited credential to your professional profile." },
     { q: "Is the PG Diploma in Oncology a government PG degree?", a: "No. It is a professional skill-development course, not a government postgraduate medical degree, a NEET-based PG residency or a regular 2-year medical college seat." },
@@ -564,6 +564,1351 @@ const PG_FAQS = {
     { q: "Is the certification accredited, and by whom?", a: "Yes. The certification is accredited by CPD (UK) and ACTD (American Council of Training and Development). You can verify both listings on the MGA accreditation page." },
     { q: "Is this vaccine-preventable disease diploma a government degree, and what certificate will I receive?", a: "No. It is a professional skill-development course, not a government postgraduate medical degree, NEET-based PG residency, or regular 2-year medical college seat. After the final assessment and MCQ-based certification exam, you receive an MGA course certificate in Pediatric Infectious Disease." },
   ],
+
+  /* ---- Slug-based Fellowship FAQs ---- */
+  "fellowship-in-arthroscopy": [
+    {
+      q: "What are the eligibility requirements for the Fellowship in Arthroscopy?",
+      a: "Applicants must hold an MBBS degree, have valid NMC or State Medical Council registration and complete at least one year of clinical experience after qualification. Doctors practising in India and internationally can apply if they meet these requirements.",
+    },
+    {
+      q: "Is the online fellowship in arthroscopy suitable for practising doctors?",
+      a: "Yes. Medical Global Academy offers flexible, self-paced online learning for practising doctors. Applicants can also choose the hybrid programme, which combines online learning with additional practical training opportunities.",
+    },
+    {
+      q: "Can MBBS doctors apply for an arthroscopy fellowship?",
+      a: "Yes. MBBS doctors can apply if they hold valid NMC or State Medical Council registration and have at least one year of post-qualification clinical experience.",
+    },
+    {
+      q: "What is the fee for the Fellowship in Arthroscopy?",
+      a: "The online programme costs ₹1,50,000, while the hybrid programme costs ₹1,80,000. Both fees include the ₹50,000 registration fee. Applicants can contact the MGA admissions team for enrolment details.",
+    },
+    {
+      q: "Does the arthroscopy fellowship course include practical training and certification?",
+      a: "Yes. The programme includes surgical workshops with real-case simulations for knee, shoulder and hip arthroscopy, clinical training through partner hospitals and arthroscopy centres, and mentorship from practising faculty. Doctors receive CPD-aligned and ACTD-aligned certification after successful programme completion.",
+    },
+  ],
+  "fellowship-in-bariatric-surgery": [
+    {
+      q: "What are the eligibility requirements for the Fellowship in Bariatric Surgery?",
+      a: "Applicants must hold an MBBS degree, have valid NMC or State Medical Council registration and complete at least one year of clinical experience after qualification. The programme is open to doctors practising in India and internationally.",
+    },
+    {
+      q: "Is the online fellowship in bariatric surgery suitable for practising doctors?",
+      a: "Yes. Medical Global Academy offers flexible, self-paced online learning for practising doctors. Applicants can also choose the hybrid programme, which combines online learning with additional clinical training opportunities.",
+    },
+    {
+      q: "What topics does the metabolic and bariatric surgery fellowship cover?",
+      a: "The 24-module curriculum covers obesity assessment, patient selection, sleeve gastrectomy, gastric bypass, revisional surgery, perioperative care, bariatric nutrition and metabolic surgery. It also includes topics such as robotic-assisted surgery, bariatric endoscopy and long-term patient management.",
+    },
+    {
+      q: "What is the fee for the online bariatric surgery course for doctors?",
+      a: "The total online programme fee is ₹1,50,000, while the hybrid programme costs ₹1,80,000. Both fees include the ₹50,000 registration fee. Doctors can contact the MGA admissions team for enrolment details.",
+    },
+    {
+      q: "Can MBBS doctors apply for this bariatric surgery fellowship, and does it include practical training?",
+      a: "Yes. MBBS doctors with valid NMC or State Medical Council registration and at least one year of post-qualification clinical experience can apply. The programme includes clinical workshops with bariatric case simulations, training through partner hospitals and bariatric surgery centres, and mentorship from practising faculty.",
+    },
+  ],
+  "fellowship-in-burn-reconstructive-surgery": [
+    {
+      q: "What is the duration of the Fellowship in Burn & Reconstructive Surgery?",
+      a: "The Fellowship in Burn & Reconstructive Surgery is a 12-month programme. It covers acute burn management, wound care, scar management and reconstructive surgery through structured academic learning and practical learning activities.",
+    },
+    {
+      q: "Who is eligible for the Fellowship in Burn & Reconstructive Surgery?",
+      a: "Applicants must have an MBBS degree, valid NMC or State Medical Council registration, and at least one year of post-qualification clinical experience. Eligible doctors from India and abroad can apply.",
+    },
+    {
+      q: "Does MGA offer an online fellowship in reconstructive surgery?",
+      a: "Yes. MGA offers online and hybrid learning options. Both formats include flexible, self-paced academic modules, allowing doctors to manage their learning alongside clinical responsibilities.",
+    },
+    {
+      q: "What practical learning opportunities does this burn and reconstructive surgery fellowship offer?",
+      a: "The programme includes workshops based on real burn and reconstructive case simulations, along with clinical training through partner burn units and reconstructive surgery centres. The curriculum also covers skin grafting, flap reconstruction, wound healing and post-burn scar management.",
+    },
+    {
+      q: "What are the fees and certification details of the reconstructive surgery fellowship programme?",
+      a: "The online programme fee is ₹1,50,000, and the hybrid programme fee is ₹1,80,000. The ₹50,000 registration fee is included in the total course fee. The programme is CPD-aligned and ACTD-aligned, and participants receive a certificate on completion.",
+    },
+  ],
+  "fellowship-in-hepatology": [
+    {
+      q: "Who is eligible for the Fellowship in Hepatology?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration and at least one year of post-qualification clinical experience can apply for the Fellowship in Hepatology at MGA. International doctors may also apply, subject to the registration requirements accepted by MGA.",
+    },
+    {
+      q: "What topics does the Fellowship in Hepatology curriculum cover?",
+      a: "The 16-module curriculum covers hepatitis, fatty liver disease, cirrhosis, liver failure, liver transplantation, liver cancer, autoimmune and metabolic liver diseases, and paediatric hepatology. It also includes diagnostic techniques, non-invasive liver tests, hepatic encephalopathy, portal hypertension, variceal bleeding, advanced therapeutics, hepatology research, liver biopsy, emerging biomarkers, palliative care and clinical nutrition. Clinical workshops use real liver disease case studies.",
+    },
+    {
+      q: "What is the duration and learning format of the Fellowship in Hepatology?",
+      a: "The programme runs for 12 months and offers Online and Hybrid learning modes. Online learning includes self-paced modules, 2–3 live online classes each month, recorded sessions, Q&A, e-books, study materials and one-year mentorship. Learners also complete a final assessment and MCQ-based exam.",
+    },
+    {
+      q: "Does the Online Fellowship in Hepatology include clinical training?",
+      a: "No. Clinical training is available only in Hybrid Mode and is not included in Online Mode. Hybrid learners may receive training at partner liver centres and hospitals, subject to centre availability and confirmed arrangements. Contact MGA before admission to confirm the training centre, schedule, supervision and practical activities.",
+    },
+    {
+      q: "What are the fees for the Fellowship in Hepatology?",
+      a: "The total programme fee is ₹1,50,000 for Online Mode and ₹1,80,000 for Hybrid Mode. The ₹50,000 registration fee is already included in both amounts, so no separate registration payment is required. Contact MGA for admission and payment details.",
+    },
+  ],
+  "fellowship-in-urogynaecology": [
+    {
+      q: "What does the Fellowship in Urogynecology curriculum cover?",
+      a: "The programme includes 24 modules covering advanced pelvic floor anatomy, urodynamics, pelvic floor imaging, urinary incontinence, pelvic organ prolapse, reconstructive surgery, laparoscopic and robotic procedures, pelvic pain and female sexual medicine. It also explores conservative therapies and evidence-based clinical practice.",
+    },
+    {
+      q: "What are the eligibility requirements for the Urogynecology Fellowship programme?",
+      a: "Applicants must have an MBBS degree, valid registration with the National Medical Commission (NMC) or a State Medical Council, and at least one year of post-qualification clinical experience. Eligible doctors practising in India and internationally can apply.",
+    },
+    {
+      q: "Is the Urogynecology course online or available in a hybrid format?",
+      a: "Yes. Medical Global Academy offers both online and hybrid programme formats with flexible, self-paced learning. The programme also includes clinical workshops featuring pelvic floor disorder case simulations and clinical training partnerships with urogynecology centres and hospitals.",
+    },
+    {
+      q: "What is the total fee for the Urogynecology course online and hybrid formats?",
+      a: "The total fee is ₹1,50,000 for the online format and ₹1,80,000 for the hybrid format. Both programme fees include the ₹50,000 registration fee, so no additional registration charge is added to these totals.",
+    },
+    {
+      q: "What certification will doctors receive after completing the Fellowship in Urogynecology?",
+      a: "Participants receive CPD-aligned and ACTD-aligned certifications, along with a programme completion certificate, upon successful completion of the fellowship requirements.",
+    },
+  ],
+  "fellowship-in-surgical-oncology": [
+    {
+      q: "Who is eligible for the Fellowship in Surgical Oncology?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration and at least one year of post-qualification clinical experience are eligible to apply. The programme is open to qualified doctors practising in India and internationally, subject to the stated eligibility requirements.",
+    },
+    {
+      q: "What topics are covered in the Surgical Oncology Fellowship Program?",
+      a: "The 24-module curriculum covers cancer diagnosis, tumour staging, molecular oncology and surgical management across breast, gastrointestinal, hepatobiliary, pancreatic, colorectal, thoracic, head and neck, endocrine, genitourinary, gynaecological and paediatric oncology. It also includes sarcomas, melanoma, metastatic disease, robotic cancer surgery, precision oncology, immunotherapy and emerging surgical technologies.",
+    },
+    {
+      q: "What is the duration and learning mode of the Surgical Oncology Course?",
+      a: "The Fellowship in Surgical Oncology is a 12-month programme divided into 24 modules. It is available in online and hybrid learning formats. The academic structure includes case-based discussions, operative case discussions, surgical planning, clinical scenarios and mentorship from practising faculty.",
+    },
+    {
+      q: "What certifications are provided after completing the fellowship?",
+      a: "Participants receive CPD-aligned and ACTD-aligned certifications, along with a programme completion certificate, subject to fulfilling the applicable programme requirements.",
+    },
+    {
+      q: "Can international doctors apply for the International Surgical Oncology Fellowship?",
+      a: "Yes. Eligible doctors practising in India and internationally can apply. Applicants must meet the MBBS qualification, valid medical registration and minimum one-year post-qualification clinical experience requirements. International applicants should contact Medical Global Academy to confirm their eligibility, admission process, fees and applicable programme arrangements.",
+    },
+  ],
+  "fellowship-in-respiratory-medicine": [
+    {
+      q: "Who is eligible for the Fellowship in Respiratory Medicine?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration and at least one year of post-qualification clinical experience are eligible to apply. The programme is open to qualified doctors practising in India and internationally, subject to the stated eligibility requirements.",
+    },
+    {
+      q: "What topics are covered in the Respiratory Medicine Fellowship?",
+      a: "The programme covers respiratory physiology, pulmonary function testing, asthma, COPD, respiratory infections, tuberculosis, interstitial lung diseases, pulmonary fibrosis, pulmonary hypertension, sleep-related breathing disorders and pleural diseases. It also explores respiratory emergencies, oxygen therapy, mechanical ventilation, thoracic imaging, pulmonary rehabilitation and evidence-based respiratory care.",
+    },
+    {
+      q: "What is the duration of the Respiratory Medicine Course?",
+      a: "The Fellowship in Respiratory Medicine is a 12-month programme. Its curriculum covers adult respiratory conditions, diagnostic approaches, respiratory emergencies, critical care and contemporary management strategies.",
+    },
+    {
+      q: "What certifications are provided after completing the fellowship?",
+      a: "Participants receive CPD-aligned and ACTD-aligned certifications, along with a programme completion certificate, subject to fulfilling the applicable programme requirements.",
+    },
+    {
+      q: "How can doctors enquire about admission and programme fees?",
+      a: "Interested doctors can contact Medical Global Academy to enquire about admission, programme fees, available learning formats and the application process. Applicants should review the eligibility criteria and curriculum before applying.",
+    },
+  ],
+  "fellowship-in-hemato-oncology": [
+    {
+      q: "Who is eligible for the Fellowship in Hemato-Oncology?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration and at least one year of post-qualification clinical experience are eligible to apply. The programme is open to qualified doctors practising in India and internationally, subject to the stated eligibility requirements.",
+    },
+    {
+      q: "What topics are covered in the Clinical Hemato-Oncology Fellowship?",
+      a: "The 18-module curriculum covers hematological malignancies, cancer diagnosis, chemotherapy, targeted therapy, myeloma, myelodysplastic syndromes (MDS), genomic profiling, precision medicine and immunotherapy. It also explores CAR-T cell therapy, stem cell transplantation, coagulation disorders, translational research and long-term patient care.",
+    },
+    {
+      q: "What is the duration and learning format of the Course in Clinical Hemato Oncology?",
+      a: "The Fellowship in Hemato-Oncology is a 12-month programme available in online and hybrid formats. Both formats cover the programme curriculum and include mentorship from practising faculty.",
+    },
+    {
+      q: "What are the fees for the Fellowship in Hemato-Oncology?",
+      a: "The total programme fee is ₹1,50,000 for the online format and ₹1,80,000 for the hybrid format. The ₹50,000 registration fee is included in the respective total programme fee and is not an additional charge.",
+    },
+    {
+      q: "What certifications are provided after completing the fellowship?",
+      a: "Participants receive CPD-aligned and ACTD-aligned certifications, along with a programme completion certificate, subject to fulfilling the applicable programme requirements. Interested doctors can contact Medical Global Academy to discuss eligibility and admission.",
+    },
+  ],
+  "fellowship-in-pulmonary-medicine": [
+    {
+      q: "Who is eligible for the Fellowship in Pulmonary Medicine?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration and at least one year of post-qualification clinical experience are eligible to apply. The pulmonary medicine fellowship program is open to qualified doctors practising in India and internationally.",
+    },
+    {
+      q: "What topics are covered in the Comprehensive Pulmonary Medicine E-Course?",
+      a: "The 24-module curriculum covers pulmonary physiology, lung function testing, asthma, COPD, bronchiectasis, interstitial lung diseases, respiratory infections, tuberculosis and thoracic imaging. It also includes bronchoscopy, interventional pulmonology, pulmonary vascular diseases, sleep medicine, mechanical ventilation, thoracic oncology, pulmonary rehabilitation and precision respiratory medicine.",
+    },
+    {
+      q: "What is the duration and format of the Pulmonary Medicine Fellowship Program?",
+      a: "The Fellowship in Pulmonary Medicine is a 12-month programme available in online and hybrid formats. Both formats include the programme curriculum and mentorship from practising faculty. Doctors can contact MGA to understand the learning format and admission process.",
+    },
+    {
+      q: "What is the fee for the Online Course in Pulmonary Medicine?",
+      a: "The total programme fee is ₹1,50,000 for the online format and ₹1,80,000 for the hybrid format. The ₹50,000 registration fee is included in both total fees and is not an additional charge.",
+    },
+    {
+      q: "What certifications are provided after completing the Fellowship in Pulmonary Medicine?",
+      a: "Participants receive CPD-aligned and ACTD-aligned certifications, along with a programme completion certificate, subject to fulfilling the applicable programme requirements. Interested doctors can contact Medical Global Academy for certification details and admission guidance.",
+    },
+  ],
+  "fellowship-in-pediatric-pulmonology": [
+    {
+      q: "Who is eligible for the Fellowship in Pediatric Pulmonology?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration and at least one year of post-qualification clinical experience are eligible to apply. The programme is open to qualified doctors practising in India and internationally.",
+    },
+    {
+      q: "What topics are covered in the Pediatric Pulmonology Fellowship?",
+      a: "The 24-module curriculum covers pediatric respiratory assessment, pulmonary function testing, asthma, recurrent wheezing, bronchiolitis, respiratory infections, neonatal respiratory disorders, bronchopulmonary dysplasia, cystic fibrosis and bronchiectasis. It also includes respiratory emergencies, non-invasive ventilation, bronchoscopy, congenital lung diseases, pulmonary hypertension, sleep medicine, pulmonary genetics and precision pulmonology.",
+    },
+    {
+      q: "What is the duration and learning format of the Pediatric Pulmonology Course?",
+      a: "The Fellowship in Pediatric Pulmonology is a 12-month programme available in online and hybrid formats. Both formats include the programme curriculum and mentorship from practising faculty. Doctors can contact MGA for details about the available learning format and admission process.",
+    },
+    {
+      q: "What are the fees for the Online Pediatric Pulmonology Course?",
+      a: "The total programme fee is ₹1,50,000 for the online format and ₹1,80,000 for the hybrid format. The ₹50,000 registration fee is included in both total programme fees and is not an additional charge.",
+    },
+    {
+      q: "What certifications are provided after completing the Fellowship in Pediatric Pulmonology?",
+      a: "Participants receive CPD-aligned and ACTD-aligned certifications, along with a programme completion certificate, subject to fulfilling the applicable programme requirements. Doctors can contact Medical Global Academy for certification details and admission guidance.",
+    },
+  ],
+  "fellowship-in-pediatric-neuro-oncology": [
+    {
+      q: "Who is eligible for the Fellowship in Pediatric Neuro-Oncology?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration and at least one year of post-qualification clinical experience can apply. The programme is open to eligible doctors practising in India and internationally. International applicants should confirm the applicable registration requirements with Medical Global Academy.",
+    },
+    {
+      q: "What topics are covered in the Pediatric Neuro-Oncology Fellowship?",
+      a: "The 24-module curriculum covers pediatric brain and CNS tumour classification, neuroimaging, molecular diagnostics, genomic profiling, pediatric gliomas, medulloblastoma, ependymoma, germ cell tumours and spinal tumours. It also explores neurosurgical principles, chemotherapy, radiotherapy, immunotherapy, targeted therapies, clinical trials, supportive care and long-term survivorship.",
+    },
+    {
+      q: "What is the duration and learning format of the Clinical Fellowship in Pediatric Neuro-Oncology?",
+      a: "The Clinical Fellowship in Pediatric Neuro-Oncology is a 12-month programme available in online and hybrid formats. It includes structured digital learning resources through the MGA LMS and mentorship from practising faculty. Doctors can contact MGA to understand the learning arrangements and choose an available format.",
+    },
+    {
+      q: "What is the fee for the Pediatric Neuro-Oncology Fellowship Programme?",
+      a: "The total fee is ₹1,50,000 for the online format and ₹1,80,000 for the hybrid format. The ₹50,000 registration fee is included in both amounts and is not an additional charge. Doctors can contact Medical Global Academy for admission-related fee details.",
+    },
+    {
+      q: "What certifications are provided after completing the fellowship?",
+      a: "Participants receive CPD-aligned and ACTD-aligned certifications, along with a programme completion certificate, subject to fulfilling the applicable programme requirements. Doctors can contact Medical Global Academy to confirm certification details before enrolling.",
+    },
+  ],
+  "fellowship-in-otorhinolaryngology": [
+    {
+      q: "Who is eligible for the Fellowship in Otorhinolaryngology?",
+      a: "MBBS doctors with at least one year of clinical experience after qualification can apply. Applicants practising in India must have valid NMC or State Medical Council registration. International applicants should contact MGA to confirm the accepted medical qualifications, registration requirements and admission process.",
+    },
+    {
+      q: "What topics are covered in the Otorhinolaryngology Fellowship?",
+      a: "The 24-module curriculum covers ENT anatomy, clinical assessment, diagnostic tests, ear and hearing disorders, audiology, balance disorders, nasal and sinus conditions, voice and throat disorders, paediatric ENT and sleep-related breathing disorders. It also includes advanced academic topics such as cochlear implants, endoscopic sinus techniques, skull-base conditions, ENT emergencies, head and neck oncology, facial reconstruction and digital ENT.",
+    },
+    {
+      q: "What is the duration and learning format of this ENT fellowship?",
+      a: "The programme runs for 12 months and offers Online and Hybrid learning modes. Both modes include structured learning and mentorship from practising faculty. Online mode focuses on academic learning, while Hybrid mode also offers clinical training opportunities, subject to confirmed centre arrangements. Clinical training is not included in Online mode.",
+    },
+    {
+      q: "Does the Fellowship in Otorhinolaryngology include clinical training?",
+      a: "Clinical training opportunities are available only in Hybrid mode. The listed learning areas include ENT history-taking and examination, hearing-test interpretation, endoscopy principles, balance assessment, head and neck examination, emergency case discussions and patient counselling. The actual activities, practical exposure and supervision depend on the training centre and confirmed schedule. Contact MGA before enrolment to confirm the centre, training duration, supervision and practical activities. Online mode does not include clinical training.",
+    },
+    {
+      q: "What are the fees for the Fellowship in Otorhinolaryngology?",
+      a: "The total fee is ₹1,50,000 for Online mode and ₹1,80,000 for Hybrid mode. The ₹50,000 registration fee is already included in both programme fees, so there is no additional registration charge. Contact MGA to confirm the latest fee details and available payment options.",
+    },
+  ],
+  "fellowship-in-molecular-genetics": [
+    {
+      q: "What topics are covered in the Fellowship in Molecular Genetics?",
+      a: "The Fellowship in Molecular Genetics covers human genomics, DNA and RNA biology, gene expression, genetic mutations, molecular diagnostic techniques, next-generation sequencing, genomic bioinformatics and clinical variant interpretation. Its 24-module curriculum also explores rare genetic disorders, cancer genetics, pharmacogenomics, genetic counselling, gene therapy and precision medicine.",
+    },
+    {
+      q: "What is the duration and learning format of the Molecular Genetics Fellowship?",
+      a: "The Molecular Genetics Fellowship is a 12-month programme available in online and hybrid formats. It includes structured digital learning resources through the MGA LMS and mentorship from practising faculty. Doctors can contact MGA for details about the available learning arrangements.",
+    },
+    {
+      q: "What are the fees for the Molecular Genetics Course?",
+      a: "The total programme fee is ₹1,50,000 for the online format and ₹1,80,000 for the hybrid format. The ₹50,000 registration fee is included in both amounts and is not an additional charge.",
+    },
+    {
+      q: "Does the molecular genetics course cover molecular genetic testing?",
+      a: "Yes. The curriculum covers molecular biology techniques, genetic diagnostic methods, next-generation sequencing, genomic analysis, variant interpretation and genetic test selection. These topics help participants understand how molecular genetic testing contributes to the evaluation of inherited and acquired genetic conditions.",
+    },
+    {
+      q: "Who can apply for the Molecular Genetics Fellowship?",
+      a: "Doctors and medical professionals interested in molecular genetics, genomics and genetic diagnostics can contact Medical Global Academy to confirm the programme's eligibility criteria. Applicants should verify the applicable academic qualifications, registration requirements and other admission conditions with MGA before applying.",
+    },
+  ],
+  "fellowship-in-general-medicine": [
+    {
+      q: "Who is eligible for the Fellowship in General Medicine?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration and at least one year of post-qualification clinical experience are eligible to apply. The programme is open to doctors practising in India and internationally, subject to applicable registration requirements.",
+    },
+    {
+      q: "What topics are covered in the General Medicine Fellowship?",
+      a: "The 24-module curriculum covers clinical assessment, diagnostic reasoning, cardiovascular and respiratory diseases, diabetes, endocrine disorders, gastrointestinal and liver diseases, renal and neurological conditions, infectious diseases and hematology. It also explores rheumatology, geriatric medicine, oncology, emergency medicine, critical care, clinical pharmacology and preventive medicine.",
+    },
+    {
+      q: "What is the duration of the General Medicine Fellowship for Doctors?",
+      a: "The Fellowship in General Medicine is a 12-month programme. It includes structured academic learning, case-based education, lectures, assessments and mentorship from practising faculty.",
+    },
+    {
+      q: "How does clinical general medicine training support doctors?",
+      a: "Clinical general medicine training helps doctors strengthen their understanding of patient assessment, diagnostic reasoning, interpretation of investigations and evidence-based management of medical conditions. The programme covers multiple areas of adult medicine, including cardiovascular, respiratory, renal, neurological and infectious diseases.",
+    },
+    {
+      q: "What certifications are provided after completing the Fellowship in General Medicine?",
+      a: "Participants receive CPD-aligned and ACTD-aligned certifications, along with a programme completion certificate, subject to fulfilling the applicable programme requirements. Doctors can contact Medical Global Academy for further information about certification and admission.",
+    },
+  ],
+  "fellowship-in-child-psychiatry": [
+    {
+      q: "Who is eligible for the Fellowship in Child Psychiatry?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration and at least one year of post-qualification clinical experience are eligible to apply. The programme is open to eligible doctors practising in India and internationally, subject to applicable registration requirements.",
+    },
+    {
+      q: "What topics are covered in the Child Psychiatry Fellowship?",
+      a: "The 24-module curriculum covers child and adolescent psychiatric assessment, developmental neuroscience, autism spectrum disorder, ADHD, intellectual and learning disorders, anxiety, OCD, depression, bipolar disorder and behavioural conditions. It also explores pediatric psychopharmacology, psychotherapy, family therapy, psychiatric emergencies, trauma, eating disorders, sleep disorders, substance use and early psychosis.",
+    },
+    {
+      q: "What learning formats are available for the Fellowship in Child Psychiatry?",
+      a: "Medical Global Academy offers the Fellowship in Child Psychiatry in online and hybrid formats. The programme includes expert-led academic sessions, case-based learning, clinical scenarios, digital learning resources and assessments. Doctors can contact MGA to understand the learning arrangements available with each format.",
+    },
+    {
+      q: "What are the fees for the Child Psychiatry Course?",
+      a: "The total programme fee is ₹1,50,000 for the online format and ₹1,80,000 for the hybrid format. The ₹50,000 registration fee is included in both amounts and is not an additional charge.",
+    },
+    {
+      q: "How can doctors enrol in the Fellowship in Child Psychiatry?",
+      a: "Eligible MBBS-qualified doctors can contact Medical Global Academy to enquire about the admission process, confirm their eligibility and understand the available online and hybrid learning formats. The admissions team can also guide applicants regarding programme fees and registration requirements.",
+    },
+  ],
+  "fellowship-in-aesthetic-medicine": [
+    {
+      q: "Who is eligible for the Fellowship in Aesthetic Medicine?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration and at least one year of post-qualification clinical experience are eligible to apply. The programme is open to eligible doctors practising in India and internationally, subject to applicable registration requirements.",
+    },
+    {
+      q: "What topics are covered in the Fellowship in Aesthetic Medicine?",
+      a: "The 24-module curriculum covers facial anatomy, skin assessment, botulinum toxin, dermal fillers, chemical peels, laser and energy-based treatments, microneedling, hair restoration, facial rejuvenation and body contouring. It also explores patient consultation, treatment planning, vascular safety, complication management, regenerative aesthetics and evidence-based aesthetic practice.",
+    },
+    {
+      q: "Does the Fellowship in Aesthetic Medicine include workshops?",
+      a: "The programme covers key areas of aesthetic medicine, including injectables, chemical peels, laser treatments, facial rejuvenation and procedure safety. Mentorship from practising faculty is also included. However, separate workshop sessions and their practical arrangements are not specified in the available programme details. Contact MGA to confirm workshop availability.",
+    },
+    {
+      q: "What are the fees for the online and hybrid Aesthetic Medicine Course?",
+      a: "The total programme fee is ₹1,50,000 for the online format and ₹1,80,000 for the hybrid format. The ₹50,000 registration fee is included in both amounts and is not an additional charge.",
+    },
+    {
+      q: "What certification do doctors receive after completing the Fellowship in Aesthetic Medicine?",
+      a: "The 12-month programme offers CPD-aligned and ACTD-aligned certification, along with a certificate on completion. Doctors can contact Medical Global Academy to confirm the applicable certification details and completion requirements.",
+    },
+  ],
+  "fellowship-in-vascular-surgery": [
+    {
+      q: "Who is eligible for the Fellowship in Vascular Surgery?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration, and at least one year of post-qualification clinical experience can apply. The programme is open to eligible doctors practising in India and internationally, subject to applicable registration requirements.",
+    },
+    {
+      q: "What topics are covered in this vascular surgery fellowship?",
+      a: "The 24-module curriculum covers vascular anatomy, diagnostic imaging, peripheral arterial disease, aortic disorders, carotid and venous conditions, vascular trauma, diabetic foot, limb salvage and vascular emergencies. It also explores angiography, angioplasty, stenting, EVAR, open vascular reconstruction, endovascular interventions, dialysis access and perioperative care.",
+    },
+    {
+      q: "Does the Fellowship in Vascular Surgery include workshops and clinical training?",
+      a: "The programme highlights include surgical workshops with real vascular case simulations and clinical training through partner vascular surgery centres and hospitals. Doctors also receive mentorship from practising faculty and learn from vascular surgeons and endovascular experts. Contact MGA to confirm the available training locations, schedules, format and participation arrangements.",
+    },
+    {
+      q: "What is the fee for the Fellowship in Vascular Surgery, and what certification is offered?",
+      a: "The total programme fee is ₹1,50,000 for the online format and ₹1,80,000 for the hybrid format. Both fees include the ₹50,000 registration fee, so it is not an additional charge. The programme offers CPD-aligned and ACTD-aligned certifications, along with a certificate on completion. Contact MGA for details about the awarding bodies and certification requirements.",
+    },
+    {
+      q: "How can doctors choose the best vascular surgery fellowship programme?",
+      a: "When comparing vascular surgery fellowship programs, doctors should assess the curriculum, faculty expertise, clinical training arrangements, surgical workshops, learning format and certification. MGA offers a 12-month programme with 24 modules and online and hybrid learning options. Eligible doctors can contact Medical Global Academy to discuss the course, confirm programme details and understand the vascular surgery fellowship application process.",
+    },
+  ],
+  "fellowship-in-urology-surgery": [
+    {
+      q: "Who is eligible for the Fellowship in Urology Surgery?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration, and at least one year of post-qualification clinical experience can apply. The programme is open to eligible doctors practising in India and internationally, subject to applicable registration requirements.",
+    },
+    {
+      q: "What topics are covered in the Urology Surgery Fellowship?",
+      a: "The 24-module curriculum covers urological oncology, endourology, urinary stone disease, laparoscopic and robotic-assisted techniques, reconstructive urology, andrology, female and paediatric urology, renal transplantation, prostate disorders and urological emergencies. It also explores cystoscopy, urodynamics, diagnostic imaging and perioperative care.",
+    },
+    {
+      q: "Can doctors apply for a urology fellowship after general surgery?",
+      a: "Doctors searching for a urology fellowship after general surgery should check the stated eligibility criteria before applying. MGA requires an MBBS degree, valid NMC or State Medical Council registration and at least one year of post-qualification clinical experience. An MS or DNB in General Surgery is not listed as a mandatory requirement.",
+    },
+    {
+      q: "What are the fees and certification options for this fellowship?",
+      a: "The total fee is ₹1,50,000 for the online programme and ₹1,80,000 for the hybrid programme. Both fees include the ₹50,000 registration fee. The programme offers CPD-aligned and ACTD-aligned certifications, along with a certificate on completion. Contact MGA to confirm certification details and requirements.",
+    },
+    {
+      q: "Does the online urology surgery course include clinical training?",
+      a: "MGA offers online and hybrid learning options, mentorship from practising faculty, and programme highlights that include surgical practice with live cases at high-volume hospitals. Clinical training locations, schedules and participation arrangements may depend on the selected format. Contact MGA to confirm these details before admission.",
+    },
+  ],
+  "fellowship-in-urogynecology": [
+    {
+      q: "Who is eligible to apply for the Fellowship in Urogynecology?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration and at least one year of post-qualification clinical experience can apply. The programme is open to eligible doctors practising in India and internationally, subject to applicable registration requirements.",
+    },
+    {
+      q: "What topics are covered in the Urogynecology Fellowship Program?",
+      a: "The 24-module curriculum covers pelvic floor anatomy, urinary incontinence, pelvic organ prolapse, overactive bladder, voiding dysfunction, urodynamics, pelvic imaging and genitourinary fistulae. It also explores reconstructive procedures, mesh and sling complications, pelvic pain, female sexual health, postpartum pelvic floor disorders and evidence-based care.",
+    },
+    {
+      q: "What does the clinical fellowship in urogynecology include?",
+      a: "The programme highlights include clinical workshops with real pelvic floor disorder case simulations and clinical training through partner urogynecology centres and hospitals. Doctors also receive mentorship from practising faculty and study diagnostic and management approaches for complex pelvic floor conditions. Contact MGA to confirm clinical locations, workshop schedules and the nature of clinical participation.",
+    },
+    {
+      q: "What are the fees and certification options for the Urogynecology Fellowship?",
+      a: "The total programme fee is ₹1,50,000 for online learning and ₹1,80,000 for hybrid learning. Both fees include the ₹50,000 registration fee, so it is not an additional charge. The programme offers CPD-aligned and ACTD-aligned certifications, along with a certificate on completion. Contact MGA to confirm awarding bodies and certification requirements.",
+    },
+    {
+      q: "Is the urogynecology course online, or can doctors choose hybrid learning?",
+      a: "MGA offers self-paced online and hybrid learning options for doctors who want to study while continuing their clinical practice. The programme includes faculty mentorship, expert-led sessions and clinical workshops. Doctors comparing a urogynecology course online with the hybrid option should contact MGA to confirm the clinical training arrangements, schedules and facilities available with each format.",
+    },
+  ],
+  "fellowship-in-trauma-surgery": [
+    {
+      q: "Who is eligible to apply for the Fellowship in Trauma Surgery?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration and at least one year of post-qualification clinical experience can apply. The programme is open to eligible doctors practising in India and internationally, subject to applicable registration requirements.",
+    },
+    {
+      q: "What topics are covered in the Trauma Surgery Fellowship?",
+      a: "The 16-module curriculum covers initial trauma assessment, surgical management of injuries, advanced trauma critical care and special patient populations. It also explores paediatric and military trauma, endovascular and minimally invasive techniques, trauma team leadership, rehabilitation, research and evidence-based practices.",
+    },
+    {
+      q: "What does the clinical fellowship in trauma surgery include?",
+      a: "The programme highlights clinical training at trauma centres and hospitals, with opportunities to work with real patients and assist in procedures. It also includes surgical workshops with real trauma case simulations and mentorship from practising faculty. Contact MGA to confirm hospital locations, clinical supervision, procedure access, schedules and participation requirements.",
+    },
+    {
+      q: "What are the fees and certification options for the Trauma Surgery Fellowship?",
+      a: "The total programme fee is ₹1,50,000 for online learning and ₹1,80,000 for hybrid learning. Both fees include the ₹50,000 registration fee, so it is not an additional charge. The programme lists CPD-aligned and ACTD-aligned certifications and states CPD UK accreditation. Contact MGA to confirm the awarding organisations, accreditation details and certification requirements.",
+    },
+    {
+      q: "How should doctors compare the best trauma surgery fellowships and online trauma surgery courses?",
+      a: "Doctors comparing the best trauma surgery fellowships should evaluate the curriculum, faculty experience, hospital-based clinical training, patient exposure, surgical workshops, learning formats and certification. MGA offers a 12-month programme with 16 modules and online and hybrid options. Contact MGA to compare the training arrangements, confirm eligibility and discuss admission.",
+    },
+  ],
+  "fellowship-in-sports-medicine": [
+    {
+      q: "Who can apply for the Fellowship in Sports Medicine after MBBS?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration and at least one year of post-qualification clinical experience are eligible to apply. The programme is open to eligible doctors practising in India and internationally, subject to applicable registration requirements. Contact MGA to discuss your eligibility and admission process.",
+    },
+    {
+      q: "What will I learn in the Fellowship in Sports Medicine?",
+      a: "The 24-module programme covers sports injury assessment, musculoskeletal examination, exercise physiology, biomechanics, sports imaging, ultrasound, acute sports trauma and rehabilitation. It also includes concussion management, joint and soft-tissue injuries, return-to-play planning, sports cardiology, nutrition and athlete health. Doctors considering fellowship programs in sports medicine can review this curriculum to assess whether it matches their learning goals.",
+    },
+    {
+      q: "Does the Sports Medicine Fellowship include clinical training?",
+      a: "The programme highlights clinical training at sports medicine centres and hospitals, along with clinical workshops based on sports injury cases and rehabilitation planning. It also mentions opportunities for patient exposure and assisting in procedures. Contact MGA before admission to confirm available training centres, supervision, clinical schedules and participation opportunities.",
+    },
+    {
+      q: "What is the fee for the Fellowship in Sports Medicine, and what certification is offered?",
+      a: "The total fee is ₹1,50,000 for the online programme and ₹1,80,000 for the hybrid programme. Both fees include the ₹50,000 registration fee. MGA lists CPD-aligned and ACTD-aligned certifications and states CPD UK accreditation. Contact the admissions team to confirm the awarding organisations, certification requirements and payment options.",
+    },
+    {
+      q: "Can I enrol in an online fellowship in sports medicine while working?",
+      a: "Yes. MGA offers a self-paced online learning option for doctors who want to continue their clinical practice while studying. A hybrid option is also available for doctors interested in the programme's additional clinical training arrangements. Contact MGA to compare both formats, understand the clinical exposure available and choose the suitable learning option.",
+    },
+  ],
+  "fellowship-in-sexology": [
+    {
+      q: "Who can apply for the Fellowship in Sexology?",
+      a: "The 12-month Fellowship in Sexology is designed for MBBS doctors, MD/MS doctors and other qualified medical doctors interested in sexual medicine and sexual health. Applicants should confirm their accepted qualifications and registration requirements with Medical Global Academy before applying. Contact the admissions team to discuss your eligibility and admission process.",
+    },
+    {
+      q: "What does the Sexology Fellowship cover?",
+      a: "The programme covers male and female sexual dysfunctions, including erectile dysfunction, premature ejaculation, low sexual desire, orgasmic disorders and sexual pain. It also explores hormonal and reproductive factors, psychosexual care, menopause-related sexual health, evidence-based counselling and multidisciplinary management. Doctors can review these subjects to assess whether the curriculum matches their professional learning goals.",
+    },
+    {
+      q: "Does the Fellowship Course in Clinical Sexology include clinical training?",
+      a: "MGA highlights clinical training through sexology clinics, counselling centres and hospitals. The programme also mentions patient exposure and opportunities to assist in procedures. Contact MGA to confirm available training locations, clinical activities, supervision, patient interaction and practical participation before enrolling.",
+    },
+    {
+      q: "What is the fee and certification offered by the Fellowship in Sexology?",
+      a: "The total fee is ₹1,50,000 for the online programme and ₹1,80,000 for the hybrid programme. Both fees include the ₹50,000 registration fee. MGA states that the fellowship is accredited by CPD UK. Contact the admissions team to confirm accreditation and certificate details, payment options and admission requirements.",
+    },
+    {
+      q: "Can I pursue the Fellowship in Sexology online while continuing my clinical practice?",
+      a: "Yes. MGA offers a self-paced online learning option for doctors who want to study while continuing their clinical practice. A hybrid option is also available for doctors interested in additional clinical training arrangements. Contact MGA to compare both formats and understand the differences in learning delivery, clinical exposure and training schedules before admission.",
+    },
+  ],
+  "fellowship-in-regenerative-medicine": [
+    {
+      q: "Who can apply for the Fellowship in Regenerative Medicine after MBBS?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration and at least one year of post-qualification clinical experience can apply. The programme is open to eligible doctors practising in India and internationally. Contact Medical Global Academy to confirm your eligibility and understand the admission process.",
+    },
+    {
+      q: "What topics are covered in the Regenerative Medicine Fellowship?",
+      a: "The 24-module curriculum covers stem cell biology, cellular therapies, PRP, exosomes, tissue engineering, gene therapy, regenerative immunology and orthobiologics. It also explores applications in orthopaedics, cardiology, neurology, dermatology and wound healing. Doctors considering a stem cell and regenerative medicine course can review these topics to evaluate the programme's curriculum and suitability for their professional goals.",
+    },
+    {
+      q: "Does the Fellowship in Regenerative Medicine include clinical and laboratory training?",
+      a: "Yes. The programme highlights clinical and laboratory workshops, regenerative therapy case simulations and clinical and research training through partner institutes and centres. It also mentions opportunities for patient exposure and practical learning. Contact MGA to confirm training locations, laboratory access, clinical supervision and available practical activities before admission.",
+    },
+    {
+      q: "What is the fee and certification offered by the Fellowship in Regenerative Medicine?",
+      a: "The total fee is ₹1,50,000 for the online programme and ₹1,80,000 for the hybrid programme. Both fees include the ₹50,000 registration fee. The programme lists CPD-aligned and ACTD-aligned certifications and states CPD UK accreditation. Contact MGA to confirm the awarding organisations, certification requirements and available payment options.",
+    },
+    {
+      q: "Can I enrol in a regenerative medicine course online while continuing clinical practice?",
+      a: "Yes. MGA offers a self-paced online learning option for doctors who want to study while continuing their clinical practice. A hybrid option is also available for doctors interested in additional clinical and laboratory training arrangements. Contact MGA to compare both formats, understand the available training opportunities and choose the suitable option before admission.",
+    },
+  ],
+  "fellowship-in-psychiatric": [
+    {
+      q: "Who can apply for the Fellowship in Psychiatry after MBBS?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration and at least one year of post-qualification clinical experience can apply. The programme is open to eligible doctors practising in India and internationally. Contact Medical Global Academy to confirm your eligibility and understand the admission process.",
+    },
+    {
+      q: "What topics are covered in the Psychiatry Fellowship?",
+      a: "The 24-module curriculum covers mood disorders, anxiety, bipolar disorder, schizophrenia, OCD, trauma-related conditions, addiction psychiatry, psychotherapy and psychopharmacology. It also explores child and adolescent psychiatry, geriatric psychiatry, emergency care, precision psychiatry, neuromodulation and digital mental health.",
+    },
+    {
+      q: "Does the clinical fellowship in psychiatry include hospital training?",
+      a: "The programme highlights supervised clinical training at hospitals and mental health centres, along with practical workshops, psychiatric case discussions and simulations. Doctors can enquire about patient-facing activities and practical learning opportunities. Contact MGA to confirm the training locations, supervision and activities available in your chosen learning format.",
+    },
+    {
+      q: "Is an online fellowship in psychiatry available for practising doctors?",
+      a: "Yes. MGA offers online and hybrid learning options. The self-paced online format allows doctors to study alongside their clinical responsibilities. The hybrid option is available for doctors seeking a combination of online learning and additional training opportunities. Contact MGA to compare the formats and confirm their clinical training arrangements.",
+    },
+    {
+      q: "Can doctors practising outside India apply for this Fellowship in Psychiatry?",
+      a: "Yes. The programme is open to eligible doctors practising in India and internationally. It lists CPD-aligned and ACTD-aligned certification, along with a certificate on completion. International applicants should contact MGA to confirm eligibility, admission requirements and the certification details applicable to their location.",
+    },
+  ],
+  "fellowship-in-prosthodontics": [
+    {
+      q: "Who can apply for the Fellowship in Prosthodontics?",
+      a: "BDS and MDS-qualified dental professionals can enquire about admission. BDS applicants must have at least one year of clinical experience. Applicants should confirm the required dental registration and other admission conditions with Medical Global Academy before applying.",
+    },
+    {
+      q: "What topics are covered in the Prosthodontics Fellowship?",
+      a: "The 12-module curriculum covers fixed, removable and implant prosthodontics, aesthetic dentistry, complex rehabilitation and full-mouth rehabilitation. It also includes digital prosthodontics, CAD/CAM technologies, implant-supported restorations, bone and soft-tissue considerations, and evidence-based practice. The curriculum supports prosthodontic advanced clinical training through structured learning and case discussions.",
+    },
+    {
+      q: "Does the Fellowship in Prosthodontics include clinical training?",
+      a: "The programme highlights clinical workshops, restorative case discussions and training through partner dental colleges and prosthodontic centres. It also describes patient-based learning and opportunities to assist in procedures. Contact MGA to confirm training locations, clinical supervision and practical activities available to enrolled learners.",
+    },
+    {
+      q: "Is an online prosthodontics course available, and can I choose hybrid learning?",
+      a: "Yes. MGA offers online and hybrid learning options. The online prosthodontics course provides flexible, self-paced learning, while the hybrid format combines online modules with additional training arrangements. Contact MGA to understand the clinical exposure and practical learning opportunities available with each format.",
+    },
+    {
+      q: "What are the fees and certification details for this Fellowship Programme in Prosthodontics?",
+      a: "The total programme fee is ₹1,50,000 for the online format and ₹1,80,000 for the hybrid format. The ₹50,000 registration fee is included in both amounts and is not an additional charge. The programme lists CPD-aligned and ACTD-aligned certification. Contact MGA to confirm payment options, certification requirements and awarding organisations.",
+    },
+  ],
+  "fellowship-in-pediatric-surgery": [
+    {
+      q: "Who can apply for the Fellowship in Pediatric Surgery?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration and at least one year of post-qualification clinical experience can apply. The programme is open to eligible doctors practising in India and internationally. Contact Medical Global Academy to confirm your eligibility and admission requirements.",
+    },
+    {
+      q: "What topics are covered in the Pediatric Surgery Fellowship?",
+      a: "The 15-module curriculum covers paediatric anatomy, neonatal surgery, gastrointestinal surgery, paediatric urology, thoracic surgery, paediatric oncology and trauma care. It also includes cardiac, vascular, endocrine, transplant, plastic and reconstructive surgery, along with laparoscopic and robotic techniques, neurosurgery and pain management. Doctors comparing pediatric surgery fellowship programs can review these topics to understand the programme's academic scope.",
+    },
+    {
+      q: "Does the Fellowship in Pediatric Surgery include hospital-based clinical training?",
+      a: "The programme highlights surgical workshops, paediatric case discussions and clinical training through partner children's hospitals and paediatric surgery centres. Contact MGA to confirm hospital locations, supervised patient exposure, opportunities to assist in procedures and the practical activities available in your chosen learning format.",
+    },
+    {
+      q: "Can international doctors apply for this Pediatric Surgery Fellowship?",
+      a: "Yes. Eligible doctors practising outside India can enquire about admission. The programme offers online and hybrid learning options. Doctors considering an international pediatric surgery fellowship should confirm eligibility, learning format, clinical training availability and certification requirements for their country before enrolling.",
+    },
+    {
+      q: "What are the fees and certification details of the Pediatric Surgery Fellowship Programme?",
+      a: "The total programme fee is ₹1,50,000 for the online format and ₹1,80,000 for the hybrid format. The ₹50,000 registration fee is included in both amounts and is not an additional charge. The programme lists CPD-aligned and ACTD-aligned certification, along with a certificate on completion. Contact MGA to discuss payment options, certification requirements and the admission process.",
+    },
+  ],
+  "fellowship-in-pediatric-urology": [
+    {
+      q: "Who can apply for the Fellowship in Paediatric Urology?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration and at least one year of post-qualification clinical experience can apply. The programme is open to eligible doctors practising in India and internationally. Contact Medical Global Academy to confirm your eligibility and admission requirements.",
+    },
+    {
+      q: "What topics are covered in the Pediatric Urology Fellowship?",
+      a: "The 24-module curriculum covers congenital urinary tract anomalies, fetal urology, prenatal diagnosis, hydronephrosis, vesicoureteral reflux, urinary infections, bladder dysfunction, neuro-urology, hypospadias and undescended testes. It also explores paediatric stone disease, endourology, urological endoscopy, robotic and laparoscopic techniques, reconstruction and paediatric oncology.",
+    },
+    {
+      q: "Is an online Fellowship in Paediatric Urology available?",
+      a: "MGA offers online and hybrid programme formats. Doctors can enquire about the online format for flexible learning or the hybrid format for a combination of online study and additional learning arrangements. Contact MGA to understand the course structure, learning resources and format-specific requirements before admission.",
+    },
+    {
+      q: "What is the fee for the Pediatric Urology Fellowship Program?",
+      a: "The total programme fee is ₹1,50,000 for the online format and ₹1,80,000 for the hybrid format. The ₹50,000 registration fee is included in both amounts and is not an additional charge. Contact MGA to discuss payment options and the admission process.",
+    },
+    {
+      q: "Can international doctors apply for this International Pediatric Urology Fellowship?",
+      a: "Yes. Eligible doctors practising outside India can enquire about admission. International applicants should contact MGA to confirm eligibility, available learning formats, admission requirements and any location-specific conditions before enrolling.",
+    },
+  ],
+  "fellowship-in-pediatrics-nutrition": [
+    {
+      q: "Who can apply for the Fellowship in Pediatrics Nutrition?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration and at least one year of post-qualification clinical experience can apply. The programme is open to eligible doctors practising in India and internationally. International applicants should contact MGA to confirm the applicable registration and admission requirements.",
+    },
+    {
+      q: "What topics are covered in the Pediatric Nutrition Fellowship?",
+      a: "The 12-module curriculum covers growth assessment, nutritional diagnosis, nutrition in acute and chronic illnesses, childhood obesity, metabolic syndrome, feeding disorders and nutrient absorption. It also explores nutrition for specific paediatric populations, immune function, endocrine disorders, research methods, evidence-based practice and global child nutrition.",
+    },
+    {
+      q: "Is an Online Fellowship in Pediatric Nutrition available?",
+      a: "Yes. MGA offers an online and a hybrid learning format. Doctors looking for an online pediatric nutrition course can enquire about the course structure, digital learning resources, mentorship and any practical training arrangements. Contact MGA to understand the learning requirements for each format before admission.",
+    },
+    {
+      q: "What is the fee for the Fellowship in Pediatric Nutrition?",
+      a: "The total programme fee is ₹1,50,000 for the online format and ₹1,80,000 for the hybrid format. The ₹50,000 registration fee is included in both totals and is not an additional charge. Contact MGA to discuss payment options and the admission process.",
+    },
+    {
+      q: "Can international doctors apply for this fellowship?",
+      a: "Yes. Eligible doctors practising outside India can enquire about admission. International applicants should contact Medical Global Academy to confirm eligibility, registration requirements, available learning formats, documentation and location-specific admission conditions.",
+    },
+  ],
+  "fellowship-in-pediatric-gastroenterology": [
+    {
+      q: "Who can apply for the Pediatric Gastroenterology Fellowship?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration and at least one year of post-qualification clinical experience can apply. The programme is open to eligible doctors practising in India and internationally. Contact MGA to confirm your eligibility and admission requirements.",
+    },
+    {
+      q: "What topics are covered in this fellowship?",
+      a: "The 24-module curriculum covers inflammatory bowel disease, GI motility disorders, celiac disease, food allergies, paediatric nutrition, intestinal failure, hepatology, liver transplantation and pancreatitis. It also explores advanced endoscopy, intestinal ultrasound, GI infections, neonatal digestive disorders, GI oncology, MASLD/MASH, microbiome medicine and emerging technologies.",
+    },
+    {
+      q: "Does the fellowship include clinical training at children's hospitals?",
+      a: "The programme highlights clinical workshops based on real paediatric GI cases and clinical training through partner children's hospitals and gastroenterology centres. Training may include patient-based learning and assistance with procedures, depending on the centre and supervision arrangements. Contact MGA to confirm available locations, practical exposure and training requirements before admission.",
+    },
+    {
+      q: "What is the fee for the Pediatric Gastroenterology Fellowship Program?",
+      a: "The total programme fee is ₹1,50,000 for the online format and ₹1,80,000 for the hybrid format. The ₹50,000 registration fee is included in both totals and is not an additional charge. Contact MGA to discuss payment options and the admission process.",
+    },
+    {
+      q: "What certification do doctors receive after completing the fellowship?",
+      a: "The programme lists CPD-aligned and ACTD-aligned certification, along with a certificate on completion. Applicants should confirm the awarding organisations, certification requirements and applicable recognition before enrolling. International doctors can also contact MGA to check eligibility, documentation and available learning formats.",
+    },
+  ],
+  "fellowship-in-pediatric-nephrology": [
+    {
+      q: "Who can apply for the Pediatric Nephrology Fellowship?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration and at least one year of post-qualification clinical experience can apply. The programme is open to eligible doctors practising in India and internationally. International applicants should contact MGA to confirm applicable registration, documentation and admission requirements.",
+    },
+    {
+      q: "What topics are covered in the Fellowship in Pediatric Nephrology?",
+      a: "The 24-module curriculum covers paediatric renal physiology, diagnostic evaluation, congenital kidney disorders, nephrotic syndrome, glomerulonephritis, acute kidney injury, chronic kidney disease and paediatric hypertension. It also explores genetic kidney diseases, renal imaging, dialysis, kidney transplantation, fluid and electrolyte disorders, renal nutrition and advanced nephrology practice.",
+    },
+    {
+      q: "Are online learning options available for this fellowship?",
+      a: "Yes. MGA offers an online learning format with live interactive classes, recorded lectures, digital study resources, case discussions and assessments. Doctors comparing pediatric nephrology online courses can contact MGA to understand the class schedule, learning resources, faculty mentorship and examination requirements.",
+    },
+    {
+      q: "Does the fellowship include clinical training in paediatric nephrology?",
+      a: "The programme highlights clinical exposure through paediatric nephrology departments and children's hospitals. Training activities may include case discussions, ward rounds, renal imaging, dialysis-related learning and transplant follow-up, depending on the training centre and supervision arrangements. Contact MGA to confirm available locations, practical activities and clinical training requirements before admission.",
+    },
+    {
+      q: "What is the fee and certification for the Pediatric Nephrology Fellowship Program?",
+      a: "The total programme fee is ₹1,50,000 for the online format and ₹1,80,000 for the hybrid format. The ₹50,000 registration fee is included in both totals and is not an additional charge. The programme lists CPD-aligned and ACTD-aligned certification, with a certificate on completion. Contact MGA to confirm payment options, certification requirements and the awarding organisations.",
+    },
+  ],
+  "fellowship-in-pediatric-hematology": [
+    {
+      q: "Who can apply for the Pediatric Hematology Fellowship?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration, and at least one year of post-qualification clinical experience can apply. The program is open to eligible doctors practising in India and internationally.",
+    },
+    {
+      q: "What is the duration and learning format of this fellowship?",
+      a: "The Pediatric Hematology Fellowship runs for 12 months. Doctors can choose between online and hybrid learning formats, with self-paced study resources and academic sessions.",
+    },
+    {
+      q: "What topics are covered in the Pediatric Hematology Fellowship?",
+      a: "The 24-module curriculum covers anemia, thalassemia, sickle cell disease, hemophilia, bleeding and platelet disorders, leukemia, lymphoma, bone marrow failure, transfusion medicine, stem cell transplantation, CAR-T therapy, molecular hematology, and pediatric hematology emergencies.",
+    },
+    {
+      q: "What is the fee for the online and hybrid programs?",
+      a: "The total fee is ₹1,50,000 for the online program and ₹1,80,000 for the hybrid program. The ₹50,000 registration fee is included in the total program fee and is not an additional charge.",
+    },
+    {
+      q: "Does the fellowship include clinical training and certification?",
+      a: "The program includes clinical workshops based on real pediatric hematology cases and clinical training through partner pediatric hematology units and specialized centres. Doctors also receive faculty mentorship. CPD-aligned and ACTD-aligned certification is offered on successful completion.",
+    },
+  ],
+  "fellowship-in-orthopedic-surgery": [
+    {
+      q: "Who is eligible for the Fellowship in Orthopedic Surgery?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration, and at least one year of post-qualification clinical experience can apply. The program is open to eligible doctors practising in India and internationally.",
+    },
+    {
+      q: "What is the duration of the Orthopedic Surgery Fellowship?",
+      a: "The program runs for 12 months. Doctors can choose between online and hybrid learning modes.",
+    },
+    {
+      q: "What topics are covered in the Fellowship in Orthopedic Surgery?",
+      a: "The 24-module curriculum covers orthopedic trauma, fracture fixation, hip and knee replacement, sports medicine, arthroscopy, spine surgery, shoulder and elbow conditions, hand and wrist surgery, pediatric orthopedics, foot and ankle reconstruction, orthopedic oncology, rehabilitation, and emerging technologies such as robotic-assisted and AI-enabled orthopedic approaches.",
+    },
+    {
+      q: "What is the fee for the Fellowship in Orthopedic Surgery?",
+      a: "The total program fee is ₹1,50,000 for the online mode and ₹1,80,000 for the hybrid mode. The ₹50,000 registration fee is included in the total program fee and is not charged separately.",
+    },
+    {
+      q: "Does the program include surgical workshops, clinical training, and certification?",
+      a: "The program includes surgical workshops based on real patient case studies and academic mentorship from practising orthopedic faculty. Its program highlights also list clinical training through partner hospitals and surgery centres. Contact MGA to confirm the available training format and schedule. Participants receive CPD-aligned and ACTD-aligned certification after successful completion.",
+    },
+  ],
+  "fellowship-in-oral-implantology": [
+    {
+      q: "Can I apply for the Fellowship in Oral Implantology after BDS?",
+      a: "Yes. BDS graduates with 1–2 years of clinical experience can apply. MDS-qualified dental professionals can also apply without prior clinical experience. The program is open to eligible dental professionals practising in India and internationally.",
+    },
+    {
+      q: "What is the duration of the Oral Implantology Fellowship?",
+      a: "The program runs for 12 months. Participants can choose between online and hybrid learning modes.",
+    },
+    {
+      q: "What topics are covered in the Dental Implantology Fellowship?",
+      a: "The 24-module curriculum covers implant biology, osseointegration, patient assessment, treatment planning, implant surgery principles, implant prosthodontics, bone augmentation, regenerative procedures, digital implant dentistry, implant complications, peri-implant health, aesthetic implant dentistry, full-arch rehabilitation, implant occlusion, and long-term implant maintenance.",
+    },
+    {
+      q: "What is the fee for the Fellowship in Oral Implantology?",
+      a: "The total program fee is ₹1,50,000 for the online mode and ₹1,80,000 for the hybrid mode. The ₹50,000 registration fee is included in the total program fee. It is not an additional charge.",
+    },
+    {
+      q: "Does the Fellowship in Oral Implantology include clinical exposure and certification?",
+      a: "Yes. The program includes clinical exposure workshops based on real implant cases and academic mentorship from practising faculty. Clinical training through partner dental colleges and implant centres is also listed among the program highlights. Contact MGA to confirm the training format and schedule. Participants receive CPD-aligned and ACTD-aligned certification after successful completion.",
+    },
+  ],
+  "fellowship-in-oncosurgery": [
+    {
+      q: "Who is eligible for the Fellowship in Oncosurgery?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration, and at least one year of post-qualification clinical experience can apply. International applicants can also apply, subject to applicable medical registration requirements.",
+    },
+    {
+      q: "What topics are covered in the Oncosurgery course?",
+      a: "The curriculum covers the fundamentals of oncosurgery, surgical techniques, head and neck cancers, and thoracic and abdominal cancers. Online learning also includes cancer biology, cancer staging, preoperative evaluation, tumor resection techniques, reconstruction methods, and perioperative care.",
+    },
+    {
+      q: "What online learning and mentorship support does MGA provide?",
+      a: "MGA offers live online faculty sessions, recorded lectures, dedicated Q&A sessions, e-books, notes, and study materials. Doctors also receive one-year mentorship to support their learning. Around 2–3 classes take place each month, usually during evenings and weekends.",
+    },
+    {
+      q: "Does the fellowship include clinical training at cancer hospitals?",
+      a: "The program offers clinical workshops based on cancer-related case simulations and clinical training opportunities through cancer hospitals and oncology centers. Practical exposure, including patient interaction and assistance in procedures, depends on the training center, supervision, and available arrangements. Contact MGA to confirm the training location, activities, learner responsibilities, and schedule before applying.",
+    },
+    {
+      q: "What are the fees for the Fellowship in Oncosurgery?",
+      a: "The total online program fee is ₹1,50,000, while the total hybrid program fee is ₹1,80,000. The ₹50,000 registration fee is included in the total program fee and is not an additional charge. Contact MGA for admission guidance and available payment options.",
+    },
+  ],
+  "fellowship-in-neurophysiology": [
+    {
+      q: "What are the eligibility criteria for admission to this program?",
+      a: "MBBS doctors with valid NMC or State Medical Council registration and at least one year of post-qualification clinical experience can apply. International applicants should confirm the accepted medical registration requirements with the MGA admissions team.",
+    },
+    {
+      q: "Are online and hybrid learning options available for this fellowship?",
+      a: "Yes. Doctors can choose between online and hybrid learning options for this 12-month program. Both options provide access to the structured curriculum, while the hybrid option follows its designated learning and clinical training format.",
+    },
+    {
+      q: "Which neurophysiology subjects and clinical techniques are included in the curriculum?",
+      a: "The 15-module curriculum covers EEG, EMG, nerve conduction studies (NCS), evoked potentials, and advanced electrophysiological techniques. It also includes movement disorders, pediatric neurology, neurophysiological emergencies, stroke, and neurodegenerative diseases.",
+    },
+    {
+      q: "What is the total fee for the online and hybrid programs?",
+      a: "The total fee is ₹1,50,000 for the online program and ₹1,80,000 for the hybrid program. The ₹50,000 registration fee is included in the total fee and is not an additional charge. Contact MGA for current payment and EMI options.",
+    },
+    {
+      q: "What certification is awarded after successful program completion?",
+      a: "Participants who successfully complete the program receive CPD-aligned and ACTD-aligned certification. Certification is subject to the program's completion requirements.",
+    },
+  ],
+  "fellowship-in-neuropathology": [
+    {
+      q: "What are the eligibility criteria for admission to this program?",
+      a: "MBBS doctors with valid NMC or State Medical Council registration and at least one year of post-qualification clinical experience can apply. International applicants should confirm the accepted medical registration requirements with the MGA admissions team.",
+    },
+    {
+      q: "Can doctors choose between online and hybrid learning options?",
+      a: "Yes. Eligible doctors can choose between online and hybrid learning options for this 12-month program. Contact the MGA admissions team for details about the learning format, schedule, and clinical training arrangements for each option.",
+    },
+    {
+      q: "What subjects and diagnostic techniques are covered in the curriculum?",
+      a: "The 24-module curriculum covers CNS tumours, molecular neuropathology, neurodegenerative diseases, CNS infections, and neuroinflammatory conditions. It also includes immunohistochemistry, biomarker interpretation, digital neuropathology, and peripheral nerve and muscle pathology.",
+    },
+    {
+      q: "What is the total fee for the online and hybrid programs?",
+      a: "The total fee is ₹1,50,000 for the online program and ₹1,80,000 for the hybrid program. The ₹50,000 registration fee is included in the total program fee and is not an additional charge. Contact MGA for current payment and EMI options.",
+    },
+    {
+      q: "What certification do doctors receive after completing the program?",
+      a: "Participants who successfully complete the program receive CPD-aligned and ACTD-aligned certification. Certification is subject to the program's completion requirements.",
+    },
+  ],
+  "fellowship-in-nephrology": [
+    {
+      q: "What are the eligibility criteria for the Fellowship in Nephrology?",
+      a: "Applicants must have an MBBS degree, valid NMC or State Medical Council registration, and at least one year of post-qualification clinical experience. Doctors practising in India and eligible international applicants can apply, subject to applicable registration requirements.",
+    },
+    {
+      q: "What is the duration of the nephrology fellowship program?",
+      a: "The Fellowship in Nephrology is a 12-month program. Doctors can choose between the available online and hybrid learning options.",
+    },
+    {
+      q: "What topics are covered in the nephrology fellowship curriculum?",
+      a: "The 24-module curriculum covers renal physiology, acute kidney injury, chronic kidney disease, glomerular diseases, hypertension, fluid and electrolyte disorders, dialysis, kidney transplantation, interventional nephrology, pediatric nephrology, and other advanced kidney care topics.",
+    },
+    {
+      q: "What is the fee for the online and hybrid nephrology fellowship programs?",
+      a: "The total online program fee is ₹1,50,000, while the hybrid program fee is ₹1,80,000. The ₹50,000 registration fee is included in the total program fee and is not an additional charge.",
+    },
+    {
+      q: "How can eligible doctors apply for the nephrology fellowship program?",
+      a: "Eligible MBBS doctors can check the admission details and submit a nephrology fellowship application through Medical Global Academy. Applicants should review the eligibility criteria, available learning options, and program fees before applying.",
+    },
+  ],
+  "fellowship-in-musculoskeletal": [
+    {
+      q: "Who is eligible to apply for the Fellowship in Musculoskeletal?",
+      a: "Applicants must have an MBBS degree, valid NMC or State Medical Council registration, and at least one year of post-qualification clinical experience. Eligible doctors practising in India and international applicants can apply, subject to applicable registration requirements.",
+    },
+    {
+      q: "What is the duration of the Musculoskeletal Fellowship?",
+      a: "The Fellowship in Musculoskeletal is a 12-month program. Doctors can choose an available online or hybrid learning option based on their learning needs.",
+    },
+    {
+      q: "What topics are covered in the musculoskeletal fellowship curriculum?",
+      a: "The 17-module curriculum covers musculoskeletal diagnostics and imaging, non-surgical management, orthopedic interventions, sports injuries, spine and joint conditions, pediatric and geriatric musculoskeletal health, tumours, infections, regenerative medicine, biomechanics, and rehabilitation technologies.",
+    },
+    {
+      q: "Can doctors choose online and hybrid learning options?",
+      a: "Yes. The program offers flexible, self-paced online and hybrid learning options. Doctors can select an available format according to their learning needs. Contact MGA to confirm the clinical workshop schedule and training arrangements for each option.",
+    },
+    {
+      q: "What is the fee for the online and hybrid Musculoskeletal Fellowship?",
+      a: "The total online program fee is ₹1,50,000, while the hybrid program fee is ₹1,80,000. The ₹50,000 registration fee is included in the total program fee and is not an additional charge. Participants who successfully complete the program receive CPD-aligned and ACTD-aligned certification, subject to completion requirements.",
+    },
+  ],
+  "fellowship-in-movement-disorders": [
+    {
+      q: "Who is eligible to apply for the Fellowship in Movement Disorders?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration, and at least one year of post-qualification clinical experience can apply. The program is open to eligible doctors practising in India and internationally, subject to applicable registration requirements.",
+    },
+    {
+      q: "What topics are covered in the Movement Disorders Fellowship?",
+      a: "The 24-module curriculum covers Parkinson's disease, essential tremor, dystonia, Huntington's disease, chorea, tics, myoclonus, ataxia, and other movement disorders. It also includes clinical assessment, neurodiagnostic tests, botulinum toxin therapy, deep brain stimulation, rehabilitation, genetic and metabolic conditions, and emerging treatment approaches.",
+    },
+    {
+      q: "What online and hybrid learning options are available?",
+      a: "MGA offers online and hybrid learning options. Online training includes live faculty sessions, recorded lectures, clinical case discussions, study materials, and one-year mentorship. Around 2–3 live classes take place each month, usually during evenings and weekends. Contact MGA to confirm the schedule and learning arrangements for each option.",
+    },
+    {
+      q: "Does the fellowship include clinical training at hospitals?",
+      a: "The program offers clinical training opportunities through partner hospitals, neurology centres, and movement disorder clinics. Depending on the centre and its arrangements, training may include patient exposure and supervised learning during procedures. Contact MGA to confirm the training location, availability, schedule, supervision, and activities before applying.",
+    },
+    {
+      q: "How can doctors apply for the Movement Disorders Fellowship, and what is the fee?",
+      a: "Doctors interested in starting their movement disorder fellowship application can contact MGA for admission guidance and the next steps. The total online program fee is ₹1,50,000, while the total hybrid program fee is ₹1,80,000. The ₹50,000 registration fee is included in the total program fee and is not an additional charge.",
+    },
+  ],
+  /* ---- Slug-based Fellowship FAQs (batch 2) ---- */
+  "fellowship-in-minimally-invasive-gynecologic-surgery": [
+    {
+      q: "Who is eligible for the Fellowship in Minimally Invasive Gynecologic Surgery?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration, and at least one year of post-qualification clinical experience can apply. International applicants can also apply, subject to applicable medical registration requirements.",
+    },
+    {
+      q: "What surgical techniques does the fellowship cover?",
+      a: "The program introduces laparoscopic surgical techniques, robotic-assisted gynecologic surgery, and advanced laparoscopic and robotic techniques. It also covers hysteroscopic approaches and clinical topics related to minimally invasive gynecologic surgery through faculty-led learning and case discussions.",
+    },
+    {
+      q: "What online learning and mentorship support does MGA provide?",
+      a: "MGA provides live online faculty sessions, recorded lectures, dedicated Q&A sessions, e-books, notes, and study materials. Doctors also receive one-year mentorship to support their learning. Around 2–3 classes take place each month, usually during evenings and weekends.",
+    },
+    {
+      q: "Does the fellowship include clinical training and live surgery exposure?",
+      a: "The program includes clinical workshops based on real gynecologic cases and clinical training opportunities at hospitals and gynecology centers. Live surgery observation and supervised participation depend on center availability and training arrangements. Contact MGA to confirm the training location, practical activities, supervision, and schedule before applying.",
+    },
+    {
+      q: "What are the fees for the Minimally Invasive Gynecologic Surgery Fellowship?",
+      a: "The total online program fee is ₹1,50,000, while the total hybrid program fee is ₹1,80,000. The ₹50,000 registration fee is included in the total program fee and is not an additional charge. Contact MGA for admission guidance and available payment options.",
+    },
+  ],
+  "fellowship-in-liposuction": [
+    {
+      q: "Who is eligible for the Fellowship in Liposuction?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration, and at least one year of post-qualification clinical experience can apply. International doctors may also apply, subject to MGA's accepted registration requirements. Contact MGA to confirm your eligibility before applying.",
+    },
+    {
+      q: "What does the Fellowship in Liposuction curriculum cover?",
+      a: "The 17-module curriculum covers aesthetic surgery basics, fat anatomy, body contouring, liposuction techniques, patient assessment and treatment planning. It also includes advanced topics such as fat transfer, 360-degree liposuction, face and neck liposuction, complication management, postoperative care, anesthesia and sedation.",
+    },
+    {
+      q: "What is the duration and learning format of this liposuction fellowship?",
+      a: "The programme runs for 12 months and offers Online and Hybrid learning modes. Online learning includes self-paced modules, 2–3 live online classes each month, recorded sessions, Q&A, study materials and one-year mentorship. Learners also complete a final assessment and MCQ-based exam.",
+    },
+    {
+      q: "Does the Online Mode of the Fellowship in Liposuction include clinical training?",
+      a: "No. Clinical training is available only in Hybrid Mode. Hybrid learners may get training opportunities at cosmetic surgery centres and hospitals, subject to centre availability and training arrangements. Contact MGA to confirm the centre, schedule, supervision and practical participation.",
+    },
+    {
+      q: "What are the fees for the Fellowship in Liposuction?",
+      a: "The programme fee is ₹1,50,000 for Online Mode and ₹1,80,000 for Hybrid Mode. The ₹50,000 registration fee is included in the total programme fee, so there is no additional registration charge.",
+    },
+  ],
+  "fellowship-in-endodontics": [
+    {
+      q: "Who is eligible for the Fellowship in Endodontics?",
+      a: "BDS and MDS dentists can apply for the program. BDS applicants need 1–2 years of post-qualification clinical experience, while MDS applicants do not need prior work experience. Applicants must also meet the applicable dental registration requirements.",
+    },
+    {
+      q: "What topics are covered in the fellowship in clinical endodontics?",
+      a: "The curriculum covers advanced endodontic diagnosis, dental imaging, pulpal and periapical diseases, access cavity design, and root canal instrumentation. It also includes irrigation, obturation, endodontic retreatment, microsurgery, dental trauma, and modern endodontic technologies. The program has 24 modules. Contact MGA through the enquiry form to confirm module access and unlock schedules.",
+    },
+    {
+      q: "What online learning and mentorship support does MGA provide?",
+      a: "MGA offers live online faculty sessions, recorded lectures, dedicated Q&A sessions, e-books, notes, and study materials. Dentists also receive one-year mentorship from practising faculty. The program generally includes 2–3 classes each month, usually scheduled during evenings and weekends.",
+    },
+    {
+      q: "Does the fellowship include clinical training at dental clinics?",
+      a: "The program includes clinical workshops based on root canal cases and may offer clinical training at dental clinics and endodontic centres. Practical exposure, patient interaction, and assistance in procedures depend on the training centre, supervision, and available arrangements. Fill out the enquiry form to confirm the training location, activities, schedule, and level of hands-on exposure.",
+    },
+    {
+      q: "What is the fee for the Fellowship in Endodontics?",
+      a: "The total online program fee is ₹1,50,000, while the total hybrid program fee is ₹1,80,000. The ₹50,000 registration fee is included in the total program fee and is not an additional charge. Contact MGA for admission guidance and available payment options.",
+    },
+  ],
+  "fellowship-in-endodontics-with-rotary": [
+    {
+      q: "Who can apply for the Fellowship in Endodontics with Rotary?",
+      a: "BDS and MDS dentists can apply for this program. BDS dentists need 1–2 years of experience after graduation, while MDS dentists do not need prior work experience. Dentists looking for a fellowship in rotary endodontics after MDS can also explore this program. Applicants must meet the applicable dental registration and admission requirements.",
+    },
+    {
+      q: "What topics are covered in the Fellowship in Endodontics with Rotary?",
+      a: "The 18-module curriculum covers canal anatomy, access cavity preparation, rotary instrumentation, irrigation, disinfection and obturation techniques. It also introduces advanced topics such as endodontic retreatment, complex cases, digital endodontics, CBCT and laser-assisted endodontics. Some modules are currently locked, so applicants should confirm module access and availability with MGA.",
+    },
+    {
+      q: "Does the program offer online classes and recorded lectures?",
+      a: "Yes. The program combines self-paced learning with live online sessions, recorded lectures, faculty-led discussions and question-and-answer sessions. Participants can attend around 2–3 online classes each month, usually during evenings or weekends. They also receive e-books, notes, study materials and one-year mentorship.",
+    },
+    {
+      q: "Does the fellowship include practical workshops and clinical training?",
+      a: "Yes. The program includes clinical workshops with root canal case simulations. Additional clinical training opportunities may be available at associated dental clinics or endodontic centres, depending on availability and confirmed arrangements. Applicants should check the training location, duration, supervision and scope of practical participation with MGA before admission.",
+    },
+    {
+      q: "What are the fees for the Fellowship in Endodontics with Rotary?",
+      a: "The total fee is ₹1,50,000 for the online program and ₹1,80,000 for the hybrid program. The ₹50,000 registration fee is included in the total fee and is not an additional charge. Contact MGA to confirm current admission and payment details. Participants who meet the course completion and assessment requirements receive a certificate from the academy.",
+    },
+  ],
+  "fellowship-in-facial-aesthetic-cosmetology": [
+    {
+      q: "Who is eligible for the Fellowship in Facial Aesthetic Cosmetology?",
+      a: "BDS and MDS dentists can apply for the Fellowship in Facial Aesthetic Cosmetology at MGA, subject to the academy's admission requirements. Applicants should confirm the required dental registration documents and other eligibility conditions with the admissions team. Admission to the fellowship does not extend a dentist's professional scope beyond applicable qualifications and regulations.",
+    },
+    {
+      q: "What does the 24-module facial aesthetic cosmetology curriculum include?",
+      a: "The 24-module curriculum covers facial anatomy, skin biology, aesthetic assessment, facial ageing, skincare, chemical peels, botulinum toxin, dermal fillers, PRP, microneedling and laser technologies. It also includes pigmentation, acne scars, non-surgical facial contouring, hair and scalp aesthetics, complication management and patient safety. Currently, the first four modules are unlocked. Contact MGA to confirm the release schedule and access to the remaining modules.",
+    },
+    {
+      q: "Does the fellowship offer online classes and recorded lectures?",
+      a: "Yes. The program combines self-paced learning with 2–3 live online classes each month, usually during evenings or weekends. Participants can access recorded lectures for later revision and join faculty discussions and dedicated Q&A sessions. The program also provides e-books, notes, study materials and one-year mentorship.",
+    },
+    {
+      q: "Does the fellowship include practical workshops and clinical training?",
+      a: "The program includes practical workshops with facial aesthetic case simulations and clinical case discussions. Additional training opportunities may be available through associated aesthetic clinics or dermatology centres, depending on confirmed arrangements and availability. Applicants should confirm the training location, duration, supervision and type of clinical participation with MGA before admission. All clinical activities must follow applicable professional qualifications and regulations.",
+    },
+    {
+      q: "What are the fees for the Fellowship in Facial Aesthetic Cosmetology?",
+      a: "The online program fee is ₹1,50,000, while the hybrid program fee is ₹1,80,000. The ₹50,000 registration fee is included in the total program fee and is not an additional charge. The program includes a final assessment and MCQ-based examination. Participants receive a certificate on successful completion. Contact the MGA admissions team to confirm the current fee structure, payment options and details of the hybrid learning format.",
+    },
+  ],
+  "fellowship-in-fetal-echocardiography": [
+    {
+      q: "Who is eligible for the Fellowship in Fetal Echocardiography?",
+      a: "Indian and international MBBS doctors can apply for the Fellowship in Fetal Echocardiography. Applicants must have at least one year of post-qualification clinical experience and valid registration with the relevant medical council in their country of practice. Contact MGA's admissions team to confirm the required documents and eligibility before applying.",
+    },
+    {
+      q: "What topics does the fetal echocardiography course cover?",
+      a: "The 24-module curriculum covers fetal cardiac anatomy, embryology, ultrasound physics, fetal cardiac screening, advanced imaging views, Doppler assessment, congenital heart defects, fetal arrhythmias, cardiac function, high-risk pregnancies, genetic conditions, 3D and 4D imaging, and perinatal management. The first four modules are currently unlocked, while the remaining modules are locked. Contact MGA to confirm the module release schedule and access details.",
+    },
+    {
+      q: "Does the fellowship offer online classes and recorded lectures?",
+      a: "Yes. The program combines self-paced online learning with 2–3 live online classes each month, usually scheduled during evenings or weekends. Participants can access recordings of live sessions for later revision. The learning support also includes faculty discussions, Q&A sessions, e-books, notes, study materials and one-year mentorship.",
+    },
+    {
+      q: "Does the fellowship include practical workshops and clinical training?",
+      a: "Yes. The program includes practical workshops with fetal cardiac case simulations. The hybrid option also includes clinical training at associated fetal cardiology and maternal-fetal medicine centres alongside online learning. The centre, training duration, supervision and exact participation format should be confirmed with MGA's admissions team before admission. Clinical activities must remain within the participant's qualifications and applicable professional regulations.",
+    },
+    {
+      q: "What are the fees for the online and hybrid fellowship?",
+      a: "The total fee for the online program is ₹1,50,000, while the hybrid program costs ₹1,80,000. The hybrid option includes clinical-centre training in addition to online learning. The ₹50,000 registration fee is included in the total program fee and is not an additional charge. Participants complete the final assessment and MCQ-based examination to receive their certificate on successful completion. Contact MGA for current fee details and available payment options.",
+    },
+  ],
+  "fellowship-in-gastrointestinal-endoscopy": [
+    {
+      q: "Who is eligible for the Fellowship in Gastrointestinal Endoscopy?",
+      a: "Doctors with an MBBS degree, valid registration with the National Medical Commission (NMC) or a State Medical Council, and at least one year of post-qualification clinical experience can apply. International applicants should contact Medical Global Academy to confirm the accepted medical qualification and registration requirements before applying.",
+    },
+    {
+      q: "What topics are covered in the Gastrointestinal Endoscopy Fellowship?",
+      a: "The 15-module curriculum covers upper GI endoscopy (OGD), lower GI endoscopy (colonoscopy), ERCP, EUS, advanced endoscopic techniques and therapeutic endoscopy. It also includes paediatric and elderly endoscopy, endoscopic bleeding management, obesity-related conditions, IBD, GERD, hepatobiliary diseases and gastrointestinal cancer. The programme combines core concepts with case-based learning and endoscopy simulations.",
+    },
+    {
+      q: "What is the duration and learning mode of the fellowship?",
+      a: "The programme runs for 12 months and offers Online and Hybrid learning modes. Online learning includes live faculty sessions, recorded classes, Q&A, e-books, study materials and one-year mentorship. Around 2–3 live classes take place each month, usually in the evenings or on weekends. Clinical training opportunities are available only in Hybrid mode and depend on confirmed centre arrangements.",
+    },
+    {
+      q: "Does the fellowship include practical clinical training in gastrointestinal endoscopy?",
+      a: "The programme includes clinical workshops with endoscopy case simulations. Hospital- or endoscopy-centre-based clinical training opportunities are available only in Hybrid mode, not Online mode. These opportunities depend on centre availability and confirmed arrangements. Applicants should contact MGA to check the training location, schedule, supervision and activities included before enrolment. The curriculum covers procedures such as ERCP and EUS, but this does not guarantee independent procedural competence.",
+    },
+    {
+      q: "What is the fee for the Fellowship in Gastrointestinal Endoscopy?",
+      a: "The total programme fee is ₹1,50,000 for Online mode and ₹1,80,000 for Hybrid mode. The ₹50,000 registration fee is already included in the total programme fee, so applicants do not need to pay it separately. Contact MGA for admission guidance and confirmation of the applicable fee.",
+    },
+  ],
+  "fellowship-in-general-surgery": [
+    {
+      q: "Who is eligible for the Fellowship in General Surgery?",
+      a: "The Fellowship in General Surgery is open to Indian and international MBBS doctors with at least one year of post-qualification clinical experience. Applicants must hold valid registration with the NMC, a State Medical Council or the relevant medical regulatory authority in their country of practice. Contact MGA's admissions team to confirm the required documents and eligibility before applying.",
+    },
+    {
+      q: "What subjects are covered in the General Surgery course?",
+      a: "The 24-module curriculum covers surgical foundations, clinical decision-making, emergency and trauma surgery, gastrointestinal and hepatobiliary surgery, colorectal conditions, laparoscopic techniques, hernia surgery, surgical oncology, breast and endocrine surgery, vascular conditions and surgical critical care. It also covers perioperative care, wound management, infection control and evidence-based surgery. Currently, the first four modules are unlocked and the remaining 20 are locked. Contact MGA for the module release schedule.",
+    },
+    {
+      q: "How long is the Fellowship in General Surgery, and how are classes conducted?",
+      a: "The program runs for 12 months. It includes self-paced online modules and 2–3 live online classes each month, generally scheduled during evenings or weekends. Participants can use recorded sessions for revision and catch-up. The program also provides faculty discussions, Q&A support, e-books, study materials and one-year mentorship.",
+    },
+    {
+      q: "Is clinical training included in the online and hybrid modes?",
+      a: "Clinical training is available only in the hybrid mode. It combines online learning with clinical training at partner hospitals and surgical centres. The online mode includes structured online learning but does not include hospital-based clinical training. Contact MGA before admission to confirm the clinical training location, duration, supervision arrangements and participation format.",
+    },
+    {
+      q: "What is the fee for the Fellowship in General Surgery?",
+      a: "The total fee is ₹1,50,000 for the online mode and ₹1,80,000 for the hybrid mode. The ₹50,000 registration fee is included in the total program fee, so it is not an additional charge. Contact MGA's admissions team to confirm the current fees and available payment options before enrolment.",
+    },
+  ],
+  "fellowship-in-gynecologic-pathology": [
+    {
+      q: "Who is eligible for the Fellowship in Gynecologic Pathology?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration, and at least one year of post-qualification clinical experience can apply. International applicants should confirm their accepted medical qualification and registration requirements with MGA before applying.",
+    },
+    {
+      q: "What topics are covered in the Gynecologic Pathology Fellowship programme?",
+      a: "The 24-module curriculum covers cervical and endometrial pathology, ovarian and uterine tumours, vulvar and vaginal conditions, pregnancy-related and placental pathology, histopathology, cervical cytology, specimen handling, immunohistochemistry and molecular diagnostics. It also introduces tumour classification, staging, grading, digital pathology, artificial intelligence and challenging diagnostic cases. Detailed information about locked modules is available after submitting the enquiry form.",
+    },
+    {
+      q: "What is the duration and learning mode of this fellowship?",
+      a: "The programme runs for 12 months and offers Online and Hybrid learning modes. Online learning includes self-paced study materials, around 2–3 live classes each month, recorded sessions, faculty Q&A, e-books and one-year mentorship. Hybrid mode also offers clinical training opportunities, subject to centre availability and confirmed arrangements.",
+    },
+    {
+      q: "How is MGA's programme different from other gynecologic pathology fellowship programs?",
+      a: "MGA offers a professional skill-development fellowship for eligible MBBS doctors. It is not a government postgraduate medical degree, NEET-based residency or equivalent to a formal post-residency clinical pathology fellowship. Clinical training opportunities are available only in Hybrid mode, not Online mode, and depend on confirmed arrangements with the training centre.",
+    },
+    {
+      q: "What are the fees for the Fellowship in Gynecologic Pathology?",
+      a: "The total fee is ₹1,50,000 for Online mode and ₹1,80,000 for Hybrid mode. The ₹50,000 registration fee is included in the total programme fee, so it is not an additional charge.",
+    },
+  ],
+  "fellowship-in-head-and-neck-oncosurgery": [
+    {
+      q: "Who is eligible for the Fellowship in Head and Neck Oncosurgery?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration, and at least one year of post-qualification clinical experience can apply. International applicants should confirm accepted qualifications and registration requirements with MGA before applying.",
+    },
+    {
+      q: "What topics are covered in the Head and Neck Oncosurgery Fellowship programme?",
+      a: "The 24-module head and neck oncosurgery fellowship program covers cancer assessment, diagnosis, staging, imaging, pathology and multidisciplinary treatment planning. It also explores oral cavity and throat cancers, thyroid and salivary gland cancers, neck dissection, reconstructive methods, immunotherapy, targeted therapy, rehabilitation and clinical case discussions. Detailed information about locked modules is available after submitting the enquiry form.",
+    },
+    {
+      q: "What is the duration and learning mode of this fellowship?",
+      a: "The programme runs for 12 months and offers Online and Hybrid learning modes. Online learning includes self-paced study materials, around 2–3 live classes each month, recorded sessions, faculty Q&A, e-books and one-year mentorship. Hybrid mode also offers clinical training opportunities, subject to centre availability and confirmed arrangements.",
+    },
+    {
+      q: "Does the online fellowship include hospital-based clinical training?",
+      a: "No. Hospital-based clinical training opportunities are available only in Hybrid mode, not Online mode. The training centre, schedule, supervision and scope of clinical exposure depend on availability and confirmed arrangements. Applicants should contact MGA for details before enrolment.",
+    },
+    {
+      q: "What are the fees for the Fellowship in Head and Neck Oncosurgery?",
+      a: "The total fee is ₹1,50,000 for Online mode and ₹1,80,000 for Hybrid mode. The ₹50,000 registration fee is included in the total programme fee, so it is not an additional charge.",
+    },
+  ],
+  "fellowship-in-hematopathology": [
+    {
+      q: "Who is eligible for the Fellowship in Hematopathology?",
+      a: "Doctors in India need an MBBS degree, valid NMC or State Medical Council registration and at least one year of post-qualification clinical experience. International applicants should contact MGA to confirm accepted qualifications and registration requirements before applying.",
+    },
+    {
+      q: "What topics are covered in the Fellowship in Hematopathology?",
+      a: "The 24-module curriculum covers blood and bone marrow morphology, laboratory techniques, flow cytometry, immunohistochemistry, leukaemias, lymphomas and other blood disorders. It also includes molecular diagnostics, cytogenetics, plasma-cell disorders, paediatric hematopathology, transplant-related conditions and digital pathology.",
+    },
+    {
+      q: "What is the duration and learning format of the programme?",
+      a: "The programme runs for 12 months and offers Online and Hybrid learning modes. Online learning includes self-paced modules, 2–3 live online classes each month, recorded sessions, Q&A, study materials and one-year mentorship. Learners also complete a final assessment and MCQ-based exam.",
+    },
+    {
+      q: "Is clinical training available in the Online Fellowship in Hematopathology?",
+      a: "No. Clinical training opportunities are available only in Hybrid Mode and depend on centre availability and confirmed arrangements. Online Mode focuses on academic learning through modules, live classes, recorded sessions and case-based learning. Contact MGA to confirm the available clinical training activities before admission.",
+    },
+    {
+      q: "What are the fees for the Fellowship in Hematopathology?",
+      a: "The total fee is ₹1,50,000 for Online Mode and ₹1,80,000 for Hybrid Mode. The ₹50,000 registration fee is already included in both totals, so there is no separate registration payment. Contact MGA for admission and payment details.",
+    },
+  ],
+  "fellowship-in-hepatobiliary": [
+    {
+      q: "Who is eligible for the Fellowship in Hepatobiliary?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration and at least one year of post-qualification clinical experience can apply for the Fellowship in Hepatobiliary at MGA. International doctors may also apply, subject to the registration requirements accepted by MGA.",
+    },
+    {
+      q: "What topics does the Fellowship in Hepatobiliary cover?",
+      a: "The 19-module curriculum covers hepatobiliary anatomy, diagnostic imaging, hepatocellular carcinoma (HCC), liver tumours, biliary tract diseases, liver transplantation and pancreatic disorders. It also includes laparoscopic and robotic surgery, liver failure, portal hypertension, emergency care, postoperative complications, paediatric hepatobiliary surgery, molecular advances, cancer immunotherapy and ethical challenges. Clinical workshops use real hepatobiliary case studies. The first four modules are unlocked, and learners can access the remaining 15 modules after submitting the curriculum enquiry form.",
+    },
+    {
+      q: "What is the duration and learning format of the Hepatobiliary Fellowship?",
+      a: "The programme runs for 12 months and offers Online and Hybrid learning modes. Online learning includes self-paced modules, 2–3 live online classes each month, recorded sessions, Q&A, e-books, study materials and one-year mentorship. Learners also complete a final assessment and MCQ-based exam.",
+    },
+    {
+      q: "Does the Online Fellowship in Hepatobiliary include clinical training?",
+      a: "No. Clinical training is available only in Hybrid Mode and is not included in Online Mode. Hybrid learners may receive training at partner hepatobiliary and transplant centres, subject to centre availability and confirmed arrangements. Contact MGA before admission to confirm the training centre, schedule, supervision and practical activities.",
+    },
+    {
+      q: "What are the fees for the Fellowship in Hepatobiliary?",
+      a: "The total programme fee is ₹1,50,000 for Online Mode and ₹1,80,000 for Hybrid Mode. The ₹50,000 registration fee is already included in both amounts, so no separate registration payment is required. Contact MGA for application and payment details.",
+    },
+  ],
+  "fellowship-in-histopathology": [
+    {
+      q: "Who is eligible for the Fellowship in Histopathology?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration and at least one year of post-qualification clinical experience can apply. International doctors may also apply, subject to MGA's accepted registration requirements. Contact MGA to confirm your eligibility before applying.",
+    },
+    {
+      q: "What does the Fellowship in Histopathology curriculum cover?",
+      a: "The 24-module curriculum covers histotechnology, tissue processing, special staining, immunohistochemistry, molecular diagnostics, digital pathology and AI applications. It also includes surgical pathology, oncopathology, organ-based histopathology, hematopathology, bone-marrow pathology, cytopathology, transplant and infectious disease pathology, laboratory quality and diagnostic reporting. Workshops use biopsy and surgical specimen case studies.",
+    },
+    {
+      q: "What is the duration and learning format of the fellowship?",
+      a: "The Fellowship in Histopathology is a 12-month programme with Online and Hybrid learning modes. Online learning includes self-paced modules, 2–3 live online classes each month, recorded sessions, Q&A, e-books, study materials and one-year mentorship. Learners also complete a final assessment and MCQ-based exam.",
+    },
+    {
+      q: "Does the online fellowship include practical laboratory training?",
+      a: "No. Practical laboratory training is available only in Hybrid Mode, not Online Mode. Hybrid learners may receive training at partner diagnostic laboratories and hospitals, subject to centre availability and confirmed arrangements. Contact MGA to check the training centre, schedule, supervision and practical activities before selecting Hybrid Mode.",
+    },
+    {
+      q: "What are the fees for the Fellowship in Histopathology?",
+      a: "The total programme fee is ₹1,50,000 for Online Mode and ₹1,80,000 for Hybrid Mode. The ₹50,000 registration fee is already included in both total programme fees, so applicants do not have to pay it separately. There is no additional registration charge. Contact MGA to confirm the payment terms and admission process.",
+    },
+  ],
+  "fellowship-in-implantology": [
+    {
+      q: "Who can apply for the Fellowship in Implantology?",
+      a: "BDS and MDS graduates can apply for the Fellowship in Implantology at MGA. BDS applicants need 1–2 years of clinical experience, while MDS applicants do not need prior experience. Contact MGA to confirm the accepted MDS specialities, registration requirements and exact experience criteria before applying.",
+    },
+    {
+      q: "What topics does the Fellowship in Implantology cover?",
+      a: "The 14-module curriculum covers implant foundations, surgical placement, implant prosthetics and advanced procedures. It also includes digital planning, full-arch rehabilitation, complication management, care for compromised implant patients, soft tissue management, aesthetic implant dentistry, regenerative techniques, and sedation and anaesthesia. Workshops with real implant cases help learners connect course topics with clinical situations.",
+    },
+    {
+      q: "What is the duration and learning format of the fellowship?",
+      a: "The Fellowship in Implantology runs for 12 months and offers Online and Hybrid learning modes. Online learning includes self-paced modules, 2–3 live online classes each month, recorded sessions, Q&A, e-books, study materials and one-year mentorship. Learners also complete a final assessment and MCQ-based exam.",
+    },
+    {
+      q: "Does the online fellowship include clinical training?",
+      a: "No. Clinical training is available only in Hybrid Mode. Hybrid learners may receive training at dental and implantology centres, subject to centre availability and confirmed arrangements. Contact MGA to check the training centre, schedule, supervision and practical participation before choosing this mode.",
+    },
+    {
+      q: "What are the fees for the Fellowship in Implantology?",
+      a: "The programme fee is ₹1,50,000 for Online Mode and ₹1,80,000 for Hybrid Mode. The ₹50,000 registration fee is included in the total programme fee. Contact MGA to confirm the current fee structure, payment terms and admission process.",
+    },
+  ],
+  "fellowship-in-infectious-diseases": [
+    {
+      q: "Who is eligible for the Fellowship in Infectious Diseases?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration and at least one year of post-qualification clinical experience can apply. International doctors may also apply, subject to MGA's accepted registration requirements. Contact MGA to confirm your eligibility before applying.",
+    },
+    {
+      q: "What topics does the Fellowship in Infectious Diseases cover?",
+      a: "The 24-module curriculum covers clinical microbiology, molecular diagnostics, antimicrobial therapy, antimicrobial resistance, antimicrobial stewardship and sepsis management. It also includes bacterial and viral infections, tuberculosis, HIV, fungal diseases, tropical medicine, emerging infections and transplant-related infections. Advanced topics include genomics, microbiome medicine, vaccinology, One Health, infection prevention and public health.",
+    },
+    {
+      q: "What is the duration and learning format of the fellowship?",
+      a: "The Fellowship in Infectious Diseases is a 12-month programme available in Online and Hybrid modes. Online learning includes self-paced modules, 2–3 live online classes each month, recorded sessions, Q&A, study materials and one-year mentorship. Learners also complete a final assessment and MCQ-based exam.",
+    },
+    {
+      q: "Does the Online Mode include clinical training?",
+      a: "No. Clinical training is available only in Hybrid Mode. Hybrid training takes place at hospitals and infectious disease centres, subject to centre availability and training arrangements. Contact MGA to confirm the training centre, schedule, supervision and practical participation before applying.",
+    },
+    {
+      q: "What are the fees for the Fellowship in Infectious Diseases?",
+      a: "The total programme fee is ₹1,50,000 for Online Mode and ₹1,80,000 for Hybrid Mode. The ₹50,000 registration fee is included in the total programme fee, so there is no additional registration charge. Contact MGA for admission details and confirmation of the applicable fee.",
+    },
+  ],
+  "fellowship-in-interventional-pulmonology": [
+    {
+      q: "Who is eligible for the Fellowship in Interventional Pulmonology?",
+      a: "Doctors with an MBBS degree, valid NMC or State Medical Council registration and at least one year of post-qualification clinical experience can apply. International doctors may also apply, subject to MGA's accepted registration requirements. Contact MGA to confirm your eligibility before applying.",
+    },
+    {
+      q: "What does the Fellowship in Interventional Pulmonology curriculum cover?",
+      a: "The 24-module curriculum covers diagnostic procedures such as flexible and rigid bronchoscopy, EBUS, navigational bronchoscopy and pulmonary nodule diagnosis. It also includes therapeutic topics such as airway stenting, cryobiopsy and advanced airway interventions. Other areas include medical thoracoscopy, pleural interventions, thoracic ultrasound, lung cancer care, airway management and complication management.",
+    },
+    {
+      q: "What is the duration and learning format of the fellowship?",
+      a: "The programme runs for 12 months and offers Online and Hybrid modes. Online learning includes self-paced modules, 2–3 live online classes each month, recorded sessions, Q&A, study materials and one-year mentorship. Classes are planned for evenings and weekends. Learners also complete a final assessment and MCQ-based exam.",
+    },
+    {
+      q: "Does the Online Mode include clinical training?",
+      a: "No. Clinical training is included only in Hybrid Mode. Hybrid learners receive clinical training at partner hospitals and interventional centres, subject to centre availability and training arrangements. Contact MGA to confirm the centre, schedule, supervision and practical participation before applying.",
+    },
+    {
+      q: "What are the fees for the Fellowship in Interventional Pulmonology?",
+      a: "The total programme fee is ₹1,50,000 for Online Mode and ₹1,80,000 for Hybrid Mode. The ₹50,000 registration fee is included in the total programme fee, so there is no additional registration charge.",
+    },
+  ],
+  "fellowship-in-laser-cosmetic-dentistry": [
+    {
+      q: "Who is eligible for the Fellowship in Laser Cosmetic Dentistry?",
+      a: "MDS-qualified dental specialists with valid dental registration can apply. Contact MGA to confirm the accepted MDS specialities and any additional experience requirements before applying.",
+    },
+    {
+      q: "What topics are covered in the Fellowship in Laser Cosmetic Dentistry?",
+      a: "The 14-module curriculum covers laser dentistry fundamentals, soft and hard tissue procedures, aesthetic enhancements, advanced laser applications, equipment, patient management and clinical case studies. It also includes laser applications in orthodontics, facial aesthetics, TMJ disorders, aesthetic periodontics and prosthodontics.",
+    },
+    {
+      q: "What is the duration and learning format of this fellowship?",
+      a: "The programme runs for 12 months. It includes self-paced online modules, 2–3 live online classes each month, recorded sessions, question-and-answer support, e-books, study materials and one-year mentorship. Learners must also complete a final assessment and MCQ-based exam.",
+    },
+    {
+      q: "Is clinical training available in the Online Mode of this fellowship?",
+      a: "No. Clinical training is available only in Hybrid Mode. Online Mode includes online learning but does not include clinical training. Hybrid learners can contact MGA for details about the training centre, schedule, supervision and practical participation.",
+    },
+    {
+      q: "What are the Fellowship in Laser Cosmetic Dentistry fees?",
+      a: "The total fee is ₹1,50,000 for Online Mode and ₹1,80,000 for Hybrid Mode. The ₹50,000 registration fee is included in the total programme fee.",
+    },
+  ],
+  "fellowship-in-colorectal-surgery": [
+    {
+      q: "Who is eligible for the Fellowship in Colorectal Surgery?",
+      a: "Doctors with an MBBS degree, at least one year of post-qualification clinical experience and valid registration with the NMC, a State Medical Council or the relevant medical authority in their country can apply. Both Indian and international doctors can enquire about eligibility.",
+    },
+    {
+      q: "What topics does the Colorectal Surgery fellowship cover?",
+      a: "The 24-module curriculum covers colorectal assessment, diagnostic investigations, colonoscopy, anorectal disorders, colorectal cancer, inflammatory bowel disease, minimally invasive surgery, stoma care, pelvic floor conditions and postoperative care. Contact MGA to confirm the current module access and release schedule, as the first four modules are currently unlocked and the remaining modules are locked.",
+    },
+    {
+      q: "How long is the Fellowship in Colorectal Surgery, and how are classes conducted?",
+      a: "The programme runs for 12 months. It includes self-paced online modules, 2–3 live online classes each month, recorded sessions, faculty discussions and Q&A support. Participants also receive study materials and one-year mentorship, along with a final assessment and MCQ-based examination.",
+    },
+    {
+      q: "Does the fellowship include hospital-based clinical training?",
+      a: "MGA offers online and hybrid learning options. Contact the admissions team to confirm whether hospital-based clinical training is included in your selected mode. Before applying, ask about the training location, duration, supervision and whether the programme involves observation, case discussions or supervised clinical participation.",
+    },
+    {
+      q: "What is the fee for the Fellowship in Colorectal Surgery?",
+      a: "The online programme fee is ₹1,50,000, while the hybrid programme fee is ₹1,80,000. The ₹50,000 registration fee is included in the total programme fee; it is not an additional charge. Contact MGA to confirm the current fee structure and available payment options.",
+    },
+  ],
+  "fellowship-in-cosmetic-gynaecology": [
+    {
+      q: "Who can apply for the Fellowship in Cosmetic Gynaecology?",
+      a: "Doctors with an MBBS degree, at least one year of post-qualification clinical experience and valid NMC, State Medical Council or relevant medical authority registration can apply. Indian and international doctors can contact MGA to confirm their eligibility and registration requirements.",
+    },
+    {
+      q: "What topics does the cosmetic gynecology fellowship cover?",
+      a: "The 24-module curriculum covers vulvovaginal anatomy, patient assessment, sexual health, vulvar conditions, labiaplasty, vaginoplasty, non-surgical aesthetic approaches, energy-based devices, injectable techniques, pelvic floor health and complication management. It also includes patient safety, informed consent and ethical practice. Contact MGA to confirm the module access schedule.",
+    },
+    {
+      q: "How long is the programme, and what is the learning format?",
+      a: "The fellowship runs for 12 months. It includes self-paced online modules, 2–3 live online classes each month, recorded sessions, faculty discussions, Q&A support, e-books and study materials. Participants also receive one-year mentorship and complete a final assessment with an MCQ-based examination.",
+    },
+    {
+      q: "Does the fellowship include clinical training?",
+      a: "Yes. Clinical training at partner aesthetic and gynaecology centres is available only with the Hybrid Mode of the Fellowship in Cosmetic Gynaecology. The Online Mode does not include this clinical training. Contact MGA to confirm the training centre, duration, supervision and whether the sessions involve observation, demonstrations or supervised clinical assistance.",
+    },
+    {
+      q: "What are the fees for the Fellowship in Cosmetic Gynaecology?",
+      a: "The programme fee is ₹1,50,000 for the Online Mode and ₹1,80,000 for the Hybrid Mode. The ₹50,000 registration fee is included in the total programme fee and is not an additional charge. Contact MGA for the latest fee details and available payment options.",
+    },
+  ],
+  "fellowship-in-dentistry": [
+    {
+      q: "Who can apply for the Fellowship in Dentistry?",
+      a: "BDS and MDS doctors can apply for the Fellowship in Dentistry. BDS applicants must have 1–2 years of post-qualification clinical experience and valid dental registration. MDS applicants do not need prior work experience but must meet the applicable registration requirements. Contact MGA to confirm your eligibility before enrolment.",
+    },
+    {
+      q: "What subjects are covered in the Fellowship in Dentistry?",
+      a: "The 12-module curriculum covers clinical diagnosis, treatment planning, periodontics, implantology, endodontics, paediatric dentistry, orthodontics and oral and maxillofacial surgery. It also includes aesthetic dentistry, smile design, digital dentistry, oral pathology, oral medicine, geriatric dentistry, forensic odontology and dental practice management.",
+    },
+    {
+      q: "What is the duration and learning format of the dentistry fellowship?",
+      a: "The programme runs for 12 months. It includes self-paced online modules, 2–3 live online classes each month, recorded sessions, faculty discussions and Q&A support. Participants also receive e-books, study materials and one-year mentorship from practising faculty. The programme includes a final assessment and MCQ-based examination.",
+    },
+    {
+      q: "Does the Fellowship in Dentistry include clinical training?",
+      a: "Yes. Clinical training at partner dental clinics and hospitals is available only with the Hybrid Mode. The Online Mode does not include this clinical training. Contact MGA to confirm the training centre, duration, supervision and whether the sessions involve observation, demonstrations or supervised assistance in dental procedures.",
+    },
+    {
+      q: "What are the fees for the Fellowship in Dentistry?",
+      a: "The total programme fee is ₹1,50,000 for the Online Mode and ₹1,80,000 for the Hybrid Mode. The ₹50,000 registration fee is included in the total programme fee, so there is no additional registration charge. Contact MGA for the latest fee details and available payment options.",
+    },
+  ],
+  "fellowship-in-diabetes-mellitus": [
+    {
+      q: "Who is eligible for the Fellowship in Diabetes Mellitus?",
+      a: "MBBS doctors with at least one year of post-qualification clinical experience can apply. Applicants practising in India must have valid NMC or State Medical Council registration. International applicants should contact MGA to confirm the applicable medical registration and admission requirements.",
+    },
+    {
+      q: "What topics are covered in the Fellowship in Diabetes Mellitus?",
+      a: "The 24-module curriculum covers diabetes diagnosis, glycemic assessment, insulin therapy, modern diabetes medicines, continuous glucose monitoring and diabetes technology. It also includes obesity management, nutrition, diabetic kidney disease, retinopathy, neuropathy, diabetic foot care, diabetes in pregnancy, paediatric diabetes and inpatient diabetes management.",
+    },
+    {
+      q: "What is the duration and learning format of the diabetes fellowship?",
+      a: "The programme runs for 12 months. It includes self-paced online modules, 2–3 live online classes each month, recorded sessions, faculty discussions, Q&A support, e-books and study materials. Participants also receive one-year mentorship and complete a final assessment followed by an MCQ-based examination.",
+    },
+    {
+      q: "Does the Fellowship in Diabetes Mellitus include clinical training?",
+      a: "Yes. Clinical training at diabetes hospitals and care centres is available only with the Hybrid Mode. The Online Mode does not include clinical training. Contact MGA to confirm the Hybrid training centre, schedule, duration, supervision and practical participation format before enrolment.",
+    },
+    {
+      q: "What are the fees for the Fellowship in Diabetes Mellitus?",
+      a: "The Online programme fee is ₹1,50,000, while the Hybrid programme fee is ₹1,80,000. The ₹50,000 registration fee is included in the total programme fee, so there is no additional registration charge. Contact MGA to confirm the latest fees and available payment options.",
+    },
+  ],
+  "fellowship-in-cardiovascular": [
+    {
+      q: "Who is eligible for the Fellowship in Cardiovascular?",
+      a: "MBBS doctors with valid NMC or State Medical Council registration and at least one year of post-qualification clinical experience can apply. International applicants should contact MGA to confirm the applicable registration and admission requirements.",
+    },
+    {
+      q: "What subjects are included in the cardiovascular fellowship curriculum?",
+      a: "The curriculum covers clinical cardiology, coronary artery disease, acute coronary syndrome, heart failure, cardiomyopathies, arrhythmias, electrophysiology, valvular heart disease, preventive cardiology, cardiovascular imaging, clinical research and cardiovascular emergencies.",
+    },
+    {
+      q: "What is the duration and learning format of this cardiovascular course?",
+      a: "The programme runs for 12 months. It includes self-paced online modules, 2–3 live online classes each month, recorded sessions, faculty discussions, Q&A support, e-books, study materials and one-year mentorship. Students also complete a final assessment and MCQ-based examination.",
+    },
+    {
+      q: "Is clinical training available in both Online and Hybrid Modes?",
+      a: "No. Clinical training at partner hospitals and cardiovascular units is available only in Hybrid Mode. Online Mode includes academic learning but does not include clinical training. Contact MGA to confirm the training location, schedule, supervision and practical participation format.",
+    },
+    {
+      q: "What are the fees for the Fellowship in Cardiovascular?",
+      a: "The programme fee is ₹1,50,000 for Online Mode and ₹1,80,000 for Hybrid Mode. The ₹50,000 registration fee is included in the total programme fee and is not an additional charge. Contact MGA to confirm the latest fees and available payment options.",
+    },
+  ],
 };
 
 /* ==================================================================
@@ -809,10 +2154,10 @@ const COURSE_FAQS = {
     { q: "What certification is offered after completing the programme?", a: "The programme lists CPD-aligned certification, ACTD-aligned certification and a certificate on completion. Doctors considering laparoscopy courses for gynaecologists should confirm the applicable certification requirements, completion criteria and terms directly with Medical Global Academy before enrolment." },
   ],
   "Fellowship in Endocrinology": [
-    { q: "Can I enrol in an online Fellowship in Endocrinology in India?", a: "Yes. MGA offers a 12-month online fellowship for eligible doctors in India. Join live classes, access recorded lessons and study alongside your medical practice. Contact our admissions team to enrol in the next available batch." },
+    { q: "Can I enroll in an online Fellowship in Endocrinology in India?", a: "Yes. MGA offers a 12-month online fellowship for eligible doctors in India. Join live classes, access recorded lessons and study alongside your medical practice. Contact our admissions team to enrol in the next available batch." },
     { q: "Can MBBS doctors apply for MGA's Fellowship in Endocrinology?", a: "MBBS graduates can contact MGA's admissions team to check their eligibility under the current admission criteria. Share your qualifications and medical registration details to confirm whether you can apply." },
     { q: "What is the fee for MGA's online endocrinology fellowship course?", a: "MGA offers online and hybrid study options with different fees. Request the latest fee structure, payment details and upcoming batch information from our admissions team before enrolling." },
-    { q: "Can I enrol in a hybrid Fellowship in Endocrinology at MGA?", a: "MGA offers a hybrid option that combines online study with a hospital-based learning period, subject to current availability. Contact our team to confirm the next batch, location and fees." },
+    { q: "Can I enroll in a hybrid Fellowship in Endocrinology at MGA?", a: "MGA offers a hybrid option that combines online study with a hospital-based learning period, subject to current availability. Contact our team to confirm the next batch, location and fees." },
     { q: "How can I apply for MGA's Fellowship in Endocrinology?", a: "Request the course brochure or contact our admissions team. We can help you check eligibility, compare online and hybrid options, review current fees and complete your application for the next available batch." },
   ],
   "Fellowship in Interventional Cardiology": [
@@ -848,7 +2193,7 @@ const COURSE_FAQS = {
     { q: "Can international doctors apply for the Fellowship in Urology?", a: "International doctors can explore the Fellowship in Urology subject to the programme’s eligibility, admission and documentation requirements. Candidates practising outside India should confirm the applicable requirements with Medical Global Academy before enrolment." },
     { q: "What does the Urology Fellowship Program include?", a: "The Urology Fellowship Program combines structured academic learning with practical and clinical training, supported by expert faculty and mentorship. Doctors can review the programme curriculum, study mode, practical training components and applicable schedule to understand the learning pathway before enrolment." },
     { q: "What certification is provided after completing the Fellowship in Urology?", a: "Eligible candidates who successfully complete the Fellowship in Urology receive the applicable programme certification from Medical Global Academy. Candidates should review the certification details, completion requirements and applicable certificate option before enrolment." },
-    { q: "How can doctors enrol in the Fellowship in Urology?", a: "Doctors interested in the Fellowship in Urology can review the programme eligibility, curriculum, study mode, certification and current enrolment details before applying. Eligible candidates can then proceed through Medical Global Academy’s application process and confirm the required documentation with the admissions team." },
+    { q: "How can doctors enroll in the Fellowship in Urology?", a: "Doctors interested in the Fellowship in Urology can review the programme eligibility, curriculum, study mode, certification and current enrolment details before applying. Eligible candidates can then proceed through Medical Global Academy’s application process and confirm the required documentation with the admissions team." },
   ],
   "Fellowship in Orthodontics": [
     { q: "Who is eligible for the Fellowship in Orthodontics?", a: "The programme is intended for eligible dental professionals who meet Medical Global Academy’s accepted qualification and applicable dental registration requirements. Contact the admissions team to confirm whether your qualification meets the programme’s eligibility criteria before applying." },
@@ -894,7 +2239,7 @@ const COURSE_FAQS = {
   ],
   "Fellowship in Otology": [
     { q: "How do I apply for the Fellowship in Otology at Medical Global Academy?", a: "Contact Medical Global Academy to request the current application process, admission requirements, required documents and upcoming intake dates." },
-    { q: "Can I enrol in the Fellowship in Otology through online or hybrid mode?", a: "Yes. The programme is available in online and hybrid modes. Contact the admissions team to confirm the requirements, delivery format and arrangements for your preferred option." },
+    { q: "Can I enroll in the Fellowship in Otology through online or hybrid mode?", a: "Yes. The programme is available in online and hybrid modes. Contact the admissions team to confirm the requirements, delivery format and arrangements for your preferred option." },
     { q: "Does the Fellowship in Otology include CPD and ACTD accreditation?", a: "The programme is stated to include CPD and ACTD accreditation. Request the applicable accreditation and certificate details from Medical Global Academy before registration." },
     { q: "How can I get the current otology fellowship fees?", a: "Contact Medical Global Academy for the latest course fee, payment options and any additional charges applicable to your selected study mode." },
     { q: "How can I confirm eligibility and the next admission intake?", a: "Contact the admissions team to verify accepted qualifications, required documents, upcoming batch dates, application deadlines and the steps needed to complete enrolment." },
@@ -952,7 +2297,7 @@ const COURSE_FAQS = {
     { q: "What are the eligibility requirements for the Fellowship in Thoracic Surgery?", a: "Applicants must have an MBBS degree or a higher medical qualification, valid NMC or State Medical Council registration, and at least one year of post-qualification clinical experience. Contact Medical Global Academy to confirm your eligibility and required application documents before applying." },
     { q: "How do I apply for the Fellowship in Thoracic Surgery?", a: "To enquire about admission, contact Medical Global Academy and request the current application process, available batch dates, required documents and enrolment steps. Confirm that your preferred batch is accepting applications before proceeding." },
     { q: "What is the fee for the Fellowship in Thoracic Surgery?", a: "Contact Medical Global Academy for the current fellowship fee, payment terms and any additional charges. Confirm the total payable amount before enrolment, as fees and payment conditions may change." },
-    { q: "Can I enrol in the online or hybrid Fellowship in Thoracic Surgery?", a: "Medical Global Academy lists online and hybrid learning options for this fellowship. Before enrolling, confirm which mode is available for your batch and whether clinical attachment, in-person attendance or other practical requirements apply." },
+    { q: "Can I enroll in the online or hybrid Fellowship in Thoracic Surgery?", a: "Medical Global Academy lists online and hybrid learning options for this fellowship. Before enrolling, confirm which mode is available for your batch and whether clinical attachment, in-person attendance or other practical requirements apply." },
     { q: "Which certificate will I receive after completing the Fellowship in Thoracic Surgery?", a: "Before enrolling, ask Medical Global Academy to confirm the certificate awarded, the issuing organisation and the applicable CPD or ACTD credentials. Verify the certificate details and its relevance to your professional requirements before making an admission decision." },
   ],
   "Fellowship in Pediatric Echocardiography": [
@@ -977,7 +2322,7 @@ const COURSE_FAQS = {
     { q: "What certification is offered after completing the Fellowship in Pediatric Dentistry?", a: "The programme highlights CPD-aligned and ACTD-aligned certification. Applicants should request confirmation of the certificate issuer, completion requirements, and the documented status of each alignment before enrolment. These descriptions should not be interpreted as automatic specialist recognition or equivalence to a recognised postgraduate dental qualification." },
   ],
   "Fellowship in Head & Neck Surgery": [
-    { q: "Am I eligible to enrol in the Fellowship in Head and Neck Surgery?", a: "Applicants need an MBBS degree, valid NMC or State Medical Council registration, and at least one year of post-qualification clinical experience. The programme is open to eligible doctors practising in India and internationally. Contact Medical Global Academy to confirm your eligibility and the documents required for admission." },
+    { q: "Am I eligible to enroll in the Fellowship in Head and Neck Surgery?", a: "Applicants need an MBBS degree, valid NMC or State Medical Council registration, and at least one year of post-qualification clinical experience. The programme is open to eligible doctors practising in India and internationally. Contact Medical Global Academy to confirm your eligibility and the documents required for admission." },
     { q: "What is the total fee for the online and hybrid Head and Neck Surgery Fellowship?", a: "The listed total programme cost is ₹1,50,000 for the online option and ₹1,80,000 for the hybrid option. A registration fee of ₹50,000 is also listed. Before enrolling, confirm with Medical Global Academy whether this registration fee is included in or payable separately from the total cost, along with the payment schedule and any additional charges." },
     { q: "How can I apply for admission to the Head and Neck Surgery Fellowship?", a: "Contact Medical Global Academy to enquire about current admissions, eligibility verification, required documents and enrolment steps. Prospective applicants should confirm the next available intake and complete the academy’s application requirements before paying the registration fee." },
     { q: "Should I choose the online or hybrid Fellowship in Head and Neck Surgery?", a: "The online option has a listed total cost of ₹1,50,000, while the hybrid option costs ₹1,80,000. If practical learning is important to you, confirm which workshops, clinical training sessions and hospital-based activities are included in each format. Choose the option that matches your learning needs, schedule and confirmed programme requirements." },
@@ -1090,7 +2435,7 @@ const COURSE_FAQS = {
     { q: "What certification is offered with the Oral Oncology Fellowship?", a: "The programme lists CPD-aligned and ACTD-aligned certification. Before enrolling, confirm the certificate issuer, completion requirements and applicable certification terms with Medical Global Academy." },
   ],
   "Fellowship in Neonatal Surgery": [
-    { q: "Who is eligible to enrol in the Neonatal Surgery Fellowship?", a: "Applicants must hold an MBBS degree, have valid NMC or State Medical Council registration, and possess at least one year of post-qualification clinical experience. The program is open to eligible doctors practising in India and internationally." },
+    { q: "Who is eligible to enroll in the Neonatal Surgery Fellowship?", a: "Applicants must hold an MBBS degree, have valid NMC or State Medical Council registration, and possess at least one year of post-qualification clinical experience. The program is open to eligible doctors practising in India and internationally." },
     { q: "What is the total fee for the Neonatal Surgery Fellowship program?", a: "The total listed fee is ₹1,50,000 for the online program and ₹1,80,000 for the hybrid program. The registration fee is ₹50,000. Contact Medical Global Academy to confirm whether the registration fee is included in the total program cost and to clarify the payment schedule." },
     { q: "Which learning formats are available for the fellowship?", a: "The program is available in online and hybrid formats. Applicants can contact Medical Global Academy to confirm the delivery schedule, any in-person requirements, and the learning arrangements for their selected format." },
     { q: "Which clinical topics are covered in the Neonatal Surgery Fellowship curriculum?", a: "The curriculum covers congenital gastrointestinal anomalies, neonatal intestinal obstruction, oesophageal atresia, tracheoesophageal fistula, diaphragmatic hernia, abdominal wall defects, anorectal malformations, and selected neonatal urological and thoracic conditions. It also includes preoperative stabilisation, perioperative care, postoperative monitoring, and initial management principles for neonatal surgical emergencies." },

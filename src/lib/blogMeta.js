@@ -1,4 +1,3 @@
-
 export function cleanTitle(title) {
   if (!title) return title;
 
@@ -30,6 +29,32 @@ const RAW_BLOG_META = {
     "description": "Types of genetic testing explained — single gene testing, gene panels, exome and genome sequencing, and specialties that rely on them.",
     "image": null,
   
+  },
+
+
+    "orthopedic-surgeon-after-mbbs": {
+    "h1": "How to Become an Orthopedic Surgeon After MBBS: Complete Career",
+    "keywords": "orthopedic surgeon after mbbs",
+    "title": "Orthopedic Surgeon After MBBS: Career Path & Guide",
+    "canonical": "orthopedic-surgeon-after-mbbs",
+    "description": "Want to become an orthopedic surgeon after MBBS? Explore the career path, eligibility, NEET PG, specialization, training and future opportunities.",
+    "image": null,
+  },
+  "heart-failure-and-cardiomyopathies-diagnosis-management": {
+    "h1": "Heart Failure and Cardiomyopathies: A Clinical Overview for Practicing Physicians",
+    "keywords": "heart failure and cardiomyopathies",
+    "title": "Heart Failure & Cardiomyopathies: A Physician's Guide",
+    "canonical": "heart-failure-and-cardiomyopathies-diagnosis-management",
+    "description": "Explore heart failure and cardiomyopathies, including clinical features, diagnosis, classification and evidence-based management approaches for practicing physicians.",
+    "image": null,
+  },
+  "dermoscopy-for-general-physicians-clinical-benefits": {
+    "h1": "Dermoscopy for General Physicians: Why This Skill Belongs in Primary Care",
+    "keywords": "dermoscopy for general physicians",
+    "title": "Dermoscopy for General Physicians: Clinical Benefits & Skills",
+    "canonical": "dermoscopy-for-general-physicians-clinical-benefits",
+    "description": "Learn how dermoscopy for general physicians improves skin lesion assessment, early detection, diagnostic accuracy and clinical decision-making in primary care.",
+    "image": null,
   },
 
     "congenital-heart-disease-types": {
@@ -155,10 +180,10 @@ const RAW_BLOG_META = {
   "easiest-medical-specialization-to-get-india": {
     "h1": "Easiest Medical Specialization to Get India (And the Hardest Ones to Crack)",
     "keywords": "Easiest Medical Specialization to Get India",
-    "title": "Easiest Medical Specialization to Get India (2026)",
+    "title": "Easiest Medical Specializations to Get in India",
     "canonical": "easiest-medical-specialization-to-get-india",
-    "description": "Wondering which is the easiest medical specialization to get india vs the hardest? Compare NEET PG competition, seat availability, and career value here.",
-    "image": "https://medicalglobalacademy.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-08-at-2.23.26-PM.jpeg",
+    "description": "Which medical specialization is easiest to get into in India? Compare NEET-PG cutoffs, seat availability, and competition across specialties.",
+    "image": "",
    
   },
   "dermoscopy-for-general-physicians": {
@@ -179,15 +204,16 @@ const RAW_BLOG_META = {
     "image": "https://medicalglobalacademy.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-04-at-4.50.44-PM.jpeg",
    
   },
-  "dermoscopy-training-general-physicians": {
-    "h1": "Why Every General Physician Should Learn Basic Dermoscopy",
+  "dermoscopy-training-for-general-physicians": {
+    "h1": "Dermoscopy Training for General Physicians: A Practical Guide",
     "keywords": "Dermoscopy Training for General Physicians",
-    "title": "Dermoscopy Training for General Physicians (2026)",
-    "canonical": "dermoscopy-training-general-physicians",
-    "description": "Dermoscopy is a skill most GPs never learn in MBBS. See how it helps diagnose skin conditions and where structured training begins.",
-    "image": "https://medicalglobalacademy.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-04-at-4.03.34-PM.jpeg",
+    "title": "Dermoscopy Training for General Physicians | Clinical Guide",
+    "canonical": "dermoscopy-training-for-general-physicians",
+    "description": "Explore dermoscopy training for general physicians to develop essential skills in clinical applications, skin lesion assessment and practical techniques for improving diagnostic accuracy.",
+    "image": "",
    
   },
+
   "doctor-specialization-salary-comparison": {
     "h1": "Doctor Specialization Salary Comparison: MBBS to Super Specialist (2026 India Guide",
     "keywords": "Doctor Specialization Salary Comparison",
@@ -718,6 +744,7 @@ const RAW_BLOG_META = {
     "description": "Jobs after MBBS in India: Salary ₹40K–₹10L/month. Explore top careers, govt vs private pay, scope & highest paying options in 2026.",
     "image": "https://medicalglobalacademy.com/wp-content/uploads/2026/06/jobs-after-mbbs-salary-india-2026.jpg.jpg",
  
+
   },
   "career-after-mbbs": {
     "h1": "After MBBS What to Do? Complete Career Guide for 2026",
@@ -783,12 +810,12 @@ const RAW_BLOG_META = {
     
   },
   "online-medical-course-with-certificate": {
-    "h1": "Online Medical Course with Certificate in India: Best Options for Practising Doctors",
+    "h1": "Online Medical Course with Certificate: What Doctors in India Should Actually Check Before Enrolling",
     "keywords": "online medical course with certificate",
-    "title": "Online Medical Course with Certificate: Best Options for Doctors",
+    "title": "Online Medical Course with Certificate: 7 Things to Check",
     "canonical": "online-medical-course-with-certificate",
-    "description": "Top online medical course with certificate. Get certified in Cardiology, Diabetes, & more from Medical Global Academy. Enroll now!",
-    "image": "https://medicalglobalacademy.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-20-at-4.34.59-PM.jpeg",
+    "description": "Looking for an online medical course with certificate? Discover what doctors in India should check before enrolling, including accreditation, curriculum and clinical relevance.",
+    "image": "https://medicalglobalacademy.com/wp-content/uploads/2026/11/WhatsApp-Image-2026-11-27-at-2.56.35-PM.jpeg",
  
   },
   "online-medical-course-options": {
@@ -1098,6 +1125,24 @@ const RAW_BLOG_META = {
     "canonical": "pediatric-skin-conditions-a-physicians-guide-to-diagnosis-and-care",
     "description": "Explore common pediatric skin conditions with this pediatric skin conditions physician guide covering symptoms, diagnosis and treatment approaches for better clinical care.",
    "image": "https://medicalglobalacademy.com/wp-content/uploads/2026/11/WhatsApp-Image-2026-11-24-at-3.49.56-PM.jpeg",
+  },
+
+    "cme-full-form-doctors": {
+    "h1": "CME Full Form for Doctors: Meaning & Why It Matters",
+    "keywords": "CME full form",
+    "title": "CME Full Form for Doctors: Meaning & Why It Matters",
+    "canonical": "cme-full-form-doctors",
+    "description": "CME stands for Continuing Medical Education — mandatory ongoing training for doctors. Learn what it means, why it's required, and how to earn credits.",
+    "image": null,
+  },
+
+    "esr-high-means-causes-work-up-rheumatology": {
+    "h1": "High ESR: What It Means, Causes & Rheumatology Work-Up",
+    "keywords": "high ESR",
+    "title": "High ESR: What It Means, Causes & Rheumatology Work-Up",
+    "canonical": "esr-high-means-causes-work-up-rheumatology",
+    "description": "High ESR (erythrocyte sedimentation rate) can signal inflammation. Learn common causes, when it points to rheumatologic disease, and next steps.",
+    "image": null,
   }
 };
 

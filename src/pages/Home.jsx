@@ -632,6 +632,12 @@ export default function Home() {
                   </div>
                 )}
               </div>
+
+              <div className="blog-footer">
+                <Link to="/courses" className="blog-view-all-btn">
+                  View all courses <ArrowRight size={15} />
+                </Link>
+              </div>
             </div>
           </section>
 

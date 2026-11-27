@@ -48,6 +48,10 @@ const REDIRECTS = {
   "fellowship": "courses/fellowship",
   "pg-diploma-courses": "courses/pg-diploma",
 
+  /* Certificate pages (NEW) */
+  "certificate": "courses/certificate",
+  "category/certificate": "courses/certificate",
+
   /* Static pages */
   "about1": "about",
   "blogs": "blog",
@@ -64,7 +68,7 @@ const REDIRECTS = {
   "congenital-heart-disease": "blog/congenital-heart-disease-types",
   "blog/congenital-heart-disease": "blog/congenital-heart-disease-types",
   "cancer-screening-guidelines-india": "blog/cancer-screening-guidelines",
-  "how-to-become-an-orthopedic-surgeon-after-mbbs": "blog/how-to-become-an-orthopedic-surgeon-after-mbbs",
+  "how-to-become-an-orthopedic-surgeon-after-mbbs": "blog/orthopedic-surgeon-after-mbbs",
   "medical-writing-career-after-mbbs": "blog/medical-writing-career-after-mbbs",
   "clinical-research-pharma-careers-after-mbbs": "blog/clinical-research-pharma-careers-after-mbbs",
   "hospital-administration-career-after-mbbs": "blog/hospital-administration-career-after-mbbs",
@@ -74,9 +78,9 @@ const REDIRECTS = {
   "medical-vs-surgical-vs-radiation-oncology-fellowship": "blog/medical-vs-surgical-vs-radiation-oncology-fellowship",
   "fellowship-in-oncology-vs-dm-medical-oncology": "blog/fellowship-in-oncology-vs-dm-medical-oncology",
   "easiest-medical-specialization-to-get-india": "blog/easiest-medical-specialization-to-get-india",
-  "dermoscopy-for-general-physicians": "blog/dermoscopy-for-general-physicians",
-  "heart-failure-and-cardiomyopathies": "blog/heart-failure-and-cardiomyopathies",
-  "dermoscopy-training-general-physicians": "blog/dermoscopy-training-general-physicians",
+  "dermoscopy-for-general-physicians": "blog/dermoscopy-for-general-physicians-clinical-benefits",
+  "heart-failure-and-cardiomyopathies": "blog/heart-failure-and-cardiomyopathies-diagnosis-management",
+  "dermoscopy-training-general-physicians": "blog/dermoscopy-training-for-general-physicians",
   "doctor-specialization-salary-comparison": "blog/doctor-specialization-salary-comparison",
   "medical-vs-surgical-specialization": "blog/medical-vs-surgical-specialization",
   "future-scope-medical-specialization-india": "blog/future-scope-medical-specialization-india",
@@ -188,6 +192,14 @@ const REDIRECTS = {
   "blog/fellowship-in-gi-endoscopyfellowship-in-gi-endoscopy-eligibility-curriculum-scope":
     "blog/fellowship-in-gi-endoscopy-eligibility-curriculum-scope",
 
+  /* Blog URLs with the blog/ prefix (added so the full URLs redirect) */
+  "blog/dermoscopy-for-general-physicians": "blog/dermoscopy-for-general-physicians-clinical-benefits",
+  "blog/heart-failure-and-cardiomyopathies": "blog/heart-failure-and-cardiomyopathies-diagnosis-management",
+  "blog/how-to-become-an-orthopedic-surgeon-after-mbbs": "blog/orthopedic-surgeon-after-mbbs",
+
+  /* Dermoscopy training: purana URL naye URL par (single hop) */
+  "blog/dermoscopy-training-general-physicians": "blog/dermoscopy-training-for-general-physicians",
+
   /* Pediatric skin conditions: purana URL naye URL par (single hop) */
   "pediatric-skin-conditions-physician-guide":
     "blog/pediatric-skin-conditions-a-physicians-guide-to-diagnosis-and-care",
@@ -197,8 +209,7 @@ const REDIRECTS = {
 
 export const ALIASES = {};
 
-/* Input ko normalize karke redirect target do.
-   Target "" ho to home ("/") par jayega. Target null ho to koi redirect nahi. */
+
 function lookup(input) {
   if (input == null) return null;
 

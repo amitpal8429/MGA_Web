@@ -418,9 +418,7 @@ export default function About() {
             <a href="/courses" className="about-btn about-btn-light">
               Explore Programs
             </a>
-            <a href="/contact" className="about-btn about-btn-outline">
-              Contact Us
-            </a>
+           
           </div>
         </div>
       </section>
